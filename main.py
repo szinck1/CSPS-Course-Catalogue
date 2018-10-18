@@ -1,12 +1,11 @@
 # TODO
 # Add requirements.txt
 # Add French
-# Speed:
-	# Code in vanilla JS to avoid importing jQuery
-	# If statement to only scripts when needed
+# Speed: Code in vanilla JS to avoid importing jQuery
 
 from flask import Flask, flash, redirect, render_template, request, session, url_for
 import my_forms
+from highcharts import inst_led
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -32,9 +31,15 @@ def instructor_led():
 	form = my_forms.CourseForm(request.form)
 	if request.method == 'POST' and form.validate():
 		course_title = form.course_title.data
-		return '<h1>' + course_title + '</h1>'
-	
-	return render_template('form.html', form=form, title="Login", button_val="Login")
+		return redirect(url_for('inst_led_dash'))
+	return render_template('form.html', form=form, title="Dashboard Parameters", button_val="Go")
+
+
+# need pass in course code chosen in route above via query string
+@app.route('/inst-led-dash')
+def inst_led_dash():
+	mars = inst_led.top_5_depts('Big Data')
+	return render_template('instructor-led.html', mars=mars)
 
 
 @app.route('/online')
