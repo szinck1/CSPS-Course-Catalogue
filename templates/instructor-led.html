@@ -1,9 +1,19 @@
 {% extends 'layout.html' %}
 
+{% block head %}
+	<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!-- Highcharts -->
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+{% endblock head %}
+
+
 {% block body %}
 	<div class="container">
 		<div class="jumbotron">
-			<h1 style="color: green;">Coming Soon</h1>
+			<h1 style="color: green;">We're here and ready for action!!!</h1>
 		</div>
+		<p>Meow</p>
+		<p>{{ mars }}</p>
 	</div>
 {% endblock body %}
