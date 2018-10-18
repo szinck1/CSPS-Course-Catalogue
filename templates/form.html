@@ -3,7 +3,7 @@
 {% block body %}
 	{% from "includes/_formhelpers.html" import render_field %}
 	<div class="container">
-		<h3>{{ title }}</h3>
+		<h1 style="color: green;">{{ title }}</h1>
 		<form method="POST" action="">
 			{% for field in form %}
 				<div class="form-group">
