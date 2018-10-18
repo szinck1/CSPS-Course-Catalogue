@@ -11,6 +11,22 @@
 {% block body %}
 	<div class="container">
 		<h1 style="color: green;">{{ course_title }}</h1>
-		<p>{{ top_5_depts_j }}</p>
 	</div>
+	<div id="top-5-depts" class="container"></div>
+	
+	<script>
+		function makeChart (id) {
+			$('#' + String(id)).highcharts({
+				chart: {type: 'bar'},
+				title: {text: 'Top 5 Departments'},
+				xAxis: {categories: ['Registrations']},
+				yAxis: {title: {text: ''}},
+				legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
+				credits: {text: 'Prepared by Curriculum Management'},
+				series: {{ top_5_depts_j | safe }}
+			});
+		};
+		makeChart('top-5-depts');
+	</script>
+	
 {% endblock body %}

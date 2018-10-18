@@ -15,7 +15,7 @@ def top_5_depts(course_title):
 			ORDER BY 2 DESC
 			LIMIT 5;
 			""".format(course_title)
-	
+	# Query data from MySQL
 	cnx = mysql.connector.connect(user=parser.get('db', 'user'),
 								  password=parser.get('db', 'password'),
 								  host=parser.get('db', 'host'),
@@ -24,4 +24,10 @@ def top_5_depts(course_title):
 	cursor.execute(query)
 	results = cursor.fetchall()
 	cnx.close()
-	return json.dumps(dict(results))
+	# Process 'results' into format required by Highcharts
+	result_processed = []
+	for tup in results:
+		key, val = tup
+		result_processed.append({'name': key, 'data': [val]})
+	
+	return json.dumps(result_processed)

@@ -1,6 +1,7 @@
 # TODO
 # Add requirements.txt
 # Add French
+# Add gov styling, FIPs
 # Speed: Code in vanilla JS to avoid importing jQuery
 
 from flask import Flask, flash, redirect, render_template, request, session, url_for
