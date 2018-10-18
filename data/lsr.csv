@@ -1,0 +1,101 @@
+Course Title,Course Code,Reg Status,No-Show,Learner Classification,Billing Dept Code,Billing Dept Name
+Intro to Networking,Z156,Confirmed,0,AS-01,SVC,Public Services and Procurement Canada
+Big Data,X009,Confirmed,0,EC-02,NPA,Northern Pipeline Agency
+Advanced Python,A353,Confirmed,0,AS-01,NPA,Northern Pipeline Agency
+Intro to Networking,Z156,Confirmed,0,PE-05,SVC,Public Services and Procurement Canada
+Advanced Python,A353,Confirmed,0,AS-06,NPA,Northern Pipeline Agency
+Intro to Networking,Z156,Confirmed,0,EC-02,SVC,Public Services and Procurement Canada
+Authority Delegation Training,G110,Cancelled,0,EX-03,CES,Canada School of Public Service
+Big Data,X009,Cancelled,0,PE-05,SVC,Public Services and Procurement Canada
+Intro to Procurement,P901,Confirmed,0,PE-05,CES,Canada School of Public Service
+Intro to Networking,Z156,Confirmed,0,PE-05,CES,Canada School of Public Service
+Authority Delegation Training,G110,Confirmed,0,AS-01,NPA,Northern Pipeline Agency
+Big Data,X009,Confirmed,0,EX-03,SVC,Public Services and Procurement Canada
+Advanced Python,A353,Cancelled,0,EC-02,CES,Canada School of Public Service
+Big Data,X009,Confirmed,0,AS-06,CES,Canada School of Public Service
+Big Data,X009,Confirmed,0,PE-05,NPA,Northern Pipeline Agency
+Authority Delegation Training,G110,Confirmed,0,EX-03,SVC,Public Services and Procurement Canada
+Intro to Procurement,P901,Confirmed,0,AS-01,SVC,Public Services and Procurement Canada
+Intro to Procurement,P901,Confirmed,0,AS-06,CES,Canada School of Public Service
+Big Data,X009,Confirmed,0,AS-01,SVC,Public Services and Procurement Canada
+Authority Delegation Training,G110,Confirmed,0,AS-06,SVC,Public Services and Procurement Canada
+Authority Delegation Training,G110,Confirmed,0,AS-06,SVC,Public Services and Procurement Canada
+Intro to Networking,Z156,Confirmed,0,EX-03,NPA,Northern Pipeline Agency
+Big Data,X009,Confirmed,0,AS-01,SVC,Public Services and Procurement Canada
+Intro to Networking,Z156,Confirmed,1,AS-01,SVC,Public Services and Procurement Canada
+Intro to Networking,Z156,Confirmed,0,AS-06,NPA,Northern Pipeline Agency
+Intro to Networking,Z156,Confirmed,0,PE-05,CES,Canada School of Public Service
+Advanced Python,A353,Confirmed,0,AS-06,CES,Canada School of Public Service
+Authority Delegation Training,G110,Cancelled,0,EC-02,NPA,Northern Pipeline Agency
+Advanced Python,A353,Confirmed,0,EC-02,CES,Canada School of Public Service
+Advanced Python,A353,Confirmed,1,EX-03,CES,Canada School of Public Service
+Authority Delegation Training,G110,Confirmed,0,PE-05,NPA,Northern Pipeline Agency
+Intro to Networking,Z156,Confirmed,0,AS-01,SVC,Public Services and Procurement Canada
+Intro to Procurement,P901,Confirmed,0,AS-01,SVC,Public Services and Procurement Canada
+Advanced Python,A353,Confirmed,0,AS-01,SVC,Public Services and Procurement Canada
+Authority Delegation Training,G110,Confirmed,1,AS-01,SVC,Public Services and Procurement Canada
+Authority Delegation Training,G110,Confirmed,0,EC-02,CES,Canada School of Public Service
+Intro to Procurement,P901,Confirmed,0,EC-02,NPA,Northern Pipeline Agency
+Big Data,X009,Confirmed,0,AS-06,NPA,Northern Pipeline Agency
+Advanced Python,A353,Confirmed,0,EC-02,NPA,Northern Pipeline Agency
+Authority Delegation Training,G110,Confirmed,0,AS-01,NPA,Northern Pipeline Agency
+Authority Delegation Training,G110,Confirmed,0,AS-06,SVC,Public Services and Procurement Canada
+Authority Delegation Training,G110,Confirmed,0,AS-06,SVC,Public Services and Procurement Canada
+Advanced Python,A353,Cancelled,0,EX-03,SVC,Public Services and Procurement Canada
+Big Data,X009,Confirmed,0,EX-03,NPA,Northern Pipeline Agency
+Intro to Procurement,P901,Confirmed,0,AS-06,SVC,Public Services and Procurement Canada
+Big Data,X009,Confirmed,0,EX-03,CES,Canada School of Public Service
+Advanced Python,A353,Confirmed,0,AS-01,NPA,Northern Pipeline Agency
+Authority Delegation Training,G110,Confirmed,0,PE-05,CES,Canada School of Public Service
+Intro to Procurement,P901,Confirmed,1,AS-06,CES,Canada School of Public Service
+Advanced Python,A353,Confirmed,0,AS-06,CES,Canada School of Public Service
+Advanced Python,A353,Cancelled,0,AS-01,CES,Canada School of Public Service
+Big Data,X009,Confirmed,0,AS-06,CES,Canada School of Public Service
+Intro to Networking,Z156,Confirmed,0,PE-05,NPA,Northern Pipeline Agency
+Intro to Procurement,P901,Confirmed,0,EC-02,SVC,Public Services and Procurement Canada
+Intro to Networking,Z156,Confirmed,0,PE-05,CES,Canada School of Public Service
+Advanced Python,A353,Confirmed,0,AS-01,SVC,Public Services and Procurement Canada
+Intro to Networking,Z156,Confirmed,0,PE-05,SVC,Public Services and Procurement Canada
+Big Data,X009,Confirmed,1,PE-05,SVC,Public Services and Procurement Canada
+Advanced Python,A353,Confirmed,0,EX-03,NPA,Northern Pipeline Agency
+Intro to Procurement,P901,Confirmed,0,PE-05,CES,Canada School of Public Service
+Advanced Python,A353,Confirmed,0,AS-01,CES,Canada School of Public Service
+Intro to Procurement,P901,Confirmed,0,EX-03,CES,Canada School of Public Service
+Big Data,X009,Confirmed,0,AS-01,SVC,Public Services and Procurement Canada
+Advanced Python,A353,Confirmed,0,AS-01,CES,Canada School of Public Service
+Big Data,X009,Confirmed,0,EX-03,NPA,Northern Pipeline Agency
+Advanced Python,A353,Cancelled,0,AS-01,SVC,Public Services and Procurement Canada
+Authority Delegation Training,G110,Confirmed,0,EX-03,SVC,Public Services and Procurement Canada
+Big Data,X009,Cancelled,1,EC-02,SVC,Public Services and Procurement Canada
+Advanced Python,A353,Confirmed,0,AS-01,NPA,Northern Pipeline Agency
+Advanced Python,A353,Confirmed,0,AS-06,SVC,Public Services and Procurement Canada
+Advanced Python,A353,Confirmed,0,EX-03,CES,Canada School of Public Service
+Authority Delegation Training,G110,Confirmed,0,AS-06,SVC,Public Services and Procurement Canada
+Intro to Procurement,P901,Confirmed,0,PE-05,NPA,Northern Pipeline Agency
+Big Data,X009,Confirmed,0,AS-01,NPA,Northern Pipeline Agency
+Advanced Python,A353,Cancelled,1,EX-03,CES,Canada School of Public Service
+Intro to Procurement,P901,Confirmed,0,EX-03,NPA,Northern Pipeline Agency
+Intro to Procurement,P901,Confirmed,0,AS-01,CES,Canada School of Public Service
+Intro to Networking,Z156,Confirmed,0,AS-01,NPA,Northern Pipeline Agency
+Advanced Python,A353,Confirmed,0,PE-05,CES,Canada School of Public Service
+Authority Delegation Training,G110,Confirmed,0,EC-02,CES,Canada School of Public Service
+Intro to Networking,Z156,Confirmed,0,EC-02,SVC,Public Services and Procurement Canada
+Big Data,X009,Cancelled,0,AS-01,CES,Canada School of Public Service
+Intro to Networking,Z156,Confirmed,1,AS-01,CES,Canada School of Public Service
+Intro to Networking,Z156,Confirmed,0,PE-05,CES,Canada School of Public Service
+Intro to Procurement,P901,Confirmed,0,AS-06,NPA,Northern Pipeline Agency
+Authority Delegation Training,G110,Confirmed,0,PE-05,SVC,Public Services and Procurement Canada
+Intro to Procurement,P901,Confirmed,1,AS-06,NPA,Northern Pipeline Agency
+Authority Delegation Training,G110,Confirmed,0,AS-06,NPA,Northern Pipeline Agency
+Authority Delegation Training,G110,Confirmed,0,AS-06,NPA,Northern Pipeline Agency
+Intro to Procurement,P901,Confirmed,0,AS-06,CES,Canada School of Public Service
+Intro to Networking,Z156,Confirmed,0,EX-03,NPA,Northern Pipeline Agency
+Authority Delegation Training,G110,Confirmed,1,AS-01,NPA,Northern Pipeline Agency
+Advanced Python,A353,Confirmed,0,PE-05,CES,Canada School of Public Service
+Intro to Networking,Z156,Confirmed,0,EX-03,NPA,Northern Pipeline Agency
+Intro to Procurement,P901,Confirmed,0,AS-06,NPA,Northern Pipeline Agency
+Intro to Procurement,P901,Confirmed,0,EX-03,NPA,Northern Pipeline Agency
+Advanced Python,A353,Confirmed,0,AS-06,NPA,Northern Pipeline Agency
+Authority Delegation Training,G110,Confirmed,0,AS-01,SVC,Public Services and Procurement Canada
+Big Data,X009,Confirmed,0,EC-02,CES,Canada School of Public Service
+Advanced Python,A353,Confirmed,0,PE-05,SVC,Public Services and Procurement Canada
