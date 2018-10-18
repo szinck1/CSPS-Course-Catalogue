@@ -5,14 +5,14 @@
 		</div>
 		<div id="navbar" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="/">Home</a></li>
-				<li><a href="/about">About</a></li>
-				<li><a href="/departmental">Departmental</a></li>
-				<li><a href="/instructor-led">Instructor-Led</a></li>
-				<li><a href="/online">Online</a></li>
+				<li><a href="{{ url_for('index') }}">Home</a></li>
+				<li><a href="{{ url_for('about') }}">About</a></li>
+				<li><a href="{{ url_for('departmental') }}">Departmental</a></li>
+				<li><a href="{{ url_for('instructor_led') }}">Instructor-Led</a></li>
+				<li><a href="{{ url_for('online') }}">Online</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="/">Français</a></li>
+				<li><a href="{{ url_for('index') }}">Français</a></li>
 			</ul>
 		</div>
 	</div>
