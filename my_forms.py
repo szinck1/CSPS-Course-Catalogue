@@ -1,20 +1,24 @@
-import pandas as pd
-from wtforms import Form, SelectField
-
-# Load department list; SelectField only accepts tuples of (value, label)
-path = './data/dept_list.csv'
-dept_list = pd.read_csv(path, sep=',', header=None, squeeze=True)
-dept_list = [(dept_name, dept_name) for dept_name in dept_list]
-
-class SkillsForm(Form):
-	dept_name = SelectField('Department', choices=dept_list)
-
-cnx = mysql.connector.connect(user='Bob', password='foobar', host='127.0.0.1', database='passwords')
-query = ("SELECT * FROM pwds")
-cursor = cnx.cursor(dictionary=True)
-cursor.execute(query)
-
-
 import mysql.connector
+from wtforms import Form, SelectField
+from configparser import ConfigParser
 
-# Context manager, store password in config
+# Get config vals for MySQL
+parser = ConfigParser()
+parser.read('config.cfg')
+
+# Get distinct course titles currently in dataset
+query = ("SELECT DISTINCT course_title FROM lsr ORDER BY 1 ASC;")
+cnx = mysql.connector.connect(user=parser.get('db', 'user'),
+							  password=parser.get('db', 'password'),
+							  host=parser.get('db', 'host'),
+							  database=parser.get('db', 'database'))
+cursor = cnx.cursor()
+cursor.execute(query)
+results = cursor.fetchall()
+cnx.close()
+# SelectField takes a list of tuples
+course_titles = [(val, val) for tup in results for val in tup]
+
+
+class CourseForm(Form):
+	course_title = SelectField('Course Title', choices=course_titles)
