@@ -4,20 +4,19 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 		<title>CSPS Data Explorer</title>
-		<!-- jQuery -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		{% block head %}
+			<!-- extended by other templates needing scripts -->
+		{% endblock head %}
     <!-- Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
 		<!-- Custom CSS -->
 		<link href= "{{ url_for('static', filename='style.css') }}" rel="stylesheet">
 	</head>
 	<body>
-		
 		{% include 'includes/_navbar.html' %}
 		{% include 'includes/_messages.html' %}
 		{% block body %}
 			<!-- extended by other templates -->
 		{% endblock %}
-		
 	</body>
 </html>
