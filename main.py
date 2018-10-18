@@ -31,15 +31,16 @@ def instructor_led():
 	form = my_forms.CourseForm(request.form)
 	if request.method == 'POST' and form.validate():
 		course_title = form.course_title.data
-		return redirect(url_for('inst_led_dash'))
+		return redirect(url_for('inst_led_dash', course_title=course_title))
 	return render_template('form.html', form=form, title="Dashboard Parameters", button_val="Go")
 
 
-# need pass in course code chosen in route above via query string
 @app.route('/inst-led-dash')
 def inst_led_dash():
-	mars = inst_led.top_5_depts('Big Data')
-	return render_template('instructor-led.html', mars=mars)
+	# Get arguments from query string
+	course_title = request.args['course_title']
+	top_5_depts_j = inst_led.top_5_depts(course_title)
+	return render_template('instructor-led.html', course_title=course_title, top_5_depts_j=top_5_depts_j)
 
 
 @app.route('/online')
