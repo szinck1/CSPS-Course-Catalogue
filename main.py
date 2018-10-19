@@ -4,9 +4,11 @@
 # Add French
 	# Idea: if session['FR'], then use lookup table
 	# Will nicely group all EN-FR translations in single file, easy to send to translation people
+	# Use gettext and/or Flask-Babel
 # Add gov styling, FIPs
 # Temporarily swap in SQLite so Sean can easily git clone?
 # Speed: Code in vanilla JS to avoid importing jQuery
+# Protect dropdown from SQL injection?
 
 from flask import Flask, flash, redirect, render_template, request, session, url_for
 import my_forms
@@ -45,7 +47,10 @@ def inst_led_dash():
 	# Get arguments from query string
 	course_title = request.args['course_title']
 	top_5_depts_j = inst_led.top_5_depts(course_title)
-	return render_template('instructor-led.html', course_title=course_title, top_5_depts_j=top_5_depts_j)
+	top_5_classifs_j = inst_led.top_5_classifs(course_title)
+	return render_template('instructor-led.html', course_title=course_title,
+												  top_5_depts_j=top_5_depts_j,
+												  top_5_classifs_j=top_5_classifs_j)
 
 
 @app.route('/online')

@@ -7,15 +7,17 @@
 	<script src="https://code.highcharts.com/highcharts.js"></script>
 {% endblock head %}
 
-
 {% block body %}
+	
 	<div class="container">
 		<h1 style="color: green;">{{ course_title }}</h1>
 	</div>
-	<div id="top-5-depts" class="container"></div>
+	
+	<div id="top-5-depts" class="container col-xs-12 col-md-6"></div>
+	<div id="top-5-classifs" class="container col-xs-12 col-md-6"></div>
 	
 	<script>
-		function makeChart (id) {
+		function top5Depts (id) {
 			$('#' + String(id)).highcharts({
 				chart: {type: 'bar'},
 				title: {text: 'Top 5 Departments'},
@@ -26,7 +28,20 @@
 				series: {{ top_5_depts_j | safe }}
 			});
 		};
-		makeChart('top-5-depts');
+		function top5Classifs (id) {
+			$('#' + String(id)).highcharts({
+				chart: {type: 'bar'},
+				title: {text: 'Top 5 Classifications'},
+				xAxis: {categories: ['Registrations']},
+				yAxis: {title: {text: ''}},
+				legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
+				credits: {text: 'Prepared by Curriculum Management'},
+				series: {{ top_5_classifs_j | safe }}
+			});
+		};		
+		
+		top5Depts('top-5-depts');
+		top5Classifs('top-5-classifs');
 	</script>
 	
 {% endblock body %}
