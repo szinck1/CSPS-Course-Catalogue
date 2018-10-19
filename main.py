@@ -1,7 +1,11 @@
 # TODO
 # Add requirements.txt
+# Add setup.py, idea.py?
 # Add French
+	# Idea: if session['FR'], then use lookup table
+	# Will nicely group all EN-FR translations in single file, easy to send to translation people
 # Add gov styling, FIPs
+# Temporarily swap in SQLite so Sean can easily git clone?
 # Speed: Code in vanilla JS to avoid importing jQuery
 
 from flask import Flask, flash, redirect, render_template, request, session, url_for
