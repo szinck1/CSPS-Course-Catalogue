@@ -9,6 +9,10 @@
 # Temporarily swap in SQLite so Sean can easily git clone?
 # Speed: Code in vanilla JS to avoid importing jQuery
 # Protect dropdown from SQL injection?
+# Add Google Analytics
+# Cite CIO office's website for footer
+# Check all href are url_for
+# On mobile, collapse navbar into button
 
 from flask import Flask, flash, redirect, render_template, request, session, url_for
 import my_forms
