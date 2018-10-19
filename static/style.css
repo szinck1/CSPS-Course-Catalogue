@@ -1,3 +1,9 @@
 .jumbotron h1 {
 	font-size: 55px;
+	color: green;
+}
+
+#goc-fip {
+	max-height: 40px;
+	margin: 10px;
 }
