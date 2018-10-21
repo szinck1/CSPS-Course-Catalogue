@@ -9,6 +9,7 @@
 # Protect against SQL injection and XSS
 # Navbar colour in dropdown
 # pull / push to display FIPs on iPad
+# Always use px vs em?
 
 from flask import Flask, flash, redirect, render_template, request, session, url_for
 import my_forms
