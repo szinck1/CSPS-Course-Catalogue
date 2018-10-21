@@ -1,18 +1,14 @@
 # TODO
 # Add requirements.txt
-# Add setup.py, idea.py?
+# Add Google Analytics
 # Add French
 	# Idea: if session['FR'], then use lookup table
+		# Open to XSS?
 	# Will nicely group all EN-FR translations in single file, easy to send to translation people
 	# Use gettext and/or Flask-Babel
-# Add gov styling, FIPs
-# Temporarily swap in SQLite so Sean can easily git clone?
-# Speed: Code in vanilla JS to avoid importing jQuery
-# Protect dropdown from SQL injection?
-# Add Google Analytics
-# Cite CIO office's website for footer
-# Check all href are url_for
-# On mobile, collapse navbar into button
+# Protect against SQL injection and XSS
+# Navbar colour in dropdown
+# pull / push to display FIPs on iPad
 
 from flask import Flask, flash, redirect, render_template, request, session, url_for
 import my_forms
