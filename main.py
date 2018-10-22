@@ -1,22 +1,28 @@
 # TODO
 # Add requirements.txt
 # Add Google Analytics
-# Add French
-	# Idea: if session['FR'], then use lookup table
+# Add French; use if session['FR']?
 		# Open to XSS?
-	# Will nicely group all EN-FR translations in single file, easy to send to translation people
-	# Use gettext and/or Flask-Babel
 # Protect against SQL injection and XSS
-# Navbar colour in dropdown
 # pull / push to display FIPs on iPad
 # Always use px vs em?
+# Add button for mobile
+# Fix background colour of dropdown
+
 
 from flask import Flask, flash, redirect, render_template, request, session, url_for
+from flask_babel import Babel, gettext
 import my_forms
 from highcharts import inst_led
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
+babel = Babel(app)
+
+
+@babel.localeselector
+def get_locale():
+	return 'en'
 
 
 @app.route('/')
