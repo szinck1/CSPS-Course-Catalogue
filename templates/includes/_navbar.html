@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default" id="my-nav">
+<nav class="navbar navbar-default">
 	<div class="container">
 		<a class="navbar-brand" href="{{ url_for('index') }}">CSPS Data Explorer</a>
 		<div class="navbar-collapse collapse navbar-responsive-collapse">
@@ -8,9 +8,9 @@
 				<li class="dropdown li-border-right">
 					<a href="" class="dropdown-toggle" data-toggle="dropdown">Dashboards<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li class="mars"><a href="{{ url_for('departmental') }}">Departmental</a></li>
-						<li class="mars"><a href="{{ url_for('instructor_led') }}">Instructor-Led</a></li>
-						<li class="mars"><a href="{{ url_for('online') }}">Online</a></li>
+						<li><a href="{{ url_for('departmental') }}">Departmental</a></li>
+						<li><a href="{{ url_for('instructor_led') }}">Instructor-Led</a></li>
+						<li><a href="{{ url_for('online') }}">Online</a></li>
 					</ul>
 				</li>
 			</ul>

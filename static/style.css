@@ -39,6 +39,7 @@ a {
   position: absolute;
   bottom: 0;
   width: 100%;
+	/* Same as height of bottom of body */
   height: 60px;
 }
 
@@ -51,41 +52,47 @@ a {
 	border-right: 1px solid #999;
 }
 
-
-
-
-
-
-
-
-
-
-.navbar .dropdown-menu {
-  background-color: #335075;
-	color: #fff;
-}
-
-
-
-#my-nav {
+/* Customize Boostrap navbar */
+.navbar-default {
 	background-color: #335075;
 }
 
-
-.navbar-default a {
-	 color: #fff;
+.navbar-default .navbar-brand {
+	color: #fff;
 }
 
-
-
-/* Color of dropdown */
-.navbar-default .navbar-nav .open .dropdown-menu > li > a, .navbar-default .navbar-nav .open .dropdown-menu {
-	background-color: #ccc;
-	color: #444;
+.navbar-default .navbar-nav li a {
+	color: #fff;
 }
 
-/* Color of dropdown when hovering */
-.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-    background-color: #FFFF00;
-    color: #FFC0CB;
+.navbar-default .dropdown-menu li a {
+	background-color: #fff;
+	color: #333
+}
+
+/* Styling when hovering over navbar */
+.dropdown-toggle:active, .open .dropdown-toggle {
+	background: #243850 !important;
+	color: #fff !important;
+}
+
+.navbar-default .navbar-nav li a:hover, .navbar-default .navbar-nav li a:focus {
+    background-color: #243850;
+    color: #fff;
+}
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+    background-color: #243850;
+    color: #fff;
+}
+
+/* Button in WTForms */
+.btn.btn-primary {
+	background-color: #335075;
+	color: #fff;
+}
+
+.btn.btn-primary:hover, .btn.btn-primary:focus, .btn.btn-primary:active, .btn.btn-primary.active {
+  background-color: #243850;
+	color: #fff;
 }
