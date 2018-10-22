@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-10-22 00:20-0400\n"
+"POT-Creation-Date: 2018-10-22 14:21-0400\n"
 "PO-Revision-Date: 2018-10-22 00:21-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -18,6 +18,34 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.6.0\n"
 
-#: templates/layout.html:12
+#: templates/includes/_navbar.html:3 templates/layout.html:7
 msgid "CSPS Data Explorer"
 msgstr "Explorateur de données EFPC"
+
+#: templates/includes/_navbar.html:6
+msgid "Home"
+msgstr "Accueil"
+
+#: templates/includes/_navbar.html:7
+msgid "About"
+msgstr "À propos"
+
+#: templates/includes/_navbar.html:9
+msgid "Dashboards"
+msgstr "Tableaux de bord"
+
+#: templates/includes/_navbar.html:11
+msgid "Departmental"
+msgstr "Ministériels"
+
+#: templates/includes/_navbar.html:12
+msgid "Instructor-Led"
+msgstr "Cours dirigés par un instructeur"
+
+#: templates/includes/_navbar.html:13
+msgid "Online"
+msgstr "Cours en ligne"
+
+#: templates/includes/_navbar.html:18
+msgid "Français"
+msgstr "English"
