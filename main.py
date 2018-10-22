@@ -2,13 +2,9 @@
 # Add requirements.txt
 # Add Google Analytics
 # Add French; use if session['FR']?
-		# Open to XSS?
+	# Open to XSS?
 # Protect against SQL injection and XSS
-# pull / push to display FIPs on iPad
-# Always use px vs em?
-# Add button for mobile
-# Fix background colour of dropdown
-
+# Change Babel language via button
 
 from flask import Flask, flash, redirect, render_template, request, session, url_for
 from flask_babel import Babel, gettext
