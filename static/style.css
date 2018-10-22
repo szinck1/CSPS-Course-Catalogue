@@ -42,14 +42,6 @@ a {
   height: 60px;
 }
 
-#my-nav {
-	background-color: #335075;
-}
-
-#my-nav a {
-	 color: #fff;
-}
-
 .li-border-left {
 	border-left: 1px solid #999;
 }
@@ -57,4 +49,43 @@ a {
 .li-border-right {
 	border-left: 1px solid #999;
 	border-right: 1px solid #999;
+}
+
+
+
+
+
+
+
+
+
+
+.navbar .dropdown-menu {
+  background-color: #335075;
+	color: #fff;
+}
+
+
+
+#my-nav {
+	background-color: #335075;
+}
+
+
+.navbar-default a {
+	 color: #fff;
+}
+
+
+
+/* Color of dropdown */
+.navbar-default .navbar-nav .open .dropdown-menu > li > a, .navbar-default .navbar-nav .open .dropdown-menu {
+	background-color: #ccc;
+	color: #444;
+}
+
+/* Color of dropdown when hovering */
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    background-color: #FFFF00;
+    color: #FFC0CB;
 }
