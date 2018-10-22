@@ -1,15 +1,13 @@
-<!-- TODO
-- Add meta for search engines i.e. description, author, etc.
-- Add shortcut to top of page for link in footer
--->
-
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link href="{{ url_for('static', filename='favicon.ico') }}" rel="icon" type="image/x-icon" />
+		<link href="{{ url_for('static', filename='FIPs/favicon.ico') }}" rel="icon" type="image/x-icon" />
 		<title>{{ _('CSPS Data Explorer') }}</title>
+		<meta name="description" content="CSPS Dashboards - Tableaux de bord de l'EFPC" />
+		<meta name="keywords" content="Canada School of Public Service, CSPS, data, dashboard, dashboards, departmental, departmental, course, instructor-led, python, flask, highcharts,
+																	 École de la fonction publique du Canada, EFPC, données, tableau de bord, tableaux de bord, ministère, ministériel, cours, dirigé par un instructeur" />
 		<!-- jQuery -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<!-- Bootstrap -->
@@ -46,11 +44,11 @@
 		<footer class="footer">
 			<div class="container goc-footer">
 				<div class="row">
-					<div class="col-xs-6 visible-sm visible-xs pull-left">
-						<a href="{{ url_for('index') }}">Top of page</a>
+					<div class="col-xs-6 col-md-10 pull-left">
+						<a href="#top">Top of page</a>
 					</div>
 					<div class="col-xs-6 col-md-2 pull-right">
-						<object class="goc-fip img-responsive" type="image/svg+xml" data="{{ url_for('static', filename='canada.svg') }}"></object>
+						<img class="img-responsive goc-fip" src="{{ url_for('static', filename='FIPs/canada2.png') }}" alt="GOC Logo" />
 					</div>
 				</div>
 			</div>
