@@ -23,7 +23,7 @@ def _query_mysql(query, all=True):
 def top_5_depts(course_title):
 	query = """
 			SELECT billing_dept_name, COUNT(billing_dept_name)
-			FROM lsr
+			FROM lsr2018
 			WHERE course_title = '{0}' AND reg_status = 'Confirmed' AND no_show = 0
 			GROUP BY billing_dept_name
 			ORDER BY 2 DESC
@@ -35,7 +35,7 @@ def top_5_depts(course_title):
 def top_5_classifs(course_title):
 	query = """
 			SELECT learner_classif, COUNT(learner_classif)
-			FROM lsr
+			FROM lsr2018
 			WHERE course_title = '{0}' AND reg_status = 'Confirmed' AND no_show = 0
 			GROUP BY learner_classif
 			ORDER BY 2 DESC
@@ -47,7 +47,7 @@ def top_5_classifs(course_title):
 def offerings_per_region(course_title):
 	query = """
 			SELECT offering_region, COUNT(DISTINCT offering_id)
-			FROM lsr
+			FROM lsr2018
 			WHERE course_title = '{0}' AND offering_status IN ('Open - Normal', 'Delivered - Normal')
 			GROUP BY offering_region
 			""".format(course_title)
@@ -64,12 +64,23 @@ def offerings_per_region(course_title):
 
 
 def offerings_per_lang(course_title):
-	pass
-
-
-
-
-
+	query = """
+			SELECT offering_language, COUNT(DISTINCT offering_id)
+			FROM lsr2018
+			WHERE course_title = '{0}' AND offering_status IN ('Open - Normal', 'Delivered - Normal')
+			GROUP BY offering_language
+			""".format(course_title)
+	results = _query_mysql(query, all=True)
+	
+	# Process 'results' into format required by Highcharts
+	results = dict(results)
+	results_processed = []
+	for key, val in results.items():
+		results_processed.append({'name': key, 'data': [val]})
+	# Account for 0 offerings
+	if not results_processed:
+		results_processed = [{'name': 'English/Anglais', 'data': [0]}, {'name': 'French/Français', 'data': [0]}]
+	return json.dumps(results_processed)
 
 
 

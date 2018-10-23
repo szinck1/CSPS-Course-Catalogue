@@ -43,7 +43,8 @@
 					{% endfor %}
 				</table>
 			</div>
-			<div id="offerings-per-region" class="container col-md-6"></div>
+			<div id="offerings-per-region" class="col-xs-12 col-md-6"></div>
+			<div id="offerings-per-lang" class="col-xs-12 col-md-6"></div>
 		</div>
 	</div>
 	
@@ -59,7 +60,19 @@
 				series: {{ offerings_per_region_j | safe }}
 			});
 		};
+		function offeringsPerLang (id) {
+			$('#' + String(id)).highcharts({
+				chart: {type: 'bar'},
+				title: {text: 'Offerings per Region'},
+				xAxis: {categories: ['']},
+				yAxis: {title: {text: 'Offerings'}},
+				legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
+				credits: {text: ''},
+				series: {{ offerings_per_lang_j | safe }}
+			});
+		};
 		
 		offeringsPerRegion('offerings-per-region');
+		offeringsPerLang('offerings-per-lang');
 	</script>
 {% endblock body %}
