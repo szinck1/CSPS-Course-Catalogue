@@ -6,6 +6,7 @@
 	# Bilingual URLs as well
 # Protect against SQL injection and XSS
 # Change Babel language via button
+# Add global vars for fiscal year
 
 from flask import Flask, flash, redirect, render_template, request, session, url_for
 from flask_babel import Babel, gettext

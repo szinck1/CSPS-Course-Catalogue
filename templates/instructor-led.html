@@ -27,7 +27,7 @@
 				</table>
 			</div>
 			<div class="col-xs-12 col-md-6">
-				<table class="table table-hover">
+				<table class="table table-hover table-responsive">
 					<tr>
 						<td class="text-center" colspan="2"><h4><strong>Top 5 Classifications</strong></h4></td>
 					</tr>
@@ -43,8 +43,11 @@
 					{% endfor %}
 				</table>
 			</div>
+		</div>
+		<div class="row">
 			<div id="offerings-per-region" class="col-xs-12 col-md-6"></div>
 			<div id="offerings-per-lang" class="col-xs-12 col-md-6"></div>
+			<div id="mars" class="col-xs-12 col-md-6"></div>
 		</div>
 	</div>
 	
@@ -54,7 +57,7 @@
 				chart: {type: 'bar'},
 				title: {text: 'Offerings per Region'},
 				xAxis: {categories: ['']},
-				yAxis: {title: {text: 'Offerings'}},
+				yAxis: {title: {text: 'Offerings'}, allowDecimals: false},
 				legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
 				credits: {text: ''},
 				series: {{ offerings_per_region_j | safe }}
@@ -63,16 +66,27 @@
 		function offeringsPerLang (id) {
 			$('#' + String(id)).highcharts({
 				chart: {type: 'bar'},
-				title: {text: 'Offerings per Region'},
+				title: {text: 'Offerings per Language'},
 				xAxis: {categories: ['']},
-				yAxis: {title: {text: 'Offerings'}},
+				yAxis: {title: {text: 'Offerings'}, allowDecimals: false},
 				legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
 				credits: {text: ''},
 				series: {{ offerings_per_lang_j | safe }}
 			});
 		};
+		function marsAres (id) {
+			$('#' + String(id)).highcharts({
+				chart: {type: 'column'},
+				title: {text: 'Offerings per Language'},
+				xAxis: {categories: ['2017-18', '2018-19']},
+				yAxis: {allowDecimals: false,	min: 0, title: {text: 'Number of fruits'}},
+				series: [{name: 'English', data: [5, 3]},
+								 {name: 'French', data: [3, 4]}]
+			});
+		};
 		
 		offeringsPerRegion('offerings-per-region');
 		offeringsPerLang('offerings-per-lang');
+		marsAres('mars');
 	</script>
 {% endblock body %}
