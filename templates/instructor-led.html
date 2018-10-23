@@ -9,8 +9,44 @@
 	<div class="container">
 		<h1>{{ course_title }}</h1>
 		<div class="row">
+			<div class="col-xs-12 col-md-6">
+				<table class="table table-hover">
+					<tr>
+						<td class="text-center" colspan="2"><h4><strong>Top 5 Departments</strong></h4></td>
+					</tr>
+					<tr>
+						<td><strong>Name</strong></td>
+						<td class="text-center"><strong>Registrations</strong></td>
+					</tr>
+					{% for tuple in top_5_depts_j %}
+						<tr>
+								<td>{{ tuple[0] }}</td>
+								<td class="text-center">{{ tuple[1] }}</td>
+						</tr>
+					{% endfor %}
+				</table>
+			</div>
+			<div class="col-xs-12 col-md-6">
+				<table class="table table-hover">
+					<tr>
+						<td class="text-center" colspan="2"><h4><strong>Top 5 Classifications</strong></h4></td>
+					</tr>
+					<tr>
+						<td><strong>Name</strong></td>
+						<td class="text-center"><strong>Registrations</strong></td>
+					</tr>
+					{% for tuple in top_5_classifs_j %}
+						<tr>
+								<td>{{ tuple[0] }}</td>
+								<td class="text-center">{{ tuple[1] }}</td>
+						</tr>
+					{% endfor %}
+				</table>
+			</div>
+			<!--
 			<div id="top-5-depts" class="container col-md-6"></div>
 			<div id="top-5-classifs" class="container col-md-6"></div>
+			-->
 		</div>
 	</div>
 	
@@ -38,7 +74,7 @@
 			});
 		};		
 		
-		top5Depts('top-5-depts');
-		top5Classifs('top-5-classifs');
+		// top5Depts('top-5-depts');
+		// top5Classifs('top-5-classifs');
 	</script>
 {% endblock body %}
