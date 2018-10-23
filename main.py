@@ -3,6 +3,7 @@
 # Add Google Analytics
 # Add French; use if session['FR']?
 	# Open to XSS?
+	# Bilingual URLs as well
 # Protect against SQL injection and XSS
 # Change Babel language via button
 
@@ -13,12 +14,16 @@ from highcharts import inst_led
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
+app.config['SECRET_KEY'] = 'meow123'
+app.config['BABEL_DEFAULT_LOCALE'] = 'en'
 babel = Babel(app)
 
 
 @babel.localeselector
 def get_locale():
-	return 'en'
+	if request.args.get('lang'):
+		session['lang'] = request.args.get('lang')
+	return session.get('lang', 'en')
 
 
 @app.route('/')
