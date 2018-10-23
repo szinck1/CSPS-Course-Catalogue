@@ -56,9 +56,11 @@ def inst_led_dash():
 	course_title = request.args['course_title']
 	top_5_depts_j = inst_led.top_5_depts(course_title)
 	top_5_classifs_j = inst_led.top_5_classifs(course_title)
+	offerings_per_region_j = inst_led.offerings_per_region(course_title)
 	return render_template('instructor-led.html', course_title=course_title,
 												  top_5_depts_j=top_5_depts_j,
-												  top_5_classifs_j=top_5_classifs_j)
+												  top_5_classifs_j=top_5_classifs_j,
+												  offerings_per_region_j=offerings_per_region_j)
 
 
 @app.route('/online')

@@ -43,38 +43,23 @@
 					{% endfor %}
 				</table>
 			</div>
-			<!--
-			<div id="top-5-depts" class="container col-md-6"></div>
-			<div id="top-5-classifs" class="container col-md-6"></div>
-			-->
+			<div id="offerings-per-region" class="container col-md-6"></div>
 		</div>
 	</div>
 	
 	<script>
-		function top5Depts (id) {
+		function offeringsPerRegion (id) {
 			$('#' + String(id)).highcharts({
 				chart: {type: 'bar'},
-				title: {text: 'Top 5 Departments'},
-				xAxis: {categories: ['Registrations']},
-				yAxis: {title: {text: ''}},
+				title: {text: 'Offerings per Region'},
+				xAxis: {categories: ['']},
+				yAxis: {title: {text: 'Offerings'}},
 				legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
-				credits: {text: 'Prepared by Curriculum Management'},
-				series: {{ top_5_depts_j | safe }}
+				credits: {text: ''},
+				series: {{ offerings_per_region_j | safe }}
 			});
 		};
-		function top5Classifs (id) {
-			$('#' + String(id)).highcharts({
-				chart: {type: 'bar'},
-				title: {text: 'Top 5 Classifications'},
-				xAxis: {categories: ['Registrations']},
-				yAxis: {title: {text: ''}},
-				legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
-				credits: {text: 'Prepared by Curriculum Management'},
-				series: {{ top_5_classifs_j | safe }}
-			});
-		};		
 		
-		// top5Depts('top-5-depts');
-		// top5Classifs('top-5-classifs');
+		offeringsPerRegion('offerings-per-region');
 	</script>
 {% endblock body %}
