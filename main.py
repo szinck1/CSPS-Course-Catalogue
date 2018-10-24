@@ -1,12 +1,18 @@
-# TODO
+# For Friday, October 24 2018
 # Add requirements.txt
+# Add remaining charts in Instructor-Led
+
+# Backlog
+# Protect against SQL injection and XSS
 # Add Google Analytics
 # Add French; use if session['FR']?
-	# Open to XSS?
+	# Change language via button
 	# Bilingual URLs as well
-# Protect against SQL injection and XSS
-# Change Babel language via button
+	# Open to XSS?
 # Add global vars for fiscal year
+# Add Online, Departmental
+# Add drilldown
+
 
 from flask import Flask, flash, redirect, render_template, request, session, url_for
 from flask_babel import Babel, gettext
