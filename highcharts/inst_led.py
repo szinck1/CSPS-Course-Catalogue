@@ -20,6 +20,23 @@ def _query_mysql(query, all=True):
 	return results
 
 
+def general_info(course_title):
+	query_duration = "SELECT training_hours FROM lsr2018 WHERE course_title = '{0}' LIMIT 1;".format(course_title)
+	duration = _query_mysql(query_duration, all=True)
+	
+	query_stream = "SELECT stream FROM lsr2018 WHERE course_title = '{0}' LIMIT 1;".format(course_title)
+	stream = _query_mysql(query_stream, all=True)
+	
+	query_topic = "SELECT topic FROM lsr2018 WHERE course_title = '{0}' LIMIT 1;".format(course_title)
+	topic = _query_mysql(query_topic, all=True)
+	
+	results = [('Duration', duration[0][0]),
+			   ('Stream', stream[0][0]),
+			   ('Topic', topic[0][0])]
+	
+	return results
+
+
 def top_5_depts(course_title):
 	query = """
 			SELECT billing_dept_name, COUNT(billing_dept_name)
@@ -49,11 +66,11 @@ def offerings_per_region(course_title):
 			SELECT offering_region, COUNT(DISTINCT offering_id)
 			FROM lsr2018
 			WHERE course_title = '{0}' AND offering_status IN ('Open - Normal', 'Delivered - Normal')
-			GROUP BY offering_region
+			GROUP BY offering_region;
 			""".format(course_title)
 	results = _query_mysql(query, all=True)
 	
-	# Process 'results' into format required by Highcharts
+	# Process results into format required by Highcharts
 	results = dict(results)
 	results_processed = []
 	all_regions = ['Atlantic', 'Ontario', 'NCR', 'Pacific', 'Prairie', 'Québec']
@@ -68,11 +85,11 @@ def offerings_per_lang(course_title):
 			SELECT offering_language, COUNT(DISTINCT offering_id)
 			FROM lsr2018
 			WHERE course_title = '{0}' AND offering_status IN ('Open - Normal', 'Delivered - Normal')
-			GROUP BY offering_language
+			GROUP BY offering_language;
 			""".format(course_title)
 	results = _query_mysql(query, all=True)
 	
-	# Process 'results' into format required by Highcharts
+	# Process results into format required by Highcharts
 	results = dict(results)
 	results_processed = []
 	for key, val in results.items():
@@ -81,6 +98,40 @@ def offerings_per_lang(course_title):
 	if not results_processed:
 		results_processed = [{'name': 'English', 'data': [0]}, {'name': 'French', 'data': [0]}]
 	return json.dumps(results_processed)
+
+
+def average_class_size(fiscal_year, course_title):
+	query = """
+			SELECT AVG(class_size)
+			FROM(
+				SELECT COUNT(reg_num) AS class_size
+				FROM lsr{0}
+				WHERE course_title LIKE '{1}' AND reg_status= 'Confirmed'
+				GROUP BY offering_id
+				ORDER BY 1 DESC
+			) AS sub_table;
+			""".format(fiscal_year, course_title)
+	results = _query_mysql(query, all=True)
+	return int(float(str(results[0][0])))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

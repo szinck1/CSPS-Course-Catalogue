@@ -9,6 +9,7 @@
 	<div class="container">
 		<h1>{{ course_title }}</h1>
 		<div class="row">
+			<!-- Top 5 Departments -->
 			<div class="col-xs-12 col-md-6">
 				<table class="table table-hover">
 					<tr>
@@ -16,48 +17,55 @@
 					</tr>
 					<tr>
 						<td><strong>Name</strong></td>
-						<td class="text-center"><strong>Registrations</strong></td>
+						<td class="text-right"><strong>Registrations</strong></td>
 					</tr>
-					{% for tuple in top_5_depts_j %}
+					{% for tuple in top_5_depts %}
 						<tr>
 								<td>{{ tuple[0] }}</td>
-								<td class="text-center">{{ tuple[1] }}</td>
+								<td class="text-right">{{ tuple[1] }}</td>
 						</tr>
 					{% endfor %}
 				</table>
 			</div>
+			<!-- Offerings per Region -->
+			<div id="offerings-per-region" class="col-xs-12 col-md-6"></div>
+			<!-- Top 5 Classifications -->
 			<div class="col-xs-12 col-md-6">
-				<table class="table table-hover table-responsive">
+				<table class="table table-hover">
 					<tr>
 						<td class="text-center" colspan="2"><h4><strong>Top 5 Classifications</strong></h4></td>
 					</tr>
 					<tr>
 						<td><strong>Name</strong></td>
-						<td class="text-center"><strong>Registrations</strong></td>
+						<td class="text-right"><strong>Registrations</strong></td>
 					</tr>
-					{% for tuple in top_5_classifs_j %}
+					{% for tuple in top_5_classifs %}
 						<tr>
 								<td>{{ tuple[0] }}</td>
-								<td class="text-center">{{ tuple[1] }}</td>
+								<td class="text-right">{{ tuple[1] }}</td>
 						</tr>
 					{% endfor %}
 				</table>
 			</div>
-		</div>
-		<div class="row">
-			<div id="offerings-per-region" class="col-xs-12 col-md-6"></div>
+			<!-- Offerings per Language -->
 			<div id="offerings-per-lang" class="col-xs-12 col-md-6"></div>
-			<div id="mars" class="col-xs-12 col-md-6"></div>
+			<!-- Average Class Size -->
+			<div id="avg-class-size" class="col-xs-12 col-md-6"></div>
+			<!-- Average No-Shows per Offering -->
+			<div id="avg-no-shows" class="col-xs-12 col-md-6"></div>
+			<div class="container">
+				<p>{{ general_info }}</p>
+			</div>
 		</div>
 	</div>
 	
 	<script>
 		function offeringsPerRegion (id) {
 			$('#' + String(id)).highcharts({
-				chart: {type: 'bar'},
+				chart: {type: 'column'},
 				title: {text: 'Offerings per Region'},
-				xAxis: {categories: ['']},
-				yAxis: {title: {text: 'Offerings'}, allowDecimals: false},
+				xAxis: {categories: ['Offerings']},
+				yAxis: {title: {text: ''}, allowDecimals: false, min: 0},
 				legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
 				credits: {text: ''},
 				series: {{ offerings_per_region_j | safe }}
@@ -65,28 +73,42 @@
 		};
 		function offeringsPerLang (id) {
 			$('#' + String(id)).highcharts({
-				chart: {type: 'bar'},
+				chart: {type: 'column'},
 				title: {text: 'Offerings per Language'},
-				xAxis: {categories: ['']},
-				yAxis: {title: {text: 'Offerings'}, allowDecimals: false},
+				xAxis: {categories: ['Offerings']},
+				yAxis: {title: {text: ''}, allowDecimals: false,	min: 0},
 				legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
 				credits: {text: ''},
 				series: {{ offerings_per_lang_j | safe }}
 			});
 		};
-		function marsAres (id) {
+		function offeringsPerLang (id) {
 			$('#' + String(id)).highcharts({
 				chart: {type: 'column'},
 				title: {text: 'Offerings per Language'},
+				xAxis: {categories: ['Offerings']},
+				yAxis: {title: {text: ''}, allowDecimals: false,	min: 0},
+				legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
+				credits: {text: ''},
+				series: {{ offerings_per_lang_j | safe }}
+			});
+		};
+		function averageClassSize (id) {
+			$('#' + String(id)).highcharts({
+				chart: {type: 'column'},
+				title: {text: 'Average Class Size'},
 				xAxis: {categories: ['2017-18', '2018-19']},
-				yAxis: {allowDecimals: false,	min: 0, title: {text: 'Number of fruits'}},
-				series: [{name: 'English', data: [5, 3]},
-								 {name: 'French', data: [3, 4]}]
+				yAxis: {title: {text: ''}, allowDecimals: false,	min: 0},
+				legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
+				credits: {text: ''},
+				// plotOptions: {column: {stacking: 'normal'}},
+				series: [{name: 'Average All', data: [{{ avg_class_size_overall_2017 }}, {{ avg_class_size_overall_2018 }}]},
+					 			 {name: '{{ course_title }}', data: [{{ avg_class_size_2017 }}, {{ avg_class_size_2018 }}]}]
 			});
 		};
 		
 		offeringsPerRegion('offerings-per-region');
 		offeringsPerLang('offerings-per-lang');
-		marsAres('mars');
+		averageClassSize('avg-class-size');
 	</script>
 {% endblock body %}

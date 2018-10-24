@@ -55,15 +55,26 @@ def instructor_led():
 def inst_led_dash():
 	# Get arguments from query string
 	course_title = request.args['course_title']
-	top_5_depts_j = inst_led.top_5_depts(course_title)
-	top_5_classifs_j = inst_led.top_5_classifs(course_title)
+	general_info = inst_led.general_info(course_title)
+	top_5_depts = inst_led.top_5_depts(course_title)
+	top_5_classifs = inst_led.top_5_classifs(course_title)
 	offerings_per_region_j = inst_led.offerings_per_region(course_title)
 	offerings_per_lang_j = inst_led.offerings_per_lang(course_title)
+	avg_class_size_overall_2017 = inst_led.average_class_size('2017', '%')
+	avg_class_size_overall_2018 = inst_led.average_class_size('2018', '%')
+	avg_class_size_2017 = inst_led.average_class_size('2017', course_title)
+	avg_class_size_2018 = inst_led.average_class_size('2018', course_title)
+	
 	return render_template('instructor-led.html', course_title=course_title,
-												  top_5_depts_j=top_5_depts_j,
-												  top_5_classifs_j=top_5_classifs_j,
+												  general_info=general_info,
+												  top_5_depts=top_5_depts,
+												  top_5_classifs=top_5_classifs,
 												  offerings_per_region_j=offerings_per_region_j,
-												  offerings_per_lang_j=offerings_per_lang_j)
+												  offerings_per_lang_j=offerings_per_lang_j,
+												  avg_class_size_overall_2017=avg_class_size_overall_2017,
+												  avg_class_size_overall_2018=avg_class_size_overall_2018,
+												  avg_class_size_2017=avg_class_size_2017,
+												  avg_class_size_2018=avg_class_size_2018)
 
 
 @app.route('/online')
