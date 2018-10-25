@@ -128,6 +128,21 @@ def offerings_per_lang(course_title):
 	return json.dumps(results_processed)
 
 
+def offerings_cancelled(fiscal_year, course_title):
+	query = """
+			SELECT SUM(a.Mars / b.Mars)
+			FROM
+				(SELECT COUNT(DISTINCT offering_id) AS Mars
+				 FROM lsr{0}
+				 WHERE course_code = '{1}' AND offering_status = 'Cancelled - Normal') a,
+				 
+				(SELECT COUNT(DISTINCT offering_id) AS Mars
+				 FROM lsr{0}
+				 WHERE course_code = '{1}') b;
+			""".format(fiscal_year, course_title)
+	pass
+
+
 def average_class_size(fiscal_year, course_title):
 	query = """
 			SELECT AVG(class_size)
