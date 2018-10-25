@@ -1,6 +1,8 @@
 # For Friday, October 24 2018
 # Add requirements.txt
 # Add remaining charts in Instructor-Led
+# Do big code refactor
+# Change color of table-hover
 
 # Backlog
 # Protect against SQL injection and XSS
@@ -12,6 +14,7 @@
 # Add global vars for fiscal year
 # Add Online, Departmental
 # Add drilldown
+# Course catalogue: add description, add L1 data, add comments w/ 1-5 stars
 
 
 from flask import Flask, flash, redirect, render_template, request, session, url_for
@@ -20,6 +23,8 @@ import my_forms
 from highcharts import inst_led
 
 app = Flask(__name__)
+# Add Python's internal func 'zip' to Jinja2
+app.jinja_env.filters['zip'] = zip
 app.config['DEBUG'] = True
 app.config['SECRET_KEY'] = 'meow123'
 app.config['BABEL_DEFAULT_LOCALE'] = 'en'
@@ -61,7 +66,8 @@ def instructor_led():
 def inst_led_dash():
 	# Get arguments from query string
 	course_title = request.args['course_title']
-	general_info = inst_led.general_info(course_title)
+	general_info_2017 = inst_led.general_info('2017', course_title)
+	general_info_2018 = inst_led.general_info('2018', course_title)
 	top_5_depts = inst_led.top_5_depts(course_title)
 	top_5_classifs = inst_led.top_5_classifs(course_title)
 	offerings_per_region_j = inst_led.offerings_per_region(course_title)
@@ -72,7 +78,8 @@ def inst_led_dash():
 	avg_class_size_2018 = inst_led.average_class_size('2018', course_title)
 	
 	return render_template('instructor-led.html', course_title=course_title,
-												  general_info=general_info,
+												  general_info_2017=general_info_2017,
+												  general_info_2018=general_info_2018,
 												  top_5_depts=top_5_depts,
 												  top_5_classifs=top_5_classifs,
 												  offerings_per_region_j=offerings_per_region_j,
