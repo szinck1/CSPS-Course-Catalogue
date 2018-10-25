@@ -20,21 +20,49 @@ def _query_mysql(query, all=True):
 	return results
 
 
-def general_info(course_title):
-	query_duration = "SELECT training_hours FROM lsr2018 WHERE course_title = '{0}' LIMIT 1;".format(course_title)
+def decimal_to_int(my_val):
+	return int(float(str(my_val[0][0])))
+
+
+def general_info(fiscal_year, course_title):
+	query_duration = "SELECT training_hours FROM lsr{0} WHERE course_title = '{1}' LIMIT 1;".format(fiscal_year, course_title)
 	duration = _query_mysql(query_duration, all=True)
 	
-	query_stream = "SELECT stream FROM lsr2018 WHERE course_title = '{0}' LIMIT 1;".format(course_title)
+	query_stream = "SELECT stream FROM lsr{0} WHERE course_title = '{1}' LIMIT 1;".format(fiscal_year, course_title)
 	stream = _query_mysql(query_stream, all=True)
 	
-	query_topic = "SELECT topic FROM lsr2018 WHERE course_title = '{0}' LIMIT 1;".format(course_title)
+	query_topic = "SELECT topic FROM lsr{0} WHERE course_title = '{1}' LIMIT 1;".format(fiscal_year, course_title)
 	topic = _query_mysql(query_topic, all=True)
+	
+	query_open = "SELECT COUNT(DISTINCT offering_id) FROM lsr{0} WHERE course_title = '{1}' AND offering_status = 'Open - Normal'".format(fiscal_year, course_title)
+	open = _query_mysql(query_open, all=True)
+	
+	query_delivered = "SELECT COUNT(DISTINCT offering_id) FROM lsr{0} WHERE course_title = '{1}' AND offering_status = 'Delivered - Normal'".format(fiscal_year, course_title)
+	delivered = _query_mysql(query_delivered, all=True)
+	
+	query_cancelled = "SELECT COUNT(DISTINCT offering_id) FROM lsr{0} WHERE course_title = '{1}' AND offering_status = 'Cancelled - Normal'".format(fiscal_year, course_title)
+	cancelled = _query_mysql(query_cancelled, all=True)
+	
+	query_regs = "SELECT COUNT(reg_num) FROM lsr{0} WHERE course_title = '{1}' AND reg_status = 'Confirmed'".format(fiscal_year, course_title)
+	regs = _query_mysql(query_regs, all=True)
+	
+	query_no_shows = "SELECT SUM(no_show) FROM lsr{0} WHERE course_title = '{1}'".format(fiscal_year, course_title)
+	no_shows = _query_mysql(query_no_shows, all=True)
 	
 	results = [('Duration', duration[0][0]),
 			   ('Stream', stream[0][0]),
-			   ('Topic', topic[0][0])]
+			   ('Topic', topic[0][0]),
+			   ('Open Offerings', open[0][0]),
+			   ('Delivered Offerings', delivered[0][0]),
+			   ('Cancelled Offerings', cancelled[0][0]),
+			   ('Registrations', regs[0][0]),
+			   ('No-Shows', decimal_to_int(no_shows))]
 	
 	return results
+
+
+
+
 
 
 def top_5_depts(course_title):
@@ -112,26 +140,4 @@ def average_class_size(fiscal_year, course_title):
 			) AS sub_table;
 			""".format(fiscal_year, course_title)
 	results = _query_mysql(query, all=True)
-	return int(float(str(results[0][0])))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	return decimal_to_int(results)

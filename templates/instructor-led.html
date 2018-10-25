@@ -9,6 +9,34 @@
 	<div class="container">
 		<h1>{{ course_title }}</h1>
 		<div class="row">
+			
+			<!-- General Course Info -->
+			<div class="col-xs-12 col-lg-12">
+				<table class="table table-hover">
+					<tr>
+						<td class="text-center" colspan="3"><h4><strong>Course Information and Overall Numbers</strong></h4></td>
+					</tr>
+					<tr>
+						<td><strong>Indicator</strong></td>
+						<td class="text-center"><strong>2017-18</strong></td>
+						<td class="text-center"><strong>2018-19</strong></td>
+					</tr>
+					{% for tup1, tup2 in general_info_2017|zip(general_info_2018) %}
+						<tr>
+								<td>{{ tup1[0] }}</td>
+								<td class="text-center">{{ tup1[1] }}</td>
+								<td class="text-center">{{ tup2[1] }}</td>
+						</tr>
+					{% endfor %}
+				</table>
+			</div>
+			
+			<!-- Offerings per Region -->
+			<div id="offerings-per-region" class="col-xs-12 col-md-6"></div>
+			
+			<!-- Offerings per Language -->
+			<div id="offerings-per-lang" class="col-xs-12 col-md-6"></div>
+			
 			<!-- Top 5 Departments -->
 			<div class="col-xs-12 col-md-6">
 				<table class="table table-hover">
@@ -27,8 +55,7 @@
 					{% endfor %}
 				</table>
 			</div>
-			<!-- Offerings per Region -->
-			<div id="offerings-per-region" class="col-xs-12 col-md-6"></div>
+			
 			<!-- Top 5 Classifications -->
 			<div class="col-xs-12 col-md-6">
 				<table class="table table-hover">
@@ -47,15 +74,13 @@
 					{% endfor %}
 				</table>
 			</div>
-			<!-- Offerings per Language -->
-			<div id="offerings-per-lang" class="col-xs-12 col-md-6"></div>
+			
 			<!-- Average Class Size -->
 			<div id="avg-class-size" class="col-xs-12 col-md-6"></div>
+			
 			<!-- Average No-Shows per Offering -->
 			<div id="avg-no-shows" class="col-xs-12 col-md-6"></div>
-			<div class="container">
-				<p>{{ general_info }}</p>
-			</div>
+			
 		</div>
 	</div>
 	
@@ -63,7 +88,7 @@
 		function offeringsPerRegion (id) {
 			$('#' + String(id)).highcharts({
 				chart: {type: 'column'},
-				title: {text: 'Offerings per Region'},
+				title: {text: 'Open & Delivered Offerings per Region'},
 				xAxis: {categories: ['Offerings']},
 				yAxis: {title: {text: ''}, allowDecimals: false, min: 0},
 				legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
@@ -74,7 +99,7 @@
 		function offeringsPerLang (id) {
 			$('#' + String(id)).highcharts({
 				chart: {type: 'column'},
-				title: {text: 'Offerings per Language'},
+				title: {text: 'Open & Delivered Offerings per Language'},
 				xAxis: {categories: ['Offerings']},
 				yAxis: {title: {text: ''}, allowDecimals: false,	min: 0},
 				legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
@@ -85,7 +110,7 @@
 		function offeringsPerLang (id) {
 			$('#' + String(id)).highcharts({
 				chart: {type: 'column'},
-				title: {text: 'Offerings per Language'},
+				title: {text: 'Open & Delivered Offerings per Language'},
 				xAxis: {categories: ['Offerings']},
 				yAxis: {title: {text: ''}, allowDecimals: false,	min: 0},
 				legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
@@ -101,7 +126,6 @@
 				yAxis: {title: {text: ''}, allowDecimals: false,	min: 0},
 				legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
 				credits: {text: ''},
-				// plotOptions: {column: {stacking: 'normal'}},
 				series: [{name: 'Average All', data: [{{ avg_class_size_overall_2017 }}, {{ avg_class_size_overall_2018 }}]},
 					 			 {name: '{{ course_title }}', data: [{{ avg_class_size_2017 }}, {{ avg_class_size_2018 }}]}]
 			});
