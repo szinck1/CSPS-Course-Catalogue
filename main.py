@@ -8,15 +8,16 @@
 # Change color of table-hover
 
 # Backlog
+# Organize repo, use blueprints
 # Protect against SQL injection and XSS
 # Add Google Analytics
 # Add French; use if session['FR']?
 	# Change language via button
 	# Bilingual URLs as well
 	# Open to XSS?
-# Add Online, Departmental
 # Add drilldown
 # Course catalogue: add description, add L1 data, add comments w/ 1-5 stars
+# Add Online, Departmental
 # Add dates and other options to Dashboard Parameters
 
 
