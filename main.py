@@ -2,6 +2,9 @@
 # Add requirements.txt
 # Add remaining charts in Instructor-Led
 # Do big code refactor
+	# Add global vars for fiscal year
+		# Use config?
+		# Good to be able to manually assign as often want historical
 # Change color of table-hover
 
 # Backlog
@@ -11,10 +14,10 @@
 	# Change language via button
 	# Bilingual URLs as well
 	# Open to XSS?
-# Add global vars for fiscal year
 # Add Online, Departmental
 # Add drilldown
 # Course catalogue: add description, add L1 data, add comments w/ 1-5 stars
+# Add dates and other options to Dashboard Parameters
 
 
 from flask import Flask, flash, redirect, render_template, request, session, url_for
