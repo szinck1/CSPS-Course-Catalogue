@@ -4,7 +4,7 @@ from configparser import ConfigParser
 
 # Get config vals for MySQL
 parser = ConfigParser()
-parser.read('config.cfg')
+parser.read('./mysql_info/mysql_config.cfg')
 
 
 # Internal function to query data from MySQL
@@ -40,28 +40,32 @@ def general_info(fiscal_year, course_title):
 	query_topic = "SELECT topic FROM lsr{0} WHERE course_title = '{1}' LIMIT 1;".format(fiscal_year, course_title)
 	topic = _query_mysql(query_topic, all=True)
 	
-	query_open = "SELECT COUNT(DISTINCT offering_id) FROM lsr{0} WHERE course_title = '{1}' AND offering_status = 'Open - Normal'".format(fiscal_year, course_title)
+	query_open = "SELECT COUNT(DISTINCT offering_id) FROM lsr{0} WHERE course_title = '{1}' AND offering_status = 'Open - Normal';".format(fiscal_year, course_title)
 	open = _query_mysql(query_open, all=True)
 	
-	query_delivered = "SELECT COUNT(DISTINCT offering_id) FROM lsr{0} WHERE course_title = '{1}' AND offering_status = 'Delivered - Normal'".format(fiscal_year, course_title)
+	query_delivered = "SELECT COUNT(DISTINCT offering_id) FROM lsr{0} WHERE course_title = '{1}' AND offering_status = 'Delivered - Normal';".format(fiscal_year, course_title)
 	delivered = _query_mysql(query_delivered, all=True)
 	
-	query_cancelled = "SELECT COUNT(DISTINCT offering_id) FROM lsr{0} WHERE course_title = '{1}' AND offering_status = 'Cancelled - Normal'".format(fiscal_year, course_title)
+	query_cancelled = "SELECT COUNT(DISTINCT offering_id) FROM lsr{0} WHERE course_title = '{1}' AND offering_status = 'Cancelled - Normal';".format(fiscal_year, course_title)
 	cancelled = _query_mysql(query_cancelled, all=True)
 	
-	query_regs = "SELECT COUNT(reg_num) FROM lsr{0} WHERE course_title = '{1}' AND reg_status = 'Confirmed'".format(fiscal_year, course_title)
+	query_client_reqs = "SELECT COUNT(DISTINCT offering_id) FROM lsr{0} WHERE course_title = '{1}' AND client != '';".format(fiscal_year, course_title)
+	client_reqs = _query_mysql(query_client_reqs, all=True)
+	
+	query_regs = "SELECT COUNT(reg_num) FROM lsr{0} WHERE course_title = '{1}' AND reg_status = 'Confirmed';".format(fiscal_year, course_title)
 	regs = _query_mysql(query_regs, all=True)
 	
-	query_no_shows = "SELECT SUM(no_show) FROM lsr{0} WHERE course_title = '{1}'".format(fiscal_year, course_title)
+	query_no_shows = "SELECT SUM(no_show) FROM lsr{0} WHERE course_title = '{1}';".format(fiscal_year, course_title)
 	no_shows = _query_mysql(query_no_shows, all=True)
 	
 	results = [('Duration', duration[0][0]),
 			   ('Stream', stream[0][0]),
 			   ('Topic', topic[0][0]),
-			   ('Open Offerings', open[0][0]),
-			   ('Delivered Offerings', delivered[0][0]),
-			   ('Cancelled Offerings', cancelled[0][0]),
-			   ('Registrations', regs[0][0]),
+			   ('Open Offerings', decimal_to_int(open)),
+			   ('Delivered Offerings', decimal_to_int(delivered)),
+			   ('Cancelled Offerings', decimal_to_int(cancelled)),
+			   ('Client Requests', decimal_to_int(client_reqs)),
+			   ('Registrations', decimal_to_int(regs)),
 			   ('No-Shows', decimal_to_int(no_shows))]
 	return results
 
