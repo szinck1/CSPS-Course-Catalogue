@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<database name="csps_dashboards">
+	<table_structure name="lsr2017">
+		<field Field="course_title" Type="text" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="course_code" Type="text" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="offering_id" Type="int(11)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="offering_status" Type="text" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="month" Type="text" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="training_hours" Type="double" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="stream" Type="text" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="topic" Type="text" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="offering_language" Type="text" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="offering_region" Type="text" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="reg_num" Type="int(11)" Null="NO" Key="PRI" Extra="" Comment="" />
+		<field Field="reg_status" Type="text" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="no_show" Type="int(11)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="student_id" Type="int(11)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="learner_classif" Type="text" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="billing_dept_code" Type="text" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="billing_dept_name" Type="text" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="client" Type="text" Null="YES" Key="" Extra="" Comment="" />
+		<key Table="lsr2017" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="reg_num" Collation="A" Cardinality="4047" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<options Name="lsr2017" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="4047" Avg_row_length="392" Data_length="1589248" Max_data_length="0" Index_length="0" Data_free="2097152" Create_time="2018-10-26 16:37:11" Collation="utf8mb4_0900_ai_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_structure name="lsr2018">
+		<field Field="course_title" Type="text" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="course_code" Type="text" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="offering_id" Type="int(11)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="offering_status" Type="text" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="month" Type="text" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="training_hours" Type="double" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="stream" Type="text" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="topic" Type="text" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="offering_language" Type="text" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="offering_region" Type="text" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="reg_num" Type="int(11)" Null="NO" Key="PRI" Extra="" Comment="" />
+		<field Field="reg_status" Type="text" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="no_show" Type="int(11)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="student_id" Type="int(11)" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="learner_classif" Type="text" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="billing_dept_code" Type="text" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="billing_dept_name" Type="text" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="client" Type="text" Null="YES" Key="" Extra="" Comment="" />
+		<key Table="lsr2018" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="reg_num" Collation="A" Cardinality="4056" Null="" Index_type="BTREE" Comment="" Index_comment="" Visible="YES" />
+		<options Name="lsr2018" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="4056" Avg_row_length="391" Data_length="1589248" Max_data_length="0" Index_length="0" Data_free="2097152" Create_time="2018-10-26 16:37:16" Collation="utf8mb4_0900_ai_ci" Create_options="" Comment="" />
+	</table_structure>
+</database>
+</mysqldump>
