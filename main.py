@@ -1,6 +1,6 @@
 ### CURRENT SPRINT ###
 # Add requirements.txt
-# Add remaining charts in Instructor-Led
+# Add client requests
 # Do big code refactor
 	# Pass functions to Jinja2 to reduce num of objects created?
 	# Add global vars for fiscal year
@@ -18,6 +18,7 @@
 	# Bilingual URLs as well
 	# Open to XSS?
 # Add drilldown
+# Add (cumulative?) unique leaners
 # Course catalogue: add description, add L1 data, add comments w/ 1-5 stars
 # Add Online, Departmental
 # Add dates and other options to Dashboard Parameters
@@ -86,6 +87,10 @@ def inst_led_dash():
 	avg_class_size_overall_2018 = inst_led.average_class_size('2018', '%')
 	avg_class_size_2017 = inst_led.average_class_size('2017', course_title)
 	avg_class_size_2018 = inst_led.average_class_size('2018', course_title)
+	no_shows_overall_2017 = round(inst_led.no_shows('2017', '%'), 1)
+	no_shows_overall_2018 = round(inst_led.no_shows('2018', '%'), 1)
+	no_shows_2017 = round(inst_led.no_shows('2017', course_title), 1)
+	no_shows_2018 = round(inst_led.no_shows('2018', course_title), 1)
 	
 	return render_template('instructor-led.html', course_title=course_title,
 												  general_info_2017=general_info_2017,
@@ -101,7 +106,11 @@ def inst_led_dash():
 												  avg_class_size_overall_2017=avg_class_size_overall_2017,
 												  avg_class_size_overall_2018=avg_class_size_overall_2018,
 												  avg_class_size_2017=avg_class_size_2017,
-												  avg_class_size_2018=avg_class_size_2018)
+												  avg_class_size_2018=avg_class_size_2018,
+												  no_shows_overall_2017=no_shows_overall_2017,
+												  no_shows_overall_2018=no_shows_overall_2018,
+												  no_shows_2017=no_shows_2017,
+												  no_shows_2018=no_shows_2018)
 
 
 @app.route('/online')
