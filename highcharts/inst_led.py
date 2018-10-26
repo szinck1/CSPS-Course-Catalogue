@@ -158,3 +158,19 @@ def average_class_size(fiscal_year, course_title):
 			""".format(fiscal_year, course_title)
 	results = _query_mysql(query, all=True)
 	return decimal_to_int(results)
+
+
+def no_shows(fiscal_year, course_title):
+	query = """
+			SELECT SUM(a.Mars / b.Mars)
+			FROM
+				(SELECT SUM(no_show) AS Mars
+				 FROM lsr{0}
+				 WHERE course_title LIKE '{1}') AS a,
+				 
+				(SELECT COUNT(DISTINCT offering_id) AS Mars
+				 FROM lsr{0}
+				 WHERE course_title LIKE '{1}' AND offering_status IN ('Open - Normal', 'Delivered - Normal')) AS b;
+			""".format(fiscal_year, course_title)
+	results = _query_mysql(query, all=True)
+	return decimal_to_float(results)

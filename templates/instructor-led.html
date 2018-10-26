@@ -95,6 +95,7 @@
 			
 			<!-- Average No-Shows per Offering -->
 			<div id="avg-no-shows" class="col-xs-12 col-md-6"></div>
+			
 		</div>
 	</div>
 	
@@ -131,7 +132,6 @@
 				xAxis: {categories: ['2017-18', '2018-19']},
 				yAxis: {title: {text: ''}, allowDecimals: true,	min: 0,
 							  labels: {formatter: function() {return String(this.value * 100) + "%";}}},
-				tooltip: {formatter: function() {return String(this.point.y * 100) + "%";}},
 				legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
 				credits: {text: ''},
 				series: [{name: 'Average All', data: [{{ offerings_cancelled_overall_2017 }}, {{ offerings_cancelled_overall_2018 }}]},
@@ -150,10 +150,24 @@
 					 			 {name: '{{ course_title }}', data: [{{ avg_class_size_2017 }}, {{ avg_class_size_2018 }}]}]
 			});
 		};
+		function averageNoShows (id) {
+			$('#' + String(id)).highcharts({
+				chart: {type: 'column'},
+				title: {text: 'Average No-Shows per Offering', style: {fontWeight: 'bold'}},
+				xAxis: {categories: ['2017-18', '2018-19']},
+				yAxis: {title: {text: ''}, allowDecimals: false,	min: 0},
+				legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
+				credits: {text: 'Prepared by Curriculum Management and IPSB'},
+				series: [{name: 'Average All', data: [{{ no_shows_overall_2017 }}, {{ no_shows_overall_2018 }}]},
+					 			 {name: '{{ course_title }}', data: [{{ no_shows_2017 }}, {{ no_shows_2018 }}]}]
+			});
+		};
 		
 		offeringsPerRegion('offerings-per-region');
 		offeringsPerLang('offerings-per-lang');
 		offeringsCancelled('offerings-cancelled');
 		averageClassSize('avg-class-size');
+		averageNoShows('avg-no-shows');
+		
 	</script>
 {% endblock body %}
