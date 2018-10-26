@@ -30,6 +30,12 @@ def decimal_to_int(my_val):
 	return int(decimal_to_float(my_val))
 
 
+def course_code(fiscal_year, course_title):
+	query_course_code = "SELECT course_code FROM lsr{0} WHERE course_title = '{1}' LIMIT 1;".format(fiscal_year, course_title)
+	course_code = query_mysql(query_course_code, all=True)
+	return course_code[0][0]
+
+
 def general_info(fiscal_year, course_title):
 	query_duration = "SELECT training_hours FROM lsr{0} WHERE course_title = '{1}' LIMIT 1;".format(fiscal_year, course_title)
 	duration = query_mysql(query_duration, all=True)
@@ -149,7 +155,7 @@ def top_5_classifs(fiscal_year, course_title):
 	return query_mysql(query, all=True)
 
 
-def average_class_size(fiscal_year, course_title):
+def avg_class_size(fiscal_year, course_title):
 	query = """
 			SELECT AVG(class_size)
 			FROM(
@@ -164,7 +170,7 @@ def average_class_size(fiscal_year, course_title):
 	return decimal_to_int(results)
 
 
-def no_shows(fiscal_year, course_title):
+def avg_no_shows(fiscal_year, course_title):
 	query = """
 			SELECT SUM(a.Mars / b.Mars)
 			FROM
