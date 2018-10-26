@@ -37,6 +37,7 @@
 		<br/>
 		<br/>
 		<div class="row">
+			
 			<!-- Offerings per Language -->
 			<div id="offerings-per-lang" class="col-xs-12 col-md-6"></div>
 			
@@ -46,6 +47,7 @@
 		<br/>
 		<br/>
 		<div class="row">
+			
 			<!-- Top 5 Departments -->
 			<div class="col-xs-12 col-md-6">
 				<table class="table table-hover">
@@ -87,12 +89,12 @@
 		<br/>
 		<br/>
 		<div class="row">
+			
 			<!-- Average Class Size -->
 			<div id="avg-class-size" class="col-xs-12 col-md-6"></div>
 			
 			<!-- Average No-Shows per Offering -->
 			<div id="avg-no-shows" class="col-xs-12 col-md-6"></div>
-			
 		</div>
 	</div>
 	
@@ -108,7 +110,7 @@
 				yAxis: {title: {text: ''}, allowDecimals: false, min: 0},
 				legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
 				credits: {text: ''},
-				series: {{ offerings_per_region_j | safe }}
+				series: {{ offerings_per_region | safe }}
 			});
 		};
 		function offeringsPerLang (id) {
@@ -119,7 +121,7 @@
 				yAxis: {title: {text: ''}, allowDecimals: false,	min: 0},
 				legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
 				credits: {text: ''},
-				series: {{ offerings_per_lang_j | safe }}
+				series: {{ offerings_per_lang | safe }}
 			});
 		};
 		function offeringsCancelled (id) {
@@ -127,18 +129,15 @@
 				chart: {type: 'column'},
 				title: {text: '% of Offerings Cancelled', style: {fontWeight: 'bold'}},
 				xAxis: {categories: ['2017-18', '2018-19']},
-				yAxis: {title: {text: ''}, allowDecimals: true,	min: 0},
+				yAxis: {title: {text: ''}, allowDecimals: true,	min: 0,
+							  labels: {formatter: function() {return String(this.value * 100) + "%";}}},
+				tooltip: {formatter: function() {return String(this.point.y * 100) + "%";}},
 				legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
 				credits: {text: ''},
-				series: [{name: 'Average All', data: [{{ avg_class_size_overall_2017 }}, {{ avg_class_size_overall_2018 }}]},
-					 			 {name: '{{ course_title }}', data: [{{ avg_class_size_2017 }}, {{ avg_class_size_2018 }}]}]
+				series: [{name: 'Average All', data: [{{ offerings_cancelled_overall_2017 }}, {{ offerings_cancelled_overall_2018 }}]},
+					 			 {name: '{{ course_title }}', data: [{{ offerings_cancelled_2017 }}, {{ offerings_cancelled_2018 }}]}]
 			});
 		};
-		
-		
-		
-		
-		
 		function averageClassSize (id) {
 			$('#' + String(id)).highcharts({
 				chart: {type: 'column'},

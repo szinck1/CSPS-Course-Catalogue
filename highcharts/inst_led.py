@@ -20,8 +20,14 @@ def _query_mysql(query, all=True):
 	return results
 
 
+# Convert SQL datatype Decimal to Python float
+def decimal_to_float(my_val):
+	return float(str(my_val[0][0]))
+
+
+# Convert SQL datatype Decimal to Python int
 def decimal_to_int(my_val):
-	return int(float(str(my_val[0][0])))
+	return int(decimal_to_float(my_val))
 
 
 def general_info(fiscal_year, course_title):
@@ -57,36 +63,7 @@ def general_info(fiscal_year, course_title):
 			   ('Cancelled Offerings', cancelled[0][0]),
 			   ('Registrations', regs[0][0]),
 			   ('No-Shows', decimal_to_int(no_shows))]
-	
 	return results
-
-
-
-
-
-
-def top_5_depts(course_title):
-	query = """
-			SELECT billing_dept_name, COUNT(billing_dept_name)
-			FROM lsr2018
-			WHERE course_title = '{0}' AND reg_status = 'Confirmed' AND no_show = 0
-			GROUP BY billing_dept_name
-			ORDER BY 2 DESC
-			LIMIT 5;
-			""".format(course_title)
-	return _query_mysql(query, all=True)
-
-
-def top_5_classifs(course_title):
-	query = """
-			SELECT learner_classif, COUNT(learner_classif)
-			FROM lsr2018
-			WHERE course_title = '{0}' AND reg_status = 'Confirmed' AND no_show = 0
-			GROUP BY learner_classif
-			ORDER BY 2 DESC
-			LIMIT 5;
-			""".format(course_title)
-	return _query_mysql(query, all=True)
 
 
 def offerings_per_region(course_title):
@@ -134,13 +111,38 @@ def offerings_cancelled(fiscal_year, course_title):
 			FROM
 				(SELECT COUNT(DISTINCT offering_id) AS Mars
 				 FROM lsr{0}
-				 WHERE course_code = '{1}' AND offering_status = 'Cancelled - Normal') a,
+				 WHERE course_title LIKE '{1}' AND offering_status = 'Cancelled - Normal') AS a,
 				 
 				(SELECT COUNT(DISTINCT offering_id) AS Mars
 				 FROM lsr{0}
-				 WHERE course_code = '{1}') b;
+				 WHERE course_title LIKE '{1}') AS b;
 			""".format(fiscal_year, course_title)
-	pass
+	results = _query_mysql(query, all=True)
+	return decimal_to_float(results)
+
+
+def top_5_depts(course_title):
+	query = """
+			SELECT billing_dept_name, COUNT(billing_dept_name)
+			FROM lsr2018
+			WHERE course_title = '{0}' AND reg_status = 'Confirmed' AND no_show = 0
+			GROUP BY billing_dept_name
+			ORDER BY 2 DESC
+			LIMIT 5;
+			""".format(course_title)
+	return _query_mysql(query, all=True)
+
+
+def top_5_classifs(course_title):
+	query = """
+			SELECT learner_classif, COUNT(learner_classif)
+			FROM lsr2018
+			WHERE course_title = '{0}' AND reg_status = 'Confirmed' AND no_show = 0
+			GROUP BY learner_classif
+			ORDER BY 2 DESC
+			LIMIT 5;
+			""".format(course_title)
+	return _query_mysql(query, all=True)
 
 
 def average_class_size(fiscal_year, course_title):
