@@ -7,7 +7,7 @@
 
 {% block body %}
 	<div class="container">
-		<h1>{{ course_title }}</h1>
+		<h1>{{ pass_dict.course_title }}</h1>
 		<div class="row">
 			
 			<!-- General Course Info -->
@@ -21,7 +21,7 @@
 						<td class="text-center"><strong>{{ LAST_YEAR }}</strong></td>
 						<td class="text-center"><strong>{{ THIS_YEAR }}</strong></td>
 					</tr>
-					{% for tup1, tup2 in general_info_LY|zip(general_info_TY) %}
+					{% for tup1, tup2 in pass_dict.general_info_LY|zip(pass_dict.general_info_TY) %}
 						<tr>
 								<td>{{ tup1[0] }}</td>
 								<td class="text-center">{{ tup1[1] }}</td>
@@ -58,7 +58,7 @@
 						<td><strong>Name</strong></td>
 						<td class="text-right"><strong>Registrations</strong></td>
 					</tr>
-					{% for tuple in top_5_depts %}
+					{% for tuple in pass_dict.top_5_depts %}
 						<tr>
 								<td>{{ tuple[0] }}</td>
 								<td class="text-right">{{ tuple[1] }}</td>
@@ -77,7 +77,7 @@
 						<td><strong>Name</strong></td>
 						<td class="text-right"><strong>Registrations</strong></td>
 					</tr>
-					{% for tuple in top_5_classifs %}
+					{% for tuple in pass_dict.top_5_classifs %}
 						<tr>
 								<td>{{ tuple[0] }}</td>
 								<td class="text-right">{{ tuple[1] }}</td>
@@ -112,7 +112,7 @@
 				yAxis: {title: {text: ''}, allowDecimals: false, min: 0},
 				legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
 				credits: {text: ''},
-				series: {{ offerings_per_region | safe }}
+				series: {{ pass_dict.offerings_per_region | safe }}
 			});
 		};
 		function offeringsPerLang (id) {
@@ -123,7 +123,7 @@
 				yAxis: {title: {text: ''}, allowDecimals: false,	min: 0},
 				legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
 				credits: {text: ''},
-				series: {{ offerings_per_lang | safe }}
+				series: {{ pass_dict.offerings_per_lang | safe }}
 			});
 		};
 		function offeringsCancelled (id) {
@@ -135,11 +135,11 @@
 							  labels: {formatter: function() {return String(this.value * 100) + "%";}}},
 				legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
 				credits: {text: ''},
-				series: [{name: 'Average All', data: [{{ offerings_cancelled_overall_LY }}, {{ offerings_cancelled_overall_TY }}]},
-					 			 {name: '{{ course_title }}', data: [{{ offerings_cancelled_LY }}, {{ offerings_cancelled_TY }}]}]
+				series: [{name: 'Average All', data: [{{ pass_dict.offerings_cancelled_overall_LY }}, {{ pass_dict.offerings_cancelled_overall_TY }}]},
+					 			 {name: '{{ pass_dict.course_code }}', data: [{{ pass_dict.offerings_cancelled_LY }}, {{ pass_dict.offerings_cancelled_TY }}]}]
 			});
 		};
-		function averageClassSize (id) {
+		function avgClassSize (id) {
 			$('#' + String(id)).highcharts({
 				chart: {type: 'column'},
 				title: {text: 'Average Class Size', style: {fontWeight: 'bold'}},
@@ -147,11 +147,11 @@
 				yAxis: {title: {text: ''}, allowDecimals: false,	min: 0},
 				legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
 				credits: {text: ''},
-				series: [{name: 'Average All', data: [{{ avg_class_size_overall_LY }}, {{ avg_class_size_overall_TY }}]},
-					 			 {name: '{{ course_title }}', data: [{{ avg_class_size_LY }}, {{ avg_class_size_TY }}]}]
+				series: [{name: 'Average All', data: [{{ pass_dict.avg_class_size_overall_LY }}, {{ pass_dict.avg_class_size_overall_TY }}]},
+					 			 {name: '{{ pass_dict.course_code }}', data: [{{ pass_dict.avg_class_size_LY }}, {{ pass_dict.avg_class_size_TY }}]}]
 			});
 		};
-		function averageNoShows (id) {
+		function avgNoShows (id) {
 			$('#' + String(id)).highcharts({
 				chart: {type: 'column'},
 				title: {text: 'Average No-Shows per Offering', style: {fontWeight: 'bold'}},
@@ -159,16 +159,16 @@
 				yAxis: {title: {text: ''}, allowDecimals: false,	min: 0},
 				legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
 				credits: {text: 'Prepared by Curriculum Management and IPSB'},
-				series: [{name: 'Average All', data: [{{ no_shows_overall_LY }}, {{ no_shows_overall_TY }}]},
-					 			 {name: '{{ course_title }}', data: [{{ no_shows_LY }}, {{ no_shows_TY }}]}]
+				series: [{name: 'Average All', data: [{{ pass_dict.avg_no_shows_overall_LY }}, {{ pass_dict.avg_no_shows_overall_TY }}]},
+					 			 {name: '{{ pass_dict.course_code }}', data: [{{ pass_dict.avg_no_shows_LY }}, {{ pass_dict.avg_no_shows_TY }}]}]
 			});
 		};
 		
 		offeringsPerRegion('offerings-per-region');
 		offeringsPerLang('offerings-per-lang');
 		offeringsCancelled('offerings-cancelled');
-		averageClassSize('avg-class-size');
-		averageNoShows('avg-no-shows');
+		avgClassSize('avg-class-size');
+		avgNoShows('avg-no-shows');
 		
 	</script>
 {% endblock body %}
