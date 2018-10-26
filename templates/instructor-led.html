@@ -18,10 +18,10 @@
 					</tr>
 					<tr>
 						<td><strong>Indicator</strong></td>
-						<td class="text-center"><strong>2017-18</strong></td>
-						<td class="text-center"><strong>2018-19</strong></td>
+						<td class="text-center"><strong>{{ LAST_YEAR }}</strong></td>
+						<td class="text-center"><strong>{{ THIS_YEAR }}</strong></td>
 					</tr>
-					{% for tup1, tup2 in general_info_2017|zip(general_info_2018) %}
+					{% for tup1, tup2 in general_info_LY|zip(general_info_TY) %}
 						<tr>
 								<td>{{ tup1[0] }}</td>
 								<td class="text-center">{{ tup1[1] }}</td>
@@ -95,8 +95,9 @@
 			
 			<!-- Average No-Shows per Offering -->
 			<div id="avg-no-shows" class="col-xs-12 col-md-6"></div>
-			
 		</div>
+		<br/>
+		<br/>
 	</div>
 	
 	<script>
@@ -129,37 +130,37 @@
 			$('#' + String(id)).highcharts({
 				chart: {type: 'column'},
 				title: {text: '% of Offerings Cancelled', style: {fontWeight: 'bold'}},
-				xAxis: {categories: ['2017-18', '2018-19']},
+				xAxis: {categories: ['{{ LAST_YEAR }}', '{{ THIS_YEAR }}']},
 				yAxis: {title: {text: ''}, allowDecimals: true,	min: 0,
 							  labels: {formatter: function() {return String(this.value * 100) + "%";}}},
 				legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
 				credits: {text: ''},
-				series: [{name: 'Average All', data: [{{ offerings_cancelled_overall_2017 }}, {{ offerings_cancelled_overall_2018 }}]},
-					 			 {name: '{{ course_title }}', data: [{{ offerings_cancelled_2017 }}, {{ offerings_cancelled_2018 }}]}]
+				series: [{name: 'Average All', data: [{{ offerings_cancelled_overall_LY }}, {{ offerings_cancelled_overall_TY }}]},
+					 			 {name: '{{ course_title }}', data: [{{ offerings_cancelled_LY }}, {{ offerings_cancelled_TY }}]}]
 			});
 		};
 		function averageClassSize (id) {
 			$('#' + String(id)).highcharts({
 				chart: {type: 'column'},
 				title: {text: 'Average Class Size', style: {fontWeight: 'bold'}},
-				xAxis: {categories: ['2017-18', '2018-19']},
+				xAxis: {categories: ['{{ LAST_YEAR }}', '{{ THIS_YEAR }}']},
 				yAxis: {title: {text: ''}, allowDecimals: false,	min: 0},
 				legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
 				credits: {text: ''},
-				series: [{name: 'Average All', data: [{{ avg_class_size_overall_2017 }}, {{ avg_class_size_overall_2018 }}]},
-					 			 {name: '{{ course_title }}', data: [{{ avg_class_size_2017 }}, {{ avg_class_size_2018 }}]}]
+				series: [{name: 'Average All', data: [{{ avg_class_size_overall_LY }}, {{ avg_class_size_overall_TY }}]},
+					 			 {name: '{{ course_title }}', data: [{{ avg_class_size_LY }}, {{ avg_class_size_TY }}]}]
 			});
 		};
 		function averageNoShows (id) {
 			$('#' + String(id)).highcharts({
 				chart: {type: 'column'},
 				title: {text: 'Average No-Shows per Offering', style: {fontWeight: 'bold'}},
-				xAxis: {categories: ['2017-18', '2018-19']},
+				xAxis: {categories: ['{{ LAST_YEAR }}', '{{ THIS_YEAR }}']},
 				yAxis: {title: {text: ''}, allowDecimals: false,	min: 0},
 				legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
 				credits: {text: 'Prepared by Curriculum Management and IPSB'},
-				series: [{name: 'Average All', data: [{{ no_shows_overall_2017 }}, {{ no_shows_overall_2018 }}]},
-					 			 {name: '{{ course_title }}', data: [{{ no_shows_2017 }}, {{ no_shows_2018 }}]}]
+				series: [{name: 'Average All', data: [{{ no_shows_overall_LY }}, {{ no_shows_overall_TY }}]},
+					 			 {name: '{{ course_title }}', data: [{{ no_shows_LY }}, {{ no_shows_TY }}]}]
 			});
 		};
 		
