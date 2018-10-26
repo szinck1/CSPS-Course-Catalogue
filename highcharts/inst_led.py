@@ -8,7 +8,7 @@ parser.read('./mysql_info/mysql_config.cfg')
 
 
 # Internal function to query data from MySQL
-def _query_mysql(query, all=True):
+def query_mysql(query, all=True):
 	cnx = mysql.connector.connect(user=parser.get('db', 'user'),
 								  password=parser.get('db', 'password'),
 								  host=parser.get('db', 'host'),
@@ -32,31 +32,31 @@ def decimal_to_int(my_val):
 
 def general_info(fiscal_year, course_title):
 	query_duration = "SELECT training_hours FROM lsr{0} WHERE course_title = '{1}' LIMIT 1;".format(fiscal_year, course_title)
-	duration = _query_mysql(query_duration, all=True)
+	duration = query_mysql(query_duration, all=True)
 	
 	query_stream = "SELECT stream FROM lsr{0} WHERE course_title = '{1}' LIMIT 1;".format(fiscal_year, course_title)
-	stream = _query_mysql(query_stream, all=True)
+	stream = query_mysql(query_stream, all=True)
 	
 	query_topic = "SELECT topic FROM lsr{0} WHERE course_title = '{1}' LIMIT 1;".format(fiscal_year, course_title)
-	topic = _query_mysql(query_topic, all=True)
+	topic = query_mysql(query_topic, all=True)
 	
 	query_open = "SELECT COUNT(DISTINCT offering_id) FROM lsr{0} WHERE course_title = '{1}' AND offering_status = 'Open - Normal';".format(fiscal_year, course_title)
-	open = _query_mysql(query_open, all=True)
+	open = query_mysql(query_open, all=True)
 	
 	query_delivered = "SELECT COUNT(DISTINCT offering_id) FROM lsr{0} WHERE course_title = '{1}' AND offering_status = 'Delivered - Normal';".format(fiscal_year, course_title)
-	delivered = _query_mysql(query_delivered, all=True)
+	delivered = query_mysql(query_delivered, all=True)
 	
 	query_cancelled = "SELECT COUNT(DISTINCT offering_id) FROM lsr{0} WHERE course_title = '{1}' AND offering_status = 'Cancelled - Normal';".format(fiscal_year, course_title)
-	cancelled = _query_mysql(query_cancelled, all=True)
+	cancelled = query_mysql(query_cancelled, all=True)
 	
 	query_client_reqs = "SELECT COUNT(DISTINCT offering_id) FROM lsr{0} WHERE course_title = '{1}' AND client != '';".format(fiscal_year, course_title)
-	client_reqs = _query_mysql(query_client_reqs, all=True)
+	client_reqs = query_mysql(query_client_reqs, all=True)
 	
 	query_regs = "SELECT COUNT(reg_num) FROM lsr{0} WHERE course_title = '{1}' AND reg_status = 'Confirmed';".format(fiscal_year, course_title)
-	regs = _query_mysql(query_regs, all=True)
+	regs = query_mysql(query_regs, all=True)
 	
 	query_no_shows = "SELECT SUM(no_show) FROM lsr{0} WHERE course_title = '{1}';".format(fiscal_year, course_title)
-	no_shows = _query_mysql(query_no_shows, all=True)
+	no_shows = query_mysql(query_no_shows, all=True)
 	
 	results = [('Duration', duration[0][0]),
 			   ('Stream', stream[0][0]),
@@ -70,14 +70,14 @@ def general_info(fiscal_year, course_title):
 	return results
 
 
-def offerings_per_region(course_title):
+def offerings_per_region(fiscal_year, course_title):
 	query = """
 			SELECT offering_region, COUNT(DISTINCT offering_id)
-			FROM lsr2018
-			WHERE course_title = '{0}' AND offering_status IN ('Open - Normal', 'Delivered - Normal')
+			FROM lsr{0}
+			WHERE course_title = '{1}' AND offering_status IN ('Open - Normal', 'Delivered - Normal')
 			GROUP BY offering_region;
-			""".format(course_title)
-	results = _query_mysql(query, all=True)
+			""".format(fiscal_year, course_title)
+	results = query_mysql(query, all=True)
 	
 	# Process results into format required by Highcharts
 	results = dict(results)
@@ -89,14 +89,14 @@ def offerings_per_region(course_title):
 	return json.dumps(results_processed)
 
 
-def offerings_per_lang(course_title):
+def offerings_per_lang(fiscal_year, course_title):
 	query = """
 			SELECT offering_language, COUNT(DISTINCT offering_id)
-			FROM lsr2018
-			WHERE course_title = '{0}' AND offering_status IN ('Open - Normal', 'Delivered - Normal')
+			FROM lsr{0}
+			WHERE course_title = '{1}' AND offering_status IN ('Open - Normal', 'Delivered - Normal')
 			GROUP BY offering_language;
-			""".format(course_title)
-	results = _query_mysql(query, all=True)
+			""".format(fiscal_year, course_title)
+	results = query_mysql(query, all=True)
 	
 	# Process results into format required by Highcharts
 	results = dict(results)
@@ -121,32 +121,32 @@ def offerings_cancelled(fiscal_year, course_title):
 				 FROM lsr{0}
 				 WHERE course_title LIKE '{1}') AS b;
 			""".format(fiscal_year, course_title)
-	results = _query_mysql(query, all=True)
+	results = query_mysql(query, all=True)
 	return decimal_to_float(results)
 
 
-def top_5_depts(course_title):
+def top_5_depts(fiscal_year, course_title):
 	query = """
 			SELECT billing_dept_name, COUNT(billing_dept_name)
-			FROM lsr2018
-			WHERE course_title = '{0}' AND reg_status = 'Confirmed' AND no_show = 0
+			FROM lsr{0}
+			WHERE course_title = '{1}' AND reg_status = 'Confirmed' AND no_show = 0
 			GROUP BY billing_dept_name
 			ORDER BY 2 DESC
 			LIMIT 5;
-			""".format(course_title)
-	return _query_mysql(query, all=True)
+			""".format(fiscal_year, course_title)
+	return query_mysql(query, all=True)
 
 
-def top_5_classifs(course_title):
+def top_5_classifs(fiscal_year, course_title):
 	query = """
 			SELECT learner_classif, COUNT(learner_classif)
-			FROM lsr2018
-			WHERE course_title = '{0}' AND reg_status = 'Confirmed' AND no_show = 0
+			FROM lsr{0}
+			WHERE course_title = '{1}' AND reg_status = 'Confirmed' AND no_show = 0
 			GROUP BY learner_classif
 			ORDER BY 2 DESC
 			LIMIT 5;
-			""".format(course_title)
-	return _query_mysql(query, all=True)
+			""".format(fiscal_year, course_title)
+	return query_mysql(query, all=True)
 
 
 def average_class_size(fiscal_year, course_title):
@@ -160,7 +160,7 @@ def average_class_size(fiscal_year, course_title):
 				ORDER BY 1 DESC
 			) AS sub_table;
 			""".format(fiscal_year, course_title)
-	results = _query_mysql(query, all=True)
+	results = query_mysql(query, all=True)
 	return decimal_to_int(results)
 
 
@@ -176,5 +176,5 @@ def no_shows(fiscal_year, course_title):
 				 FROM lsr{0}
 				 WHERE course_title LIKE '{1}' AND offering_status IN ('Open - Normal', 'Delivered - Normal')) AS b;
 			""".format(fiscal_year, course_title)
-	results = _query_mysql(query, all=True)
+	results = query_mysql(query, all=True)
 	return decimal_to_float(results)
