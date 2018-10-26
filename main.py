@@ -1,13 +1,15 @@
-# For Friday, October 24 2018
+### CURRENT SPRINT ###
 # Add requirements.txt
 # Add remaining charts in Instructor-Led
 # Do big code refactor
+	# Pass functions to Jinja2 to reduce num of objects created?
 	# Add global vars for fiscal year
 		# Use config?
 		# Good to be able to manually assign as often want historical
-# Change color of table-hover
+# Check results with real data
 
-# Backlog
+
+### BACKLOG ###
 # Organize repo, use blueprints
 # Protect against SQL injection and XSS
 # Add Google Analytics
@@ -72,10 +74,14 @@ def inst_led_dash():
 	course_title = request.args['course_title']
 	general_info_2017 = inst_led.general_info('2017', course_title)
 	general_info_2018 = inst_led.general_info('2018', course_title)
+	offerings_per_region = inst_led.offerings_per_region(course_title)
+	offerings_per_lang = inst_led.offerings_per_lang(course_title)
+	offerings_cancelled_overall_2017 = inst_led.offerings_cancelled('2017', '%')
+	offerings_cancelled_overall_2018 = inst_led.offerings_cancelled('2018', '%')
+	offerings_cancelled_2017 = inst_led.offerings_cancelled('2017', course_title)
+	offerings_cancelled_2018 = inst_led.offerings_cancelled('2018', course_title)
 	top_5_depts = inst_led.top_5_depts(course_title)
 	top_5_classifs = inst_led.top_5_classifs(course_title)
-	offerings_per_region_j = inst_led.offerings_per_region(course_title)
-	offerings_per_lang_j = inst_led.offerings_per_lang(course_title)
 	avg_class_size_overall_2017 = inst_led.average_class_size('2017', '%')
 	avg_class_size_overall_2018 = inst_led.average_class_size('2018', '%')
 	avg_class_size_2017 = inst_led.average_class_size('2017', course_title)
@@ -84,10 +90,14 @@ def inst_led_dash():
 	return render_template('instructor-led.html', course_title=course_title,
 												  general_info_2017=general_info_2017,
 												  general_info_2018=general_info_2018,
+												  offerings_per_region=offerings_per_region,
+												  offerings_per_lang=offerings_per_lang,
+												  offerings_cancelled_overall_2017=offerings_cancelled_overall_2017,
+												  offerings_cancelled_overall_2018=offerings_cancelled_overall_2018,
+												  offerings_cancelled_2017=offerings_cancelled_2017,
+												  offerings_cancelled_2018=offerings_cancelled_2018,
 												  top_5_depts=top_5_depts,
 												  top_5_classifs=top_5_classifs,
-												  offerings_per_region_j=offerings_per_region_j,
-												  offerings_per_lang_j=offerings_per_lang_j,
 												  avg_class_size_overall_2017=avg_class_size_overall_2017,
 												  avg_class_size_overall_2018=avg_class_size_overall_2018,
 												  avg_class_size_2017=avg_class_size_2017,
