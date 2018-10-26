@@ -4,7 +4,7 @@ from configparser import ConfigParser
 
 # Get config vals for MySQL
 parser = ConfigParser()
-parser.read('config.cfg')
+parser.read('./mysql_info/mysql_config.cfg')
 
 
 # Internal function to query data from MySQL
