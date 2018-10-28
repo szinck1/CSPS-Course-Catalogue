@@ -19,15 +19,16 @@
 
 
 from flask import Flask, flash, redirect, render_template, request, session, url_for
-from flask_babel import Babel, gettext
-from configparser import ConfigParser
+from flask_babel import Babel
+from main_config import Debug
 import my_forms
 from highcharts import inst_led
 
 # Instantiation and config
 app = Flask(__name__)
 babel = Babel(app)
-app.config.from_pyfile('main_config.py')
+# app.config.from_pyfile('main_config.py')
+app.config.from_object(Debug)
 # Add Python's internal func 'zip' to Jinja2
 app.jinja_env.filters['zip'] = zip
 
