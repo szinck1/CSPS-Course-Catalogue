@@ -1,6 +1,6 @@
 # Files
-main_config.py
-mysql_config.cfg
+config.py
+**/mysql_config.cfg
 
 # Directories
 __pycache__/

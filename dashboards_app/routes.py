@@ -1,49 +1,13 @@
-### CURRENT SPRINT ###
-# Add requirements.txt
-# Check results with real data
 
-
-### BACKLOG ###
-# Use blueprints
-# Protect against SQL injection and XSS; remove use of '| safe'
-# Add Google Analytics
-# Add French; use if session['FR']?
-	# Change language via button
-	# Bilingual URLs as well
-	# Open to XSS?
-# Add drilldown
-# Add (cumulative?) unique leaners
-# Course catalogue: add description, add L1 data, add comments w/ 1-5 stars
-# Add Online, Departmental
-# Add dates and other options to Dashboard Parameters
-
-
-from flask import Flask, flash, redirect, render_template, request, session, url_for
-from flask_babel import Babel
-from main_config import Debug
-import my_forms
-from highcharts import inst_led
-
-# Instantiation and config
-app = Flask(__name__)
-babel = Babel(app)
-# app.config.from_pyfile('main_config.py')
-app.config.from_object(Debug)
-# Add Python's internal func 'zip' to Jinja2
-app.jinja_env.filters['zip'] = zip
-
-# Set global vars and make accessible by all templates
-LAST_YEAR = app.config['LAST_YEAR']
-THIS_YEAR = app.config['THIS_YEAR']
 @app.context_processor
 def context_processor():
 	return {'LAST_YEAR': LAST_YEAR.replace('_', '-'), 'THIS_YEAR': THIS_YEAR.replace('_', '-')}
 
 
-@babel.localeselector
-def get_locale():
-	# return 'fr'
-	return 'en'
+# @babel.localeselector
+# def get_locale():
+# 	# return 'fr'
+# 	return 'en'
 
 
 @app.route('/')
@@ -103,7 +67,3 @@ def inst_led_dash():
 @app.route('/online')
 def online():
 	return render_template('online.html')
-
-
-if __name__ == '__main__':
-	app.run()
