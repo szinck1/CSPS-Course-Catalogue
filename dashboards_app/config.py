@@ -1,0 +1,5 @@
+class Debug:
+	DEBUG = True
+	LAST_YEAR = '2017_18'
+	THIS_YEAR = '2018_19'
+	BABEL_DEFAULT_LOCALE = 'en'
