@@ -16,3 +16,5 @@
 # Course catalogue: add description, add L1 data, add comments w/ 1-5 stars
 # Add Online, Departmental
 # Add dates and other options to Dashboard Parameters
+# Unit testing
+# Focus group w/ users, brainstorm for new KPIs for curriculum review process
