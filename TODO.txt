@@ -4,6 +4,7 @@
 
 
 ### BACKLOG ###
+# Use SVG images
 # Add theses lists to GitHub
 # Protect against SQL injection and XSS; remove use of '| safe'
 # Add Google Analytics
