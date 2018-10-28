@@ -1,5 +1,5 @@
 from dashboards_app import THIS_YEAR
-from dashboards_app.inst_led import query_mysql
+from dashboards_app.dashboard_routes.inst_led import query_mysql
 from wtforms import Form, SelectField
 
 query = "SELECT DISTINCT course_title FROM lsr{0} ORDER BY 1 ASC;".format(THIS_YEAR)

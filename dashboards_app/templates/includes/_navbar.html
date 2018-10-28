@@ -1,21 +1,21 @@
 <nav class="navbar navbar-default">
 	<div class="container">
-		<a class="navbar-brand" href="{{ url_for('index') }}">{{ _('CSPS Data Explorer') }}</a>
+		<a class="navbar-brand" href="{{ url_for('main.index') }}">{{ _('CSPS Data Explorer') }}</a>
 		<div class="navbar-collapse collapse navbar-responsive-collapse">
 			<ul class="nav navbar-nav">
-				<li class="li-border-left"><a href="{{ url_for('index') }}">{{ _('Home') }}</a></li>
-				<li class="li-border-left"><a href="{{ url_for('about') }}">{{ _('About') }}</a></li>
+				<li class="li-border-left"><a href="{{ url_for('main.index') }}">{{ _('Home') }}</a></li>
+				<li class="li-border-left"><a href="{{ url_for('main.about') }}">{{ _('About') }}</a></li>
 				<li class="dropdown li-border-right">
 					<a href="" class="dropdown-toggle" data-toggle="dropdown">{{ _('Dashboards') }}<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="{{ url_for('departmental') }}">{{ _('Departmental') }}</a></li>
-						<li><a href="{{ url_for('instructor_led') }}">{{ _('Instructor-Led') }}</a></li>
-						<li><a href="{{ url_for('online') }}">{{ _('Online') }}</a></li>
+						<li><a href="{{ url_for('dashboards.departmental') }}">{{ _('Departmental') }}</a></li>
+						<li><a href="{{ url_for('dashboards.instructor_led') }}">{{ _('Instructor-Led') }}</a></li>
+						<li><a href="{{ url_for('dashboards.online') }}">{{ _('Online') }}</a></li>
 					</ul>
 				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li class="li-border-right"><a href="{{ url_for('index') }}">{{ _('Français') }}</a></li>
+				<li class="li-border-right"><a href="{{ url_for('main.index') }}">{{ _('Français') }}</a></li>
 			</ul>
 		</div>
 	</div>

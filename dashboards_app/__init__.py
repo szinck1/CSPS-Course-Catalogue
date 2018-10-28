@@ -14,4 +14,8 @@ app.jinja_env.filters['zip'] = zip
 LAST_YEAR = app.config['LAST_YEAR']
 THIS_YEAR = app.config['THIS_YEAR']
 
-from dashboards_app import routes
+# Register blueprints
+from dashboards_app.dashboard_routes.routes import dashboards
+from dashboards_app.main_routes.routes import main
+app.register_blueprint(dashboards)
+app.register_blueprint(main)
