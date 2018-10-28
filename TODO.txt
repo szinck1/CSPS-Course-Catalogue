@@ -4,6 +4,7 @@
 
 
 ### BACKLOG ###
+# Add theses lists to GitHub
 # Use blueprints
 # Protect against SQL injection and XSS; remove use of '| safe'
 # Add Google Analytics
