@@ -3,18 +3,18 @@
 
 
 ### BACKLOG ###
-# Use SVG images
 # Add these lists to GitHub
 # Protect against SQL injection and XSS; remove use of '| safe'
-# Add Google Analytics
 # Add French; use if session['FR']?
 	# Change language via button
 	# Bilingual URLs as well
 	# Open to XSS?
+# Add Google Analytics
+
+# Course catalogue: add description, add L1 data, add comments w/ 1-5 stars
 # Add drilldown
 # Add (cumulative?) unique leaners
-# Course catalogue: add description, add L1 data, add comments w/ 1-5 stars
-# Add Online, Departmental
 # Add dates and other options to Dashboard Parameters
-# Unit testing
 # Focus group w/ users, brainstorm for new KPIs for curriculum review process
+# Add Online, Departmental
+# Unit testing
