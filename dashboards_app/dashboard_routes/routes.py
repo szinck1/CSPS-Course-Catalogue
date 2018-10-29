@@ -1,14 +1,14 @@
-from flask import Blueprint, redirect, render_template, request, url_for
-from dashboards_app import LAST_YEAR, THIS_YEAR
+from flask import Blueprint, current_app, redirect, render_template, request, url_for
 from dashboards_app.dashboard_routes.forms import CourseForm
 import dashboards_app.dashboard_routes.inst_led as inst_led
 
 dashboards = Blueprint('dashboards', __name__)
 
-
 # Make LAST_YEAR and THIS_YEAR available to all templates
 @dashboards.context_processor
 def context_processor():
+	LAST_YEAR = current_app.config.get('LAST_YEAR')
+	THIS_YEAR = current_app.config.get('THIS_YEAR')
 	return {'LAST_YEAR': LAST_YEAR.replace('_', '-'), 'THIS_YEAR': THIS_YEAR.replace('_', '-')}
 
 
@@ -25,6 +25,10 @@ def instructor_led():
 # Run queries and pass to + render template
 @dashboards.route('/inst-led-dash')
 def inst_led_dash():
+	
+	LAST_YEAR = current_app.config.get('LAST_YEAR')
+	THIS_YEAR = current_app.config.get('THIS_YEAR')
+	
 	# Get arguments from query string
 	course_title = request.args['course_title']
 	
