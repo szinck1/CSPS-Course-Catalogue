@@ -34,6 +34,7 @@ def inst_led_dash():
 	
 	# Run queries and save in dict to be passed to templates
 	pass_dict = {
+        'course_title': course_title,
 		'course_code': inst_led.course_code(THIS_YEAR, course_title),
 		'general_info_LY': inst_led.general_info(LAST_YEAR, course_title),
 		'general_info_TY': inst_led.general_info(THIS_YEAR, course_title),
