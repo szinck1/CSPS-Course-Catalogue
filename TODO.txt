@@ -1,11 +1,10 @@
 ### CURRENT SPRINT ###
-# Add requirements.txt
-# Check results with real data
+# Compare results with October's PDFs
 
 
 ### BACKLOG ###
 # Use SVG images
-# Add theses lists to GitHub
+# Add these lists to GitHub
 # Protect against SQL injection and XSS; remove use of '| safe'
 # Add Google Analytics
 # Add French; use if session['FR']?
