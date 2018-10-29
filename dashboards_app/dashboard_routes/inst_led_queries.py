@@ -1,33 +1,5 @@
 import json
-import mysql.connector
-from configparser import ConfigParser
-
-# Get config vals for MySQL
-parser = ConfigParser()
-parser.read('./dashboards_app/mysql_info/mysql_config.cfg')
-
-
-# Internal function to query data from MySQL
-def query_mysql(query, all=True):
-	cnx = mysql.connector.connect(user=parser.get('db', 'user'),
-								  password=parser.get('db', 'password'),
-								  host=parser.get('db', 'host'),
-								  database=parser.get('db', 'database'))
-	cursor = cnx.cursor()
-	cursor.execute(query)
-	results = cursor.fetchall() if all else cursor.fetchone()
-	cnx.close()
-	return results
-
-
-# Convert SQL datatype Decimal to Python float
-def decimal_to_float(my_val):
-	return float(str(my_val[0][0]))
-
-
-# Convert SQL datatype Decimal to Python int
-def decimal_to_int(my_val):
-	return int(decimal_to_float(my_val))
+from dashboards_app.dashboard_routes.utils import query_mysql, decimal_to_float, decimal_to_int
 
 
 def course_code(fiscal_year, course_title):
