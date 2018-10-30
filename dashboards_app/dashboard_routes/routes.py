@@ -1,5 +1,5 @@
 from flask import Blueprint, current_app, redirect, render_template, request, url_for
-from dashboards_app.dashboard_routes.forms import CourseForm
+from dashboards_app.dashboard_routes.forms import InstLedForm
 import dashboards_app.dashboard_routes.inst_led_queries as inst_led_queries
 
 dashboards = Blueprint('dashboards', __name__, url_prefix='/dashboards')
@@ -15,16 +15,16 @@ def context_processor():
 # Form to get query parameters from user
 @dashboards.route('/instructor-led', methods=['GET', 'POST'])
 def instructor_led():
-	form = CourseForm(request.form)
+	form = InstLedForm(request.form)
 	if request.method == 'POST' and form.validate():
 		course_title = form.course_title.data
-		return redirect(url_for('dashboards.inst_led', course_title=course_title))
+		return redirect(url_for('dashboards.instructor_led_dash', course_title=course_title))
 	return render_template('form.html', form=form, title="Dashboard Parameters", button_val="Go")
 
 
 # Run queries and pass to + render template
-@dashboards.route('/inst-led')
-def inst_led():
+@dashboards.route('/instructor-led-dash')
+def instructor_led_dash():
 	
 	LAST_YEAR = current_app.config.get('LAST_YEAR')
 	THIS_YEAR = current_app.config.get('THIS_YEAR')
