@@ -5,7 +5,6 @@
 # Store secret_key outside of config file in environ var
 # Add French
 	# Open to XSS?
-	# gettext on URLs?
 # Compare results with October's PDFs
 
 
