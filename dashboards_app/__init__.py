@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request, session
 from flask_babel import Babel
 from dashboards_app.config import Debug
 
@@ -22,5 +22,18 @@ def create_app(config_class=Debug):
 	from dashboards_app.main_routes.routes import main
 	app.register_blueprint(dashboards)
 	app.register_blueprint(main)
+	
+	# Set language
+	@app.before_request
+	def get_lang():
+		if 'lang' in request.args:
+			session['lang'] = request.args['lang']
+	
+	@babel.localeselector
+	def get_locale():
+		#return 'fr'
+		#if request.args.get('lang'):
+		#	session['lang'] = request.args.get('lang')
+		return session.get('lang', 'en')
 	
 	return app
