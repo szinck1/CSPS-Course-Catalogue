@@ -1,19 +1,25 @@
 ### CURRENT SPRINT ###
+############
+# Do this check after all others in current sprint
 # Protect against SQL injection and XSS; remove use of '| safe'
 	# Jinja 2 automatically escapes unless using | safe
 	# MySQL automatically escapes if passed as parameter rather than string format
+############
 # Store secret_key outside of config file in environ var
-# French button open to XSS?
+# French
+	# button open to XSS?
+	# add FR data to MySQL
 # Add custom error page as easteregg
 # Compare results with October's PDFs
+# Add these lists to GitHub
+# Add Google Analytics
 
 
 ### BACKLOG ###
-# Add these lists to GitHub
-# Add Google Analytics
-# Course catalogue: add description, add L1 data, add comments w/ 1-5 stars
+# Course catalogue: add description
 # Add drilldown
 # Add (cumulative?) unique leaners
+# Add L1 data, add comments w/ 1-5 stars
 # Add dates and other options to Dashboard Parameters
 # Focus group w/ users, brainstorm for new KPIs for curriculum review process
 # Add Online, Departmental
