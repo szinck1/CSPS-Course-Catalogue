@@ -1,4 +1,4 @@
-from flask import Flask, redirect, request, session, url_for
+from flask import Flask, request, session
 from flask_babel import Babel
 from dashboards_app.config import Debug
 
@@ -39,12 +39,5 @@ def create_app(config_class=Debug):
 	def get_locale():
 		return session.get('lang', 'en')
 	
-	
-	# Endpoint for button to switch language
-	@app.route('/switch-lang')
-	def switch_lang():
-		if 'lang' in session and session['lang'] == 'en':
-			return redirect(url_for('main.index', lang='fr'))
-		return redirect(url_for('main.index', lang='en'))
 	
 	return app

@@ -2,7 +2,7 @@ from flask import Blueprint, current_app, redirect, render_template, request, ur
 from dashboards_app.dashboard_routes.forms import InstLedForm
 import dashboards_app.dashboard_routes.inst_led_queries as inst_led_queries
 
-dashboards = Blueprint('dashboards', __name__, url_prefix='/dashboards')
+dashboards = Blueprint('dashboards', __name__)
 
 # Make LAST_YEAR and THIS_YEAR available to all templates
 @dashboards.context_processor
@@ -29,7 +29,9 @@ def instructor_led_dash():
 	LAST_YEAR = current_app.config.get('LAST_YEAR')
 	THIS_YEAR = current_app.config.get('THIS_YEAR')
 	
-	# Get arguments from query string
+	# Get arguments from query string; if incomplete, return to home page
+	if 'course_title' not in request.args:
+		return redirect(url_for('main.index'))
 	course_title = request.args['course_title']
 	
 	# Run queries and save in dict to be passed to templates

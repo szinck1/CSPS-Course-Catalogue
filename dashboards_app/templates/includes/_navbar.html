@@ -15,7 +15,12 @@
 				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li class="li-border-right"><a href="{{ url_for('switch_lang') }}">{{ _('Français') }}</a></li>
+				
+				{% if session['lang'] == 'en' %}
+					<li class="li-border-right"><a href="{{ request.path + '?lang=fr' }}">{{ _('Français') }}</a></li>
+				{% else %}
+					<li class="li-border-right"><a href="{{ request.path + '?lang=en' }}">{{ _('Français') }}</a></li>
+				{% endif %}
 			</ul>
 		</div>
 	</div>
