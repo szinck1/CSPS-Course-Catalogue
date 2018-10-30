@@ -3,8 +3,8 @@
 	# Jinja 2 automatically escapes unless using | safe
 	# MySQL automatically escapes if passed as parameter rather than string format
 # Store secret_key outside of config file in environ var
-# Add French
-	# Open to XSS?
+# French button open to XSS?
+# Add custom error page as easteregg
 # Compare results with October's PDFs
 
 
