@@ -1,14 +1,6 @@
-from flask import Blueprint, render_template
-from dashboards_app import babel
+from flask import Blueprint, redirect, render_template, session, url_for
 
 main = Blueprint('main', __name__)
-
-
-# Set language
-@babel.localeselector
-def get_locale():
-	# return 'fr'
-	return 'en'
 
 
 @main.route('/')
@@ -19,3 +11,11 @@ def index():
 @main.route('/about')
 def about():
 	return render_template('about.html')
+
+
+# Endpoint for button to switch language
+@main.route('/switch-lang')
+def switch_lang():
+	if 'lang' in session and session['lang'] == 'en':
+		return redirect(url_for('main.index', lang='fr'))
+	return redirect(url_for('main.index', lang='en'))
