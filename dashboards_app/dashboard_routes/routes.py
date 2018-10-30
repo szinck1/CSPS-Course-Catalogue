@@ -58,13 +58,13 @@ def instructor_led_dash():
 	return render_template('instructor-led.html', pass_dict=pass_dict)
 
 
-# Not yet implemented
+# Charts not yet implemented
 @dashboards.route('/departmental')
 def departmental():
 	return render_template('departmental.html')
 
 
-# Not yet implemented
+# Charts not yet implemented
 @dashboards.route('/online')
 def online():
 	return render_template('online.html')

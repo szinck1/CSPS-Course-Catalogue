@@ -31,9 +31,6 @@ def create_app(config_class=Debug):
 	
 	@babel.localeselector
 	def get_locale():
-		#return 'fr'
-		#if request.args.get('lang'):
-		#	session['lang'] = request.args.get('lang')
 		return session.get('lang', 'en')
 	
 	return app

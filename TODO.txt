@@ -2,10 +2,10 @@
 # Protect against SQL injection and XSS; remove use of '| safe'
 	# Jinja 2 automatically escapes unless using | safe
 	# MySQL automatically escapes if passed as parameter rather than string format
-# Add French; use if session['FR']?
-	# Change language via button
-	# Bilingual URLs as well
+# Store secret_key outside of config file in environ var
+# Add French
 	# Open to XSS?
+	# gettext on URLs?
 # Compare results with October's PDFs
 
 
