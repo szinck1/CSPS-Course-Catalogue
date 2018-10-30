@@ -1,4 +1,4 @@
-from flask import Flask, request, session
+from flask import Flask, redirect, request, session, url_for
 from flask_babel import Babel
 from dashboards_app.config import Debug
 
@@ -23,14 +23,28 @@ def create_app(config_class=Debug):
 	app.register_blueprint(dashboards)
 	app.register_blueprint(main)
 	
+	
 	# Set language
 	@app.before_request
 	def get_lang():
+		# If lang passed in query string, overwrite value in session
 		if 'lang' in request.args:
 			session['lang'] = request.args['lang']
+		# If lang in neither query string nor session, default to 'en' 
+		if 'lang' not in session:
+			session['lang'] = 'en'
+	
 	
 	@babel.localeselector
 	def get_locale():
 		return session.get('lang', 'en')
+	
+	
+	# Endpoint for button to switch language
+	@app.route('/switch-lang')
+	def switch_lang():
+		if 'lang' in session and session['lang'] == 'en':
+			return redirect(url_for('main.index', lang='fr'))
+		return redirect(url_for('main.index', lang='en'))
 	
 	return app
