@@ -8,8 +8,8 @@
 # Store secret_key outside of config file in environ var
 # French
 	# button open to XSS?
-	# add FR data to MySQL
-# Compare results with October's PDFs
+	# make SQL queries, chart labels work in FR
+# Compare results with October's PDFs !important ;)
 # Add these lists to GitHub
 # Add Google Analytics
 
