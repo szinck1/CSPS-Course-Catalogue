@@ -5,6 +5,9 @@ from dashboards_app.config import Debug
 # Instantiate plugins
 babel = Babel()
 
+###
+# set url_prefix = session['lang'] ??
+###
 
 # Application factory
 def create_app(config_class=Debug):
