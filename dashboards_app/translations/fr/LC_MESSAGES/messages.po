@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-10-22 14:21-0400\n"
-"PO-Revision-Date: 2018-10-22 00:21-0400\n"
+"POT-Creation-Date: 2018-10-31 12:02-0400\n"
+"PO-Revision-Date: 2018-10-31 10:53-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
 "Language-Team: fr <LL@li.org>\n"
@@ -18,34 +18,119 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.6.0\n"
 
-#: templates/includes/_navbar.html:3 templates/layout.html:7
+#: templates/about.html:6 templates/includes/_navbar.html:7
+msgid "About"
+msgstr "À propos"
+
+#: templates/about.html:8
+msgid "Visualizations generated in Python using Flask, MySQL, and Highcharts."
+msgstr ""
+"Les visualisations sont générées en Python à l'aide de Flask, MySQL, et "
+"Highcharts."
+
+#: templates/about.html:9
+msgid ""
+"Thanks to <a href=\"mailto:derek.khan@canada.ca\">Derek Khan</a> and team"
+" for ensuring access to quality data."
+msgstr ""
+"Merci à l'équipe de <a href=\"mailto:derek.khan@canada.ca\">Derek "
+"Khan</a> pour continuer de garantir l'accès à des données fiables."
+
+#: templates/departmental.html:6 templates/online.html:6
+msgid "Coming Soon"
+msgstr "En cours de développement"
+
+#: templates/index.html:6
+msgid "Welcome to the CSPS Data Explorer"
+msgstr "Bienvenue à l'explorateur de données de l'ÉFPC"
+
+#: templates/index.html:9
+msgid ""
+"Your favourite new team, the <strong>Innovation and Policy Services "
+"Branch</strong> \n"
+"\t\t\t(IPSB), is transitioning the School's PDF dashboards to a new "
+"interactive format. \n"
+"\t\t\tThese online dashboards are available through your browser and are,"
+" pursant to \n"
+"\t\t\tthe School's Open First data policy, free to share and distribute "
+"with both government \n"
+"\t\t\tcolleagues and the general public."
+msgstr "Votre nouvelle équipe préférée, la <strong>Direction générale des services d'innovation et de politiques</strong> (SIP), "
+"œuvre à la transition des tableaux de bord de l'École de fichiers PDF à un nouveau format interactif. "
+"Ces tableaux de bord en ligne sont disponibles par le biais de votre navigateur et, conformément à la politique "
+"« Ouvert en premier » de l'École, peuvent être partagés au sein de et à l'extérieur du gouvernement."
+
+#: templates/index.html:16
+msgid "Dashboards Currently Available"
+msgstr "Tableaux de bord présentement disponibles"
+
+#: templates/index.html:18
+msgid "Instructor-Led Courses"
+msgstr "Cours dirigés par un instructeur"
+
+#: templates/index.html:20
+msgid "Soon To Be Implemented"
+msgstr "En cours de développement"
+
+#: templates/index.html:22
+msgid "Online Courses"
+msgstr "Cours en ligne"
+
+#: templates/includes/_navbar.html:11 templates/index.html:23
+msgid "Departmental"
+msgstr "Ministériels"
+
+#: templates/index.html:26
+msgid ""
+"If you encounter any bugs, please contact <a "
+"href=\"mailto:sam.louden@canada.ca\">Sam Louden</a>."
+msgstr "Si vous rencontrez des bugs, veuillez contacter "
+"<a href=\"mailto:sam.louden@canada.ca\">Sam Louden</a>."
+
+#: templates/instructor-led.html:17
+msgid "Course Information and Overall Numbers"
+msgstr "Test"
+
+#: templates/instructor-led.html:55
+msgid "Top 5 Departments"
+msgstr "Top 5 des ministères"
+
+#: templates/instructor-led.html:58 templates/instructor-led.html:77
+msgid "Name"
+msgstr "Nom"
+
+#: templates/instructor-led.html:59 templates/instructor-led.html:78
+msgid "Registrations"
+msgstr "Inscriptions"
+
+#: templates/instructor-led.html:74
+msgid "Top 5 Classifications"
+msgstr "Top 5 des classifications"
+
+#: templates/includes/_navbar.html:3 templates/layout.html:8
 msgid "CSPS Data Explorer"
-msgstr "Explorateur de données EFPC"
+msgstr "Explorateur de données de l'ÉFPC"
+
+#: templates/layout.html:49
+msgid "Top of page"
+msgstr "Haut de la page"
 
 #: templates/includes/_navbar.html:6
 msgid "Home"
 msgstr "Accueil"
 
-#: templates/includes/_navbar.html:7
-msgid "About"
-msgstr "À propos"
-
 #: templates/includes/_navbar.html:9
 msgid "Dashboards"
 msgstr "Tableaux de bord"
 
-#: templates/includes/_navbar.html:11
-msgid "Departmental"
-msgstr "Ministériels"
-
 #: templates/includes/_navbar.html:12
 msgid "Instructor-Led"
-msgstr "Cours dirigés par un instructeur"
+msgstr "Dirigés par un instructeur"
 
 #: templates/includes/_navbar.html:13
 msgid "Online"
-msgstr "Cours en ligne"
+msgstr "En ligne"
 
-#: templates/includes/_navbar.html:18
+#: templates/includes/_navbar.html:20 templates/includes/_navbar.html:22
 msgid "Français"
 msgstr "English"

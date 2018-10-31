@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-10-22 14:21-0400\n"
+"POT-Creation-Date: 2018-10-31 12:02-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,24 +17,101 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.6.0\n"
 
-#: templates/includes/_navbar.html:3 templates/layout.html:7
+#: templates/about.html:6 templates/includes/_navbar.html:7
+msgid "About"
+msgstr ""
+
+#: templates/about.html:8
+msgid "Visualizations generated in Python using Flask, MySQL, and Highcharts."
+msgstr ""
+
+#: templates/about.html:9
+msgid ""
+"Thanks to <a href=\"mailto:derek.khan@canada.ca\">Derek Khan</a> and team"
+" for ensuring access to quality data."
+msgstr ""
+
+#: templates/departmental.html:6 templates/online.html:6
+msgid "Coming Soon"
+msgstr ""
+
+#: templates/index.html:6
+msgid "Welcome to the CSPS Data Explorer"
+msgstr ""
+
+#: templates/index.html:9
+msgid ""
+"Your favourite new team, the <strong>Innovation and Policy Services "
+"Branch</strong> \n"
+"\t\t\t(IPSB), is transitioning the School's PDF dashboards to a new "
+"interactive format. \n"
+"\t\t\tThese online dashboards are available through your browser and are,"
+" pursant to \n"
+"\t\t\tthe School's Open First data policy, free to share and distribute "
+"with both government \n"
+"\t\t\tcolleagues and the general public."
+msgstr ""
+
+#: templates/index.html:16
+msgid "Dashboards Currently Available"
+msgstr ""
+
+#: templates/index.html:18
+msgid "Instructor-Led Courses"
+msgstr ""
+
+#: templates/index.html:20
+msgid "Soon To Be Implemented"
+msgstr ""
+
+#: templates/index.html:22
+msgid "Online Courses"
+msgstr ""
+
+#: templates/includes/_navbar.html:11 templates/index.html:23
+msgid "Departmental"
+msgstr ""
+
+#: templates/index.html:26
+msgid ""
+"If you encounter any bugs, please contact <a "
+"href=\"mailto:sam.louden@canada.ca\">Sam Louden</a>."
+msgstr ""
+
+#: templates/instructor-led.html:17
+msgid "Course Information and Overall Numbers"
+msgstr ""
+
+#: templates/instructor-led.html:55
+msgid "Top 5 Departments"
+msgstr ""
+
+#: templates/instructor-led.html:58 templates/instructor-led.html:77
+msgid "Name"
+msgstr ""
+
+#: templates/instructor-led.html:59 templates/instructor-led.html:78
+msgid "Registrations"
+msgstr ""
+
+#: templates/instructor-led.html:74
+msgid "Top 5 Classifications"
+msgstr ""
+
+#: templates/includes/_navbar.html:3 templates/layout.html:8
 msgid "CSPS Data Explorer"
+msgstr ""
+
+#: templates/layout.html:49
+msgid "Top of page"
 msgstr ""
 
 #: templates/includes/_navbar.html:6
 msgid "Home"
 msgstr ""
 
-#: templates/includes/_navbar.html:7
-msgid "About"
-msgstr ""
-
 #: templates/includes/_navbar.html:9
 msgid "Dashboards"
-msgstr ""
-
-#: templates/includes/_navbar.html:11
-msgid "Departmental"
 msgstr ""
 
 #: templates/includes/_navbar.html:12
@@ -45,7 +122,7 @@ msgstr ""
 msgid "Online"
 msgstr ""
 
-#: templates/includes/_navbar.html:18
+#: templates/includes/_navbar.html:20 templates/includes/_navbar.html:22
 msgid "Français"
 msgstr ""
 

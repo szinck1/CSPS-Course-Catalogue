@@ -14,7 +14,7 @@
 			<div class="col-xs-12">
 				<table class="table table-hover">
 					<tr>
-						<td class="text-center" colspan="3"><h4><strong>Course Information and Overall Numbers</strong></h4></td>
+						<td class="text-center" colspan="3"><h4><strong>{{ _('Course Information and Overall Numbers') }}</strong></h4></td>
 					</tr>
 					<tr>
 						<td><strong>Indicator</strong></td>
@@ -52,11 +52,11 @@
 			<div class="col-xs-12 col-md-6">
 				<table class="table table-hover">
 					<tr>
-						<td class="text-center" colspan="2"><h4><strong>Top 5 Departments</strong></h4></td>
+						<td class="text-center" colspan="2"><h4><strong>{{ _('Top 5 Departments') }}</strong></h4></td>
 					</tr>
 					<tr>
-						<td><strong>Name</strong></td>
-						<td class="text-right"><strong>Registrations</strong></td>
+						<td><strong>{{ _('Name') }}</strong></td>
+						<td class="text-right"><strong>{{ _('Registrations') }}</strong></td>
 					</tr>
 					{% for tuple in pass_dict.top_5_depts %}
 						<tr>
@@ -71,11 +71,11 @@
 			<div class="col-xs-12 col-md-6">
 				<table class="table table-hover">
 					<tr>
-						<td class="text-center" colspan="2"><h4><strong>Top 5 Classifications</strong></h4></td>
+						<td class="text-center" colspan="2"><h4><strong>{{ _('Top 5 Classifications') }}</strong></h4></td>
 					</tr>
 					<tr>
-						<td><strong>Name</strong></td>
-						<td class="text-right"><strong>Registrations</strong></td>
+						<td><strong>{{ _('Name') }}</strong></td>
+						<td class="text-right"><strong>{{ _('Registrations') }}</strong></td>
 					</tr>
 					{% for tuple in pass_dict.top_5_classifs %}
 						<tr>
