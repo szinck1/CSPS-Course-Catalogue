@@ -9,7 +9,6 @@
 # French
 	# button open to XSS?
 	# add FR data to MySQL
-# Add custom error page as easteregg
 # Compare results with October's PDFs
 # Add these lists to GitHub
 # Add Google Analytics
