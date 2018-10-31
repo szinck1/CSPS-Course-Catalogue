@@ -22,5 +22,6 @@
 # Add L1 data, add comments w/ 1-5 stars
 # Add dates and other options to Dashboard Parameters
 # Focus group w/ users, brainstorm for new KPIs for curriculum review process
+# Implement bilingual URLs, not just bilingual page content
 # Add Online, Departmental
 # Unit testing
