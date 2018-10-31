@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-10-31 12:02-0400\n"
+"POT-Creation-Date: 2018-10-31 19:20-0400\n"
 "PO-Revision-Date: 2018-10-31 10:53-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -17,6 +17,18 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.6.0\n"
+
+#: dashboard_routes/routes.py:21
+msgid "Course Title"
+msgstr "Titre du cours"
+
+#: dashboard_routes/routes.py:28
+msgid "Dashboard Parameters"
+msgstr "Paramètres du tableau de bord"
+
+#: dashboard_routes/routes.py:28
+msgid "Go"
+msgstr "Aller"
 
 #: templates/about.html:6 templates/includes/_navbar.html:7
 msgid "About"
@@ -55,10 +67,14 @@ msgid ""
 "\t\t\tthe School's Open First data policy, free to share and distribute "
 "with both government \n"
 "\t\t\tcolleagues and the general public."
-msgstr "Votre nouvelle équipe préférée, la <strong>Direction générale des services d'innovation et de politiques</strong> (SIP), "
-"œuvre à la transition des tableaux de bord de l'École de fichiers PDF à un nouveau format interactif. "
-"Ces tableaux de bord en ligne sont disponibles par le biais de votre navigateur et, conformément à la politique "
-"« Ouvert en premier » de l'École, peuvent être partagés au sein de et à l'extérieur du gouvernement."
+msgstr ""
+"Votre nouvelle équipe préférée, la <strong>Direction générale des "
+"services d'innovation et de politiques</strong> (SIP), œuvre à la "
+"transition des tableaux de bord de l'École de fichiers PDF à un nouveau "
+"format interactif. Ces tableaux de bord en ligne sont disponibles par le "
+"biais de votre navigateur et, conformément à la politique « Ouvert en "
+"premier » de l'École, peuvent être partagés au sein de et à l'extérieur "
+"du gouvernement."
 
 #: templates/index.html:16
 msgid "Dashboards Currently Available"
@@ -84,8 +100,9 @@ msgstr "Ministériels"
 msgid ""
 "If you encounter any bugs, please contact <a "
 "href=\"mailto:sam.louden@canada.ca\">Sam Louden</a>."
-msgstr "Si vous rencontrez des bugs, veuillez contacter "
-"<a href=\"mailto:sam.louden@canada.ca\">Sam Louden</a>."
+msgstr ""
+"Si vous rencontrez des bugs, veuillez contacter <a "
+"href=\"mailto:sam.louden@canada.ca\">Sam Louden</a>."
 
 #: templates/instructor-led.html:17
 msgid "Course Information and Overall Numbers"
@@ -134,3 +151,4 @@ msgstr "En ligne"
 #: templates/includes/_navbar.html:20 templates/includes/_navbar.html:22
 msgid "Français"
 msgstr "English"
+

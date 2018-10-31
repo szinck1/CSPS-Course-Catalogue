@@ -1,33 +1,36 @@
-from flask import Blueprint, current_app, redirect, render_template, request, url_for
-from dashboards_app.dashboard_routes.forms import InstLedForm
+from flask import Blueprint, redirect, render_template, request, session, url_for
+from flask_babel import gettext
+from dashboards_app.config import Debug
+from dashboards_app.dashboard_routes.forms import inst_led_form
 import dashboards_app.dashboard_routes.inst_led_queries as inst_led_queries
 
 dashboards = Blueprint('dashboards', __name__)
 
 # Make LAST_YEAR and THIS_YEAR available to all templates
+LAST_YEAR = Debug.LAST_YEAR
+THIS_YEAR = Debug.THIS_YEAR
 @dashboards.context_processor
 def context_processor():
-	LAST_YEAR = current_app.config.get('LAST_YEAR')
-	THIS_YEAR = current_app.config.get('THIS_YEAR')
 	return {'LAST_YEAR': LAST_YEAR.replace('_', '-'), 'THIS_YEAR': THIS_YEAR.replace('_', '-')}
 
 
 # Form to get query parameters from user
 @dashboards.route('/instructor-led', methods=['GET', 'POST'])
 def instructor_led():
-	form = InstLedForm(request.form)
+	field_title = gettext('Course Title')
+	lang = session.get('lang', 'en')
+	form = inst_led_form(field_title, lang)
+	form = form(request.form)
+	
 	if request.method == 'POST' and form.validate():
-		course_title = form.course_title.data
-		return redirect(url_for('dashboards.instructor_led_dash', course_title=course_title))
-	return render_template('form.html', form=form, title="Dashboard Parameters", button_val="Go")
+		course_code = form.course_code.data
+		return redirect(url_for('dashboards.instructor_led_dash', course_code=course_code))
+	return render_template('form.html', form=form, title=gettext("Dashboard Parameters"), button_val=gettext("Go"))
 
 
 # Run queries and pass to + render template
 @dashboards.route('/instructor-led-dash')
 def instructor_led_dash():
-	
-	LAST_YEAR = current_app.config.get('LAST_YEAR')
-	THIS_YEAR = current_app.config.get('THIS_YEAR')
 	
 	# Get arguments from query string; if incomplete, return to home page
 	if 'course_title' not in request.args:

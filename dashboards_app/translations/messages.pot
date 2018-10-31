@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-10-31 12:02-0400\n"
+"POT-Creation-Date: 2018-10-31 19:20-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,18 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.6.0\n"
+
+#: dashboard_routes/routes.py:21
+msgid "Course Title"
+msgstr ""
+
+#: dashboard_routes/routes.py:28
+msgid "Dashboard Parameters"
+msgstr ""
+
+#: dashboard_routes/routes.py:28
+msgid "Go"
+msgstr ""
 
 #: templates/about.html:6 templates/includes/_navbar.html:7
 msgid "About"
