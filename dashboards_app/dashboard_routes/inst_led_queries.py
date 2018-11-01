@@ -1,60 +1,61 @@
 import json
+from flask_babel import gettext
 from dashboards_app.dashboard_routes.utils import query_mysql, decimal_to_float, decimal_to_int
 
 
-def course_code(fiscal_year, course_title):
-	query_course_code = "SELECT course_code FROM lsr{0} WHERE course_title = '{1}' LIMIT 1;".format(fiscal_year, course_title)
-	course_code = query_mysql(query_course_code, all=True)
-	return course_code[0][0]
+def course_title(lang, fiscal_year, course_code):
+	query = "SELECT course_title_{0} FROM lsr{1} WHERE course_code = '{2}' LIMIT 1;".format(lang, fiscal_year, course_code)
+	course_title = query_mysql(query, all=True)
+	return course_title[0][0]
 
 
-def general_info(fiscal_year, course_title):
-	query_duration = "SELECT training_hours FROM lsr{0} WHERE course_title = '{1}' LIMIT 1;".format(fiscal_year, course_title)
+def general_info(lang, fiscal_year, course_code):
+	query_duration = "SELECT training_hours FROM lsr{0} WHERE course_code = '{1}' LIMIT 1;".format(fiscal_year, course_code)
 	duration = query_mysql(query_duration, all=True)
 	
-	query_stream = "SELECT stream FROM lsr{0} WHERE course_title = '{1}' LIMIT 1;".format(fiscal_year, course_title)
+	query_stream = "SELECT stream_{0} FROM lsr{1} WHERE course_code = '{2}' LIMIT 1;".format(lang, fiscal_year, course_code)
 	stream = query_mysql(query_stream, all=True)
 	
-	query_topic = "SELECT topic FROM lsr{0} WHERE course_title = '{1}' LIMIT 1;".format(fiscal_year, course_title)
+	query_topic = "SELECT topic_{0} FROM lsr{1} WHERE course_code = '{2}' LIMIT 1;".format(lang, fiscal_year, course_code)
 	topic = query_mysql(query_topic, all=True)
 	
-	query_open = "SELECT COUNT(DISTINCT offering_id) FROM lsr{0} WHERE course_title = '{1}' AND offering_status = 'Open - Normal';".format(fiscal_year, course_title)
+	query_open = "SELECT COUNT(DISTINCT offering_id) FROM lsr{0} WHERE course_code = '{1}' AND offering_status = 'Open - Normal';".format(fiscal_year, course_code)
 	open = query_mysql(query_open, all=True)
 	
-	query_delivered = "SELECT COUNT(DISTINCT offering_id) FROM lsr{0} WHERE course_title = '{1}' AND offering_status = 'Delivered - Normal';".format(fiscal_year, course_title)
+	query_delivered = "SELECT COUNT(DISTINCT offering_id) FROM lsr{0} WHERE course_code = '{1}' AND offering_status = 'Delivered - Normal';".format(fiscal_year, course_code)
 	delivered = query_mysql(query_delivered, all=True)
 	
-	query_cancelled = "SELECT COUNT(DISTINCT offering_id) FROM lsr{0} WHERE course_title = '{1}' AND offering_status = 'Cancelled - Normal';".format(fiscal_year, course_title)
+	query_cancelled = "SELECT COUNT(DISTINCT offering_id) FROM lsr{0} WHERE course_code = '{1}' AND offering_status = 'Cancelled - Normal';".format(fiscal_year, course_code)
 	cancelled = query_mysql(query_cancelled, all=True)
 	
-	query_client_reqs = "SELECT COUNT(DISTINCT offering_id) FROM lsr{0} WHERE course_title = '{1}' AND client != '';".format(fiscal_year, course_title)
+	query_client_reqs = "SELECT COUNT(DISTINCT offering_id) FROM lsr{0} WHERE course_code = '{1}' AND client != '';".format(fiscal_year, course_code)
 	client_reqs = query_mysql(query_client_reqs, all=True)
 	
-	query_regs = "SELECT COUNT(reg_num) FROM lsr{0} WHERE course_title = '{1}' AND reg_status = 'Confirmed';".format(fiscal_year, course_title)
+	query_regs = "SELECT COUNT(reg_num) FROM lsr{0} WHERE course_code = '{1}' AND reg_status = 'Confirmed';".format(fiscal_year, course_code)
 	regs = query_mysql(query_regs, all=True)
 	
-	query_no_shows = "SELECT SUM(no_show) FROM lsr{0} WHERE course_title = '{1}';".format(fiscal_year, course_title)
+	query_no_shows = "SELECT SUM(no_show) FROM lsr{0} WHERE course_code = '{1}';".format(fiscal_year, course_code)
 	no_shows = query_mysql(query_no_shows, all=True)
 	
-	results = [('Duration', duration[0][0]),
-			   ('Stream', stream[0][0]),
-			   ('Topic', topic[0][0]),
-			   ('Open Offerings', decimal_to_int(open)),
-			   ('Delivered Offerings', decimal_to_int(delivered)),
-			   ('Cancelled Offerings', decimal_to_int(cancelled)),
-			   ('Client Requests', decimal_to_int(client_reqs)),
-			   ('Registrations', decimal_to_int(regs)),
-			   ('No-Shows', decimal_to_int(no_shows))]
+	results = [(gettext('Duration'), duration[0][0]),
+			   (gettext('Stream'), stream[0][0]),
+			   (gettext('Topic'), topic[0][0]),
+			   (gettext('Open Offerings'), decimal_to_int(open)),
+			   (gettext('Delivered Offerings'), decimal_to_int(delivered)),
+			   (gettext('Cancelled Offerings'), decimal_to_int(cancelled)),
+			   (gettext('Client Requests'), decimal_to_int(client_reqs)),
+			   (gettext('Registrations'), decimal_to_int(regs)),
+			   (gettext('No-Shows'), decimal_to_int(no_shows))]
 	return results
 
 
-def offerings_per_region(fiscal_year, course_title):
+def offerings_per_region(fiscal_year, course_code):
 	query = """
 			SELECT offering_region, COUNT(DISTINCT offering_id)
 			FROM lsr{0}
-			WHERE course_title = '{1}' AND offering_status IN ('Open - Normal', 'Delivered - Normal')
+			WHERE course_code = '{1}' AND offering_status IN ('Open - Normal', 'Delivered - Normal')
 			GROUP BY offering_region;
-			""".format(fiscal_year, course_title)
+			""".format(fiscal_year, course_code)
 	results = query_mysql(query, all=True)
 	
 	# Process results into format required by Highcharts
@@ -67,13 +68,13 @@ def offerings_per_region(fiscal_year, course_title):
 	return json.dumps(results_processed)
 
 
-def offerings_per_lang(fiscal_year, course_title):
+def offerings_per_lang(fiscal_year, course_code):
 	query = """
 			SELECT offering_language, COUNT(DISTINCT offering_id)
 			FROM lsr{0}
-			WHERE course_title = '{1}' AND offering_status IN ('Open - Normal', 'Delivered - Normal')
+			WHERE course_code = '{1}' AND offering_status IN ('Open - Normal', 'Delivered - Normal')
 			GROUP BY offering_language;
-			""".format(fiscal_year, course_title)
+			""".format(fiscal_year, course_code)
 	results = query_mysql(query, all=True)
 	
 	# Process results into format required by Highcharts
@@ -87,72 +88,72 @@ def offerings_per_lang(fiscal_year, course_title):
 	return json.dumps(results_processed)
 
 
-def offerings_cancelled(fiscal_year, course_title):
+def offerings_cancelled(fiscal_year, course_code):
 	query = """
 			SELECT SUM(a.Mars / b.Mars)
 			FROM
 				(SELECT COUNT(DISTINCT offering_id) AS Mars
 				 FROM lsr{0}
-				 WHERE course_title LIKE '{1}' AND offering_status = 'Cancelled - Normal') AS a,
+				 WHERE course_code LIKE '{1}' AND offering_status = 'Cancelled - Normal') AS a,
 				 
 				(SELECT COUNT(DISTINCT offering_id) AS Mars
 				 FROM lsr{0}
-				 WHERE course_title LIKE '{1}') AS b;
-			""".format(fiscal_year, course_title)
+				 WHERE course_code LIKE '{1}') AS b;
+			""".format(fiscal_year, course_code)
 	results = query_mysql(query, all=True)
 	return decimal_to_float(results)
 
 
-def top_5_depts(fiscal_year, course_title):
+def top_5_depts(fiscal_year, course_code):
 	query = """
 			SELECT billing_dept_name, COUNT(billing_dept_name)
 			FROM lsr{0}
-			WHERE course_title = '{1}' AND reg_status = 'Confirmed' AND no_show = 0
+			WHERE course_code = '{1}' AND reg_status = 'Confirmed' AND no_show = 0
 			GROUP BY billing_dept_name
 			ORDER BY 2 DESC
 			LIMIT 5;
-			""".format(fiscal_year, course_title)
+			""".format(fiscal_year, course_code)
 	return query_mysql(query, all=True)
 
 
-def top_5_classifs(fiscal_year, course_title):
+def top_5_classifs(fiscal_year, course_code):
 	query = """
 			SELECT learner_classif, COUNT(learner_classif)
 			FROM lsr{0}
-			WHERE course_title = '{1}' AND reg_status = 'Confirmed' AND no_show = 0
+			WHERE course_code = '{1}' AND reg_status = 'Confirmed' AND no_show = 0
 			GROUP BY learner_classif
 			ORDER BY 2 DESC
 			LIMIT 5;
-			""".format(fiscal_year, course_title)
+			""".format(fiscal_year, course_code)
 	return query_mysql(query, all=True)
 
 
-def avg_class_size(fiscal_year, course_title):
+def avg_class_size(fiscal_year, course_code):
 	query = """
 			SELECT AVG(class_size)
 			FROM(
 				SELECT COUNT(reg_num) AS class_size
 				FROM lsr{0}
-				WHERE course_title LIKE '{1}' AND reg_status= 'Confirmed'
+				WHERE course_code LIKE '{1}' AND reg_status= 'Confirmed'
 				GROUP BY offering_id
 				ORDER BY 1 DESC
 			) AS sub_table;
-			""".format(fiscal_year, course_title)
+			""".format(fiscal_year, course_code)
 	results = query_mysql(query, all=True)
 	return decimal_to_int(results)
 
 
-def avg_no_shows(fiscal_year, course_title):
+def avg_no_shows(fiscal_year, course_code):
 	query = """
 			SELECT SUM(a.Mars / b.Mars)
 			FROM
 				(SELECT SUM(no_show) AS Mars
 				 FROM lsr{0}
-				 WHERE course_title LIKE '{1}') AS a,
+				 WHERE course_code LIKE '{1}') AS a,
 				 
 				(SELECT COUNT(DISTINCT offering_id) AS Mars
 				 FROM lsr{0}
-				 WHERE course_title LIKE '{1}' AND offering_status IN ('Open - Normal', 'Delivered - Normal')) AS b;
-			""".format(fiscal_year, course_title)
+				 WHERE course_code LIKE '{1}' AND offering_status IN ('Open - Normal', 'Delivered - Normal')) AS b;
+			""".format(fiscal_year, course_code)
 	results = query_mysql(query, all=True)
 	return decimal_to_float(results)
