@@ -43,7 +43,7 @@ def instructor_led_dash():
         'course_title': inst_led_queries.course_title(lang, THIS_YEAR, course_code),
 		'general_info_LY': inst_led_queries.general_info(lang, LAST_YEAR, course_code),
 		'general_info_TY': inst_led_queries.general_info(lang, THIS_YEAR, course_code),
-		'offerings_per_region': inst_led_queries.offerings_per_region(lang, THIS_YEAR, course_code),
+		'offerings_per_region': inst_led_queries.offerings_per_region(THIS_YEAR, course_code),
 		'offerings_per_lang_LY': inst_led_queries.offerings_per_lang(LAST_YEAR, course_code),
 		'offerings_per_lang_TY': inst_led_queries.offerings_per_lang(THIS_YEAR, course_code),
 		'offerings_cancelled_overall_LY': inst_led_queries.offerings_cancelled(LAST_YEAR, '%'),

@@ -116,7 +116,15 @@
 				yAxis: {title: {text: ''}, allowDecimals: false, min: 0},
 				legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
 				credits: {text: ''},
-				series: {{ pass_dict.offerings_per_region | safe }}
+				series: [
+					{name: "{{ _('Atlantic') }}", data: [{{ pass_dict.offerings_per_region['Atlantic'] }}]},
+					{name: "{{ _('NCR') }}", data: [{{ pass_dict.offerings_per_region['NCR'] }}]},
+					{name: "{{ _('Ontario') }}", data: [{{ pass_dict.offerings_per_region['Ontario'] }}]},
+					{name: "{{ _('Pacific') }}", data: [{{ pass_dict.offerings_per_region['Pacific'] }}]},
+					{name: "{{ _('Prairie') }}", data: [{{ pass_dict.offerings_per_region['Prairie'] }}]},
+					{name: "{{ _('Quebec') }}", data: [{{ pass_dict.offerings_per_region['Quebec'] }}]},
+					{name: "{{ _('Outside Canada') }}", data: [{{ pass_dict.offerings_per_region['Outside Canada'] }}]}
+				]
 			});
 		};
 		function offeringsPerLang (id) {

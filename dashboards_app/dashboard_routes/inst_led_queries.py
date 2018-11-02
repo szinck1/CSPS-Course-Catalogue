@@ -1,4 +1,3 @@
-import json
 from flask_babel import gettext
 from dashboards_app.dashboard_routes.utils import query_mysql, decimal_to_float, decimal_to_percent, decimal_to_int
 
@@ -49,26 +48,23 @@ def general_info(lang, fiscal_year, course_code):
 	return results
 
 
-def offerings_per_region(lang, fiscal_year, course_code):
+def offerings_per_region(fiscal_year, course_code):
 	query = """
-			SELECT offering_region_{0}, COUNT(DISTINCT offering_id)
-			FROM lsr{1}
-			WHERE course_code = '{2}' AND offering_status IN ('Open - Normal', 'Delivered - Normal')
-			GROUP BY offering_region_{0};
-			""".format(lang, fiscal_year, course_code)
+			SELECT offering_region_en, COUNT(DISTINCT offering_id)
+			FROM lsr{0}
+			WHERE course_code = '{1}' AND offering_status IN ('Open - Normal', 'Delivered - Normal')
+			GROUP BY offering_region_en;
+			""".format(fiscal_year, course_code)
 	results = query_mysql(query)
+	results = dict(results)
 	
 	# Process results into format required by Highcharts
-	results = dict(results)
-	results_processed = []
-	if lang == 'fr':
-		regions = ['Atlantique', 'RCN', 'Ontario', 'Pacifique', 'Prairie', 'Québec', 'Hors du Canada']
-	else:
-		regions = ['Atlantic', 'NCR', 'Ontario', 'Pacific', 'Prairie', 'Quebec', 'Outside Canada']
+	results_processed = {}
+	regions = ['Atlantic', 'NCR', 'Ontario', 'Pacific', 'Prairie', 'Quebec', 'Outside Canada']
 	for region in regions:
 		count = results.get(region, 0)
-		results_processed.append({'name': region, 'data': [count]})
-	return json.dumps(results_processed)
+		results_processed[region] = count
+	return results_processed
 
 
 def offerings_per_lang(fiscal_year, course_code):
