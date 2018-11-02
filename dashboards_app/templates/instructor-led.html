@@ -25,7 +25,7 @@
 							<td>{{ tup1[0] }}</td>
 							<!-- If offerings remain open in LAST_YEAR, show in red -->
 							{% if tup1[0] == _('Open Offerings') and tup1[1] > 0 %}
-								<td class="text-center" style="color: red;">{{ tup1[1] }}</td>
+								<td class="text-center" style="color: red; font-weight: bold;">{{ tup1[1] }}</td>
 							{% else %}
 								<td class="text-center">{{ tup1[1] }}</td>
 							{% endif %}
