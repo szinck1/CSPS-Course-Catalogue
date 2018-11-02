@@ -3,17 +3,15 @@
 	# Jinja 2 automatically escapes unless using | safe
 	# MySQL automatically escapes if passed as parameter rather than string format
 # Store secret_key outside of config file in environ var
-# Finish check on French
-# Implement 2 years for Offerings per Lang
-# Fix tooltip for % Offerings Cancelled
 # Compare results with October's PDFs
 	# Check weird: langs other than EN/FR, Outside Canada
-# Add Google Analytics
+# Outline format for course catalogue
 
 
 
 ### BACKLOG ###
-# Course catalogue: add description
+# Add Google Analytics
+# Complete course catalogue
 # Text bubbles to aid in interpreting charts (e.g. open offerings from last year, need to close!)
 # Add drilldown
 # Add (cumulative?) unique leaners
