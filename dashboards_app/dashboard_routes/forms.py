@@ -11,7 +11,7 @@ def _clean_title(course_title):
 
 
 # Build form for Instructor-Led courses
-def inst_led_form(field_title, lang='en'):
+def inst_led_form(lang, field_title):
 	query = """
 			SELECT DISTINCT course_code, course_title_{0}
 			FROM lsr{1}
@@ -26,10 +26,3 @@ def inst_led_form(field_title, lang='en'):
 		course_code = SelectField(field_title, choices=form_list)
 	
 	return InstLedForm
-
-	
-	
-	
-	
-	
-	
