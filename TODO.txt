@@ -1,8 +1,8 @@
 ### CURRENT SPRINT ###
-# SQL injection: MySQL automatically escapes if passed as parameter rather than string format
+# XSS?
+# Fix SQL injection
 # Store secret_key outside of config file in environ var
-# Compare results with October's PDFs
-	# Check weird: langs other than EN/FR, Outside Canada
+# Check 5 to 10 at random
 # Outline format for course catalogue
 
 
