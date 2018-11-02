@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-10-31 19:20-0400\n"
+"POT-Creation-Date: 2018-11-01 22:24-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,44 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.6.0\n"
 
-#: dashboard_routes/routes.py:21
+#: dashboard_routes/inst_led_queries.py:40
+msgid "Duration"
+msgstr ""
+
+#: dashboard_routes/inst_led_queries.py:41
+msgid "Stream"
+msgstr ""
+
+#: dashboard_routes/inst_led_queries.py:42
+msgid "Topic"
+msgstr ""
+
+#: dashboard_routes/inst_led_queries.py:43
+msgid "Open Offerings"
+msgstr ""
+
+#: dashboard_routes/inst_led_queries.py:44
+msgid "Delivered Offerings"
+msgstr ""
+
+#: dashboard_routes/inst_led_queries.py:45
+msgid "Cancelled Offerings"
+msgstr ""
+
+#: dashboard_routes/inst_led_queries.py:46
+msgid "Client Requests"
+msgstr ""
+
+#: dashboard_routes/inst_led_queries.py:47 templates/instructor-led.html:58
+#: templates/instructor-led.html:77
+msgid "Registrations"
+msgstr ""
+
+#: dashboard_routes/inst_led_queries.py:48
+msgid "No-Shows"
+msgstr ""
+
+#: dashboard_routes/routes.py:20
 msgid "Course Title"
 msgstr ""
 
@@ -90,23 +127,23 @@ msgid ""
 "href=\"mailto:sam.louden@canada.ca\">Sam Louden</a>."
 msgstr ""
 
-#: templates/instructor-led.html:17
+#: templates/instructor-led.html:16
 msgid "Course Information and Overall Numbers"
 msgstr ""
 
-#: templates/instructor-led.html:55
+#: templates/instructor-led.html:19
+msgid "Indicator"
+msgstr ""
+
+#: templates/instructor-led.html:54
 msgid "Top 5 Departments"
 msgstr ""
 
-#: templates/instructor-led.html:58 templates/instructor-led.html:77
+#: templates/instructor-led.html:57 templates/instructor-led.html:76
 msgid "Name"
 msgstr ""
 
-#: templates/instructor-led.html:59 templates/instructor-led.html:78
-msgid "Registrations"
-msgstr ""
-
-#: templates/instructor-led.html:74
+#: templates/instructor-led.html:73
 msgid "Top 5 Classifications"
 msgstr ""
 

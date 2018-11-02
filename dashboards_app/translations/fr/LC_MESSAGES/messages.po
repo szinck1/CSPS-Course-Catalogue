@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-10-31 19:20-0400\n"
+"POT-Creation-Date: 2018-11-01 22:24-0400\n"
 "PO-Revision-Date: 2018-10-31 10:53-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -18,7 +18,44 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.6.0\n"
 
-#: dashboard_routes/routes.py:21
+#: dashboard_routes/inst_led_queries.py:40
+msgid "Duration"
+msgstr "Durée"
+
+#: dashboard_routes/inst_led_queries.py:41
+msgid "Stream"
+msgstr "Volet"
+
+#: dashboard_routes/inst_led_queries.py:42
+msgid "Topic"
+msgstr "Topique"
+
+#: dashboard_routes/inst_led_queries.py:43
+msgid "Open Offerings"
+msgstr "Offres ouvertes"
+
+#: dashboard_routes/inst_led_queries.py:44
+msgid "Delivered Offerings"
+msgstr "Offres livrées"
+
+#: dashboard_routes/inst_led_queries.py:45
+msgid "Cancelled Offerings"
+msgstr "Offres annulées"
+
+#: dashboard_routes/inst_led_queries.py:46
+msgid "Client Requests"
+msgstr "Demandes de client"
+
+#: dashboard_routes/inst_led_queries.py:47 templates/instructor-led.html:58
+#: templates/instructor-led.html:77
+msgid "Registrations"
+msgstr "Inscriptions"
+
+#: dashboard_routes/inst_led_queries.py:48
+msgid "No-Shows"
+msgstr "Absences"
+
+#: dashboard_routes/routes.py:20
 msgid "Course Title"
 msgstr "Titre du cours"
 
@@ -104,23 +141,23 @@ msgstr ""
 "Si vous rencontrez des bugs, veuillez contacter <a "
 "href=\"mailto:sam.louden@canada.ca\">Sam Louden</a>."
 
-#: templates/instructor-led.html:17
+#: templates/instructor-led.html:16
 msgid "Course Information and Overall Numbers"
 msgstr "Test"
 
-#: templates/instructor-led.html:55
+#: templates/instructor-led.html:19
+msgid "Indicator"
+msgstr ""
+
+#: templates/instructor-led.html:54
 msgid "Top 5 Departments"
 msgstr "Top 5 des ministères"
 
-#: templates/instructor-led.html:58 templates/instructor-led.html:77
+#: templates/instructor-led.html:57 templates/instructor-led.html:76
 msgid "Name"
 msgstr "Nom"
 
-#: templates/instructor-led.html:59 templates/instructor-led.html:78
-msgid "Registrations"
-msgstr "Inscriptions"
-
-#: templates/instructor-led.html:74
+#: templates/instructor-led.html:73
 msgid "Top 5 Classifications"
 msgstr "Top 5 des classifications"
 
