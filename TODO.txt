@@ -1,30 +1,26 @@
 ### CURRENT SPRINT ###
-############
-# Do this check after all others in current sprint
 # Protect against SQL injection and XSS; remove use of '| safe'
 	# Jinja 2 automatically escapes unless using | safe
 	# MySQL automatically escapes if passed as parameter rather than string format
-############
 # Store secret_key outside of config file in environ var
-# French
-	# button open to XSS?
-	# make SQL queries, chart labels work in FR
-# Compare results with October's PDFs !important ;)
-# Add these lists to GitHub
+# Finish check on French
+# Implement 2 years for Offerings per Lang
+# Fix tooltip for % Offerings Cancelled
+# Compare results with October's PDFs
 # Add Google Analytics
-# Get Rob to write the Home and About content
-	# Non-breaking spaces with « citation »?
+
 
 
 ### BACKLOG ###
 # Course catalogue: add description
+# Text bubbles to aid in interpreting charts (e.g. open offerings from last year, need to close!)
 # Add drilldown
 # Add (cumulative?) unique leaners
-# Add L1 data, add comments w/ 1-5 stars
+# Add L1 data, add comments w/ 1-5 stars, add GA from Leszek
 # Add dates and other options to Dashboard Parameters
 # Focus group w/ users, brainstorm for new KPIs for curriculum review process
 # Implement bilingual URLs, not just bilingual page content
 # Add Online, Departmental
 # Unit testing
 # Group courses by cluster e.g. R001-R005
-# Text bubbles to aid in interpreting charts (e.g. open offerings from last year, need to close!)
+# Add these lists to GitHub
