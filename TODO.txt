@@ -25,3 +25,4 @@
 # Add Online, Departmental
 # Unit testing
 # Group courses by cluster e.g. R001-R005
+# Text bubbles to aid in interpreting charts (e.g. open offerings from last year, need to close!)
