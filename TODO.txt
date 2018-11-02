@@ -24,3 +24,4 @@
 # Implement bilingual URLs, not just bilingual page content
 # Add Online, Departmental
 # Unit testing
+# Group courses by cluster e.g. R001-R005
