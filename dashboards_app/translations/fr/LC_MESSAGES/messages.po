@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-11-02 14:56-0400\n"
+"POT-Creation-Date: 2018-11-02 18:07-0400\n"
 "PO-Revision-Date: 2018-10-31 10:53-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -165,7 +165,7 @@ msgstr "Top 5 des classifications"
 msgid "Open & Delivered Offerings per Region"
 msgstr "Offres ouvertes et livrées par région"
 
-#: templates/instructor-led.html:115 templates/instructor-led.html:126
+#: templates/instructor-led.html:115
 msgid "Offerings"
 msgstr "Offres"
 
@@ -173,25 +173,37 @@ msgstr "Offres"
 msgid "Open & Delivered Offerings per Language"
 msgstr "Offres ouvertes et livrées par langue"
 
-#: templates/instructor-led.html:136
+#: templates/instructor-led.html:131
+msgid "English"
+msgstr "Anglais"
+
+#: templates/instructor-led.html:132
+msgid "French"
+msgstr "Français"
+
+#: templates/instructor-led.html:133
+msgid "Bilingual"
+msgstr "Bilingue"
+
+#: templates/instructor-led.html:140
 #, python-format
 msgid "%% of Offerings Cancelled"
 msgstr "%% d'offres annulées"
 
-#: templates/instructor-led.html:142 templates/instructor-led.html:154
-#: templates/instructor-led.html:166
+#: templates/instructor-led.html:147 templates/instructor-led.html:160
+#: templates/instructor-led.html:172
 msgid "Average All"
 msgstr "Moyenne globale"
 
-#: templates/instructor-led.html:149
+#: templates/instructor-led.html:155
 msgid "Average Class Size"
 msgstr "Effectif de classe moyen"
 
-#: templates/instructor-led.html:161
+#: templates/instructor-led.html:167
 msgid "Average No-Shows per Offering"
 msgstr "Absences moyennes par offre"
 
-#: templates/instructor-led.html:165
+#: templates/instructor-led.html:171
 msgid "Prepared by Curriculum Management and IPSB"
 msgstr "Préparé par Gestion du Curriculum et SIP"
 
