@@ -128,10 +128,10 @@
 				legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
 				credits: {text: ''},
 				series: [
-							{name: "{{ _('English') }}", data: [{{ pass_dict.offerings_per_lang_LY['English'] }}, {{ pass_dict.offerings_per_lang_TY['English'] }}]},
-							{name: "{{ _('French') }}", data: [{{ pass_dict.offerings_per_lang_LY['French'] }}, {{ pass_dict.offerings_per_lang_TY['French'] }}]},
-							{name: "{{ _('Bilingual') }}", data: [{{ pass_dict.offerings_per_lang_LY['Bilingual'] }}, {{ pass_dict.offerings_per_lang_TY['Bilingual'] }}]}
-						]
+					{name: "{{ _('English') }}", data: [{{ pass_dict.offerings_per_lang_LY['English'] }}, {{ pass_dict.offerings_per_lang_TY['English'] }}]},
+					{name: "{{ _('French') }}", data: [{{ pass_dict.offerings_per_lang_LY['French'] }}, {{ pass_dict.offerings_per_lang_TY['French'] }}]},
+					{name: "{{ _('Bilingual') }}", data: [{{ pass_dict.offerings_per_lang_LY['Bilingual'] }}, {{ pass_dict.offerings_per_lang_TY['Bilingual'] }}]}
+				]
 			});
 		};
 		function offeringsCancelled (id) {
@@ -140,13 +140,18 @@
 				title: {text: "{{ _('%% of Offerings Cancelled') }}", style: {fontWeight: 'bold'}},
 				xAxis: {categories: ['{{ LAST_YEAR }}', '{{ THIS_YEAR }}']},
 				yAxis: {title: {text: ''}, allowDecimals: true,	min: 0,
-							  labels: {formatter: function() {return String(this.value * 100) + "%";}}},
+						labels: {formatter: function() {return String(this.value) + "%";}}},
+				tooltip: {
+					valueDecimals: 0,
+					valuePrefix: '',
+					valueSuffix: '%'
+				},
 				legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
 				credits: {text: ''},
 				series: [
-							{name: "{{ _('Average All') }}", data: [{{ pass_dict.offerings_cancelled_overall_LY }}, {{ pass_dict.offerings_cancelled_overall_TY }}]},
-					 		{name: '{{ pass_dict.course_code }}', data: [{{ pass_dict.offerings_cancelled_LY }}, {{ pass_dict.offerings_cancelled_TY }}]}
-						]
+					{name: "{{ _('Average All') }}", data: [{{ pass_dict.offerings_cancelled_overall_LY }}, {{ pass_dict.offerings_cancelled_overall_TY }}]},
+					{name: '{{ pass_dict.course_code }}', data: [{{ pass_dict.offerings_cancelled_LY }}, {{ pass_dict.offerings_cancelled_TY }}]}
+				]
 			});
 		};
 		function avgClassSize (id) {
@@ -158,7 +163,7 @@
 				legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
 				credits: {text: ''},
 				series: [{name: "{{ _('Average All') }}", data: [{{ pass_dict.avg_class_size_overall_LY }}, {{ pass_dict.avg_class_size_overall_TY }}]},
-					 			 {name: '{{ pass_dict.course_code }}', data: [{{ pass_dict.avg_class_size_LY }}, {{ pass_dict.avg_class_size_TY }}]}]
+					 	 {name: '{{ pass_dict.course_code }}', data: [{{ pass_dict.avg_class_size_LY }}, {{ pass_dict.avg_class_size_TY }}]}]
 			});
 		};
 		function avgNoShows (id) {

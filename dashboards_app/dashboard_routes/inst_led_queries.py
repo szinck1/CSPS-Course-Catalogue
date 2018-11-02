@@ -1,6 +1,6 @@
 import json
 from flask_babel import gettext
-from dashboards_app.dashboard_routes.utils import query_mysql, decimal_to_float, decimal_to_int
+from dashboards_app.dashboard_routes.utils import query_mysql, decimal_to_float, decimal_to_percent, decimal_to_int
 
 
 def course_title(lang, fiscal_year, course_code):
@@ -104,7 +104,7 @@ def offerings_cancelled(fiscal_year, course_code):
 				 WHERE course_code LIKE '{1}') AS b;
 			""".format(fiscal_year, course_code)
 	results = query_mysql(query)
-	return decimal_to_float(results)
+	return decimal_to_percent(results)
 
 
 def top_5_depts(lang, fiscal_year, course_code):
