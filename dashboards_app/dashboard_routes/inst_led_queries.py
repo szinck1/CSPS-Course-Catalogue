@@ -87,8 +87,14 @@ def offerings_per_lang(lang, fiscal_year, course_code):
 		results_processed.append({'name': key, 'data': [val]})
 	# Account for 0 offerings
 	if not results_processed:
-		results_processed = [{'name': 'English', 'data': [0]}, {'name': 'French', 'data': [0]}]
+		if lang == 'fr':
+			results_processed = [{'name': 'Anglais', 'data': [0]}, {'name': 'Français', 'data': [0]}]
+		else:
+			results_processed = [{'name': 'English', 'data': [0]}, {'name': 'French', 'data': [0]}]
 	return json.dumps(results_processed)
+
+
+# GOOD TIL THIS POINT
 
 
 def offerings_cancelled(fiscal_year, course_code):
