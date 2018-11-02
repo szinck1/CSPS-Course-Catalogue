@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-11-02 18:07-0400\n"
+"POT-Creation-Date: 2018-11-02 19:15-0400\n"
 "PO-Revision-Date: 2018-10-31 10:53-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -18,40 +18,40 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.6.0\n"
 
-#: dashboard_routes/inst_led_queries.py:40
+#: dashboard_routes/inst_led_queries.py:39
 msgid "Duration (hours)"
 msgstr "Durée (heures)"
 
-#: dashboard_routes/inst_led_queries.py:41
+#: dashboard_routes/inst_led_queries.py:40
 msgid "Stream"
 msgstr "Volet"
 
-#: dashboard_routes/inst_led_queries.py:42
+#: dashboard_routes/inst_led_queries.py:41
 msgid "Main Topic"
 msgstr "Sujet principal"
 
-#: dashboard_routes/inst_led_queries.py:43 templates/instructor-led.html:27
+#: dashboard_routes/inst_led_queries.py:42 templates/instructor-led.html:27
 msgid "Open Offerings"
 msgstr "Offres ouvertes"
 
-#: dashboard_routes/inst_led_queries.py:44
+#: dashboard_routes/inst_led_queries.py:43
 msgid "Delivered Offerings"
 msgstr "Offres livrées"
 
-#: dashboard_routes/inst_led_queries.py:45
+#: dashboard_routes/inst_led_queries.py:44
 msgid "Cancelled Offerings"
 msgstr "Offres annulées"
 
-#: dashboard_routes/inst_led_queries.py:46
+#: dashboard_routes/inst_led_queries.py:45
 msgid "Client Requests"
 msgstr "Demandes des clients"
 
-#: dashboard_routes/inst_led_queries.py:47 templates/instructor-led.html:63
+#: dashboard_routes/inst_led_queries.py:46 templates/instructor-led.html:63
 #: templates/instructor-led.html:82
 msgid "Registrations"
 msgstr "Inscriptions"
 
-#: dashboard_routes/inst_led_queries.py:48
+#: dashboard_routes/inst_led_queries.py:47
 msgid "No-Shows"
 msgstr "Absences"
 
@@ -169,41 +169,69 @@ msgstr "Offres ouvertes et livrées par région"
 msgid "Offerings"
 msgstr "Offres"
 
+#: templates/instructor-led.html:120
+msgid "Atlantic"
+msgstr "Atlantique"
+
+#: templates/instructor-led.html:121
+msgid "NCR"
+msgstr "RCN"
+
+#: templates/instructor-led.html:122
+msgid "Ontario"
+msgstr "Ontario"
+
+#: templates/instructor-led.html:123
+msgid "Pacific"
+msgstr "Pacifique"
+
+#: templates/instructor-led.html:124
+msgid "Prairie"
+msgstr "Prairie"
+
 #: templates/instructor-led.html:125
+msgid "Quebec"
+msgstr "Québec"
+
+#: templates/instructor-led.html:126
+msgid "Outside Canada"
+msgstr "Hors du Canada"
+
+#: templates/instructor-led.html:133
 msgid "Open & Delivered Offerings per Language"
 msgstr "Offres ouvertes et livrées par langue"
 
-#: templates/instructor-led.html:131
+#: templates/instructor-led.html:139
 msgid "English"
 msgstr "Anglais"
 
-#: templates/instructor-led.html:132
+#: templates/instructor-led.html:140
 msgid "French"
 msgstr "Français"
 
-#: templates/instructor-led.html:133
+#: templates/instructor-led.html:141
 msgid "Bilingual"
 msgstr "Bilingue"
 
-#: templates/instructor-led.html:140
+#: templates/instructor-led.html:148
 #, python-format
 msgid "%% of Offerings Cancelled"
 msgstr "%% d'offres annulées"
 
-#: templates/instructor-led.html:147 templates/instructor-led.html:160
-#: templates/instructor-led.html:172
+#: templates/instructor-led.html:160 templates/instructor-led.html:173
+#: templates/instructor-led.html:185
 msgid "Average All"
 msgstr "Moyenne globale"
 
-#: templates/instructor-led.html:155
+#: templates/instructor-led.html:168
 msgid "Average Class Size"
 msgstr "Effectif de classe moyen"
 
-#: templates/instructor-led.html:167
+#: templates/instructor-led.html:180
 msgid "Average No-Shows per Offering"
 msgstr "Absences moyennes par offre"
 
-#: templates/instructor-led.html:171
+#: templates/instructor-led.html:184
 msgid "Prepared by Curriculum Management and IPSB"
 msgstr "Préparé par Gestion du Curriculum et SIP"
 

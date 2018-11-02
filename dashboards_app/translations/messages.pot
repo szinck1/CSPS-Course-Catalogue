@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-11-02 18:07-0400\n"
+"POT-Creation-Date: 2018-11-02 19:15-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,40 +17,40 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.6.0\n"
 
-#: dashboard_routes/inst_led_queries.py:40
+#: dashboard_routes/inst_led_queries.py:39
 msgid "Duration (hours)"
 msgstr ""
 
-#: dashboard_routes/inst_led_queries.py:41
+#: dashboard_routes/inst_led_queries.py:40
 msgid "Stream"
 msgstr ""
 
-#: dashboard_routes/inst_led_queries.py:42
+#: dashboard_routes/inst_led_queries.py:41
 msgid "Main Topic"
 msgstr ""
 
-#: dashboard_routes/inst_led_queries.py:43 templates/instructor-led.html:27
+#: dashboard_routes/inst_led_queries.py:42 templates/instructor-led.html:27
 msgid "Open Offerings"
 msgstr ""
 
-#: dashboard_routes/inst_led_queries.py:44
+#: dashboard_routes/inst_led_queries.py:43
 msgid "Delivered Offerings"
 msgstr ""
 
-#: dashboard_routes/inst_led_queries.py:45
+#: dashboard_routes/inst_led_queries.py:44
 msgid "Cancelled Offerings"
 msgstr ""
 
-#: dashboard_routes/inst_led_queries.py:46
+#: dashboard_routes/inst_led_queries.py:45
 msgid "Client Requests"
 msgstr ""
 
-#: dashboard_routes/inst_led_queries.py:47 templates/instructor-led.html:63
+#: dashboard_routes/inst_led_queries.py:46 templates/instructor-led.html:63
 #: templates/instructor-led.html:82
 msgid "Registrations"
 msgstr ""
 
-#: dashboard_routes/inst_led_queries.py:48
+#: dashboard_routes/inst_led_queries.py:47
 msgid "No-Shows"
 msgstr ""
 
@@ -155,41 +155,69 @@ msgstr ""
 msgid "Offerings"
 msgstr ""
 
+#: templates/instructor-led.html:120
+msgid "Atlantic"
+msgstr ""
+
+#: templates/instructor-led.html:121
+msgid "NCR"
+msgstr ""
+
+#: templates/instructor-led.html:122
+msgid "Ontario"
+msgstr ""
+
+#: templates/instructor-led.html:123
+msgid "Pacific"
+msgstr ""
+
+#: templates/instructor-led.html:124
+msgid "Prairie"
+msgstr ""
+
 #: templates/instructor-led.html:125
-msgid "Open & Delivered Offerings per Language"
+msgid "Quebec"
 msgstr ""
 
-#: templates/instructor-led.html:131
-msgid "English"
-msgstr ""
-
-#: templates/instructor-led.html:132
-msgid "French"
+#: templates/instructor-led.html:126
+msgid "Outside Canada"
 msgstr ""
 
 #: templates/instructor-led.html:133
-msgid "Bilingual"
+msgid "Open & Delivered Offerings per Language"
+msgstr ""
+
+#: templates/instructor-led.html:139
+msgid "English"
 msgstr ""
 
 #: templates/instructor-led.html:140
+msgid "French"
+msgstr ""
+
+#: templates/instructor-led.html:141
+msgid "Bilingual"
+msgstr ""
+
+#: templates/instructor-led.html:148
 #, python-format
 msgid "%% of Offerings Cancelled"
 msgstr ""
 
-#: templates/instructor-led.html:147 templates/instructor-led.html:160
-#: templates/instructor-led.html:172
+#: templates/instructor-led.html:160 templates/instructor-led.html:173
+#: templates/instructor-led.html:185
 msgid "Average All"
 msgstr ""
 
-#: templates/instructor-led.html:155
+#: templates/instructor-led.html:168
 msgid "Average Class Size"
 msgstr ""
 
-#: templates/instructor-led.html:167
+#: templates/instructor-led.html:180
 msgid "Average No-Shows per Offering"
 msgstr ""
 
-#: templates/instructor-led.html:171
+#: templates/instructor-led.html:184
 msgid "Prepared by Curriculum Management and IPSB"
 msgstr ""
 
