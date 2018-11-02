@@ -127,10 +127,10 @@
 				yAxis: {title: {text: ''}, allowDecimals: false, min: 0},
 				legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
 				credits: {text: ''},
-				//{{ pass_dict.offerings_per_lang | safe }}
 				series: [
-							{name: 'English', data: [22, 2]},
-							{name: 'French', data: [2, 22]}
+							{name: "{{ _('English') }}", data: [{{ pass_dict.offerings_per_lang_LY['English'] }}, {{ pass_dict.offerings_per_lang_TY['English'] }}]},
+							{name: "{{ _('French') }}", data: [{{ pass_dict.offerings_per_lang_LY['French'] }}, {{ pass_dict.offerings_per_lang_TY['French'] }}]},
+							{name: "{{ _('Bilingual') }}", data: [{{ pass_dict.offerings_per_lang_LY['Bilingual'] }}, {{ pass_dict.offerings_per_lang_TY['Bilingual'] }}]}
 						]
 			});
 		};

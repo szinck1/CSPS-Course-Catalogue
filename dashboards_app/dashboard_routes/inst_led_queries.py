@@ -62,40 +62,33 @@ def offerings_per_region(lang, fiscal_year, course_code):
 	results = dict(results)
 	results_processed = []
 	if lang == 'fr':
-		regions = ['Atlantique', 'Ontario', 'RCN', 'Pacifique', 'Prairie', 'Québec', 'Hors du Canada']
+		regions = ['Atlantique', 'RCN', 'Ontario', 'Pacifique', 'Prairie', 'Québec', 'Hors du Canada']
 	else:
-		regions = ['Atlantic', 'Ontario', 'NCR', 'Pacific', 'Prairie', 'Quebec', 'Outside Canada']
+		regions = ['Atlantic', 'NCR', 'Ontario', 'Pacific', 'Prairie', 'Quebec', 'Outside Canada']
 	for region in regions:
 		count = results.get(region, 0)
 		results_processed.append({'name': region, 'data': [count]})
 	return json.dumps(results_processed)
 
 
-def offerings_per_lang(lang, fiscal_year, course_code):
+def offerings_per_lang(fiscal_year, course_code):
 	query = """
-			SELECT offering_language_{0}, COUNT(DISTINCT offering_id)
-			FROM lsr{1}
-			WHERE course_code = '{2}' AND offering_status IN ('Open - Normal', 'Delivered - Normal')
-			GROUP BY offering_language_{0};
-			""".format(lang, fiscal_year, course_code)
+			SELECT offering_language_en, COUNT(DISTINCT offering_id)
+			FROM lsr{0}
+			WHERE course_code = '{1}' AND offering_status IN ('Open - Normal', 'Delivered - Normal')
+			GROUP BY offering_language_en;
+			""".format(fiscal_year, course_code)
 	results = query_mysql(query)
 	
-	# Process results into format required by Highcharts
+	# Force 'English', 'French', and 'Bilingual' to be returned within dict
 	results = dict(results)
+	if 'English' not in results:
+		results['English'] = 0
+	if 'French' not in results:
+		results['French'] = 0
+	if 'Bilingual' not in results:
+		results['Bilingual'] = 0
 	return results
-	# results_processed = []
-	# for key, val in results.items():
-		# results_processed.append({'name': key, 'data': [val]})
-	# Account for 0 offerings
-	# if not results_processed:
-		# if lang == 'fr':
-			# results_processed = [{'name': 'Anglais', 'data': [0]}, {'name': 'Français', 'data': [0]}]
-		# else:
-			# results_processed = [{'name': 'English', 'data': [0]}, {'name': 'French', 'data': [0]}]
-	# return json.dumps(results_processed)
-
-
-# GOOD TIL THIS POINT
 
 
 def offerings_cancelled(fiscal_year, course_code):
