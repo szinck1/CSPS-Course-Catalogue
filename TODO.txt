@@ -7,6 +7,7 @@
 # Implement 2 years for Offerings per Lang
 # Fix tooltip for % Offerings Cancelled
 # Compare results with October's PDFs
+	# Check weird: langs other than EN/FR, Outside Canada
 # Add Google Analytics
 
 
