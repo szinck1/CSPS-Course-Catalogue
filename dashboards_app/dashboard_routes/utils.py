@@ -23,6 +23,9 @@ def query_mysql(query, all=True):
 def decimal_to_float(my_val):
 	return float(str(my_val[0][0]))
 
+# Convert SQL datatype Decimal to percentage for Highcharts
+def decimal_to_percent(my_val):
+	return round(float(str(my_val[0][0])), 2) * 100
 
 # Convert SQL datatype Decimal to Python int
 def decimal_to_int(my_val):
