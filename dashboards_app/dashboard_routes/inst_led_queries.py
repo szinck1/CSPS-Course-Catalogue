@@ -82,16 +82,17 @@ def offerings_per_lang(lang, fiscal_year, course_code):
 	
 	# Process results into format required by Highcharts
 	results = dict(results)
-	results_processed = []
-	for key, val in results.items():
-		results_processed.append({'name': key, 'data': [val]})
+	return results
+	# results_processed = []
+	# for key, val in results.items():
+		# results_processed.append({'name': key, 'data': [val]})
 	# Account for 0 offerings
-	if not results_processed:
-		if lang == 'fr':
-			results_processed = [{'name': 'Anglais', 'data': [0]}, {'name': 'Français', 'data': [0]}]
-		else:
-			results_processed = [{'name': 'English', 'data': [0]}, {'name': 'French', 'data': [0]}]
-	return json.dumps(results_processed)
+	# if not results_processed:
+		# if lang == 'fr':
+			# results_processed = [{'name': 'Anglais', 'data': [0]}, {'name': 'Français', 'data': [0]}]
+		# else:
+			# results_processed = [{'name': 'English', 'data': [0]}, {'name': 'French', 'data': [0]}]
+	# return json.dumps(results_processed)
 
 
 # GOOD TIL THIS POINT

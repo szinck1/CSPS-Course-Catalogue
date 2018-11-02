@@ -123,11 +123,15 @@
 			$('#' + String(id)).highcharts({
 				chart: {type: 'column'},
 				title: {text: "{{ _('Open & Delivered Offerings per Language') }}", style: {fontWeight: 'bold'}},
-				xAxis: {categories: ["{{ _('Offerings') }}"]},
-				yAxis: {title: {text: ''}, allowDecimals: false,	min: 0},
+				xAxis: {categories: ['{{ LAST_YEAR }}', '{{ THIS_YEAR }}']},
+				yAxis: {title: {text: ''}, allowDecimals: false, min: 0},
 				legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
 				credits: {text: ''},
-				series: {{ pass_dict.offerings_per_lang | safe }}
+				//{{ pass_dict.offerings_per_lang | safe }}
+				series: [
+							{name: 'English', data: [22, 2]},
+							{name: 'French', data: [2, 22]}
+						]
 			});
 		};
 		function offeringsCancelled (id) {
@@ -139,8 +143,10 @@
 							  labels: {formatter: function() {return String(this.value * 100) + "%";}}},
 				legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
 				credits: {text: ''},
-				series: [{name: "{{ _('Average All') }}", data: [{{ pass_dict.offerings_cancelled_overall_LY }}, {{ pass_dict.offerings_cancelled_overall_TY }}]},
-					 			 {name: '{{ pass_dict.course_code }}', data: [{{ pass_dict.offerings_cancelled_LY }}, {{ pass_dict.offerings_cancelled_TY }}]}]
+				series: [
+							{name: "{{ _('Average All') }}", data: [{{ pass_dict.offerings_cancelled_overall_LY }}, {{ pass_dict.offerings_cancelled_overall_TY }}]},
+					 		{name: '{{ pass_dict.course_code }}', data: [{{ pass_dict.offerings_cancelled_LY }}, {{ pass_dict.offerings_cancelled_TY }}]}
+						]
 			});
 		};
 		function avgClassSize (id) {
@@ -148,7 +154,7 @@
 				chart: {type: 'column'},
 				title: {text: "{{ _('Average Class Size') }}", style: {fontWeight: 'bold'}},
 				xAxis: {categories: ['{{ LAST_YEAR }}', '{{ THIS_YEAR }}']},
-				yAxis: {title: {text: ''}, allowDecimals: false,	min: 0},
+				yAxis: {title: {text: ''}, allowDecimals: false, min: 0},
 				legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
 				credits: {text: ''},
 				series: [{name: "{{ _('Average All') }}", data: [{{ pass_dict.avg_class_size_overall_LY }}, {{ pass_dict.avg_class_size_overall_TY }}]},
@@ -164,7 +170,7 @@
 				legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
 				credits: {text: "{{ _('Prepared by Curriculum Management and IPSB') }}"},
 				series: [{name: "{{ _('Average All') }}", data: [{{ pass_dict.avg_no_shows_overall_LY }}, {{ pass_dict.avg_no_shows_overall_TY }}]},
-					 			 {name: '{{ pass_dict.course_code }}', data: [{{ pass_dict.avg_no_shows_LY }}, {{ pass_dict.avg_no_shows_TY }}]}]
+					 	 {name: '{{ pass_dict.course_code }}', data: [{{ pass_dict.avg_no_shows_LY }}, {{ pass_dict.avg_no_shows_TY }}]}]
 			});
 		};
 		
@@ -175,5 +181,4 @@
 		avgNoShows('avg-no-shows');
 		
 	</script>
-	-->
 {% endblock body %}
