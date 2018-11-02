@@ -122,7 +122,7 @@
 		function offeringsPerLang (id) {
 			$('#' + String(id)).highcharts({
 				chart: {type: 'column'},
-				title: {text: 'Open & Delivered Offerings per Language', style: {fontWeight: 'bold'}},
+				title: {text: "{{ _('Open & Delivered Offerings per Language') }}", style: {fontWeight: 'bold'}},
 				xAxis: {categories: ["{{ _('Offerings') }}"]},
 				yAxis: {title: {text: ''}, allowDecimals: false,	min: 0},
 				legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
@@ -133,37 +133,37 @@
 		function offeringsCancelled (id) {
 			$('#' + String(id)).highcharts({
 				chart: {type: 'column'},
-				title: {text: '% of Offerings Cancelled', style: {fontWeight: 'bold'}},
+				title: {text: "{{ _('%% of Offerings Cancelled') }}", style: {fontWeight: 'bold'}},
 				xAxis: {categories: ['{{ LAST_YEAR }}', '{{ THIS_YEAR }}']},
 				yAxis: {title: {text: ''}, allowDecimals: true,	min: 0,
 							  labels: {formatter: function() {return String(this.value * 100) + "%";}}},
 				legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
 				credits: {text: ''},
-				series: [{name: 'Average All', data: [{{ pass_dict.offerings_cancelled_overall_LY }}, {{ pass_dict.offerings_cancelled_overall_TY }}]},
+				series: [{name: "{{ _('Average All') }}", data: [{{ pass_dict.offerings_cancelled_overall_LY }}, {{ pass_dict.offerings_cancelled_overall_TY }}]},
 					 			 {name: '{{ pass_dict.course_code }}', data: [{{ pass_dict.offerings_cancelled_LY }}, {{ pass_dict.offerings_cancelled_TY }}]}]
 			});
 		};
 		function avgClassSize (id) {
 			$('#' + String(id)).highcharts({
 				chart: {type: 'column'},
-				title: {text: 'Average Class Size', style: {fontWeight: 'bold'}},
+				title: {text: "{{ _('Average Class Size') }}", style: {fontWeight: 'bold'}},
 				xAxis: {categories: ['{{ LAST_YEAR }}', '{{ THIS_YEAR }}']},
 				yAxis: {title: {text: ''}, allowDecimals: false,	min: 0},
 				legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
 				credits: {text: ''},
-				series: [{name: 'Average All', data: [{{ pass_dict.avg_class_size_overall_LY }}, {{ pass_dict.avg_class_size_overall_TY }}]},
+				series: [{name: "{{ _('Average All') }}", data: [{{ pass_dict.avg_class_size_overall_LY }}, {{ pass_dict.avg_class_size_overall_TY }}]},
 					 			 {name: '{{ pass_dict.course_code }}', data: [{{ pass_dict.avg_class_size_LY }}, {{ pass_dict.avg_class_size_TY }}]}]
 			});
 		};
 		function avgNoShows (id) {
 			$('#' + String(id)).highcharts({
 				chart: {type: 'column'},
-				title: {text: 'Average No-Shows per Offering', style: {fontWeight: 'bold'}},
+				title: {text: "{{ _('Average No-Shows per Offering') }}", style: {fontWeight: 'bold'}},
 				xAxis: {categories: ['{{ LAST_YEAR }}', '{{ THIS_YEAR }}']},
 				yAxis: {title: {text: ''}, allowDecimals: false, min: 0},
 				legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
-				credits: {text: 'Prepared by Curriculum Management and IPSB'},
-				series: [{name: 'Average All', data: [{{ pass_dict.avg_no_shows_overall_LY }}, {{ pass_dict.avg_no_shows_overall_TY }}]},
+				credits: {text: "{{ _('Prepared by Curriculum Management and IPSB') }}"},
+				series: [{name: "{{ _('Average All') }}", data: [{{ pass_dict.avg_no_shows_overall_LY }}, {{ pass_dict.avg_no_shows_overall_TY }}]},
 					 			 {name: '{{ pass_dict.course_code }}', data: [{{ pass_dict.avg_no_shows_LY }}, {{ pass_dict.avg_no_shows_TY }}]}]
 			});
 		};

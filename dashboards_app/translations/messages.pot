@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-11-02 14:34-0400\n"
+"POT-Creation-Date: 2018-11-02 14:56-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -153,6 +153,32 @@ msgstr ""
 
 #: templates/instructor-led.html:115 templates/instructor-led.html:126
 msgid "Offerings"
+msgstr ""
+
+#: templates/instructor-led.html:125
+msgid "Open & Delivered Offerings per Language"
+msgstr ""
+
+#: templates/instructor-led.html:136
+#, python-format
+msgid "% of Offerings Cancelled"
+msgstr ""
+
+#: templates/instructor-led.html:142 templates/instructor-led.html:154
+#: templates/instructor-led.html:166
+msgid "Average All"
+msgstr ""
+
+#: templates/instructor-led.html:149
+msgid "Average Class Size"
+msgstr ""
+
+#: templates/instructor-led.html:161
+msgid "Average No-Shows per Offering"
+msgstr ""
+
+#: templates/instructor-led.html:165
+msgid "Prepared by Curriculum Management and IPSB"
 msgstr ""
 
 #: templates/includes/_navbar.html:3 templates/layout.html:8
