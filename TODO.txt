@@ -12,6 +12,8 @@
 # Compare results with October's PDFs !important ;)
 # Add these lists to GitHub
 # Add Google Analytics
+# Get Rob to write the Home and About content
+	# Non-breaking spaces with « citation »?
 
 
 ### BACKLOG ###
