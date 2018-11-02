@@ -37,9 +37,9 @@ def general_info(lang, fiscal_year, course_code):
 	query_no_shows = "SELECT SUM(no_show) FROM lsr{0} WHERE course_code = '{1}';".format(fiscal_year, course_code)
 	no_shows = query_mysql(query_no_shows)
 	
-	results = [(gettext('Duration'), duration[0][0]),
+	results = [(gettext('Duration (hours)'), duration[0][0]),
 			   (gettext('Stream'), stream[0][0]),
-			   (gettext('Topic'), topic[0][0]),
+			   (gettext('Main Topic'), topic[0][0]),
 			   (gettext('Open Offerings'), decimal_to_int(open)),
 			   (gettext('Delivered Offerings'), decimal_to_int(delivered)),
 			   (gettext('Cancelled Offerings'), decimal_to_int(cancelled)),
@@ -62,10 +62,10 @@ def offerings_per_region(lang, fiscal_year, course_code):
 	results = dict(results)
 	results_processed = []
 	if lang == 'fr':
-		all_regions = ['Atlantique', 'Ontario', 'RCN', 'Pacifique', 'Prairie', 'Québec', 'Hors du Canada']
+		regions = ['Atlantique', 'Ontario', 'RCN', 'Pacifique', 'Prairie', 'Québec', 'Hors du Canada']
 	else:
-		all_regions = ['Atlantic', 'Ontario', 'NCR', 'Pacific', 'Prairie', 'Quebec', 'Outside Canada']
-	for region in all_regions:
+		regions = ['Atlantic', 'Ontario', 'NCR', 'Pacific', 'Prairie', 'Quebec', 'Outside Canada']
+	for region in regions:
 		count = results.get(region, 0)
 		results_processed.append({'name': region, 'data': [count]})
 	return json.dumps(results_processed)

@@ -33,7 +33,7 @@ def instructor_led():
 def instructor_led_dash():
 	# Get arguments from query string; if incomplete, return to home page
 	if 'course_code' not in request.args:
-		return redirect(url_for('main.index'))
+		return redirect(url_for('dashboards.instructor_led'))
 	course_code = request.args['course_code']
 	lang = session.get('lang', 'en')
 	

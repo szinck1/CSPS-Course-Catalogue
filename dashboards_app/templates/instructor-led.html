@@ -22,9 +22,14 @@
 					</tr>
 					{% for tup1, tup2 in pass_dict.general_info_LY|zip(pass_dict.general_info_TY) %}
 						<tr>
-								<td>{{ tup1[0] }}</td>
+							<td>{{ tup1[0] }}</td>
+							<!-- If offerings remain open in LAST_YEAR, show in red -->
+							{% if tup1[0] == _('Open Offerings') and tup1[1] > 0 %}
+								<td class="text-center" style="color: red;">{{ tup1[1] }}</td>
+							{% else %}
 								<td class="text-center">{{ tup1[1] }}</td>
-								<td class="text-center">{{ tup2[1] }}</td>
+							{% endif %}
+							<td class="text-center">{{ tup2[1] }}</td>
 						</tr>
 					{% endfor %}
 				</table>

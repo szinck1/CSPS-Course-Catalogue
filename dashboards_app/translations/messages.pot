@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-11-01 22:24-0400\n"
+"POT-Creation-Date: 2018-11-02 14:27-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Generated-By: Babel 2.6.0\n"
 
 #: dashboard_routes/inst_led_queries.py:40
-msgid "Duration"
+msgid "Duration (hours)"
 msgstr ""
 
 #: dashboard_routes/inst_led_queries.py:41
@@ -26,10 +26,10 @@ msgid "Stream"
 msgstr ""
 
 #: dashboard_routes/inst_led_queries.py:42
-msgid "Topic"
+msgid "Main Topic"
 msgstr ""
 
-#: dashboard_routes/inst_led_queries.py:43
+#: dashboard_routes/inst_led_queries.py:43 templates/instructor-led.html:27
 msgid "Open Offerings"
 msgstr ""
 
@@ -45,8 +45,8 @@ msgstr ""
 msgid "Client Requests"
 msgstr ""
 
-#: dashboard_routes/inst_led_queries.py:47 templates/instructor-led.html:58
-#: templates/instructor-led.html:77
+#: dashboard_routes/inst_led_queries.py:47 templates/instructor-led.html:63
+#: templates/instructor-led.html:82
 msgid "Registrations"
 msgstr ""
 
@@ -135,15 +135,15 @@ msgstr ""
 msgid "Indicator"
 msgstr ""
 
-#: templates/instructor-led.html:54
+#: templates/instructor-led.html:59
 msgid "Top 5 Departments"
 msgstr ""
 
-#: templates/instructor-led.html:57 templates/instructor-led.html:76
+#: templates/instructor-led.html:62 templates/instructor-led.html:81
 msgid "Name"
 msgstr ""
 
-#: templates/instructor-led.html:73
+#: templates/instructor-led.html:78
 msgid "Top 5 Classifications"
 msgstr ""
 

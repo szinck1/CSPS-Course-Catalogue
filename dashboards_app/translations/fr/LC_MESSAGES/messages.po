@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-11-01 22:24-0400\n"
+"POT-Creation-Date: 2018-11-02 14:27-0400\n"
 "PO-Revision-Date: 2018-10-31 10:53-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -19,18 +19,18 @@ msgstr ""
 "Generated-By: Babel 2.6.0\n"
 
 #: dashboard_routes/inst_led_queries.py:40
-msgid "Duration"
-msgstr "Durée"
+msgid "Duration (hours)"
+msgstr "Durée (heures)"
 
 #: dashboard_routes/inst_led_queries.py:41
 msgid "Stream"
 msgstr "Volet"
 
 #: dashboard_routes/inst_led_queries.py:42
-msgid "Topic"
-msgstr "Topique"
+msgid "Main Topic"
+msgstr "Sujet principal"
 
-#: dashboard_routes/inst_led_queries.py:43
+#: dashboard_routes/inst_led_queries.py:43 templates/instructor-led.html:27
 msgid "Open Offerings"
 msgstr "Offres ouvertes"
 
@@ -44,10 +44,10 @@ msgstr "Offres annulées"
 
 #: dashboard_routes/inst_led_queries.py:46
 msgid "Client Requests"
-msgstr "Demandes de client"
+msgstr "Demandes des clients"
 
-#: dashboard_routes/inst_led_queries.py:47 templates/instructor-led.html:58
-#: templates/instructor-led.html:77
+#: dashboard_routes/inst_led_queries.py:47 templates/instructor-led.html:63
+#: templates/instructor-led.html:82
 msgid "Registrations"
 msgstr "Inscriptions"
 
@@ -143,21 +143,21 @@ msgstr ""
 
 #: templates/instructor-led.html:16
 msgid "Course Information and Overall Numbers"
-msgstr "Test"
+msgstr "Informations et chiffres globaux"
 
 #: templates/instructor-led.html:19
 msgid "Indicator"
-msgstr ""
+msgstr "Indicateur"
 
-#: templates/instructor-led.html:54
+#: templates/instructor-led.html:59
 msgid "Top 5 Departments"
 msgstr "Top 5 des ministères"
 
-#: templates/instructor-led.html:57 templates/instructor-led.html:76
+#: templates/instructor-led.html:62 templates/instructor-led.html:81
 msgid "Name"
 msgstr "Nom"
 
-#: templates/instructor-led.html:73
+#: templates/instructor-led.html:78
 msgid "Top 5 Classifications"
 msgstr "Top 5 des classifications"
 
@@ -188,4 +188,3 @@ msgstr "En ligne"
 #: templates/includes/_navbar.html:20 templates/includes/_navbar.html:22
 msgid "Français"
 msgstr "English"
-
