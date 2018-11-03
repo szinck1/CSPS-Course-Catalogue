@@ -27,12 +27,13 @@ def create_app(config_class=Debug):
 	# Set language
 	@app.before_request
 	def get_lang():
-		# If lang passed in query string, overwrite value in session
+		# Use if statements to avoid directly passing user input to code
 		if 'lang' in request.args:
-			session['lang'] = request.args['lang']
-		# If lang in neither query string nor session, default to 'en' 
-		if 'lang' not in session:
-			session['lang'] = 'en'
+			if request.args['lang'] == 'fr':
+				session['lang'] = 'fr'
+			# If 'en'/junk/nothing is passed, default to en
+			else:
+				session['lang'] = 'en'
 	
 	
 	@babel.localeselector
