@@ -7,14 +7,15 @@ parser.read('./dashboards_app/mysql_info/mysql_config.cfg')
 
 
 # Query data from MySQL
-def query_mysql(query, all=True):
+def query_mysql(query, args=None):
 	cnx = mysql.connector.connect(user=parser.get('db', 'user'),
 								  password=parser.get('db', 'password'),
 								  host=parser.get('db', 'host'),
 								  database=parser.get('db', 'database'))
 	cursor = cnx.cursor()
-	cursor.execute(query)
-	results = cursor.fetchall() if all else cursor.fetchone()
+	cursor.execute(query, args)
+	results = cursor.fetchall()
+	cursor.close()
 	cnx.close()
 	return results
 

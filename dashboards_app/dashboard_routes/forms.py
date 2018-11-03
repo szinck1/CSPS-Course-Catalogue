@@ -11,18 +11,20 @@ def _clean_title(course_title):
 
 
 # Build form for Instructor-Led courses
-def inst_led_form(lang, field_title):
+def inst_led_form(lang, form_title):
+	field_1 = 'course_title_{0}'.format(lang)
+	table_name = 'lsr{}'.format(Debug.LAST_YEAR)
 	query = """
-			SELECT DISTINCT course_code, course_title_{0}
-			FROM lsr{1}
+			SELECT DISTINCT course_code, {0}
+			FROM {1}
 			ORDER BY 1 ASC;
-			""".format(lang, Debug.LAST_YEAR)
+			""".format(field_1, table_name)
 	results = query_mysql(query)
 	
 	# SelectField takes list of tuples (pass_value, display_value)
 	form_list = [(tup[0], '{0}: {1}'.format(tup[0], _clean_title(tup[1]))) for tup in results]
 	
 	class InstLedForm(Form):
-		course_code = SelectField(field_title, choices=form_list)
+		course_code = SelectField(form_title, choices=form_list)
 	
 	return InstLedForm
