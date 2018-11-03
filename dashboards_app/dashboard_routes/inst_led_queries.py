@@ -81,16 +81,14 @@ def offerings_per_region(fiscal_year, course_code):
 	return results_processed
 
 
-
-
-
 def offerings_per_lang(fiscal_year, course_code):
+	table_name = 'lsr{0}'.format(fiscal_year)
 	query = """
 			SELECT offering_language_en, COUNT(DISTINCT offering_id)
-			FROM lsr{0}
+			FROM {0}
 			WHERE course_code = %s AND offering_status IN ('Open - Normal', 'Delivered - Normal')
 			GROUP BY offering_language_en;
-			""".format(fiscal_year, course_code)
+			""".format(table_name)
 	results = query_mysql(query, (course_code,))
 	
 	# Force 'English', 'French', and 'Bilingual' to be returned within dict
@@ -105,71 +103,80 @@ def offerings_per_lang(fiscal_year, course_code):
 
 
 def offerings_cancelled(fiscal_year, course_code):
+	table_name = 'lsr{0}'.format(fiscal_year)
 	query = """
 			SELECT SUM(a.Mars / b.Mars)
 			FROM
 				(SELECT COUNT(DISTINCT offering_id) AS Mars
-				 FROM lsr{0}
-				 WHERE course_code LIKE '{1}' AND offering_status = 'Cancelled - Normal') AS a,
+				 FROM {0}
+				 WHERE course_code LIKE %s AND offering_status = 'Cancelled - Normal') AS a,
 				 
 				(SELECT COUNT(DISTINCT offering_id) AS Mars
-				 FROM lsr{0}
-				 WHERE course_code LIKE '{1}') AS b;
-			""".format(fiscal_year, course_code)
-	results = query_mysql(query, (course_code,))
+				 FROM {0}
+				 WHERE course_code LIKE %s) AS b;
+			""".format(table_name)
+	results = query_mysql(query, (course_code, course_code))
 	return decimal_to_percent(results)
 
 
+
+
+
+
 def top_5_depts(lang, fiscal_year, course_code):
+	table_name = 'lsr{0}'.format(fiscal_year)
 	query = """
 			SELECT billing_dept_name_{0}, COUNT(billing_dept_name_{0})
-			FROM lsr{1}
+			FROM {1}
 			WHERE course_code = %s AND reg_status = 'Confirmed'
 			GROUP BY billing_dept_name_{0}
 			ORDER BY 2 DESC
 			LIMIT 5;
-			""".format(lang, fiscal_year, course_code)
+			""".format(table_name)
 	return query_mysql(query, (course_code,))
 
 
 def top_5_classifs(fiscal_year, course_code):
+	table_name = 'lsr{0}'.format(fiscal_year)
 	query = """
 			SELECT learner_classif, COUNT(learner_classif)
-			FROM lsr{0}
+			FROM {0}
 			WHERE course_code = %s AND reg_status = 'Confirmed'
 			GROUP BY learner_classif
 			ORDER BY 2 DESC
 			LIMIT 5;
-			""".format(fiscal_year, course_code)
+			""".format(table_name)
 	return query_mysql(query, (course_code,))
 
 
 def avg_class_size(fiscal_year, course_code):
+	table_name = 'lsr{0}'.format(fiscal_year)
 	query = """
 			SELECT AVG(class_size)
 			FROM(
 				SELECT COUNT(reg_num) AS class_size
-				FROM lsr{0}
+				FROM {0}
 				WHERE course_code LIKE '{1}' AND reg_status= 'Confirmed'
 				GROUP BY offering_id
 				ORDER BY 1 DESC
 			) AS sub_table;
-			""".format(fiscal_year, course_code)
+			""".format(table_name)
 	results = query_mysql(query, (course_code,))
 	return decimal_to_int(results)
 
 
 def avg_no_shows(fiscal_year, course_code):
+	table_name = 'lsr{0}'.format(fiscal_year)
 	query = """
 			SELECT SUM(a.Mars / b.Mars)
 			FROM
 				(SELECT SUM(no_show) AS Mars
-				 FROM lsr{0}
+				 FROM {0}
 				 WHERE course_code LIKE '{1}') AS a,
 				 
 				(SELECT COUNT(DISTINCT offering_id) AS Mars
-				 FROM lsr{0}
+				 FROM {0}
 				 WHERE course_code LIKE '{1}' AND offering_status IN ('Open - Normal', 'Delivered - Normal')) AS b;
-			""".format(fiscal_year, course_code)
+			""".format(table_name)
 	results = query_mysql(query, (course_code,))
 	return decimal_to_float(results)
