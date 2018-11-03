@@ -13,8 +13,11 @@ def course_title(lang, fiscal_year, course_code):
 	table_name = 'lsr{0}'.format(fiscal_year)
 	
 	query = "SELECT {0} FROM {1} WHERE course_code = %s LIMIT 1;".format(field_name, table_name)
-	course_title = query_mysql(query, (course_code ,))
-	return course_title[0][0]
+	course_title = query_mysql(query, (course_code,))
+	if not course_title:
+		return False
+	else:
+		return course_title[0][0]
 
 
 def general_info(lang, fiscal_year, course_code):
@@ -119,20 +122,18 @@ def offerings_cancelled(fiscal_year, course_code):
 	return decimal_to_percent(results)
 
 
-
-
-
-
 def top_5_depts(lang, fiscal_year, course_code):
+	field_name =  'billing_dept_name_{0}'.format(lang)
 	table_name = 'lsr{0}'.format(fiscal_year)
+	
 	query = """
-			SELECT billing_dept_name_{0}, COUNT(billing_dept_name_{0})
+			SELECT {0}, COUNT({0})
 			FROM {1}
 			WHERE course_code = %s AND reg_status = 'Confirmed'
-			GROUP BY billing_dept_name_{0}
+			GROUP BY {0}
 			ORDER BY 2 DESC
 			LIMIT 5;
-			""".format(table_name)
+			""".format(field_name, table_name)
 	return query_mysql(query, (course_code,))
 
 
@@ -156,7 +157,7 @@ def avg_class_size(fiscal_year, course_code):
 			FROM(
 				SELECT COUNT(reg_num) AS class_size
 				FROM {0}
-				WHERE course_code LIKE '{1}' AND reg_status= 'Confirmed'
+				WHERE course_code LIKE %s AND reg_status= 'Confirmed'
 				GROUP BY offering_id
 				ORDER BY 1 DESC
 			) AS sub_table;
@@ -172,11 +173,11 @@ def avg_no_shows(fiscal_year, course_code):
 			FROM
 				(SELECT SUM(no_show) AS Mars
 				 FROM {0}
-				 WHERE course_code LIKE '{1}') AS a,
+				 WHERE course_code LIKE %s) AS a,
 				 
 				(SELECT COUNT(DISTINCT offering_id) AS Mars
 				 FROM {0}
-				 WHERE course_code LIKE '{1}' AND offering_status IN ('Open - Normal', 'Delivered - Normal')) AS b;
+				 WHERE course_code LIKE %s AND offering_status IN ('Open - Normal', 'Delivered - Normal')) AS b;
 			""".format(table_name)
-	results = query_mysql(query, (course_code,))
+	results = query_mysql(query, (course_code, course_code))
 	return decimal_to_float(results)
