@@ -34,6 +34,7 @@ def instructor_led_dash():
 	# Get arguments from query string; if incomplete, return to home page
 	if 'course_code' not in request.args:
 		return redirect(url_for('dashboards.instructor_led'))
+	# Automatically escaped in Jinja2 (HTML templates) and MySQL queries
 	course_code = request.args['course_code']
 	lang = session.get('lang', 'en')
 	
@@ -43,23 +44,23 @@ def instructor_led_dash():
         'course_title': inst_led_queries.course_title(lang, THIS_YEAR, course_code),
 		'general_info_LY': inst_led_queries.general_info(lang, LAST_YEAR, course_code),
 		'general_info_TY': inst_led_queries.general_info(lang, THIS_YEAR, course_code),
-		'offerings_per_region': inst_led_queries.offerings_per_region(THIS_YEAR, course_code),
-		'offerings_per_lang_LY': inst_led_queries.offerings_per_lang(LAST_YEAR, course_code),
-		'offerings_per_lang_TY': inst_led_queries.offerings_per_lang(THIS_YEAR, course_code),
-		'offerings_cancelled_overall_LY': inst_led_queries.offerings_cancelled(LAST_YEAR, '%'),
-		'offerings_cancelled_overall_TY': inst_led_queries.offerings_cancelled(THIS_YEAR, '%'),
-		'offerings_cancelled_LY': inst_led_queries.offerings_cancelled(LAST_YEAR, course_code),
-		'offerings_cancelled_TY': inst_led_queries.offerings_cancelled(THIS_YEAR, course_code),
-		'top_5_depts': inst_led_queries.top_5_depts(lang, THIS_YEAR, course_code),
-		'top_5_classifs': inst_led_queries.top_5_classifs(THIS_YEAR, course_code),
-		'avg_class_size_overall_LY': inst_led_queries.avg_class_size(LAST_YEAR, '%'),
-		'avg_class_size_overall_TY': inst_led_queries.avg_class_size(THIS_YEAR, '%'),
-		'avg_class_size_LY': inst_led_queries.avg_class_size(LAST_YEAR, course_code),
-		'avg_class_size_TY': inst_led_queries.avg_class_size(THIS_YEAR, course_code),
-		'avg_no_shows_overall_LY': round(inst_led_queries.avg_no_shows(LAST_YEAR, '%'), 1),
-		'avg_no_shows_overall_TY': round(inst_led_queries.avg_no_shows(THIS_YEAR, '%'), 1),
-		'avg_no_shows_LY': round(inst_led_queries.avg_no_shows(LAST_YEAR, course_code), 1),
-		'avg_no_shows_TY': round(inst_led_queries.avg_no_shows(THIS_YEAR, course_code), 1)
+		'offerings_per_region': inst_led_queries.offerings_per_region(THIS_YEAR, course_code)
+		# 'offerings_per_lang_LY': inst_led_queries.offerings_per_lang(LAST_YEAR, course_code),
+		# 'offerings_per_lang_TY': inst_led_queries.offerings_per_lang(THIS_YEAR, course_code),
+		# 'offerings_cancelled_overall_LY': inst_led_queries.offerings_cancelled(LAST_YEAR, '%'),
+		# 'offerings_cancelled_overall_TY': inst_led_queries.offerings_cancelled(THIS_YEAR, '%'),
+		# 'offerings_cancelled_LY': inst_led_queries.offerings_cancelled(LAST_YEAR, course_code),
+		# 'offerings_cancelled_TY': inst_led_queries.offerings_cancelled(THIS_YEAR, course_code),
+		# 'top_5_depts': inst_led_queries.top_5_depts(lang, THIS_YEAR, course_code),
+		# 'top_5_classifs': inst_led_queries.top_5_classifs(THIS_YEAR, course_code),
+		# 'avg_class_size_overall_LY': inst_led_queries.avg_class_size(LAST_YEAR, '%'),
+		# 'avg_class_size_overall_TY': inst_led_queries.avg_class_size(THIS_YEAR, '%'),
+		# 'avg_class_size_LY': inst_led_queries.avg_class_size(LAST_YEAR, course_code),
+		# 'avg_class_size_TY': inst_led_queries.avg_class_size(THIS_YEAR, course_code),
+		# 'avg_no_shows_overall_LY': round(inst_led_queries.avg_no_shows(LAST_YEAR, '%'), 1),
+		# 'avg_no_shows_overall_TY': round(inst_led_queries.avg_no_shows(THIS_YEAR, '%'), 1),
+		# 'avg_no_shows_LY': round(inst_led_queries.avg_no_shows(LAST_YEAR, course_code), 1),
+		# 'avg_no_shows_TY': round(inst_led_queries.avg_no_shows(THIS_YEAR, course_code), 1)
 	}
 	return render_template('instructor-led.html', pass_dict=pass_dict)
 

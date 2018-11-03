@@ -13,7 +13,7 @@ def _clean_title(course_title):
 # Build form for Instructor-Led courses
 def inst_led_form(lang, form_title):
 	field_1 = 'course_title_{0}'.format(lang)
-	table_name = 'lsr{}'.format(Debug.LAST_YEAR)
+	table_name = 'lsr{}'.format(Debug.THIS_YEAR)
 	query = """
 			SELECT DISTINCT course_code, {0}
 			FROM {1}
