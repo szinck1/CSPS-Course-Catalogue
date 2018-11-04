@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-11-02 19:15-0400\n"
+"POT-Creation-Date: 2018-11-03 23:55-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,40 +17,42 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.6.0\n"
 
-#: dashboard_routes/inst_led_queries.py:39
+#: dashboard_routes/inst_led_queries.py:55
 msgid "Duration (hours)"
 msgstr ""
 
-#: dashboard_routes/inst_led_queries.py:40
+#: dashboard_routes/inst_led_queries.py:56
 msgid "Stream"
 msgstr ""
 
-#: dashboard_routes/inst_led_queries.py:41
+#: dashboard_routes/inst_led_queries.py:57
 msgid "Main Topic"
 msgstr ""
 
-#: dashboard_routes/inst_led_queries.py:42 templates/instructor-led.html:27
+#: dashboard_routes/inst_led_queries.py:58 templates/instructor-led.html:27
+#: templates/instructor-led_backup.html:27
 msgid "Open Offerings"
 msgstr ""
 
-#: dashboard_routes/inst_led_queries.py:43
+#: dashboard_routes/inst_led_queries.py:59
 msgid "Delivered Offerings"
 msgstr ""
 
-#: dashboard_routes/inst_led_queries.py:44
+#: dashboard_routes/inst_led_queries.py:60
 msgid "Cancelled Offerings"
 msgstr ""
 
-#: dashboard_routes/inst_led_queries.py:45
+#: dashboard_routes/inst_led_queries.py:61
 msgid "Client Requests"
 msgstr ""
 
-#: dashboard_routes/inst_led_queries.py:46 templates/instructor-led.html:63
-#: templates/instructor-led.html:82
+#: dashboard_routes/inst_led_queries.py:62 templates/instructor-led.html:63
+#: templates/instructor-led.html:82 templates/instructor-led_backup.html:63
+#: templates/instructor-led_backup.html:82
 msgid "Registrations"
 msgstr ""
 
-#: dashboard_routes/inst_led_queries.py:47
+#: dashboard_routes/inst_led_queries.py:63
 msgid "No-Shows"
 msgstr ""
 
@@ -66,7 +68,7 @@ msgstr ""
 msgid "Go"
 msgstr ""
 
-#: templates/about.html:6 templates/includes/_navbar.html:7
+#: templates/about.html:6 templates/includes/_navbar.html:9
 msgid "About"
 msgstr ""
 
@@ -117,7 +119,7 @@ msgstr ""
 msgid "Online Courses"
 msgstr ""
 
-#: templates/includes/_navbar.html:11 templates/index.html:23
+#: templates/includes/_navbar.html:13 templates/index.html:23
 msgid "Departmental"
 msgstr ""
 
@@ -127,101 +129,105 @@ msgid ""
 "href=\"mailto:sam.louden@canada.ca\">Sam Louden</a>."
 msgstr ""
 
-#: templates/instructor-led.html:16
+#: templates/instructor-led.html:16 templates/instructor-led_backup.html:16
 msgid "Course Information and Overall Numbers"
 msgstr ""
 
-#: templates/instructor-led.html:19
+#: templates/instructor-led.html:19 templates/instructor-led_backup.html:19
 msgid "Indicator"
 msgstr ""
 
-#: templates/instructor-led.html:59
+#: templates/instructor-led.html:59 templates/instructor-led_backup.html:59
 msgid "Top 5 Departments"
 msgstr ""
 
 #: templates/instructor-led.html:62 templates/instructor-led.html:81
+#: templates/instructor-led_backup.html:62
+#: templates/instructor-led_backup.html:81
 msgid "Name"
 msgstr ""
 
-#: templates/instructor-led.html:78
+#: templates/instructor-led.html:78 templates/instructor-led_backup.html:78
 msgid "Top 5 Classifications"
 msgstr ""
 
-#: templates/instructor-led.html:114
+#: templates/instructor-led.html:114 templates/instructor-led_backup.html:114
 msgid "Open & Delivered Offerings per Region"
 msgstr ""
 
-#: templates/instructor-led.html:115
+#: templates/instructor-led.html:115 templates/instructor-led_backup.html:115
 msgid "Offerings"
 msgstr ""
 
-#: templates/instructor-led.html:120
+#: templates/instructor-led.html:120 templates/instructor-led_backup.html:120
 msgid "Atlantic"
 msgstr ""
 
-#: templates/instructor-led.html:121
+#: templates/instructor-led.html:121 templates/instructor-led_backup.html:121
 msgid "NCR"
 msgstr ""
 
-#: templates/instructor-led.html:122
+#: templates/instructor-led.html:122 templates/instructor-led_backup.html:122
 msgid "Ontario"
 msgstr ""
 
-#: templates/instructor-led.html:123
+#: templates/instructor-led.html:123 templates/instructor-led_backup.html:123
 msgid "Pacific"
 msgstr ""
 
-#: templates/instructor-led.html:124
+#: templates/instructor-led.html:124 templates/instructor-led_backup.html:124
 msgid "Prairie"
 msgstr ""
 
-#: templates/instructor-led.html:125
+#: templates/instructor-led.html:125 templates/instructor-led_backup.html:125
 msgid "Quebec"
 msgstr ""
 
-#: templates/instructor-led.html:126
+#: templates/instructor-led.html:126 templates/instructor-led_backup.html:126
 msgid "Outside Canada"
 msgstr ""
 
-#: templates/instructor-led.html:133
+#: templates/instructor-led.html:133 templates/instructor-led_backup.html:133
 msgid "Open & Delivered Offerings per Language"
 msgstr ""
 
-#: templates/instructor-led.html:139
+#: templates/instructor-led.html:139 templates/instructor-led_backup.html:139
 msgid "English"
 msgstr ""
 
-#: templates/instructor-led.html:140
+#: templates/instructor-led.html:140 templates/instructor-led_backup.html:140
 msgid "French"
 msgstr ""
 
-#: templates/instructor-led.html:141
+#: templates/instructor-led.html:141 templates/instructor-led_backup.html:141
 msgid "Bilingual"
 msgstr ""
 
-#: templates/instructor-led.html:148
+#: templates/instructor-led.html:148 templates/instructor-led_backup.html:148
 #, python-format
 msgid "%% of Offerings Cancelled"
 msgstr ""
 
 #: templates/instructor-led.html:160 templates/instructor-led.html:173
-#: templates/instructor-led.html:185
+#: templates/instructor-led.html:185 templates/instructor-led_backup.html:160
+#: templates/instructor-led_backup.html:173
+#: templates/instructor-led_backup.html:185
 msgid "Average All"
 msgstr ""
 
-#: templates/instructor-led.html:168
+#: templates/instructor-led.html:168 templates/instructor-led_backup.html:168
 msgid "Average Class Size"
 msgstr ""
 
-#: templates/instructor-led.html:180
+#: templates/instructor-led.html:180 templates/instructor-led_backup.html:180
 msgid "Average No-Shows per Offering"
 msgstr ""
 
-#: templates/instructor-led.html:184
+#: templates/instructor-led.html:184 templates/instructor-led_backup.html:184
 msgid "Prepared by Curriculum Management and IPSB"
 msgstr ""
 
-#: templates/includes/_navbar.html:3 templates/layout.html:8
+#: templates/includes/_navbar.html:4 templates/layout.html:8
 msgid "CSPS Data Explorer"
 msgstr ""
 
@@ -229,23 +235,31 @@ msgstr ""
 msgid "Top of page"
 msgstr ""
 
-#: templates/includes/_navbar.html:6
+#: templates/not-found.html:6
+msgid "Course Not Found"
+msgstr ""
+
+#: templates/not-found.html:8
+msgid "Please try again."
+msgstr ""
+
+#: templates/includes/_navbar.html:8
 msgid "Home"
 msgstr ""
 
-#: templates/includes/_navbar.html:9
+#: templates/includes/_navbar.html:11
 msgid "Dashboards"
 msgstr ""
 
-#: templates/includes/_navbar.html:12
+#: templates/includes/_navbar.html:14
 msgid "Instructor-Led"
 msgstr ""
 
-#: templates/includes/_navbar.html:13
+#: templates/includes/_navbar.html:15
 msgid "Online"
 msgstr ""
 
-#: templates/includes/_navbar.html:20 templates/includes/_navbar.html:22
+#: templates/includes/_navbar.html:22 templates/includes/_navbar.html:24
 msgid "Français"
 msgstr ""
 
