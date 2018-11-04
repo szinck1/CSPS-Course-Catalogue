@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-11-04 01:38-0400\n"
+"POT-Creation-Date: 2018-11-04 01:48-0400\n"
 "PO-Revision-Date: 2018-10-31 10:53-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -89,11 +89,15 @@ msgstr ""
 msgid "Coming Soon"
 msgstr "En cours de développement"
 
+#: templates/form.html:7
+msgid "TEST - FAKE DATA"
+msgstr "TEST - DONNÉES INVENTÉES"
+
 #: templates/index.html:6
 msgid "Welcome to the CSPS Data Explorer"
 msgstr "Bienvenue à l'explorateur de données de l'ÉFPC"
 
-#: templates/index.html:10
+#: templates/index.html:9
 msgid ""
 "Your favourite new team, the <strong>Innovation and Policy Services "
 "Branch</strong> \n"
@@ -106,27 +110,27 @@ msgstr ""
 "les tableaux de bord de format PDF de l'École avec un catalogue "
 "intéractif afin d'aider à suivre et gérer le cursus."
 
-#: templates/index.html:16
+#: templates/index.html:15
 msgid "Dashboards Currently Available"
 msgstr "Tableaux de bord présentement disponibles"
 
-#: templates/includes/_navbar.html:19 templates/index.html:18
+#: templates/includes/_navbar.html:19 templates/index.html:17
 msgid "Instructor-Led"
 msgstr "Dirigés par un instructeur"
 
-#: templates/index.html:21
+#: templates/index.html:20
 msgid "Soon To Be Implemented"
 msgstr "En cours de développement"
 
-#: templates/includes/_navbar.html:20 templates/index.html:23
+#: templates/includes/_navbar.html:20 templates/index.html:22
 msgid "Online"
 msgstr "En ligne"
 
-#: templates/includes/_navbar.html:18 templates/index.html:24
+#: templates/includes/_navbar.html:18 templates/index.html:23
 msgid "Departmental"
 msgstr "Ministériels"
 
-#: templates/index.html:27
+#: templates/index.html:26
 msgid ""
 "If you encounter any bugs, please contact <a "
 "href=\"mailto:sam.louden@canada.ca\">Sam Louden</a>."
