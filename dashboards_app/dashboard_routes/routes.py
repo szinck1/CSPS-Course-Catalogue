@@ -41,7 +41,7 @@ def instructor_led_dash():
 	# If course_code doesn't exist, redirect to endroute not_found
 	course_title = inst_led_queries.course_title(lang, THIS_YEAR, course_code)
 	if not course_title:
-		return redirect(url_for('dashboards.not_found'))
+		return render_template('not-found.html')
 	
 	# Run queries and save in dict to be passed to templates
 	pass_dict = {
@@ -80,8 +80,3 @@ def departmental():
 @dashboards.route('/online')
 def online():
 	return render_template('online.html')
-
-
-@dashboards.route('/not-found')
-def not_found():
-	return render_template('not-found.html')
