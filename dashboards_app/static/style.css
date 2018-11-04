@@ -25,6 +25,10 @@ a {
 	color: #335075;
 }
 
+.nav-tabs{
+  background-color: #f9f9f9;
+}
+
 .nav-tabs .active a {
 	color: #335075 !important;
 }
@@ -103,5 +107,5 @@ a {
 
 /* Background color when hovering over a table */
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-  background-color: #5fba7d;
+	background-color: #5fba7d;
 }
