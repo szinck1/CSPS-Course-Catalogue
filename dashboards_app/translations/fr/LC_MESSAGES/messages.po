@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-11-03 23:55-0400\n"
+"POT-Creation-Date: 2018-11-04 01:38-0400\n"
 "PO-Revision-Date: 2018-10-31 10:53-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -30,8 +30,7 @@ msgstr "Volet"
 msgid "Main Topic"
 msgstr "Sujet principal"
 
-#: dashboard_routes/inst_led_queries.py:58 templates/instructor-led.html:27
-#: templates/instructor-led_backup.html:27
+#: dashboard_routes/inst_led_queries.py:58 templates/instructor-led.html:33
 msgid "Open Offerings"
 msgstr "Offres ouvertes"
 
@@ -47,9 +46,8 @@ msgstr "Offres annulées"
 msgid "Client Requests"
 msgstr "Demandes des clients"
 
-#: dashboard_routes/inst_led_queries.py:62 templates/instructor-led.html:63
-#: templates/instructor-led.html:82 templates/instructor-led_backup.html:63
-#: templates/instructor-led_backup.html:82
+#: dashboard_routes/inst_led_queries.py:62 templates/instructor-led.html:69
+#: templates/instructor-led.html:88
 msgid "Registrations"
 msgstr "Inscriptions"
 
@@ -69,7 +67,7 @@ msgstr "Paramètres du tableau de bord"
 msgid "Go"
 msgstr "Aller"
 
-#: templates/about.html:6 templates/includes/_navbar.html:9
+#: templates/about.html:6 templates/includes/_navbar.html:14
 msgid "About"
 msgstr "À propos"
 
@@ -79,7 +77,7 @@ msgstr ""
 "Les visualisations sont générées en Python à l'aide de Flask, MySQL, et "
 "Highcharts."
 
-#: templates/about.html:9
+#: templates/about.html:10
 msgid ""
 "Thanks to <a href=\"mailto:derek.khan@canada.ca\">Derek Khan</a> and team"
 " for ensuring access to quality data."
@@ -95,47 +93,40 @@ msgstr "En cours de développement"
 msgid "Welcome to the CSPS Data Explorer"
 msgstr "Bienvenue à l'explorateur de données de l'ÉFPC"
 
-#: templates/index.html:9
+#: templates/index.html:10
 msgid ""
 "Your favourite new team, the <strong>Innovation and Policy Services "
 "Branch</strong> \n"
-"\t\t\t(IPSB), is transitioning the School's PDF dashboards to a new "
-"interactive format. \n"
-"\t\t\tThese online dashboards are available through your browser and are,"
-" pursant to \n"
-"\t\t\tthe School's Open First data policy, free to share and distribute "
-"with both government \n"
-"\t\t\tcolleagues and the general public."
+"\t\t\t(IPSB), is combining the School's PDF dashboards with an "
+"interactive course catalogue \n"
+"\t\t\tto help track and administer the curriculum."
 msgstr ""
 "Votre nouvelle équipe préférée, la <strong>Direction générale des "
-"services d'innovation et de politiques</strong> (SIP), œuvre à la "
-"transition des tableaux de bord de l'École de fichiers PDF à un nouveau "
-"format interactif. Ces tableaux de bord en ligne sont disponibles par le "
-"biais de votre navigateur et, conformément à la politique « Ouvert en "
-"premier » de l'École, peuvent être partagés au sein de et à l'extérieur "
-"du gouvernement."
+"services d'innovation et de politiques</strong> (SIP), œuvre à combiner "
+"les tableaux de bord de format PDF de l'École avec un catalogue "
+"intéractif afin d'aider à suivre et gérer le cursus."
 
 #: templates/index.html:16
 msgid "Dashboards Currently Available"
 msgstr "Tableaux de bord présentement disponibles"
 
-#: templates/index.html:18
-msgid "Instructor-Led Courses"
-msgstr "Cours dirigés par un instructeur"
+#: templates/includes/_navbar.html:19 templates/index.html:18
+msgid "Instructor-Led"
+msgstr "Dirigés par un instructeur"
 
-#: templates/index.html:20
+#: templates/index.html:21
 msgid "Soon To Be Implemented"
 msgstr "En cours de développement"
 
-#: templates/index.html:22
-msgid "Online Courses"
-msgstr "Cours en ligne"
+#: templates/includes/_navbar.html:20 templates/index.html:23
+msgid "Online"
+msgstr "En ligne"
 
-#: templates/includes/_navbar.html:13 templates/index.html:23
+#: templates/includes/_navbar.html:18 templates/index.html:24
 msgid "Departmental"
 msgstr "Ministériels"
 
-#: templates/index.html:26
+#: templates/index.html:27
 msgid ""
 "If you encounter any bugs, please contact <a "
 "href=\"mailto:sam.louden@canada.ca\">Sam Louden</a>."
@@ -143,101 +134,109 @@ msgstr ""
 "Si vous rencontrez des bugs, veuillez contacter <a "
 "href=\"mailto:sam.louden@canada.ca\">Sam Louden</a>."
 
-#: templates/instructor-led.html:16 templates/instructor-led_backup.html:16
+#: templates/instructor-led.html:11
+msgid "Course Description"
+msgstr "Description du cours"
+
+#: templates/instructor-led.html:12
+msgid "Operational Info"
+msgstr "Informations opérationnelles"
+
+#: templates/instructor-led.html:13
+msgid "Dashboard"
+msgstr "Tableau de bord"
+
+#: templates/instructor-led.html:22
 msgid "Course Information and Overall Numbers"
 msgstr "Informations et chiffres globaux"
 
-#: templates/instructor-led.html:19 templates/instructor-led_backup.html:19
+#: templates/instructor-led.html:25
 msgid "Indicator"
 msgstr "Indicateur"
 
-#: templates/instructor-led.html:59 templates/instructor-led_backup.html:59
+#: templates/instructor-led.html:65
 msgid "Top 5 Departments"
 msgstr "Top 5 des ministères"
 
-#: templates/instructor-led.html:62 templates/instructor-led.html:81
-#: templates/instructor-led_backup.html:62
-#: templates/instructor-led_backup.html:81
+#: templates/instructor-led.html:68 templates/instructor-led.html:87
 msgid "Name"
 msgstr "Nom"
 
-#: templates/instructor-led.html:78 templates/instructor-led_backup.html:78
+#: templates/instructor-led.html:84
 msgid "Top 5 Classifications"
 msgstr "Top 5 des classifications"
 
-#: templates/instructor-led.html:114 templates/instructor-led_backup.html:114
+#: templates/instructor-led.html:126
 msgid "Open & Delivered Offerings per Region"
 msgstr "Offres ouvertes et livrées par région"
 
-#: templates/instructor-led.html:115 templates/instructor-led_backup.html:115
+#: templates/instructor-led.html:127
 msgid "Offerings"
 msgstr "Offres"
 
-#: templates/instructor-led.html:120 templates/instructor-led_backup.html:120
+#: templates/instructor-led.html:132
 msgid "Atlantic"
 msgstr "Atlantique"
 
-#: templates/instructor-led.html:121 templates/instructor-led_backup.html:121
+#: templates/instructor-led.html:133
 msgid "NCR"
 msgstr "RCN"
 
-#: templates/instructor-led.html:122 templates/instructor-led_backup.html:122
+#: templates/instructor-led.html:134
 msgid "Ontario"
 msgstr "Ontario"
 
-#: templates/instructor-led.html:123 templates/instructor-led_backup.html:123
+#: templates/instructor-led.html:135
 msgid "Pacific"
 msgstr "Pacifique"
 
-#: templates/instructor-led.html:124 templates/instructor-led_backup.html:124
+#: templates/instructor-led.html:136
 msgid "Prairie"
 msgstr "Prairie"
 
-#: templates/instructor-led.html:125 templates/instructor-led_backup.html:125
+#: templates/instructor-led.html:137
 msgid "Quebec"
 msgstr "Québec"
 
-#: templates/instructor-led.html:126 templates/instructor-led_backup.html:126
+#: templates/instructor-led.html:138
 msgid "Outside Canada"
 msgstr "Hors du Canada"
 
-#: templates/instructor-led.html:133 templates/instructor-led_backup.html:133
+#: templates/instructor-led.html:145
 msgid "Open & Delivered Offerings per Language"
 msgstr "Offres ouvertes et livrées par langue"
 
-#: templates/instructor-led.html:139 templates/instructor-led_backup.html:139
+#: templates/instructor-led.html:151
 msgid "English"
 msgstr "Anglais"
 
-#: templates/instructor-led.html:140 templates/instructor-led_backup.html:140
+#: templates/instructor-led.html:152
 msgid "French"
 msgstr "Français"
 
-#: templates/instructor-led.html:141 templates/instructor-led_backup.html:141
+#: templates/instructor-led.html:153
 msgid "Bilingual"
 msgstr "Bilingue"
 
-#: templates/instructor-led.html:148 templates/instructor-led_backup.html:148
+#: templates/instructor-led.html:160
 #, python-format
 msgid "%% of Offerings Cancelled"
 msgstr "%% d'offres annulées"
 
-#: templates/instructor-led.html:160 templates/instructor-led.html:173
-#: templates/instructor-led.html:185 templates/instructor-led_backup.html:160
-#: templates/instructor-led_backup.html:173
-#: templates/instructor-led_backup.html:185
+#: templates/instructor-led.html:172 templates/instructor-led.html:185
+#: templates/instructor-led.html:197
 msgid "Average All"
 msgstr "Moyenne globale"
 
-#: templates/instructor-led.html:168 templates/instructor-led_backup.html:168
+#: templates/instructor-led.html:180
 msgid "Average Class Size"
 msgstr "Effectif de classe moyen"
 
-#: templates/instructor-led.html:180 templates/instructor-led_backup.html:180
+#: templates/instructor-led.html:192
 msgid "Average No-Shows per Offering"
 msgstr "Absences moyennes par offre"
 
-#: templates/instructor-led.html:184 templates/instructor-led_backup.html:184
+#: templates/instructor-led.html:196
 msgid "Prepared by Curriculum Management and IPSB"
 msgstr "Préparé par Gestion du Curriculum et SIP"
 
@@ -257,23 +256,15 @@ msgstr "Cours introuvable"
 msgid "Please try again."
 msgstr "Veuillez essayer de nouveau."
 
-#: templates/includes/_navbar.html:8
+#: templates/includes/_navbar.html:13
 msgid "Home"
 msgstr "Accueil"
 
-#: templates/includes/_navbar.html:11
+#: templates/includes/_navbar.html:16
 msgid "Dashboards"
 msgstr "Tableaux de bord"
 
-#: templates/includes/_navbar.html:14
-msgid "Instructor-Led"
-msgstr "Dirigés par un instructeur"
-
-#: templates/includes/_navbar.html:15
-msgid "Online"
-msgstr "En ligne"
-
-#: templates/includes/_navbar.html:22 templates/includes/_navbar.html:24
+#: templates/includes/_navbar.html:26 templates/includes/_navbar.html:28
 msgid "Français"
 msgstr "English"
 
