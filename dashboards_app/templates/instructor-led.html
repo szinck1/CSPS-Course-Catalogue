@@ -7,6 +7,12 @@
 
 {% block body %}
 	<div class="container">
+		<ul class="nav nav-tabs nav-justified">
+			<li><a href="#">Course Description</a></li>
+			<li><a href="#">Operational Info</a></li>
+			<li class="active"><a href="#">Dashboard</a></li>
+		</ul>
+		
 		<h1>{{ pass_dict.course_title }}</h1>
 		<div class="row">
 			<!-- General Course Info -->
@@ -105,6 +111,12 @@
 	</div>
 	
 	<script>
+		// Set active tab
+		$(".nav-tabs li").on("click", function(){
+			$(".nav-tabs li").removeClass("active");
+			$(this).addClass("active");
+		});
+		
 		// Set font for Highcharts
 		Highcharts.setOptions({chart: {style: {fontFamily: 'Helvetica'}}});
 		

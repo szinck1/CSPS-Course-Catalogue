@@ -25,6 +25,10 @@ a {
 	color: #335075;
 }
 
+.nav-tabs .active a {
+	color: #335075 !important;
+}
+
 .goc-fip {
 	max-height: 40px;
 	margin: 10px 10px 5px 10px;
