@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-11-04 01:48-0400\n"
+"POT-Creation-Date: 2018-11-05 00:12-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -59,7 +59,7 @@ msgid "Course Title"
 msgstr ""
 
 #: dashboard_routes/routes.py:28
-msgid "Dashboard Parameters"
+msgid "Selection"
 msgstr ""
 
 #: dashboard_routes/routes.py:28
@@ -80,7 +80,8 @@ msgid ""
 " for ensuring access to quality data."
 msgstr ""
 
-#: templates/departmental.html:6 templates/online.html:6
+#: templates/departmental.html:6 templates/index.html:21
+#: templates/online.html:6
 msgid "Coming Soon"
 msgstr ""
 
@@ -89,39 +90,37 @@ msgid "TEST - FAKE DATA"
 msgstr ""
 
 #: templates/index.html:6
-msgid "Welcome to the CSPS Data Explorer"
+msgid "Welcome to the CSPS Course Catalogue"
 msgstr ""
 
 #: templates/index.html:9
 msgid ""
-"Your favourite new team, the <strong>Innovation and Policy Services "
-"Branch</strong> \n"
-"\t\t\t(IPSB), is combining the School's PDF dashboards with an "
-"interactive course catalogue \n"
-"\t\t\tto help track and administer the curriculum."
+"Your two favourite teams, <strong>Curriculum Management</strong> and the"
+" \n"
+"\t\t\t<strong>Innovation and Policy Services Branch</strong>, are "
+"updating the School's \n"
+"\t\t\tPDF dashboards and combining them with an interactive course "
+"catalogue to help track \n"
+"\t\t\tand administer the curriculum."
 msgstr ""
 
-#: templates/index.html:15
-msgid "Dashboards Currently Available"
+#: templates/index.html:16
+msgid "Currently Catalogued"
 msgstr ""
 
-#: templates/includes/_navbar.html:19 templates/index.html:17
-msgid "Instructor-Led"
+#: templates/index.html:18
+msgid "Instructor-Led Courses"
 msgstr ""
 
-#: templates/index.html:20
-msgid "Soon To Be Implemented"
+#: templates/index.html:23
+msgid "Online Courses"
 msgstr ""
 
-#: templates/includes/_navbar.html:20 templates/index.html:22
-msgid "Online"
+#: templates/index.html:24
+msgid "Departmental Usage"
 msgstr ""
 
-#: templates/includes/_navbar.html:18 templates/index.html:23
-msgid "Departmental"
-msgstr ""
-
-#: templates/index.html:26
+#: templates/index.html:27
 msgid ""
 "If you encounter any bugs, please contact <a "
 "href=\"mailto:sam.louden@canada.ca\">Sam Louden</a>."
@@ -234,7 +233,7 @@ msgid "Prepared by Curriculum Management and IPSB"
 msgstr ""
 
 #: templates/includes/_navbar.html:4 templates/layout.html:8
-msgid "CSPS Data Explorer"
+msgid "CSPS Course Catalogue"
 msgstr ""
 
 #: templates/layout.html:49
@@ -254,7 +253,19 @@ msgid "Home"
 msgstr ""
 
 #: templates/includes/_navbar.html:16
-msgid "Dashboards"
+msgid "Catalogue"
+msgstr ""
+
+#: templates/includes/_navbar.html:18
+msgid "Departmental"
+msgstr ""
+
+#: templates/includes/_navbar.html:19
+msgid "Instructor-Led"
+msgstr ""
+
+#: templates/includes/_navbar.html:20
+msgid "Online"
 msgstr ""
 
 #: templates/includes/_navbar.html:26 templates/includes/_navbar.html:28

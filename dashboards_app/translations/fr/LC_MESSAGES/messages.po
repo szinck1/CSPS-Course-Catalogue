@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-11-04 01:48-0400\n"
+"POT-Creation-Date: 2018-11-05 00:12-0500\n"
 "PO-Revision-Date: 2018-10-31 10:53-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -60,8 +60,8 @@ msgid "Course Title"
 msgstr "Titre du cours"
 
 #: dashboard_routes/routes.py:28
-msgid "Dashboard Parameters"
-msgstr "Paramètres du tableau de bord"
+msgid "Selection"
+msgstr "Sélection"
 
 #: dashboard_routes/routes.py:28
 msgid "Go"
@@ -85,7 +85,8 @@ msgstr ""
 "Merci à l'équipe de <a href=\"mailto:derek.khan@canada.ca\">Derek "
 "Khan</a> pour continuer de garantir l'accès à des données fiables."
 
-#: templates/departmental.html:6 templates/online.html:6
+#: templates/departmental.html:6 templates/index.html:21
+#: templates/online.html:6
 msgid "Coming Soon"
 msgstr "En cours de développement"
 
@@ -94,43 +95,44 @@ msgid "TEST - FAKE DATA"
 msgstr "TEST - DONNÉES INVENTÉES"
 
 #: templates/index.html:6
-msgid "Welcome to the CSPS Data Explorer"
-msgstr "Bienvenue à l'explorateur de données de l'ÉFPC"
+msgid "Welcome to the CSPS Course Catalogue"
+msgstr "Bienvenue au Catalogue de cours de l'EFPC"
 
 #: templates/index.html:9
 msgid ""
-"Your favourite new team, the <strong>Innovation and Policy Services "
-"Branch</strong> \n"
-"\t\t\t(IPSB), is combining the School's PDF dashboards with an "
-"interactive course catalogue \n"
-"\t\t\tto help track and administer the curriculum."
+"Your two favourite teams, <strong>Curriculum Management</strong> and the"
+" \n"
+"\t\t\t<strong>Innovation and Policy Services Branch</strong>, are "
+"updating the School's \n"
+"\t\t\tPDF dashboards and combining them with an interactive course "
+"catalogue to help track \n"
+"\t\t\tand administer the curriculum."
 msgstr ""
-"Votre nouvelle équipe préférée, la <strong>Direction générale des "
-"services d'innovation et de politiques</strong> (SIP), œuvre à combiner "
-"les tableaux de bord de format PDF de l'École avec un catalogue "
-"intéractif afin d'aider à suivre et gérer le cursus."
+"Vos équipes préférées, <strong>Gestion du Curriculum</strong> et la "
+"<strong>Direction générale des services "
+"d'innovation et de politiques</strong>, "
+"œuvrent à mettre à jour les tableaux de "
+"bord de format PDF de l'École et à les combiner avec "
+"un catalogue intéractif afin d'aider "
+"à évaluer et gérer le cursus."
 
-#: templates/index.html:15
-msgid "Dashboards Currently Available"
-msgstr "Tableaux de bord présentement disponibles"
+#: templates/index.html:16
+msgid "Currently Catalogued"
+msgstr "Présentement dans le catalogue"
 
-#: templates/includes/_navbar.html:19 templates/index.html:17
-msgid "Instructor-Led"
-msgstr "Dirigés par un instructeur"
+#: templates/index.html:18
+msgid "Instructor-Led Courses"
+msgstr "Cours dirigés par un instructeur"
 
-#: templates/index.html:20
-msgid "Soon To Be Implemented"
-msgstr "En cours de développement"
+#: templates/index.html:23
+msgid "Online Courses"
+msgstr "Cours en ligne"
 
-#: templates/includes/_navbar.html:20 templates/index.html:22
-msgid "Online"
-msgstr "En ligne"
+#: templates/index.html:24
+msgid "Departmental Usage"
+msgstr "Usage ministériel"
 
-#: templates/includes/_navbar.html:18 templates/index.html:23
-msgid "Departmental"
-msgstr "Ministériels"
-
-#: templates/index.html:26
+#: templates/index.html:27
 msgid ""
 "If you encounter any bugs, please contact <a "
 "href=\"mailto:sam.louden@canada.ca\">Sam Louden</a>."
@@ -245,8 +247,8 @@ msgid "Prepared by Curriculum Management and IPSB"
 msgstr "Préparé par Gestion du Curriculum et SIP"
 
 #: templates/includes/_navbar.html:4 templates/layout.html:8
-msgid "CSPS Data Explorer"
-msgstr "Explorateur de données de l'ÉFPC"
+msgid "CSPS Course Catalogue"
+msgstr "Catalogue de cours de l'EFPC"
 
 #: templates/layout.html:49
 msgid "Top of page"
@@ -265,10 +267,21 @@ msgid "Home"
 msgstr "Accueil"
 
 #: templates/includes/_navbar.html:16
-msgid "Dashboards"
-msgstr "Tableaux de bord"
+msgid "Catalogue"
+msgstr "Catalogue"
+
+#: templates/includes/_navbar.html:18
+msgid "Departmental"
+msgstr "Ministériels"
+
+#: templates/includes/_navbar.html:19
+msgid "Instructor-Led"
+msgstr "Dirigés par un instructeur"
+
+#: templates/includes/_navbar.html:20
+msgid "Online"
+msgstr "En ligne"
 
 #: templates/includes/_navbar.html:26 templates/includes/_navbar.html:28
 msgid "Français"
 msgstr "English"
-
