@@ -7,55 +7,22 @@
 		<field Field="course_code" Type="text" Null="YES" Key="" Extra="" Comment="" />
 		<field Field="offering_id" Type="int(11)" Null="YES" Key="" Extra="" Comment="" />
 		<field Field="offering_status" Type="text" Null="YES" Key="" Extra="" Comment="" />
-		<field Field="month_en" Type="text" Null="YES" Key="" Extra="" Comment="" />
-		<field Field="month_fr" Type="text" Null="YES" Key="" Extra="" Comment="" />
 		<field Field="training_hours" Type="double" Null="YES" Key="" Extra="" Comment="" />
 		<field Field="stream_en" Type="text" Null="YES" Key="" Extra="" Comment="" />
 		<field Field="stream_fr" Type="text" Null="YES" Key="" Extra="" Comment="" />
 		<field Field="topic_en" Type="text" Null="YES" Key="" Extra="" Comment="" />
 		<field Field="topic_fr" Type="text" Null="YES" Key="" Extra="" Comment="" />
 		<field Field="offering_language_en" Type="text" Null="YES" Key="" Extra="" Comment="" />
-		<field Field="offering_language_fr" Type="text" Null="YES" Key="" Extra="" Comment="" />
 		<field Field="offering_region_en" Type="text" Null="YES" Key="" Extra="" Comment="" />
-		<field Field="offering_region_fr" Type="text" Null="YES" Key="" Extra="" Comment="" />
-		<field Field="reg_num" Type="text" Null="YES" Key="" Extra="" Comment="" />
+		<field Field="reg_num" Type="int(11)" Null="YES" Key="" Extra="" Comment="" />
 		<field Field="reg_status" Type="text" Null="YES" Key="" Extra="" Comment="" />
 		<field Field="no_show" Type="int(11)" Null="YES" Key="" Extra="" Comment="" />
-		<field Field="student_id" Type="text" Null="YES" Key="" Extra="" Comment="" />
 		<field Field="learner_classif" Type="text" Null="YES" Key="" Extra="" Comment="" />
 		<field Field="billing_dept_code" Type="text" Null="YES" Key="" Extra="" Comment="" />
 		<field Field="billing_dept_name_en" Type="text" Null="YES" Key="" Extra="" Comment="" />
 		<field Field="billing_dept_name_fr" Type="text" Null="YES" Key="" Extra="" Comment="" />
 		<field Field="client" Type="text" Null="YES" Key="" Extra="" Comment="" />
-		<options Name="lsr2017_18" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="49769" Avg_row_length="496" Data_length="24707072" Max_data_length="0" Index_length="0" Data_free="4194304" Create_time="2018-11-01 16:58:46" Collation="utf8mb4_0900_ai_ci" Create_options="" Comment="" />
-	</table_structure>
-	<table_structure name="lsr2018_19">
-		<field Field="course_title_en" Type="text" Null="YES" Key="" Extra="" Comment="" />
-		<field Field="course_title_fr" Type="text" Null="YES" Key="" Extra="" Comment="" />
-		<field Field="course_code" Type="text" Null="YES" Key="" Extra="" Comment="" />
-		<field Field="offering_id" Type="int(11)" Null="YES" Key="" Extra="" Comment="" />
-		<field Field="offering_status" Type="text" Null="YES" Key="" Extra="" Comment="" />
-		<field Field="month_en" Type="text" Null="YES" Key="" Extra="" Comment="" />
-		<field Field="month_fr" Type="text" Null="YES" Key="" Extra="" Comment="" />
-		<field Field="training_hours" Type="double" Null="YES" Key="" Extra="" Comment="" />
-		<field Field="stream_en" Type="text" Null="YES" Key="" Extra="" Comment="" />
-		<field Field="stream_fr" Type="text" Null="YES" Key="" Extra="" Comment="" />
-		<field Field="topic_en" Type="text" Null="YES" Key="" Extra="" Comment="" />
-		<field Field="topic_fr" Type="text" Null="YES" Key="" Extra="" Comment="" />
-		<field Field="offering_language_en" Type="text" Null="YES" Key="" Extra="" Comment="" />
-		<field Field="offering_language_fr" Type="text" Null="YES" Key="" Extra="" Comment="" />
-		<field Field="offering_region_en" Type="text" Null="YES" Key="" Extra="" Comment="" />
-		<field Field="offering_region_fr" Type="text" Null="YES" Key="" Extra="" Comment="" />
-		<field Field="reg_num" Type="text" Null="YES" Key="" Extra="" Comment="" />
-		<field Field="reg_status" Type="text" Null="YES" Key="" Extra="" Comment="" />
-		<field Field="no_show" Type="int(11)" Null="YES" Key="" Extra="" Comment="" />
-		<field Field="student_id" Type="text" Null="YES" Key="" Extra="" Comment="" />
-		<field Field="learner_classif" Type="text" Null="YES" Key="" Extra="" Comment="" />
-		<field Field="billing_dept_code" Type="text" Null="YES" Key="" Extra="" Comment="" />
-		<field Field="billing_dept_name_en" Type="text" Null="YES" Key="" Extra="" Comment="" />
-		<field Field="billing_dept_name_fr" Type="text" Null="YES" Key="" Extra="" Comment="" />
-		<field Field="client" Type="text" Null="YES" Key="" Extra="" Comment="" />
-		<options Name="lsr2018_19" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="40200" Avg_row_length="509" Data_length="20496384" Max_data_length="0" Index_length="0" Data_free="4194304" Create_time="2018-11-01 17:09:12" Collation="utf8mb4_0900_ai_ci" Create_options="" Comment="" />
+		<options Name="lsr2017_18" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="4033" Avg_row_length="394" Data_length="1589248" Max_data_length="0" Index_length="0" Data_free="4194304" Create_time="2018-11-05 04:35:13" Update_time="2018-11-05 04:35:44" Collation="utf8mb4_0900_ai_ci" Create_options="" Comment="" />
 	</table_structure>
 </database>
 </mysqldump>
