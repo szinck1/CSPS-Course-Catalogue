@@ -25,7 +25,7 @@ def instructor_led():
 	if request.method == 'POST' and form.validate():
 		course_code = form.course_code.data
 		return redirect(url_for('dashboards.instructor_led_dash', course_code=course_code))
-	return render_template('form.html', form=form, title=gettext("Dashboard Parameters"), button_val=gettext("Go"))
+	return render_template('form.html', form=form, title=gettext("Selection"), button_val=gettext("Go"))
 
 
 # Run queries and pass to + render template
