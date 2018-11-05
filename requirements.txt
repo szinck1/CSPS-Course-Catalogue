@@ -9,7 +9,7 @@ Flask-Babel==0.12.2
 Flask-MySQL==1.4.0
 Flask-WTF==0.14.2
 idna==2.7
-ItsDangerous==1.0.0
+ItsDangerous==0.9.1
 Jinja2==2.10
 MarkupSafe==1.0
 mysql-connector-python==8.0.13
