@@ -1,5 +1,5 @@
 from flask_babel import gettext
-from dashboards_app.dashboard_routes.utils import query_mysql, decimal_to_float, decimal_to_percent, decimal_to_int
+from catalogue_app.course_routes.utils import query_mysql, decimal_to_float, decimal_to_percent, decimal_to_int
 
 # Note: String interpolation used for 'lang' and 'fiscal_year' because:
 # a) They exist only as server-side variables, aren't user inputs

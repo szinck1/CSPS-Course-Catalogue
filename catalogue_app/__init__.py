@@ -1,6 +1,6 @@
 from flask import Flask, request, session
 from flask_babel import Babel
-from dashboards_app.config import Debug
+from catalogue_app.config import Debug
 
 # Instantiate plugins
 babel = Babel()
@@ -18,9 +18,9 @@ def create_app(config_class=Debug):
 	babel.init_app(app)
 	
 	# Register blueprints
-	from dashboards_app.dashboard_routes.routes import dashboards
-	from dashboards_app.main_routes.routes import main
-	app.register_blueprint(dashboards)
+	from catalogue_app.course_routes.routes import course
+	from catalogue_app.main_routes.routes import main
+	app.register_blueprint(course)
 	app.register_blueprint(main)
 	
 	

@@ -3,7 +3,7 @@ import mysql.connector
 
 # Get config vals for MySQL
 parser = ConfigParser()
-parser.read('./dashboards_app/mysql_config.cfg')
+parser.read('./catalogue_app/mysql_config.cfg')
 
 
 # Query data from MySQL

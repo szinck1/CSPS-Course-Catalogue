@@ -1,4 +1,4 @@
-from dashboards_app import create_app
+from catalogue_app import create_app
 
 app = create_app()
 

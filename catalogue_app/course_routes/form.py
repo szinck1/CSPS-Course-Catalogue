@@ -1,6 +1,6 @@
 import re
-from dashboards_app.config import Debug
-from dashboards_app.dashboard_routes.utils import query_mysql
+from catalogue_app.config import Debug
+from catalogue_app.course_routes.utils import query_mysql
 from wtforms import Form, SelectField
 
 
