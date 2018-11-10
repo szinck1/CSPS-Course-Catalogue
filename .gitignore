@@ -1,3 +1,6 @@
+# Files
+mysql_config.cfg
+
 # Directories
 **/__pycache__/
 **/.ipynb_checkpoints/
