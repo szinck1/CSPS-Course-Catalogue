@@ -2,22 +2,20 @@
 # Re-read, check for potential XSS and SQL injec
 # Check 5 to 10 at random
 # Add fake Prod List as third table, use to build 1st and 2nd tabs
-# Make modular, probably 1 file each
-# Spellcheck everything
-# Drink coffee
+# Make info pages modular, 1 file each
+# Comms w/ Rob and/or spellcheck everything
+# Add L1 data, add comments w/ 1-5 stars, 
 
 
 ### BACKLOG ####
-# Add real data
-# Add caching: if loaded a dashboard in current session, no need to reload
 # Fix jumbotron on mobile
 # Add Google Analytics
 # Text bubbles to aid in interpreting charts (e.g. open offerings from last year, need to close!)
 # Add drilldown
-# Add (cumulative?) unique leaners
-# Add L1 data, add comments w/ 1-5 stars, add GA from Leszek
+# add GA data from Leszek
 # Focus group w/ users, brainstorm for new KPIs for curriculum review process
 # Implement bilingual URLs, not just bilingual page content
-# Add Online, Departmental
+# Add Online, simply use same dashboard with different tooltips
+# Add Departmental or pass on to Frankie's team?
 # Unit testing
 # Group courses by cluster e.g. R001-R005
