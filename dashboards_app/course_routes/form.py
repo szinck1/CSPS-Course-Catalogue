@@ -10,8 +10,8 @@ def _clean_title(course_title):
 	return regex.sub('', course_title).strip()
 
 
-# Build form for Instructor-Led courses
-def inst_led_form(lang, form_title):
+# Build form for courses
+def course_form(lang, form_title):
 	field_1 = 'course_title_{0}'.format(lang)
 	table_name = 'lsr{}'.format(Debug.THIS_YEAR)
 	query = """
@@ -22,9 +22,9 @@ def inst_led_form(lang, form_title):
 	results = query_mysql(query)
 	
 	# SelectField takes list of tuples (pass_value, display_value)
-	form_list = [(tup[0], '{0}: {1}'.format(tup[0], _clean_title(tup[1]))) for tup in results]
+	choices = [(tup[0], '{0}: {1}'.format(tup[0], _clean_title(tup[1]))) for tup in results]
 	
-	class InstLedForm(Form):
-		course_code = SelectField(form_title, choices=form_list)
+	class CourseForm(Form):
+		course_selection = SelectField(form_title, choices=choices)
 	
-	return InstLedForm
+	return CourseForm
