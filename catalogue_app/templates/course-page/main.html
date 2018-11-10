@@ -6,11 +6,60 @@
 {% endblock head %}
 
 {% block body %}
-	<!-- Course Description -->
+	<div class="container">
+		<!-- Tabs -->
+		<ul class="nav nav-tabs nav-justified">
+			<li><a href="#course-description">{{ _('Course Description') }}</a></li>
+			<li><a href="#course-info">{{ _('Course Info') }}</a></li>
+			<li class="active"><a href="#dashboard">{{ _('Dashboard') }}</a></li>
+		</ul>
+		
+		<!-- Tab contents -->
+		<!-- Course Description -->
+		<section id="course-description" class="tab-content hide">
+			<div>
+				<p>Description: Fatso Énormo</p>
+			</div>
+		</section>
+		
+		<!-- Course Info -->
+		<section id="course-info" class="tab-content hide">
+			<div>
+				<p>Info: Lardo Retardo</p>
+			</div>
+		</section>
+		
+		<!-- Dashboard -->
+		<section id="dashboard" class="tab-content active">
+			<div>
+				{% include 'course-page/dashboard.html' %}
+			</div>
+		</section>
+	</div>
 	
-	<!-- Course Info -->
-	
-	<!-- Dashboard -->
-	{% include 'course-page/dashboard.html' %}
-	
+	<script>
+		// Activate and deactivate tabs
+		$(".nav-tabs li").on("click", function(){
+			$(".nav-tabs li").removeClass("active");
+			$(this).addClass("active");
+		});
+		
+		
+		// Show and hide sections
+		$(document).ready(function(){
+			$('.nav-tabs > li > a').click(function(event){
+				event.preventDefault();
+				
+				// Hide section that's currently active
+				var current_section = $('.nav-tabs > li.active > a').attr('href');
+				$(current_section).removeClass('active');
+				$(current_section).addClass('hide');
+				
+				// Show section whose tab was just clicked
+				var new_section = $(this).attr('href');
+				$(new_section).removeClass('hide');
+				$(new_section).addClass('active');
+			});
+		});
+	</script>
 {% endblock body %}
