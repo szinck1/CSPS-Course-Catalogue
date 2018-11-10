@@ -67,7 +67,7 @@ def instructor_led_dash():
 		'avg_no_shows_LY': round(inst_led_queries.avg_no_shows(LAST_YEAR, course_code), 1),
 		'avg_no_shows_TY': round(inst_led_queries.avg_no_shows(THIS_YEAR, course_code), 1)
 	}
-	return render_template('instructor-led.html', pass_dict=pass_dict)
+	return render_template('/course-page/instructor-led.html', pass_dict=pass_dict)
 
 
 # Charts not yet implemented
