@@ -1,5 +1,5 @@
 <h1>{{ pass_dict.course_title }}</h1>
 <br/>
-<div style="padding-right: 300px;">
-	<p>{{ pass_dict.course_description }}</p>
+<div>
+	<p class="text-justify">{{ pass_dict.course_description | safe }}</p>
 </div>
