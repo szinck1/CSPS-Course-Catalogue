@@ -20,14 +20,15 @@ def query_mysql(query, args=None):
 	return results
 
 
-# Convert SQL datatype Decimal to Python float
-def decimal_to_float(my_val):
-	return float(str(my_val[0][0]))
+# Helper functions to convert MySQL results to desired dtype
+def as_string(my_val):
+	return str(my_val[0][0])
 
-# Convert SQL datatype Decimal to percentage for Highcharts
-def decimal_to_percent(my_val):
-	return round(float(str(my_val[0][0])), 2) * 100
+def as_float(my_val):
+	return float(as_string(my_val))
 
-# Convert SQL datatype Decimal to Python int
-def decimal_to_int(my_val):
-	return int(decimal_to_float(my_val))
+def as_int(my_val):
+	return int(as_float(my_val))
+
+def as_percent(my_val):
+	return round(as_float(my_val), 2) * 100
