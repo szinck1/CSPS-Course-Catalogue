@@ -45,8 +45,17 @@ def course_result():
 	
 	# Run queries and save in dict to be passed to templates
 	pass_dict = {
+		#Global
 		'course_code': course_code,
         'course_title': course_title,
+		
+		# Course Description
+		'course_description': queries.course_description(lang, course_code),
+		
+		# Course Info
+		# pass
+		
+		# Dashboard
 		'general_info_LY': queries.general_info(lang, LAST_YEAR, course_code),
 		'general_info_TY': queries.general_info(lang, THIS_YEAR, course_code),
 		'offerings_per_region': queries.offerings_per_region(THIS_YEAR, course_code),
