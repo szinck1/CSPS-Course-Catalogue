@@ -1,5 +1,5 @@
 from flask_babel import gettext
-from catalogue_app.course_routes.utils import query_mysql, decimal_to_float, decimal_to_percent, decimal_to_int
+from catalogue_app.course_routes.utils import query_mysql, as_string, as_float, as_int, as_percent
 
 # Note: String interpolation used for 'lang' and 'fiscal_year' because:
 # a) They exist only as server-side variables, aren't user inputs
@@ -17,7 +17,15 @@ def course_title(lang, fiscal_year, course_code):
 	if not course_title:
 		return False
 	else:
-		return course_title[0][0]
+		return as_string(course_title)
+
+
+def course_description(lang, course_code):
+	# field_name = 'Course_Description_{0}'.format(lang)
+	field_name = 'Course_Description'
+	query_description = "SELECT {0} FROM product_info WHERE course_code = %s LIMIT 1;".format(field_name)
+	description = query_mysql(query_description, (course_code,))
+	return as_string(description)
 
 
 def general_info(lang, fiscal_year, course_code):
@@ -52,15 +60,15 @@ def general_info(lang, fiscal_year, course_code):
 	query_no_shows = "SELECT SUM(no_show) FROM {0} WHERE course_code = %s;".format(table_name)
 	no_shows = query_mysql(query_no_shows, (course_code,))
 	
-	results = [(gettext('Duration (hours)'), duration[0][0]),
-			   (gettext('Stream'), stream[0][0]),
-			   (gettext('Main Topic'), topic[0][0]),
-			   (gettext('Open Offerings'), decimal_to_int(open)),
-			   (gettext('Delivered Offerings'), decimal_to_int(delivered)),
-			   (gettext('Cancelled Offerings'), decimal_to_int(cancelled)),
-			   (gettext('Client Requests'), decimal_to_int(client_reqs)),
-			   (gettext('Registrations'), decimal_to_int(regs)),
-			   (gettext('No-Shows'), decimal_to_int(no_shows))]
+	results = [(gettext('Duration (hours)'), as_float(duration)),
+			   (gettext('Stream'), as_string(stream)),
+			   (gettext('Main Topic'), as_string(topic)),
+			   (gettext('Open Offerings'), as_int(open)),
+			   (gettext('Delivered Offerings'), as_int(delivered)),
+			   (gettext('Cancelled Offerings'), as_int(cancelled)),
+			   (gettext('Client Requests'), as_int(client_reqs)),
+			   (gettext('Registrations'), as_int(regs)),
+			   (gettext('No-Shows'), as_int(no_shows))]
 	return results
 
 
@@ -119,7 +127,7 @@ def offerings_cancelled(fiscal_year, course_code):
 				 WHERE course_code LIKE %s) AS b;
 			""".format(table_name)
 	results = query_mysql(query, (course_code, course_code))
-	return decimal_to_percent(results)
+	return as_percent(results)
 
 
 def top_5_depts(lang, fiscal_year, course_code):
@@ -163,7 +171,7 @@ def avg_class_size(fiscal_year, course_code):
 			) AS sub_table;
 			""".format(table_name)
 	results = query_mysql(query, (course_code,))
-	return decimal_to_int(results)
+	return as_int(results)
 
 
 def avg_no_shows(fiscal_year, course_code):
@@ -180,4 +188,4 @@ def avg_no_shows(fiscal_year, course_code):
 				 WHERE course_code LIKE %s AND offering_status IN ('Open - Normal', 'Delivered - Normal')) AS b;
 			""".format(table_name)
 	results = query_mysql(query, (course_code, course_code))
-	return decimal_to_float(results)
+	return as_float(results)
