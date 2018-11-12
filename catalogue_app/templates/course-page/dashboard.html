@@ -1,18 +1,18 @@
 <h1>{{ pass_dict.course_title }}</h1>
 
 <div class="row">
-	<!-- General Course Info -->
+	<!-- Overall Numbers-->
 	<div class="col-xs-12">
 		<table class="table table-hover">
 			<tr>
-				<td class="text-center" colspan="3"><h4><strong>{{ _('Course Information and Overall Numbers') }}</strong></h4></td>
+				<td class="text-center" colspan="3"><h4><strong>{{ _('Overall Numbers') }}</strong></h4></td>
 			</tr>
 			<tr>
 				<td><strong>{{ _('Fiscal Year') }}</strong></td>
 				<td class="text-center"><strong>{{ LAST_YEAR }}</strong></td>
 				<td class="text-center"><strong>{{ THIS_YEAR }}</strong></td>
 			</tr>
-			{% for tup1, tup2 in pass_dict.general_info_LY|zip(pass_dict.general_info_TY) %}
+			{% for tup1, tup2 in pass_dict.overall_numbers_LY|zip(pass_dict.overall_numbers_TY) %}
 				<tr>
 					<td>{{ tup1[0] }}</td>
 					<!-- If offerings remain open in LAST_YEAR, show in red -->
@@ -26,7 +26,10 @@
 			{% endfor %}
 		</table>
 	</div>
-	
+</div>
+
+
+<div class="row">
 	<!-- Offerings per Region -->
 	<div id="offerings-per-region" class="col-xs-12"></div>
 </div>
