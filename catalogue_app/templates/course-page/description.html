@@ -1,0 +1,26 @@
+<h1>{{ pass_dict.course_title }}</h1>
+<br/>
+<div class="row">
+	<p class="text-justify">{{ pass_dict.course_description | safe }}</p>
+</div>
+<br/>
+<div class="row">
+	<!-- Overall Numbers-->
+	<div class="col-xs-12">
+		<table class="table table-hover">
+			<tr>
+				<td class="text-center" colspan="2"><h4><strong>{{ _('Course Info') }}</strong></h4></td>
+			</tr>
+			<tr>
+				<td><strong>Field</strong></td>
+				<td class="text-right"><strong>Contents</strong></td>
+			</tr>
+			{% for tup in pass_dict.course_info %}
+				<tr>
+					<td>{{ tup[0] }}</td>
+					<td class="text-right">{{ tup[1] }}</td>
+				</tr>
+			{% endfor %}
+		</table>
+	</div>
+</div>
