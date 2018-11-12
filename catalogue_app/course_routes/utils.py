@@ -22,7 +22,8 @@ def query_mysql(query, args=None):
 
 # Helper functions to convert MySQL results to desired dtype
 def as_string(my_val):
-	return str(my_val[0][0])
+	# Account for MySQL returning NULL
+	return str(my_val[0][0]) if my_val[0][0] else False
 
 def as_float(my_val):
 	return float(as_string(my_val))
