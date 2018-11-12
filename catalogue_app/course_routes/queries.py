@@ -22,25 +22,50 @@ def course_title(lang, fiscal_year, course_code):
 
 def course_description(lang, course_code):
 	# field_name = 'Course_Description_{0}'.format(lang)
-	field_name = 'Course_Description'
+	field_name = 'course_description'
 	query_description = "SELECT {0} FROM product_info WHERE course_code = %s LIMIT 1;".format(field_name)
 	description = query_mysql(query_description, (course_code,))
 	return as_string(description)
 
 
-def general_info(lang, fiscal_year, course_code):
+# Helper function to fetch product info
+def _query_product_info(field, lang, course_code):
+	# field_name = '{0}_{1}'.format(field, lang)
+	field_name = field
+	query = "SELECT {0} FROM product_info WHERE course_code = %s LIMIT 1;".format(field_name)
+	result = query_mysql(query, (course_code,))
+	result = as_string(result)
+	return result if result else gettext('Product not yet catalogued')
+
+
+def course_info(lang, course_code):
+	fields = [
+		(gettext('Provider'), 'provider'),
+		(gettext('Business Type'), 'business_type'),
+		(gettext('Business Line'), 'business_line'),
+		(gettext('Stream'), 'stream'),
+		(gettext('Main Topic'), 'main_topic'),
+		(gettext('Functional Area'), 'functional_area'),
+		(gettext('Duration'), 'duration'),
+		(gettext('Displayed on GCcampus'), 'displayed_on_gccampus'),
+		(gettext('Required Training (as determined by TBS)'), 'required_training'),
+		(gettext('Life Cycle Status'), 'life_cycle_status'),
+		(gettext('Learning Outcome'), 'learning_outcome'),
+		(gettext('Communities'), 'communities'),
+		(gettext('Organization Unit'), 'organization_unit'),
+		(gettext('Director'), 'director'),
+		(gettext('Project Lead'), 'project_lead'),
+		(gettext('Program Manager'), 'program_manager'),
+		(gettext('Point of Contact'), 'point_of_contact')
+	]
+	results = []
+	for field in fields:
+		results.append((field[0], _query_product_info(field[1], lang, course_code)))
+	return results
+
+
+def overall_numbers(fiscal_year, course_code):
 	table_name = 'lsr{0}'.format(fiscal_year)
-	
-	query_duration = "SELECT training_hours FROM {0} WHERE course_code = %s LIMIT 1;".format(table_name)
-	duration = query_mysql(query_duration, (course_code,))
-	
-	field_name = 'stream_{0}'.format(lang)
-	query_stream = "SELECT {0} FROM {1} WHERE course_code = %s LIMIT 1;".format(field_name, table_name)
-	stream = query_mysql(query_stream, (course_code,))
-	
-	field_name = 'topic_{0}'.format(lang)
-	query_topic = "SELECT {0} FROM {1} WHERE course_code = %s LIMIT 1;".format(field_name, table_name)
-	topic = query_mysql(query_topic, (course_code,))
 	
 	query_open = "SELECT COUNT(DISTINCT offering_id) FROM {0} WHERE course_code = %s AND offering_status = 'Open - Normal';".format(table_name)
 	open = query_mysql(query_open, (course_code,))
@@ -60,10 +85,7 @@ def general_info(lang, fiscal_year, course_code):
 	query_no_shows = "SELECT SUM(no_show) FROM {0} WHERE course_code = %s;".format(table_name)
 	no_shows = query_mysql(query_no_shows, (course_code,))
 	
-	results = [(gettext('Duration (hours)'), as_float(duration)),
-			   (gettext('Stream'), as_string(stream)),
-			   (gettext('Main Topic'), as_string(topic)),
-			   (gettext('Open Offerings'), as_int(open)),
+	results = [(gettext('Open Offerings'), as_int(open)),
 			   (gettext('Delivered Offerings'), as_int(delivered)),
 			   (gettext('Cancelled Offerings'), as_int(cancelled)),
 			   (gettext('Client Requests'), as_int(client_reqs)),

@@ -53,11 +53,11 @@ def course_result():
 		'course_description': queries.course_description(lang, course_code),
 		
 		# Course Info
-		# pass
+		'course_info': queries.course_info(lang, course_code),
 		
 		# Dashboard
-		'general_info_LY': queries.general_info(lang, LAST_YEAR, course_code),
-		'general_info_TY': queries.general_info(lang, THIS_YEAR, course_code),
+		'overall_numbers_LY': queries.overall_numbers(LAST_YEAR, course_code),
+		'overall_numbers_TY': queries.overall_numbers(THIS_YEAR, course_code),
 		'offerings_per_region': queries.offerings_per_region(THIS_YEAR, course_code),
 		'offerings_per_lang_LY': queries.offerings_per_lang(LAST_YEAR, course_code),
 		'offerings_per_lang_TY': queries.offerings_per_lang(THIS_YEAR, course_code),
