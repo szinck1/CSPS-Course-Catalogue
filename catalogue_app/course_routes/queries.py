@@ -79,7 +79,7 @@ def overall_numbers(fiscal_year, course_code):
 	query_client_reqs = "SELECT COUNT(DISTINCT offering_id) FROM {0} WHERE course_code = %s AND client != '';".format(table_name)
 	client_reqs = query_mysql(query_client_reqs, (course_code,))
 	
-	query_regs = "SELECT COUNT(reg_num) FROM {0} WHERE course_code = %s AND reg_status = 'Confirmed';".format(table_name)
+	query_regs = "SELECT COUNT(reg_id) FROM {0} WHERE course_code = %s AND reg_status = 'Confirmed';".format(table_name)
 	regs = query_mysql(query_regs, (course_code,))
 	
 	query_no_shows = "SELECT SUM(no_show) FROM {0} WHERE course_code = %s;".format(table_name)
@@ -97,10 +97,10 @@ def overall_numbers(fiscal_year, course_code):
 def offerings_per_region(fiscal_year, course_code):
 	table_name = 'lsr{0}'.format(fiscal_year)
 	query = """
-			SELECT offering_region_en, COUNT(DISTINCT offering_id)
+			SELECT offering_region, COUNT(DISTINCT offering_id)
 			FROM {0}
 			WHERE course_code = %s AND offering_status IN ('Open - Normal', 'Delivered - Normal')
-			GROUP BY offering_region_en;
+			GROUP BY offering_region;
 			""".format(table_name)
 	results = query_mysql(query, (course_code,))
 	results = dict(results)
@@ -117,10 +117,10 @@ def offerings_per_region(fiscal_year, course_code):
 def offerings_per_lang(fiscal_year, course_code):
 	table_name = 'lsr{0}'.format(fiscal_year)
 	query = """
-			SELECT offering_language_en, COUNT(DISTINCT offering_id)
+			SELECT offering_language, COUNT(DISTINCT offering_id)
 			FROM {0}
 			WHERE course_code = %s AND offering_status IN ('Open - Normal', 'Delivered - Normal')
-			GROUP BY offering_language_en;
+			GROUP BY offering_language;
 			""".format(table_name)
 	results = query_mysql(query, (course_code,))
 	
@@ -185,7 +185,7 @@ def avg_class_size(fiscal_year, course_code):
 	query = """
 			SELECT AVG(class_size)
 			FROM(
-				SELECT COUNT(reg_num) AS class_size
+				SELECT COUNT(reg_id) AS class_size
 				FROM {0}
 				WHERE course_code LIKE %s AND reg_status= 'Confirmed'
 				GROUP BY offering_id
