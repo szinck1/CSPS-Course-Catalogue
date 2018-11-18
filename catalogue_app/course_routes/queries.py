@@ -142,13 +142,30 @@ def offerings_cancelled(fiscal_year, course_code):
 			FROM
 				(SELECT COUNT(DISTINCT offering_id) AS Mars
 				 FROM {0}
-				 WHERE course_code LIKE %s AND offering_status = 'Cancelled - Normal') AS a,
+				 WHERE course_code = %s AND offering_status = 'Cancelled - Normal') AS a,
 				 
 				(SELECT COUNT(DISTINCT offering_id) AS Mars
 				 FROM {0}
-				 WHERE course_code LIKE %s) AS b;
+				 WHERE course_code = %s) AS b;
 			""".format(table_name)
 	results = query_mysql(query, (course_code, course_code))
+	return as_percent(results)
+
+
+# Need to separate global into separate function, using LIKE '%' too slow
+def offerings_cancelled_global(fiscal_year):
+	table_name = 'lsr{0}'.format(fiscal_year)
+	query = """
+			SELECT SUM(a.Mars / b.Mars)
+			FROM
+				(SELECT COUNT(DISTINCT offering_id) AS Mars
+				 FROM {0}
+				 WHERE offering_status = 'Cancelled - Normal') AS a,
+				 
+				(SELECT COUNT(DISTINCT offering_id) AS Mars
+				 FROM {0}) AS b;
+			""".format(table_name)
+	results = query_mysql(query)
 	return as_percent(results)
 
 
@@ -187,12 +204,29 @@ def avg_class_size(fiscal_year, course_code):
 			FROM(
 				SELECT COUNT(reg_id) AS class_size
 				FROM {0}
-				WHERE course_code LIKE %s AND reg_status= 'Confirmed'
+				WHERE course_code = %s AND reg_status= 'Confirmed'
 				GROUP BY offering_id
 				ORDER BY 1 DESC
 			) AS sub_table;
 			""".format(table_name)
 	results = query_mysql(query, (course_code,))
+	return as_int(results)
+
+
+# Need to separate global into separate function, using LIKE '%' too slow
+def avg_class_size_global(fiscal_year):
+	table_name = 'lsr{0}'.format(fiscal_year)
+	query = """
+			SELECT AVG(class_size)
+			FROM(
+				SELECT COUNT(reg_id) AS class_size
+				FROM {0}
+				WHERE reg_status= 'Confirmed'
+				GROUP BY offering_id
+				ORDER BY 1 DESC
+			) AS sub_table;
+			""".format(table_name)
+	results = query_mysql(query)
 	return as_int(results)
 
 
@@ -203,11 +237,28 @@ def avg_no_shows(fiscal_year, course_code):
 			FROM
 				(SELECT SUM(no_show) AS Mars
 				 FROM {0}
-				 WHERE course_code LIKE %s) AS a,
+				 WHERE course_code = %s) AS a,
 				 
 				(SELECT COUNT(DISTINCT offering_id) AS Mars
 				 FROM {0}
-				 WHERE course_code LIKE %s AND offering_status IN ('Open - Normal', 'Delivered - Normal')) AS b;
+				 WHERE course_code = %s AND offering_status IN ('Open - Normal', 'Delivered - Normal')) AS b;
 			""".format(table_name)
 	results = query_mysql(query, (course_code, course_code))
+	return as_float(results)
+
+
+# Need to separate global into separate function, using LIKE '%' too slow
+def avg_no_shows_global(fiscal_year):
+	table_name = 'lsr{0}'.format(fiscal_year)
+	query = """
+			SELECT SUM(a.Mars / b.Mars)
+			FROM
+				(SELECT SUM(no_show) AS Mars
+				 FROM {0}) AS a,
+				 
+				(SELECT COUNT(DISTINCT offering_id) AS Mars
+				 FROM {0}
+				 WHERE offering_status IN ('Open - Normal', 'Delivered - Normal')) AS b;
+			""".format(table_name)
+	results = query_mysql(query)
 	return as_float(results)
