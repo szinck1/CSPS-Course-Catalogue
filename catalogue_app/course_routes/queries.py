@@ -260,3 +260,15 @@ def avg_no_shows_global(fiscal_year):
 			""".format(table_name)
 	results = query_mysql(query)
 	return as_float(results)
+
+
+def general_comments(course_code):
+	query = """
+		SELECT text_answer, stars
+		FROM comments
+		WHERE course_code = %s AND short_question IN ('Comment - general', 'Comment - General', 'Comments', 'Comments ')
+		ORDER BY RAND()
+		LIMIT 15;
+		"""
+	results = query_mysql(query, (course_code,))
+	return results

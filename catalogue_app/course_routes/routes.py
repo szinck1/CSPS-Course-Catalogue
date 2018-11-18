@@ -74,7 +74,8 @@ def course_result():
 		'avg_no_shows_global_LY': round(queries.avg_no_shows_global(LAST_YEAR), 1),
 		'avg_no_shows_global_TY': round(queries.avg_no_shows_global(THIS_YEAR), 1),
 		'avg_no_shows_LY': round(queries.avg_no_shows(LAST_YEAR, course_code), 1),
-		'avg_no_shows_TY': round(queries.avg_no_shows(THIS_YEAR, course_code), 1)
+		'avg_no_shows_TY': round(queries.avg_no_shows(THIS_YEAR, course_code), 1),
+		'general_comments': queries.general_comments(course_code)
 	}
 	return render_template('/course-page/main.html', pass_dict=pass_dict)
 

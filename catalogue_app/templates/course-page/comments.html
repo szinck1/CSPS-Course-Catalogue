@@ -1,9 +1,33 @@
 <h1>{{ pass_dict.course_title }}</h1>
 <br/>
 
-<!-- Subtabs -->
+
+{% for tup in pass_dict.general_comments %}
+	<h3>Rating:</h3>
+	<!-- Display user's overall satisfaction with stars -->
+	{% if tup[1] == 5 %}
+		<img src="{{ url_for('static', filename='stars/five.png') }}" alt="Five stars" />
+	{% elif tup[1] == 4 %}
+		<img src="{{ url_for('static', filename='stars/four.png') }}" alt="Four stars" />
+	{% elif tup[1] == 3 %}
+		<img src="{{ url_for('static', filename='stars/three.png') }}" alt="Three stars" />
+	{% elif tup[1] == 2 %}
+		<img src="{{ url_for('static', filename='stars/two.png') }}" alt="Two stars" />
+	{% elif tup[1] == 1 %}
+		<img src="{{ url_for('static', filename='stars/one.png') }}" alt="One star" />
+	{% endif %}
+	<!-- User's comments -->
+	<h3>Comment:</h3>
+	{{ tup[0] }}
+	<br/>
+	<br/>
+	<br/>
+{% endfor %}
+
+<!-- Subtabs
 <ul class="nav nav-tabs">
 	<li class="active"><a href="#">{{ _('General') }}</a></li>
 	<li><a href="#">{{ _('Instructor') }}</a></li>
 	<li><a href="#">{{ _('Technical Issues') }}</a></li>
 </ul>
+-->
