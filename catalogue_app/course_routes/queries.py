@@ -206,7 +206,6 @@ def avg_class_size(fiscal_year, course_code):
 				FROM {0}
 				WHERE course_code = %s AND reg_status= 'Confirmed'
 				GROUP BY offering_id
-				ORDER BY 1 DESC
 			) AS sub_table;
 			""".format(table_name)
 	results = query_mysql(query, (course_code,))
@@ -223,7 +222,6 @@ def avg_class_size_global(fiscal_year):
 				FROM {0}
 				WHERE reg_status= 'Confirmed'
 				GROUP BY offering_id
-				ORDER BY 1 DESC
 			) AS sub_table;
 			""".format(table_name)
 	results = query_mysql(query)
