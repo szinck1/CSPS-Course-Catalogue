@@ -1,7 +1,9 @@
 CREATE TABLE comments(
-	course_title_en VARCHAR(200),
+	course_title VARCHAR(200),
 	course_code VARCHAR(20),
 	survey_id VARCHAR(15),
+	learner_classif VARCHAR(80),
+	offering_city VARCHAR(60),
 	short_question VARCHAR(60),
 	text_answer TEXT,
 	stars TINYINT
@@ -9,15 +11,15 @@ CREATE TABLE comments(
 
 
 
-LOAD DATA INFILE 'D:\\comments.csv'
+LOAD DATA INFILE 'C:\\comments.csv'
 INTO TABLE comments
 CHARACTER SET UTF8
 FIELDS OPTIONALLY ENCLOSED BY '"'
 TERMINATED BY ','
-LINES TERMINATED BY '\n'
+LINES TERMINATED BY '\r\n'
 IGNORE 1 LINES;
 
 
 
 # Index
-CREATE INDEX idx_sq ON comments(short_question);
+CREATE INDEX idx_cc_sq ON comments(course_code, short_question);
