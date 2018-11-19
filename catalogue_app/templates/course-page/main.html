@@ -8,7 +8,7 @@
 {% block body %}
 	<div class="container">
 		<!-- Tabs -->
-		<ul class="nav nav-tabs nav-justified">
+		<ul class="nav nav-tabs nav-justified main-tabs">
 			<li class="active"><a href="#description">{{ _('Course Description') }}</a></li>
 			<li><a href="#dashboard">{{ _('Dashboard') }}</a></li>
 			<li><a href="#ratings">{{ _('Ratings') }}</a></li>
@@ -39,19 +39,37 @@
 	
 	<script>
 		// Activate and deactivate tabs
-		$(".nav-tabs li").on("click", function(){
-			$(".nav-tabs li").removeClass("active");
+		$(".main-tabs li").on("click", function(){
+			$(".main-tabs li").removeClass("active");
+			$(this).addClass("active");
+		});
+		$(".sub-tabs li").on("click", function(){
+			$(".sub-tabs li").removeClass("active");
 			$(this).addClass("active");
 		});
 		
-		
 		// Show and hide sections
 		$(document).ready(function(){
-			$('.nav-tabs > li > a').click(function(event){
+			$('.main-tabs > li > a').click(function(event){
 				event.preventDefault();
 				
 				// Hide section that's currently active
-				var current_section = $('.nav-tabs > li.active > a').attr('href');
+				var current_section = $('.main-tabs > li.active > a').attr('href');
+				$(current_section).removeClass('active');
+				$(current_section).addClass('hide');
+				
+				// Show section whose tab was just clicked
+				var new_section = $(this).attr('href');
+				$(new_section).removeClass('hide');
+				$(new_section).addClass('active');
+			});
+		});
+		$(document).ready(function(){
+			$('.sub-tabs > li > a').click(function(event){
+				event.preventDefault();
+				
+				// Hide section that's currently active
+				var current_section = $('.sub-tabs > li.active > a').attr('href');
 				$(current_section).removeClass('active');
 				$(current_section).addClass('hide');
 				
