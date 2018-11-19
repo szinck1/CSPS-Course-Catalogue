@@ -25,11 +25,17 @@ a {
 	color: #335075;
 }
 
-.nav-tabs{
-  background-color: #f9f9f9;
+/*
+.main-tabs{
+	background-color: #f9f9f9;
+}
+*/
+
+.main-tabs .active a {
+	color: #335075 !important;
 }
 
-.nav-tabs .active a {
+.sub-tabs .active a {
 	color: #335075 !important;
 }
 
