@@ -264,11 +264,29 @@ def avg_no_shows_global(fiscal_year):
 
 def general_comments(course_code):
 	query = """
-		SELECT text_answer, stars
+		SELECT text_answer, stars, learner_classif, offering_city
 		FROM comments
-		WHERE course_code = %s AND short_question IN ('Comment - general', 'Comment - General', 'Comments', 'Comments ')
+		WHERE course_code = %s AND short_question IN ('Comment - general', 'Comment - General ', 'Comments', 'Comments  ')
 		ORDER BY RAND()
 		LIMIT 15;
 		"""
 	results = query_mysql(query, (course_code,))
+	# Correct learner classifications e.g. "Big Cheese - Unknown" -> "Big Cheese"
+	# Correct city names e.g. NORTH YORK -> North York
+	results = [(tup[0], tup[1], tup[2].replace(' - Unknown', ''), tup[3].title().replace('(Ncr)', '(NCR)')) for tup in results]
+	return results
+
+
+def instructor_comments(course_code):
+	query = """
+		SELECT text_answer, stars, learner_classif, offering_city
+		FROM comments
+		WHERE course_code = %s AND short_question IN ('Comment - Instructor', 'Comments on Teacher', 'Comments on Guest Speaker')
+		ORDER BY RAND()
+		LIMIT 15;
+		"""
+	results = query_mysql(query, (course_code,))
+	# Correct learner classifications e.g. "Big Cheese - Unknown" -> "Big Cheese"
+	# Correct city names e.g. NORTH YORK -> North York
+	results = [(tup[0], tup[1], tup[2].replace(' - Unknown', ''), tup[3].title().replace('(Ncr)', '(NCR)')) for tup in results]
 	return results
