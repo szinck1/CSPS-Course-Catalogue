@@ -11,7 +11,7 @@ CREATE TABLE comments(
 
 
 
-LOAD DATA INFILE 'C:\\comments.csv'
+LOAD DATA INFILE 'D:\\comments.csv'
 INTO TABLE comments
 CHARACTER SET UTF8
 FIELDS OPTIONALLY ENCLOSED BY '"'

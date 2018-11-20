@@ -1,0 +1,23 @@
+CREATE TABLE drf2017_18(
+	course_title VARCHAR(200),
+	course_code VARCHAR(20),
+	month VARCHAR(10),
+	month_num TINYINT,
+	response_id VARCHAR(15),
+	short_question VARCHAR(60),
+	numerical_answer TINYINT
+);
+
+
+
+LOAD DATA INFILE 'D:\\drf2017_18.csv'
+INTO TABLE drf2017_18
+CHARACTER SET UTF8
+FIELDS OPTIONALLY ENCLOSED BY '"'
+TERMINATED BY ','
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+
+# Index
