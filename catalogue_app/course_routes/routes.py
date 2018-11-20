@@ -43,11 +43,15 @@ def course_result():
 	if not course_title:
 		return render_template('not-found.html')
 	
+	# Check if course is online - needed for certain templates
+	online_course = queries.online_course(THIS_YEAR, course_code)
+	
 	# Run queries and save in dict to be passed to templates
 	pass_dict = {
 		#Global
 		'course_code': course_code,
         'course_title': course_title,
+		'online_course': online_course,
 		
 		# Course Description
 		'course_description': queries.course_description(lang, course_code),
