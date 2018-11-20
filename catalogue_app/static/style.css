@@ -115,3 +115,8 @@ a {
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
 	background-color: #5fba7d;
 }
+
+/* Border color when hovering over user comment avatars */
+.thumbnail:hover {
+	border-color: #335075 !important;
+}
