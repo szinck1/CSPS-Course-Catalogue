@@ -11,7 +11,7 @@
 		<ul class="nav nav-tabs nav-justified main-tabs">
 			<li class="active"><a href="#description">{{ _('Course Description') }}</a></li>
 			<li><a href="#dashboard">{{ _('Dashboard') }}</a></li>
-			<li><a href="#ratings">{{ _('Ratings') }}</a></li>
+			<li><a href="#drf">{{ _('DRF Indicators') }}</a></li>
 			<li><a href="#comments">{{ _('Comments') }}</a></li>
 		</ul>
 		
@@ -26,9 +26,9 @@
 			{% include 'course-page/dashboard.html' %}
 		</section>
 		
-		<!-- Level 1 Statistics -->
-		<section id="ratings" class="tab-content hide">
-			{% include 'course-page/ratings.html' %}
+		<!-- Level 1 DRF Indicators -->
+		<section id="drf" class="tab-content hide">
+			{% include 'course-page/drf.html' %}
 		</section>
 		
 		<!-- Level 1 Comments -->
