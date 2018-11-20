@@ -20,6 +20,14 @@ def course_title(lang, fiscal_year, course_code):
 		return as_string(course_title)
 
 
+def online_course(fiscal_year, course_code):
+	table_name = 'lsr{0}'.format(fiscal_year)
+	query = "SELECT delivery_type FROM {0} WHERE course_code = %s LIMIT 1;".format(table_name)
+	delivery_type = query_mysql(query, (course_code,))
+	delivery_type = as_string(delivery_type)
+	return True if (delivery_type == 'Online - Self-Paced' or delivery_type == 'Documentation') else False
+
+
 def course_description(lang, course_code):
 	# field_name = 'Course_Description_{0}'.format(lang)
 	field_name = 'course_description'
