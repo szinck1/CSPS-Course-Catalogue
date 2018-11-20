@@ -4,7 +4,7 @@
 <ul class="nav nav-tabs nav-justified sub-tabs">
 	<li class="active"><a href="#general-comments">{{ _('General') }}</a></li>
 	<li><a href="#instructor-comments">{{ _('Instructor') }}</a></li>
-	<li><a href="#technical-issues">{{ _('Technical Issues') }}</a></li>
+	<li><a href="#other">{{ _('Other') }}</a></li>
 </ul>
 <br/>
 
@@ -12,26 +12,37 @@
 <!-- General Comments -->
 <section id="general-comments" class="tab-content active">
 	{% for tup in pass_dict.general_comments %}
-		<!-- User's classifcation and offering (not learner) city -->
-		<h3>Who:</h3>
-		<p>{{ tup[2] }} in {{ tup[3] }}</p>
-		<h3>Rating:</h3>
-		<!-- Display user's overall satisfaction with stars -->
-		Overall Satisfaction
-		{% if tup[1] == 5 %}
-			<img src="{{ url_for('static', filename='stars/five.png') }}" alt="Five stars" />
-		{% elif tup[1] == 4 %}
-			<img src="{{ url_for('static', filename='stars/four.png') }}" alt="Four stars" />
-		{% elif tup[1] == 3 %}
-			<img src="{{ url_for('static', filename='stars/three.png') }}" alt="Three stars" />
-		{% elif tup[1] == 2 %}
-			<img src="{{ url_for('static', filename='stars/two.png') }}" alt="Two stars" />
-		{% elif tup[1] == 1 %}
-			<img src="{{ url_for('static', filename='stars/one.png') }}" alt="One star" />
-		{% endif %}
-		<!-- User's comments -->
-		<h3>Comment:</h3>
-		{{ tup[0] }}
+		<div class="row">
+			<div class="col-md-12">
+				<div class="media">
+					<!-- User avatar -->
+					<a class="thumbnail pull-left" style="padding: 0; margin-right: 10px;">
+						<img src="{{ url_for('static', filename='stars/avatar3.png') }}" alt="Avatar" />
+					</a>
+					<div class="media-body">
+						<!-- User classification and offering city -->
+						<h4>{{ tup[2] }}, <em>{{ tup[3] }}</em></h4>
+						<!-- Display user overall satisfaction with stars -->
+						<h5>
+							Overall Satisfaction: 
+							{% if tup[1] == 5 %}
+								<img src="{{ url_for('static', filename='stars/five.png') }}" alt="Five stars" />
+							{% elif tup[1] == 4 %}
+								<img src="{{ url_for('static', filename='stars/four.png') }}" alt="Four stars" />
+							{% elif tup[1] == 3 %}
+								<img src="{{ url_for('static', filename='stars/three.png') }}" alt="Three stars" />
+							{% elif tup[1] == 2 %}
+								<img src="{{ url_for('static', filename='stars/two.png') }}" alt="Two stars" />
+							{% elif tup[1] == 1 %}
+								<img src="{{ url_for('static', filename='stars/one.png') }}" alt="One star" />
+							{% endif %}
+						</h5>
+						<!-- User comment -->
+						<p>{{ tup[0] }}</p>
+					</div>
+				</div>
+			</div>
+		</div>
 		<br/>
 		<br/>
 		<br/>
@@ -41,33 +52,44 @@
 <!-- Instructor Comments -->
 <section id="instructor-comments" class="tab-content hide">
 	{% for tup in pass_dict.instructor_comments %}
-		<!-- User's classifcation and offering (not learner) city -->
-		<h3>Who:</h3>
-		<p>{{ tup[2] }} in {{ tup[3] }}</p>
-		<h3>Rating:</h3>
-		<!-- Display user's teacher rating???? with stars -->
-		Teacher Rating
-		{% if tup[1] == 5 %}
-			<img src="{{ url_for('static', filename='stars/five.png') }}" alt="Five stars" />
-		{% elif tup[1] == 4 %}
-			<img src="{{ url_for('static', filename='stars/four.png') }}" alt="Four stars" />
-		{% elif tup[1] == 3 %}
-			<img src="{{ url_for('static', filename='stars/three.png') }}" alt="Three stars" />
-		{% elif tup[1] == 2 %}
-			<img src="{{ url_for('static', filename='stars/two.png') }}" alt="Two stars" />
-		{% elif tup[1] == 1 %}
-			<img src="{{ url_for('static', filename='stars/one.png') }}" alt="One star" />
-		{% endif %}
-		<!-- User's comments -->
-		<h3>Comment:</h3>
-		{{ tup[0] }}
+		<div class="row">
+			<div class="col-md-12">
+				<div class="media">
+					<!-- User avatar -->
+					<a class="thumbnail pull-left" style="padding: 0; margin-right: 10px;">
+						<img src="{{ url_for('static', filename='stars/avatar3.png') }}" alt="Avatar" />
+					</a>
+					<div class="media-body">
+						<!-- User classification and offering city -->
+						<h4>{{ tup[2] }}, <em>{{ tup[3] }}</em></h4>
+						<!-- Display user overall satisfaction with stars -->
+						<h5>
+							Overall Satisfaction: 
+							{% if tup[1] == 5 %}
+								<img src="{{ url_for('static', filename='stars/five.png') }}" alt="Five stars" />
+							{% elif tup[1] == 4 %}
+								<img src="{{ url_for('static', filename='stars/four.png') }}" alt="Four stars" />
+							{% elif tup[1] == 3 %}
+								<img src="{{ url_for('static', filename='stars/three.png') }}" alt="Three stars" />
+							{% elif tup[1] == 2 %}
+								<img src="{{ url_for('static', filename='stars/two.png') }}" alt="Two stars" />
+							{% elif tup[1] == 1 %}
+								<img src="{{ url_for('static', filename='stars/one.png') }}" alt="One star" />
+							{% endif %}
+						</h5>
+						<!-- User comment -->
+						<p>{{ tup[0] }}</p>
+					</div>
+				</div>
+			</div>
+		</div>
 		<br/>
 		<br/>
 		<br/>
 	{% endfor %}
 </section>
 
-<!-- Technical Issues -->
-<section id="technical-issues" class="tab-content hide">
-	<p>Meow</p>
+<!-- Other -->
+<section id="other" class="tab-content hide">
+	
 </section>
