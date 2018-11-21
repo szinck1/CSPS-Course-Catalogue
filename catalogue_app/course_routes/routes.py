@@ -80,12 +80,14 @@ def course_result():
 		'avg_no_shows_LY': round(queries.avg_no_shows(LAST_YEAR, course_code), 1),
 		'avg_no_shows_TY': round(queries.avg_no_shows(THIS_YEAR, course_code), 1),
 		'general_comments': queries.general_comments(course_code),
-		'instructor_comments': queries.instructor_comments(course_code)
+		'instructor_comments': queries.instructor_comments(course_code),
+		'reason_to_participate': queries.reason_to_participate(course_code),
+		'technical_issues': queries.technical_issues(course_code)
 	}
 	return render_template('/course-page/main.html', pass_dict=pass_dict)
 
 
-# Charts not yet implemented
+# Not yet implemented
 @course.route('/departmental')
 def departmental():
 	return render_template('departmental.html')
