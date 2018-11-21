@@ -100,7 +100,7 @@
 	function reasonToParticipate (id) {
 		$('#' + String(id)).highcharts({
 			chart: {type: 'pie'},
-			title: {text: 'Reason to Participate'},
+			title: {text: 'Reason to Participate', style: {fontWeight: 'bold'}},
 			tooltip: {enabled: false},
 			plotOptions: {
 				pie: {
@@ -124,7 +124,7 @@
 	function technicalIssues (id) {
 		$('#' + String(id)).highcharts({
 			chart: {type: 'pie'},
-			title: {text: 'Did You Experience Technical Issues?'},
+			title: {text: 'Did You Experience Technical Issues?', style: {fontWeight: 'bold'}},
 			tooltip: {enabled: false},
 			plotOptions: {
 				pie: {
