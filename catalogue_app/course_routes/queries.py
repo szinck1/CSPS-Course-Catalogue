@@ -332,3 +332,26 @@ def technical_issues(course_code):
 	for tup in results:
 		results_processed.append({'name': tup[0], 'y': tup[1]})
 	return results_processed if results_processed else [{'name': 'No response', 'y': 1}]
+
+
+def drf_average(fiscal_year, short_question, course_code):
+	table_name = 'drf{0}'.format(fiscal_year)
+	query = """
+	SELECT month, AVG(numerical_answer)
+	FROM {0}
+	WHERE course_code = %s AND short_question = %s
+	GROUP BY month
+	ORDER BY month_num;
+	""".format(table_name)
+	results = query_mysql(query, (course_code, short_question))
+	
+	# Process results into format required by Highcharts
+	results_processed = []
+	for tup in results:
+		results_processed.append(round(float(tup[1]), 2))
+	return results_processed
+
+
+
+
+

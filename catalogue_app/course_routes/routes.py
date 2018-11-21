@@ -82,7 +82,11 @@ def course_result():
 		'general_comments': queries.general_comments(course_code),
 		'instructor_comments': queries.instructor_comments(course_code),
 		'reason_to_participate': queries.reason_to_participate(course_code),
-		'technical_issues': queries.technical_issues(course_code)
+		'technical_issues': queries.technical_issues(course_code),
+		'overall_satisfaction': queries.drf_average(THIS_YEAR, 'Overall Satisfaction', course_code),
+		'knowledge_before': queries.drf_average(THIS_YEAR, 'Knowledge before', course_code),
+		'knowledge_after': queries.drf_average(THIS_YEAR, 'Knowledge after', course_code),
+		'learning_needs_met': queries.drf_average(THIS_YEAR, 'Learning Needs Met', course_code)
 	}
 	return render_template('/course-page/main.html', pass_dict=pass_dict)
 
