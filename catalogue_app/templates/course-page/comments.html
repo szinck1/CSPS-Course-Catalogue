@@ -13,11 +13,11 @@
 <section id="general-comments" class="tab-content active">
 	{% for tup in pass_dict.general_comments %}
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-xs-12">
 				<div class="media">
 					<!-- User avatar -->
 					<a class="thumbnail pull-left" style="padding: 0; margin-right: 10px;">
-						<img src="{{ url_for('static', filename='stars/avatar3.png') }}" alt="Avatar" />
+						<img src="{{ url_for('static', filename='stars/avatar2.png') }}" alt="Avatar" />
 					</a>
 					<div class="media-body">
 						<!-- User classification and offering city -->
@@ -53,11 +53,11 @@
 <section id="instructor-comments" class="tab-content hide">
 	{% for tup in pass_dict.instructor_comments %}
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-xs-12">
 				<div class="media">
 					<!-- User avatar -->
 					<a class="thumbnail pull-left" style="padding: 0; margin-right: 10px;">
-						<img src="{{ url_for('static', filename='stars/avatar3.png') }}" alt="Avatar" />
+						<img src="{{ url_for('static', filename='stars/avatar2.png') }}" alt="Avatar" />
 					</a>
 					<div class="media-body">
 						<!-- User classification and offering city -->
@@ -91,5 +91,61 @@
 
 <!-- Other -->
 <section id="other" class="tab-content hide">
-	
+	<!-- Highcharts: Pie chart showing 'reason to participate' -->
+	<div id="reason-to-participate" class="col-xs-12"></div>
+	<div id="technical-issues" class="col-xs-12"></div>
 </section>
+
+<script>
+	function reasonToParticipate (id) {
+		$('#' + String(id)).highcharts({
+			chart: {type: 'pie'},
+			title: {text: 'Reason to Participate'},
+			tooltip: {enabled: false},
+			plotOptions: {
+				pie: {
+					allowPointSelect: true,
+					cursor: 'pointer',
+					dataLabels: {
+						enabled: true,
+						format: '<b>{point.name}</b>: {point.percentage:.0f}%',
+						style: {color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'}
+					}
+				}
+			},
+			credits: {text: ''},
+			series: [{
+				name: '',
+				colorByPoint: true,
+				data: {{ pass_dict.reason_to_participate | safe }}
+			}]
+		});
+	};
+	function technicalIssues (id) {
+		$('#' + String(id)).highcharts({
+			chart: {type: 'pie'},
+			title: {text: 'Did You Experience Technical Issues?'},
+			tooltip: {enabled: false},
+			plotOptions: {
+				pie: {
+					allowPointSelect: true,
+					cursor: 'pointer',
+					dataLabels: {
+						enabled: true,
+						format: '<b>{point.name}</b>: {point.percentage:.0f}%',
+						style: {color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'}
+					}
+				}
+			},
+			credits: {text: "{{ _('Prepared by Curriculum Management and IPSB') }}"},
+			series: [{
+				name: '',
+				colorByPoint: true,
+				data: {{ pass_dict.technical_issues | safe }}
+			}]
+		});
+	};
+	
+	reasonToParticipate('reason-to-participate');
+	technicalIssues('technical-issues');
+</script>
