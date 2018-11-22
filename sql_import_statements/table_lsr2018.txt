@@ -10,6 +10,7 @@ CREATE TABLE lsr2018_19(
 	offering_status VARCHAR(30),
 	offering_language VARCHAR(50),
 	offering_region VARCHAR(30),
+	offering_province VARCHAR(30),
 	reg_id INT PRIMARY KEY,
 	reg_status VARCHAR(30),
 	no_show INT,
