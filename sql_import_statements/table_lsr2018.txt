@@ -2,7 +2,7 @@ CREATE TABLE lsr2018_19(
 	course_title_en VARCHAR(200),
 	course_title_fr VARCHAR(300),
 	course_code VARCHAR(20),
-	delivery_type VARCHAR(30),
+	business_type VARCHAR(30),
 	offering_id INT,
 	month VARCHAR(10),
 	client VARCHAR(50),
