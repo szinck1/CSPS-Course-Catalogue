@@ -1,0 +1,35 @@
+CREATE TABLE product_info(
+	course_code VARCHAR(20) PRIMARY KEY,
+	course_description TEXT,
+	business_type VARCHAR(40),
+	provider VARCHAR(10),
+	displayed_on_gccampus VARCHAR(5),
+	duration FLOAT,
+	stream VARCHAR(15),
+	main_topic VARCHAR(40),
+	business_line VARCHAR(20),
+	required_training TEXT(5),
+	communities VARCHAR(100),
+	learning_outcome VARCHAR(20),
+	functional_area VARCHAR(10),
+	life_cycle_status VARCHAR(20),
+	point_of_contact VARCHAR(40),
+	director VARCHAR(40),
+	program_manager VARCHAR(40),
+	project_lead VARCHAR(40),
+	organization_unit VARCHAR(50)
+);
+
+
+
+LOAD DATA INFILE 'D:\\product_info.csv'
+INTO TABLE product_info
+CHARACTER SET UTF8
+FIELDS OPTIONALLY ENCLOSED BY '"'
+TERMINATED BY ','
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+
+
+# Index
