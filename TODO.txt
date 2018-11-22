@@ -19,5 +19,7 @@
 # add GA data from Lesek
 # link to content e.g. instructor's manual
 # link to offerings on gccampus
+# loading screen
+# dropdown to divide dashboard into sections e.g. registrations, OL accessibility (learner lang vs offering lang)
 # focus group w/ users, brainstorm for new KPIs for curriculum review process
 # unit testing
