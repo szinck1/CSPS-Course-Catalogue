@@ -63,6 +63,7 @@ def course_result():
 		'overall_numbers_LY': queries.overall_numbers(LAST_YEAR, course_code),
 		'overall_numbers_TY': queries.overall_numbers(THIS_YEAR, course_code),
 		'offerings_per_region': queries.offerings_per_region(THIS_YEAR, course_code),
+		'province_drilldown': queries.province_drilldown(THIS_YEAR, course_code),
 		'offerings_per_lang_LY': queries.offerings_per_lang(LAST_YEAR, course_code),
 		'offerings_per_lang_TY': queries.offerings_per_lang(THIS_YEAR, course_code),
 		'offerings_cancelled_global_LY': queries.offerings_cancelled_global(LAST_YEAR),

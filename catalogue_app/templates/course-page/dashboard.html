@@ -103,7 +103,6 @@
 	<div id="avg-no-shows" class="col-xs-12 col-md-6"></div>
 </div>
 
-
 <script>
 	// Add tooltip
 	$(document).ready(function () {
@@ -122,19 +121,34 @@
 		$('#' + String(id)).highcharts({
 			chart: {type: 'column'},
 			title: {text: "{{ _('Open & Delivered Offerings per Region') }}", style: {fontWeight: 'bold'}},
-			xAxis: {categories: ["{{ _('Offerings') }}"]},
+			xAxis: {type: 'category'},
 			yAxis: {title: {text: ''}, allowDecimals: false, min: 0},
-			legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
+			legend: {enabled: false},
 			credits: {text: ''},
-			series: [
-				{name: "{{ _('Atlantic') }}", data: [{{ pass_dict.offerings_per_region['Atlantic'] }}]},
-				{name: "{{ _('NCR') }}", data: [{{ pass_dict.offerings_per_region['NCR'] }}]},
-				{name: "{{ _('Ontario') }}", data: [{{ pass_dict.offerings_per_region['Ontario'] }}]},
-				{name: "{{ _('Pacific') }}", data: [{{ pass_dict.offerings_per_region['Pacific'] }}]},
-				{name: "{{ _('Prairie') }}", data: [{{ pass_dict.offerings_per_region['Prairie'] }}]},
-				{name: "{{ _('Quebec') }}", data: [{{ pass_dict.offerings_per_region['Quebec'] }}]},
-				{name: "{{ _('Outside Canada') }}", data: [{{ pass_dict.offerings_per_region['Outside Canada'] }}]}
-			]
+			series: [{
+				name: 'Offerings',
+				colorByPoint: true,
+				data: [
+					{name: 'Atlantic', drilldown: 'Atlantic', y: {{ pass_dict.offerings_per_region['Atlantic'] }} },
+					{name: 'NCR', drilldown: 'NCR', y: {{ pass_dict.offerings_per_region['NCR'] }} },
+					{name: 'Ontario', drilldown: 'Ontario', y: {{ pass_dict.offerings_per_region['Ontario'] }} },
+					{name: 'Pacific', drilldown: 'Pacific', y: {{ pass_dict.offerings_per_region['Pacific'] }} },
+					{name: 'Prairie', drilldown: 'Prairie', y: {{ pass_dict.offerings_per_region['Prairie'] }} },
+					{name: 'Quebec', drilldown: 'Quebec', y: {{ pass_dict.offerings_per_region['Quebec'] }} },
+					{name: 'Outside Canada', drilldown: 'Outside Canada', y: {{ pass_dict.offerings_per_region['Outside Canada'] }} }
+				]
+			}],
+			drilldown: {
+				series: [
+					{name: 'Atlantic', id: 'Atlantic', data: {{ pass_dict.province_drilldown['Atlantic'] | safe }} },
+					{name: 'NCR', id: 'NCR', data: {{ pass_dict.province_drilldown['NCR'] | safe }} },
+					{name: 'Ontario', id: 'Ontario', data: {{ pass_dict.province_drilldown['Ontario'] | safe }} },
+					{name: 'Pacific', id: 'Pacific', data: {{ pass_dict.province_drilldown['Pacific'] | safe }} },
+					{name: 'Prairie', id: 'Prairie', data: {{ pass_dict.province_drilldown['Prairie'] | safe }} },
+					{name: 'Quebec', id: 'Quebec', data: {{ pass_dict.province_drilldown['Québec'] | safe }} },
+					{name: 'Outside Canada', id: 'Outside Canada', data: {{ pass_dict.province_drilldown['Outside Canada'] | safe }} },
+				]
+			}
 		});
 	};
 	function offeringsPerLang (id) {

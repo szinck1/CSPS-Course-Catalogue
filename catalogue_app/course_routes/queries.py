@@ -1,3 +1,4 @@
+from collections import defaultdict
 from flask_babel import gettext
 from catalogue_app.course_routes.utils import query_mysql, as_string, as_float, as_int, as_percent
 
@@ -43,7 +44,7 @@ def _query_product_info(field, lang, course_code):
 	query = "SELECT {0} FROM product_info WHERE course_code = %s LIMIT 1;".format(field_name)
 	result = query_mysql(query, (course_code,))
 	result = as_string(result)
-	return result if result else gettext('Product not yet catalogued')
+	return result if result else gettext('<awaiting mapping>')
 
 
 def course_info(lang, course_code):
@@ -54,7 +55,7 @@ def course_info(lang, course_code):
 		(gettext('Stream'), 'stream'),
 		(gettext('Main Topic'), 'main_topic'),
 		(gettext('Functional Area'), 'functional_area'),
-		(gettext('Duration'), 'duration'),
+		(gettext('Duration (hours)'), 'duration'),
 		(gettext('Displayed on GCcampus'), 'displayed_on_gccampus'),
 		(gettext('Required Training (as determined by TBS)'), 'required_training'),
 		(gettext('Life Cycle Status'), 'life_cycle_status'),
@@ -119,6 +120,29 @@ def offerings_per_region(fiscal_year, course_code):
 	for region in regions:
 		count = results.get(region, 0)
 		results_processed[region] = count
+	return results_processed
+
+
+def _query_province_drilldown(fiscal_year, course_code, region):
+	table_name = 'lsr{0}'.format(fiscal_year)
+	query = """
+			SELECT offering_province, COUNT(DISTINCT offering_id)
+			FROM {0}
+			WHERE course_code = %s AND offering_status IN ('Open - Normal', 'Delivered - Normal') AND offering_region = %s
+			GROUP BY offering_province
+			ORDER BY 1 ASC;
+			""".format(table_name)
+	results = query_mysql(query, (course_code, region))
+	return results
+
+
+def province_drilldown(fiscal_year, course_code):
+	results_processed = defaultdict(list)
+	regions = ['Atlantic', 'NCR', 'Ontario', 'Pacific', 'Prairie', 'Québec', 'Outside Canada']
+	for region in regions:
+		provinces = _query_province_drilldown(fiscal_year, course_code, region)
+		provinces = [list(tup) for tup in provinces]
+		results_processed[region].extend(provinces)
 	return results_processed
 
 
