@@ -1,17 +1,14 @@
 ### CURRENT SPRINT ###
 
-# Rescrape course description and product list info
 # Account for situations where course has no data
 # Different averages for Online vs. Instructor-Led
-# Add registrations per month
-# Tooltips to aid in interpreting charts (e.g. open offerings from last year, need to close!)
-# Add drilldown
 # Check 5 to 10 at random
 # Re-read, check for XSS, bad naming conventions
 
 
 ### BACKLOG ####
 
+# add registrations per month
 # write text with Rob
 # add search by DG, director
 # fix jumbotron on mobile
