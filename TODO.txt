@@ -1,22 +1,36 @@
 ### CURRENT SPRINT ###
 
+# Add lifecycle info
+# Add all of Bob's data
+	# Don't forget technical issues
+	# Name remover
+# Filter comments by star like Amazon
+# Add loading screen
+# Add Rob's text
+# Add FR
+# Top job titles, job ranks
+# City drilldown
+# Add icons like busrides.ca as Sean suggested
 # Account for situations where course has no data
-# Different averages for Online vs. Instructor-Led
+# Different averages / info for Online vs. Instructor-Led
 # Check 5 to 10 at random
 # Re-read, check for XSS, bad naming conventions
+# Check appearance on mobile
+# Problem with e.g. C255-2?
+# Add Google Analytics
+# Deploy
+# Present to DGC
 
 
 ### BACKLOG ####
 
-# add registrations per month
-# write text with Rob
+# instructors in last two years
 # add search by DG, director
-# fix jumbotron on mobile
-# add Google Analytics
 # add GA data from Lesek
 # link to content e.g. instructor's manual
 # link to offerings on gccampus
-# loading screen
 # dropdown to divide dashboard into sections e.g. registrations, OL accessibility (learner lang vs offering lang)
 # focus group w/ users, brainstorm for new KPIs for curriculum review process
 # unit testing
+# caching / caching upon ETL for faster load times
+# link / scrape course descriptions from GCcampus' catalogue / course list
