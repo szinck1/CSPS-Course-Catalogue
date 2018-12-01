@@ -17,7 +17,6 @@ def course_form(lang, form_title):
 	query = """
 			SELECT DISTINCT course_code, {0}
 			FROM {1}
-			WHERE delivery_type = 'Instructor-Led'
 			ORDER BY 1 ASC;
 			""".format(field_1, table_name)
 	results = query_mysql(query)
