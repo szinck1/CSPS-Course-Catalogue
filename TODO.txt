@@ -1,24 +1,30 @@
 ### CURRENT SPRINT ###
 
+# Add Rob's text
+
 # Add lifecycle info
+# Add icons
+
+# Top job titles, job ranks
+# City drilldown
+# Account for situations where course has no data
+# Different averages / info for Online vs. Instructor-Led
+
 # Add all of Bob's data
+	# Why do some questions have only a few answers?
 	# Don't forget technical issues
 	# Name remover
 # Filter comments by star like Amazon
-# Add loading screen
-# Add Rob's text
-# Add FR
-# Top job titles, job ranks
-# City drilldown
-# Add icons like busrides.ca as Sean suggested
-# Account for situations where course has no data
-# Different averages / info for Online vs. Instructor-Led
+
+# Add geo tab
+
 # Check 5 to 10 at random
 # Re-read, check for XSS, bad naming conventions
 # Check appearance on mobile
 # Problem with e.g. C255-2?
 # Add Google Analytics
 # Deploy
+# Add FR
 # Present to DGC
 
 
@@ -34,3 +40,5 @@
 # unit testing
 # caching / caching upon ETL for faster load times
 # link / scrape course descriptions from GCcampus' catalogue / course list
+# connect directly to DWH
+# let Camille edit directly
