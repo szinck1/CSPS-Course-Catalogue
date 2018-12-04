@@ -1,0 +1,86 @@
+<h1>{{ pass_dict.course_title }}</h1>
+<h4>Locations of open and delivered offerings around the globe.</h4>
+
+<!-- Map -->
+<div id="map"></div>
+<!-- Legend -->
+<div id="legend">
+	<div id="legend-title">
+		<h4>Legend</h4>
+	</div>
+		<div id="legend-contents">
+			<div>
+				<img class="legend-marker" src="{{ url_for('static', filename='markers/red-dot.png') }}" alt="red-dot" />
+				<p>0-4</p>
+			</div>
+			<div>
+				<img class="legend-marker" src="{{ url_for('static', filename='markers/orange-dot.png') }}" alt="orange-dot" />
+				<p>5-9</p>
+			</div>
+			<div>
+				<img class="legend-marker" src="{{ url_for('static', filename='markers/green-dot.png') }}" alt="green-dot" />
+				<p>10-19</p>
+			</div>
+			<div>
+				<img class="legend-marker" src="{{ url_for('static', filename='markers/blue-dot.png') }}" alt="blue-dot" />
+				<p>20+</p>
+			</div>
+		</div>
+</div>
+<!-- Space between map and footer -->
+<div style="clear: both;">
+	<br/>
+</div>
+
+<!-- Function to create map -->
+<script>
+	function initMap() {
+		// Map options
+		var options = {
+			zoom: 4.2,
+			center: {lat: 57.0, lng: -96.0}
+		};
+		
+		// Init map
+		var map = new google.maps.Map(document.getElementById('map'), options);
+		
+		// Function to add marker
+		function addMarker(lat, lng, count) {
+			// Determine marker color based of number of offerings
+			var color;
+			if (count < 5) {
+				color = "red";
+			} else if(count >= 5 && count < 10) {
+				color = "orange";
+			} else if(count >= 10 && count < 20) {
+				color = "green";
+			} else if(count >= 20) {
+				color = "blue";
+			} else {
+				color = "red"
+			}
+			// Add marker
+			var marker = new google.maps.Marker({
+				position: {lat: lat, lng: lng},
+				map: map,
+				icon: 'http://maps.google.com/mapfiles/ms/icons/' + color + '-dot.png'
+			});
+		}
+		
+		// List of cities to add
+		markers = [
+			{lat: 45.4215, lng: -75.6972, count: 10},
+			{lat: 38.8899, lng: -77.0090, count: 50}
+		];
+		
+		// Loop through list and add
+		for(var i=0; i<markers.length; i++){
+			addMarker(markers[i].lat, markers[i].lng, markers[i].count);
+		}
+	}
+</script>
+
+<!-- Load script from Google and pass API key -->
+<script async defer
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA99GCtwUy6QcS3YmzDtelxy8LpwumaCtA&callback=initMap">
+</script>
