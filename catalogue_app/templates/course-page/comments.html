@@ -6,7 +6,7 @@
 	<li><a href="#instructor-comments">{{ _('Instructor') }}</a></li>
 	<li><a href="#other">{{ _('Other') }}</a></li>
 </ul>
-<br/>
+<br />
 
 <!-- Subtabs' contents -->
 <!-- General Comments -->
@@ -17,7 +17,7 @@
 			<div class="col-xs-12">
 				<div class="media">
 					<!-- User avatar -->
-					<a class="thumbnail pull-left" style="padding: 0; margin-right: 10px;">
+					<a class="thumbnail pull-left">
 						<img src="{{ url_for('static', filename='stars/avatar2.png') }}" alt="Avatar" />
 					</a>
 					<div class="media-body">
@@ -44,7 +44,7 @@
 				</div>
 			</div>
 		</div>
-		<br/>
+		<br />
 	{% endfor %}
 </section>
 
@@ -55,7 +55,7 @@
 			<div class="col-xs-12">
 				<div class="media">
 					<!-- User avatar -->
-					<a class="thumbnail pull-left" style="padding: 0; margin-right: 10px;">
+					<a class="thumbnail pull-left";">
 						<img src="{{ url_for('static', filename='stars/avatar2.png') }}" alt="Avatar" />
 					</a>
 					<div class="media-body">
@@ -82,7 +82,7 @@
 				</div>
 			</div>
 		</div>
-		<br/>
+		<br />
 	{% endfor %}
 </section>
 
@@ -94,7 +94,7 @@
 </section>
 
 <script>
-	function reasonToParticipate (id) {
+	function reasonToParticipate(id) {
 		$('#' + String(id)).highcharts({
 			chart: {type: 'pie'},
 			title: {text: 'Reason to Participate', style: {fontWeight: 'bold'}},
@@ -117,8 +117,8 @@
 				data: {{ pass_dict.reason_to_participate | safe }}
 			}]
 		});
-	};
-	function technicalIssues (id) {
+	}
+	function technicalIssues(id) {
 		$('#' + String(id)).highcharts({
 			chart: {type: 'pie'},
 			title: {text: 'Did You Experience Technical Issues?', style: {fontWeight: 'bold'}},
@@ -141,7 +141,7 @@
 				data: {{ pass_dict.technical_issues | safe }}
 			}]
 		});
-	};
+	}
 	
 	reasonToParticipate('reason-to-participate');
 	technicalIssues('technical-issues');
