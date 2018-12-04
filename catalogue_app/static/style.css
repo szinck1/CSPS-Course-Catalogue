@@ -1,123 +1,112 @@
+/***** General *****/
 html {
 	position: relative;
 	min-height: 100%;
 }
-
 body {
 	font-family: Helvetica, Arial, sans-serif;
-	/* Set to 16px to override Chrome's default of 12px */
-	/* 1em now equivalent to 16px, 2em to 32px, etc. in child elements */
 	font-size: 16px;
 	/* Same as height of footer */
 	margin-bottom: 60px;
 }
-
 h1 {
 	color: green;
 }
-
 .jumbotron h1 {
 	font-size: 3.3em;
 	color: green;
 }
-
 a {
 	color: #335075;
 }
+/***** End general *****/
 
-.main-tabs .active a {
-	color: #335075 !important;
-}
 
-.sub-tabs .active a {
-	color: #335075 !important;
-}
 
+/***** Header *****/
 .goc-fip {
 	max-height: 40px;
 	margin: 10px 10px 5px 10px;
 }
+/***** End header *****/
 
+
+
+/***** Footer *****/
 .goc-footer {
 	border-top: 4px solid #335075;
 	line-height: 30px;
 }
-
 .footer {
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-	/* Same as height of bottom of body */
+	/* Same as height of body's margin-bottom */
 	height: 60px;
 }
+/***** End footer *****/
 
-.li-border-left {
-	border-left: 1px solid #999;
-}
 
-.li-border-right {
-	border-left: 1px solid #999;
-	border-right: 1px solid #999;
-}
 
-/* Customize Boostrap navbar */
+/***** Navbar *****/
+/* Logo and main sections */
 .navbar-default {
 	background-color: #335075;
 }
-
-.navbar-default .navbar-brand {
-	color: #fff;
-}
-
+.navbar-default .navbar-brand,
 .navbar-default .navbar-nav li a {
 	color: #fff;
 }
-
+/* Different classes to avoid doubly thick borders in center elements */
+.li-border-left {
+	border-left: 1px solid #fff;
+}
+.li-border-right {
+	border-left: 1px solid #fff;
+	border-right: 1px solid #fff;
+}
+/* Logo and main sections hover */
+.navbar-default .navbar-brand:focus,
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-nav li a:focus,
+.navbar-default .navbar-nav li a:hover {
+    background-color: #243850;
+    color: #fff;
+}
+/* Dropdown */
 .navbar-default .dropdown-menu li a {
 	background-color: #fff;
 	color: #333
 }
-
-/* Styling when hovering over navbar */
-.dropdown-toggle:active, .open .dropdown-toggle {
+/* Dropdown hover */
+.dropdown-toggle:active,
+.open .dropdown-toggle {
 	background: #243850 !important;
 	color: #fff !important;
 }
+/***** End navbar *****/
 
-.navbar-default .navbar-nav li a:hover, .navbar-default .navbar-nav li a:focus {
-    background-color: #243850;
-    color: #fff;
-}
 
-.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
-    background-color: #243850;
-    color: #fff;
-}
 
-/* Button in WTForms */
+/***** Selection form *****/
+/* Button */
 .btn.btn-primary {
 	background-color: #335075;
 	color: #fff;
 }
-
-.btn.btn-primary:hover, .btn.btn-primary:focus, .btn.btn-primary:active, .btn.btn-primary.active {
+/* Button hover */
+.btn.btn-primary:hover,
+.btn.btn-primary:focus,
+.btn.btn-primary:active,
+.btn.btn-primary.active {
 	background-color: #243850;
 	color: #fff;
 }
-
-/* Background color when hovering over a table */
-.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-	background-color: #5fba7d;
-}
-
-/* Border color when hovering over user comment avatars */
-.thumbnail:hover {
-	border-color: #335075 !important;
-}
+/***** End selection form *****/
 
 
 
-/* Loader */
+/***** Loader *****/
 #loader {
 	display: none;
 }
@@ -171,11 +160,32 @@ a {
 		height: 0%;
 	}
 }
-/* End loader */
+/***** End loader *****/
 
 
 
-/* Geodata */
+/***** Report's tabs *****/
+.main-tabs .active a {
+	color: #335075 !important;
+}
+.sub-tabs .active a {
+	color: #335075 !important;
+}
+/***** End report's tabs *****/
+
+
+
+/***** Description *****/
+/* Table hover */
+.table-hover tbody tr:hover th,
+.table-hover tbody tr:hover td {
+	background-color: #5fba7d;
+}
+/***** End description *****/
+
+
+
+/***** Geodata *****/
 #map {
 	float: left;
 	height: 80vh;
@@ -204,30 +214,18 @@ a {
 	display: block;
 	margin: 0 auto;
 }
-/* End geodata */
+/***** End geodata *****/
 
 
 
-/* Comments */
-#general-comments-filter {
-	position: absolute;
-	right: 300px;
-	height: 33vh;
-	width: 100px;
-	border: 2px solid blue;
-	
+/***** Comments *****/
+/* Avatar */
+.thumbnail.pull-left {
+	padding: 0 !important;
+	margin-right: 10px !important;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* End comments */
+/* Avatar hover */
+.thumbnail:hover {
+	border-color: #335075 !important;
+}
+/***** End comments *****/
