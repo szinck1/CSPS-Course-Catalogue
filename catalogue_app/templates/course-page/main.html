@@ -47,18 +47,18 @@
 	
 	<script>
 		// Activate and deactivate tabs
-		$(".main-tabs li").on("click", function(){
+		$(".main-tabs li").on("click", function() {
 			$(".main-tabs li").removeClass("active");
 			$(this).addClass("active");
 		});
-		$(".sub-tabs li").on("click", function(){
+		$(".sub-tabs li").on("click", function() {
 			$(".sub-tabs li").removeClass("active");
 			$(this).addClass("active");
 		});
 		
 		// Show and hide sections
-		$(document).ready(function(){
-			$('.main-tabs > li > a').click(function(event){
+		$(document).ready(function() {
+			$('.main-tabs > li > a').click(function(event) {
 				event.preventDefault();
 				
 				// Hide section that's currently active
@@ -72,8 +72,8 @@
 				$(new_section).addClass('active');
 			});
 		});
-		$(document).ready(function(){
-			$('.sub-tabs > li > a').click(function(event){
+		$(document).ready(function() {
+			$('.sub-tabs > li > a').click(function(event) {
 				event.preventDefault();
 				
 				// Hide section that's currently active

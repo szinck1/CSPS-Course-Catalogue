@@ -16,7 +16,7 @@
 </div>
 
 <script>
-	function overallSatisfaction (id) {
+	function overallSatisfaction(id) {
 		$('#' + String(id)).highcharts({
 			chart: {type: 'line'},
 			title: {text: 'Overall Satisfaction', style: {fontWeight: 'bold'}},
@@ -26,8 +26,8 @@
 			credits: {text: ''},
 			series: [{name: '{{ THIS_YEAR }}', data: {{ pass_dict.overall_satisfaction }}}]
 		});
-	};
-	function knowledgeGap (id) {
+	}
+	function knowledgeGap(id) {
 		$('#' + String(id)).highcharts({
 			chart: {type: 'line'},
 			title: {text: 'Knowledge Before and After Taking Course', style: {fontWeight: 'bold'}},
@@ -41,8 +41,8 @@
 				{name: 'After', data: {{ pass_dict.knowledge_after }}}
 			]
 		});
-	};
-	function learningNeedsMet (id) {
+	}
+	function learningNeedsMet(id) {
 		$('#' + String(id)).highcharts({
 			chart: {type: 'line'},
 			title: {text: 'Met My Learning Needs', style: {fontWeight: 'bold'}},
@@ -52,7 +52,7 @@
 			credits: {text: ''},
 			series: [{name: '{{ THIS_YEAR }}', data: {{ pass_dict.learning_needs_met }}}]
 		});
-	};
+	}
 	
 	overallSatisfaction('overall-satisfaction');
 	knowledgeGap('knowledge-gap');
