@@ -11,17 +11,17 @@
 	<div class="container">
 		<!-- Tabs -->
 		<ul class="nav nav-tabs nav-justified main-tabs">
-			<li class="active"><a href="#description">Description</a></li>
-			<li><a href="#dashboard">{{ _('Dashboard') }}</a></li>
+			<li class="active"><a href="#general">General</a></li>
+			<li><a href="#dashboard">Dashboard</a></li>
 			<li><a href="#geodata">Geodata</a></li>
-			<li><a href="#drf">{{ _('DRF Indicators') }}</a></li>
-			<li><a href="#comments">{{ _('Comments') }}</a></li>
+			<li><a href="#ratings">Ratings</a></li>
+			<li><a href="#comments">Comments</a></li>
 		</ul>
 		
 		<!-- Tabs' contents -->
-		<!-- Description -->
-		<section id="description" class="tab-content active">
-			{% include 'course-page/description.html' %}
+		<!-- General -->
+		<section id="general" class="tab-content active">
+			{% include 'course-page/general.html' %}
 		</section>
 		
 		<!-- Dashboard -->
@@ -34,9 +34,9 @@
 			{% include 'course-page/geodata.html' %}
 		</section>
 		
-		<!-- Level 1 DRF Indicators -->
-		<section id="drf" class="tab-content hide">
-			{% include 'course-page/drf.html' %}
+		<!-- Level 1 Ratings -->
+		<section id="ratings" class="tab-content hide">
+			{% include 'course-page/ratings.html' %}
 		</section>
 		
 		<!-- Level 1 Comments -->

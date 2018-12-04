@@ -2,15 +2,15 @@
 
 <!-- Subtabs -->
 <ul class="nav nav-tabs nav-justified sub-tabs">
-	<li class="active"><a href="#general-comments">{{ _('General') }}</a></li>
-	<li><a href="#instructor-comments">{{ _('Instructor') }}</a></li>
-	<li><a href="#other">{{ _('Other') }}</a></li>
+	<li class="active"><a href="#overall-comments">Overall</a></li>
+	<li><a href="#instructor-comments">Instructor</a></li>
+	<li><a href="#other">Other</a></li>
 </ul>
 <br />
 
 <!-- Subtabs' contents -->
-<!-- General Comments -->
-<section id="general-comments" class="tab-content active">
+<!-- Overall Comments -->
+<section id="overall-comments" class="tab-content active">
 	<!-- Panel on left to filter comments by stars -->
 	{% for tup in pass_dict.general_comments %}
 		<div class="row">
