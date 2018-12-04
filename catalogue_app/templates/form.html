@@ -25,13 +25,13 @@
 					{{ render_field(field, class="form-control") }}
 				</div>
 			{% endfor %}
-			<p><input type="submit" value="{{ button_val }}" class="btn btn-primary" id="my-button"></p>
+			<p><input type="submit" value="{{ button_val }}" class="btn btn-primary" id="my-button" /></p>
 		</form>
 	</div>
 	
 	<!-- Upon clicking 'Go', hide form and display loader -->
 	<script>
-		$("#my-button").on("click", function(){
+		$("#my-button").on("click", function() {
 			$("#selection-form").hide();
 			$("#loader").show();
 		});
