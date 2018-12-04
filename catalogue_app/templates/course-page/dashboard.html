@@ -18,7 +18,7 @@
 					{% if tup1[0] == _('Open Offerings') %}
 						<td>
 							{{ tup1[0] }}
-							<img id="my-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" width="20"/>
+							<img id="my-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" width="20" />
 						</td>
 					{% else %}
 						<td>{{ tup1[0] }}</td>
@@ -105,7 +105,7 @@
 
 <script>
 	// Add tooltip
-	$(document).ready(function () {
+	$(document).ready(function() {
 		$('#my-tooltip').tooltip({
 			placement: 'right',
 			title: '<h4>Note:</h4><p>Ensure past offerings are closed.</p>',
@@ -117,7 +117,7 @@
 	// Set font for Highcharts
 	Highcharts.setOptions({chart: {style: {fontFamily: 'Helvetica'}}});
 	
-	function offeringsPerRegion (id) {
+	function offeringsPerRegion(id) {
 		$('#' + String(id)).highcharts({
 			chart: {type: 'column'},
 			title: {text: "{{ _('Open & Delivered Offerings per Region') }}", style: {fontWeight: 'bold'}},
@@ -150,8 +150,8 @@
 				]
 			}
 		});
-	};
-	function offeringsPerLang (id) {
+	}
+	function offeringsPerLang(id) {
 		$('#' + String(id)).highcharts({
 			chart: {type: 'column'},
 			title: {text: "{{ _('Open & Delivered Offerings per Language') }}", style: {fontWeight: 'bold'}},
@@ -165,8 +165,8 @@
 				{name: "{{ _('Bilingual') }}", data: [{{ pass_dict.offerings_per_lang_LY['Bilingual'] }}, {{ pass_dict.offerings_per_lang_TY['Bilingual'] }}]}
 			]
 		});
-	};
-	function offeringsCancelled (id) {
+	}
+	function offeringsCancelled(id) {
 		$('#' + String(id)).highcharts({
 			chart: {type: 'column'},
 			title: {text: "{{ _('%% of Offerings Cancelled') }}", style: {fontWeight: 'bold'}},
@@ -185,8 +185,8 @@
 				{name: '{{ pass_dict.course_code }}', data: [{{ pass_dict.offerings_cancelled_LY }}, {{ pass_dict.offerings_cancelled_TY }}]}
 			]
 		});
-	};
-	function avgClassSize (id) {
+	}
+	function avgClassSize(id) {
 		$('#' + String(id)).highcharts({
 			chart: {type: 'column'},
 			title: {text: "{{ _('Average Class Size') }}", style: {fontWeight: 'bold'}},
@@ -197,8 +197,8 @@
 			series: [{name: "{{ _('Average All') }}", data: [{{ pass_dict.avg_class_size_global_LY }}, {{ pass_dict.avg_class_size_global_TY }}]},
 					 {name: '{{ pass_dict.course_code }}', data: [{{ pass_dict.avg_class_size_LY }}, {{ pass_dict.avg_class_size_TY }}]}]
 		});
-	};
-	function avgNoShows (id) {
+	}
+	function avgNoShows(id) {
 		$('#' + String(id)).highcharts({
 			chart: {type: 'column'},
 			title: {text: "{{ _('Average No-Shows per Offering') }}", style: {fontWeight: 'bold'}},
@@ -209,7 +209,7 @@
 			series: [{name: "{{ _('Average All') }}", data: [{{ pass_dict.avg_no_shows_global_LY }}, {{ pass_dict.avg_no_shows_global_TY }}]},
 					 {name: '{{ pass_dict.course_code }}', data: [{{ pass_dict.avg_no_shows_LY }}, {{ pass_dict.avg_no_shows_TY }}]}]
 		});
-	};
+	}
 	
 	offeringsPerRegion('offerings-per-region');
 	offeringsPerLang('offerings-per-lang');
