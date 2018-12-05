@@ -1,5 +1,11 @@
 ### CURRENT SPRINT ###
 
+# New data:
+	# Ensure 'Online' instead of 'Unknown' for Learner, Offering City, Region
+	# offering city
+	# learner region, prov, city
+
+
 # Add Rob's text
 # Thicker borders around tabs
 
