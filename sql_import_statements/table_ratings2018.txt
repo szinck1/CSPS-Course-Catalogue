@@ -1,17 +1,15 @@
-CREATE TABLE drf2018_19(
+CREATE TABLE ratings2018_19(
 	course_title VARCHAR(200),
 	course_code VARCHAR(20),
 	month VARCHAR(10),
-	month_num TINYINT,
-	response_id VARCHAR(15),
 	short_question VARCHAR(60),
-	numerical_answer TINYINT
+	numerical_answer FLOAT
 );
 
 
 
-LOAD DATA INFILE 'D:\\drf2018_19.csv'
-INTO TABLE drf2018_19
+LOAD DATA INFILE 'D:\\ratings2018_19.csv'
+INTO TABLE ratings2018_19
 CHARACTER SET UTF8
 FIELDS OPTIONALLY ENCLOSED BY '"'
 TERMINATED BY ','
