@@ -1,15 +1,19 @@
-<h1>{{ pass_dict.course_title }}</h1>
+<h1>
+	{{ pass_dict.course_title }}
+	<img id="ratings-tooltip" class="my-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" width="20" />
+</h1>
 
 
 <!-- Loop through pass_dict.all_ratings and dynamically create a chart for every question -->
 {% for question in pass_dict.all_ratings %}
 	<!-- Div to hold chart -->
 	<div class="row">
-		<div id="chart-{{ loop.index - 1 }}" class="col-xs-12"></div>
+		<div id="chart-{{ loop.index }}" class="col-xs-12"></div>
 	</div>
+	<br />
 	<!-- Script to build chart -->
 	<script>
-		$('#chart-{{ loop.index - 1 }}').highcharts({
+		$('#chart-{{ loop.index }}').highcharts({
 			chart: {type: 'line'},
 			title: {text: '{{ question[0] }}', style: {fontWeight: 'bold'}},
 			xAxis: {categories: ['April', 'May', 'June', 'July', 'August', 'September',
