@@ -1,7 +1,7 @@
 from flask import Blueprint, redirect, render_template, request, session, url_for
 from flask_babel import gettext
 from catalogue_app.config import Debug
-from catalogue_app.course_routes.form import course_form
+from catalogue_app.course_routes.form import course_title_form, course_code_form
 from catalogue_app.course_routes.queries import lsr_queries, product_info_queries, comments_queries, ratings_queries
 course = Blueprint('course', __name__)
 
@@ -13,12 +13,26 @@ def context_processor():
 	return {'LAST_YEAR': LAST_YEAR.replace('_', '-'), 'THIS_YEAR': THIS_YEAR.replace('_', '-')}
 
 
-# Form to get query parameters from user
-@course.route('/course-selection', methods=['GET', 'POST'])
-def course_selection():
-	field_title = gettext('Course Title')
+# Search by course code
+@course.route('/course-code-selection', methods=['GET', 'POST'])
+def course_code_selection():
 	lang = session.get('lang', 'en')
-	form = course_form(lang, field_title)
+	form_name = gettext('Course Code')
+	form = course_code_form(lang, form_name)
+	form = form(request.form)
+	
+	if request.method == 'POST' and form.validate():
+		course_code = form.course_selection.data
+		return redirect(url_for('course.course_result', course_code=course_code))
+	return render_template('form.html', form=form, title=gettext("Selection"), button_val=gettext("Go"))
+
+
+# Search by course title
+@course.route('/course-title-selection', methods=['GET', 'POST'])
+def course_title_selection():
+	lang = session.get('lang', 'en')
+	form_name = gettext('Course Title')
+	form = course_title_form(lang, form_name)
 	form = form(request.form)
 	
 	if request.method == 'POST' and form.validate():
