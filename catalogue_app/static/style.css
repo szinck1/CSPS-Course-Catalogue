@@ -19,6 +19,13 @@ h1 {
 a {
 	color: #335075;
 }
+.table-tooltip {
+	position: absolute;
+	margin-left: 20px;
+}
+.inline-tooltip {
+	margin-left: 5px;
+}
 /***** End general *****/
 
 

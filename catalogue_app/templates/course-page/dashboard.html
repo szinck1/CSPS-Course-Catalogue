@@ -14,23 +14,28 @@
 			</tr>
 			{% for tup1, tup2 in pass_dict.overall_numbers_LY|zip(pass_dict.overall_numbers_TY) %}
 				<tr>
-					<!-- Add tooltip to Open Offerings -->
-					{% if tup1[0] == _('Open Offerings') %}
-						<td>
-							{{ tup1[0] }}
-							<img id="my-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" width="20" />
-						</td>
-					{% else %}
-						<td>{{ tup1[0] }}</td>
-					{% endif %}
+					<!-- Name -->
+					<td>{{ tup1[0] }}</td>
 					
-					<!-- If offerings remain open in LAST_YEAR, show in red -->
-					{% if tup1[0] == _('Open Offerings') and tup1[1] > 0 %}
-						<td class="text-center" style="color: red; font-weight: bold;">{{ tup1[1] }}</td>
+					<!-- LAST_YEAR's value -->
+					{% if tup1[0] == _('Open Offerings') %}
+						<!-- If offerings remain open in LAST_YEAR, show in red -->
+						{% if tup1[1] > 0 %}
+							<td class="text-center" style="color: red; font-weight: bold;">
+								{{ tup1[1] }}
+								<img id="open-offerings-tooltip" class="table-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" width="20" />
+							</td>
+						{% else %}
+							<td class="text-center">
+								{{ tup1[1] }}
+								<img id="open-offerings-tooltip" class="table-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" width="20" />
+							</td>
+						{% endif %}
 					{% else %}
 						<td class="text-center">{{ tup1[1] }}</td>
 					{% endif %}
 					
+					<!-- THIS_YEAR's value -->
 					<td class="text-center">{{ tup2[1] }}</td>
 				</tr>
 			{% endfor %}
@@ -106,9 +111,9 @@
 <script>
 	// Add tooltip
 	$(document).ready(function() {
-		$('#my-tooltip').tooltip({
+		$('#open-offerings-tooltip').tooltip({
 			placement: 'right',
-			title: '<h4>Note:</h4><p>Ensure past offerings are closed.</p>',
+			title: '<h5>Note:</h5><p>Past offerings must be closed before Level 1 surveys are sent.</p>',
 			animation: true,
 			html: true
 		});
