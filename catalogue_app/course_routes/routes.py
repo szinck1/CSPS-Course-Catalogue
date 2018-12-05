@@ -65,13 +65,9 @@ def course_result():
 		'course_code': course_code,
         'course_title': course_title,
 		'online_course': online_course,
-		
-		# Course Description
+		# General
 		'course_description': product_info_queries.course_description(lang, course_code),
-		
-		# Course Info
 		'course_info': product_info_queries.course_info(lang, course_code),
-		
 		# Dashboard
 		'overall_numbers_LY': lsr_queries.overall_numbers(LAST_YEAR, course_code),
 		'overall_numbers_TY': lsr_queries.overall_numbers(THIS_YEAR, course_code),
@@ -93,14 +89,18 @@ def course_result():
 		'avg_no_shows_global_TY': round(lsr_queries.avg_no_shows_global(THIS_YEAR), 1),
 		'avg_no_shows_LY': round(lsr_queries.avg_no_shows(LAST_YEAR, course_code), 1),
 		'avg_no_shows_TY': round(lsr_queries.avg_no_shows(THIS_YEAR, course_code), 1),
-		'general_comments': comments_queries.general_comments(course_code),
-		'instructor_comments': comments_queries.instructor_comments(course_code),
-		'reason_to_participate': comments_queries.reason_to_participate(course_code),
-		'technical_issues': comments_queries.technical_issues(course_code),
+		# Geodata
+		
+		# Ratings
 		'overall_satisfaction': ratings_queries.drf_average(THIS_YEAR, 'Overall Satisfaction', course_code),
 		'knowledge_before': ratings_queries.drf_average(THIS_YEAR, 'Knowledge before', course_code),
 		'knowledge_after': ratings_queries.drf_average(THIS_YEAR, 'Knowledge after', course_code),
-		'learning_needs_met': ratings_queries.drf_average(THIS_YEAR, 'Learning Needs Met', course_code)
+		'learning_needs_met': ratings_queries.drf_average(THIS_YEAR, 'Learning Needs Met', course_code),
+		# Comments
+		'general_comments': comments_queries.general_comments(course_code),
+		'instructor_comments': comments_queries.instructor_comments(course_code),
+		'reason_to_participate': comments_queries.reason_to_participate(course_code),
+		'technical_issues': comments_queries.technical_issues(course_code)
 	}
 	return render_template('/course-page/main.html', pass_dict=pass_dict)
 
