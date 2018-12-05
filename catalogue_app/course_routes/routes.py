@@ -92,10 +92,7 @@ def course_result():
 		# Geodata
 		
 		# Ratings
-		'overall_satisfaction': ratings_queries.drf_average(THIS_YEAR, 'Overall Satisfaction', course_code),
-		'knowledge_before': ratings_queries.drf_average(THIS_YEAR, 'Knowledge before', course_code),
-		'knowledge_after': ratings_queries.drf_average(THIS_YEAR, 'Knowledge after', course_code),
-		'learning_needs_met': ratings_queries.drf_average(THIS_YEAR, 'Learning Needs Met', course_code),
+		'all_ratings': ratings_queries.all_ratings(THIS_YEAR, course_code),
 		# Comments
 		'general_comments': comments_queries.general_comments(course_code),
 		'instructor_comments': comments_queries.instructor_comments(course_code),
