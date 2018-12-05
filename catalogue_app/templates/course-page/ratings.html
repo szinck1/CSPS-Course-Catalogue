@@ -1,60 +1,22 @@
 <h1>{{ pass_dict.course_title }}</h1>
 
-<!-- Overall Satisfaction -->
-<div class="row">
-	<div id="overall-satisfaction" class="col-xs-12"></div>
-</div>
 
-<!-- Knowledge Gap -->
-<div class="row">
-	<div id="knowledge-gap" class="col-xs-12"></div>
-</div>
-
-<!-- Learning Needs Met -->
-<div class="row">
-	<div id="learning-needs-met" class="col-xs-12"></div>
-</div>
-
-<script>
-	function overallSatisfaction(id) {
-		$('#' + String(id)).highcharts({
+<!-- Loop through pass_dict.all_ratings and dynamically create a chart for every question -->
+{% for question in pass_dict.all_ratings %}
+	<!-- Div to hold chart -->
+	<div class="row">
+		<div id="chart-{{ loop.index - 1 }}" class="col-xs-12"></div>
+	</div>
+	<!-- Script to build chart -->
+	<script>
+		$('#chart-{{ loop.index - 1 }}').highcharts({
 			chart: {type: 'line'},
-			title: {text: 'Overall Satisfaction', style: {fontWeight: 'bold'}},
+			title: {text: '{{ question[0] }}', style: {fontWeight: 'bold'}},
 			xAxis: {categories: ['April', 'May', 'June', 'July', 'August', 'September',
-								 'October', 'November', 'December', 'January', 'February', 'March']},
+								 'October', 'November']},
 			yAxis: {title: {text: 'Average Response (Out of Five)'}, min: 0, max: 5},
 			credits: {text: ''},
-			series: [{name: '{{ THIS_YEAR }}', data: {{ pass_dict.overall_satisfaction }}}]
+			series: [{name: '{{ THIS_YEAR }}', color: '#335075', data: {{ question[1] }}}]
 		});
-	}
-	function knowledgeGap(id) {
-		$('#' + String(id)).highcharts({
-			chart: {type: 'line'},
-			title: {text: 'Knowledge Before and After Taking Course', style: {fontWeight: 'bold'}},
-			subtitle: {text: '(as perceived by learner)'},
-			xAxis: {categories: ['April', 'May', 'June', 'July', 'August', 'September',
-								 'October', 'November', 'December', 'January', 'February', 'March']},
-			yAxis: {title: {text: 'Average Response (Out of Five)'}, min: 0, max: 5},
-			credits: {text: ''},
-			series: [
-				{name: 'Before', data: {{ pass_dict.knowledge_before }}},
-				{name: 'After', data: {{ pass_dict.knowledge_after }}}
-			]
-		});
-	}
-	function learningNeedsMet(id) {
-		$('#' + String(id)).highcharts({
-			chart: {type: 'line'},
-			title: {text: 'Met My Learning Needs', style: {fontWeight: 'bold'}},
-			xAxis: {categories: ['April', 'May', 'June', 'July', 'August', 'September',
-								 'October', 'November', 'December', 'January', 'February', 'March']},
-			yAxis: {title: {text: 'Average Response (Out of Five)'}, min: 0, max: 5},
-			credits: {text: ''},
-			series: [{name: '{{ THIS_YEAR }}', data: {{ pass_dict.learning_needs_met }}}]
-		});
-	}
-	
-	overallSatisfaction('overall-satisfaction');
-	knowledgeGap('knowledge-gap');
-	learningNeedsMet('learning-needs-met');
-</script>
+	</script>
+{% endfor %}
