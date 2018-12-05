@@ -30,14 +30,14 @@ def all_ratings(fiscal_year, course_code):
 		results = dict(results)
 		results_processed = _add_months(results)
 		# Use str.title() method to nicely format question
-		return_list.append({question.title(): results_processed})
+		return_list.append((question.title(), results_processed))
 	return return_list
 
 
 # Helper function to ensure every month accounted for
 def _add_months(my_dict):
 	months = ['April', 'May', 'June', 'July', 'August', 'September', 'October',
-			  'November', 'December', 'January', 'February', 'March']
+			  'November']
 	return_list = []
 	for month in months:
 		count = my_dict.get(month, 0)
