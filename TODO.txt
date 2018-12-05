@@ -1,6 +1,7 @@
 ### CURRENT SPRINT ###
 
 # Add Rob's text
+# Thicker borders around tabs
 
 # Add lifecycle info
 # Add icons
