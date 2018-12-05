@@ -64,7 +64,7 @@ def offerings_per_region(fiscal_year, course_code):
 	query = """
 			SELECT offering_region, COUNT(DISTINCT offering_id)
 			FROM {0}
-			WHERE course_code = %s AND offering_status IN ('Open - Normal', 'Delivered - Normal')
+			WHERE course_code = %s AND offering_status IN ('Open - Normal', 'Delivered - Normal', 'N/a')
 			GROUP BY offering_region;
 			""".format(table_name)
 	results = query_mysql(query, (course_code,))
@@ -72,7 +72,7 @@ def offerings_per_region(fiscal_year, course_code):
 	
 	# Process results into format required by Highcharts
 	results_processed = {}
-	regions = ['Atlantic', 'NCR', 'Ontario', 'Pacific', 'Prairie', 'Quebec', 'Outside Canada']
+	regions = ['Atlantic', 'NCR', 'Ontario', 'Pacific', 'Prairie', 'Québec', 'Outside Canada', 'Online']
 	for region in regions:
 		count = results.get(region, 0)
 		results_processed[region] = count
@@ -200,7 +200,6 @@ def avg_class_size(fiscal_year, course_code):
 	return as_int(results)
 
 
-# Need to separate global into separate function, using LIKE '%' too slow
 def avg_class_size_global(fiscal_year):
 	table_name = 'lsr{0}'.format(fiscal_year)
 	query = """
@@ -233,7 +232,6 @@ def avg_no_shows(fiscal_year, course_code):
 	return as_float(results)
 
 
-# Need to separate global into separate function, using LIKE '%' too slow
 def avg_no_shows_global(fiscal_year):
 	table_name = 'lsr{0}'.format(fiscal_year)
 	query = """
