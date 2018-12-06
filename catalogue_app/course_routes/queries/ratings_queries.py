@@ -32,7 +32,7 @@ def all_ratings(fiscal_year, course_code):
 		results = dict(results)
 		results_processed = _add_months(results)
 		# Use str.title() method to nicely format question
-		return_list.append((question.title().replace('Gccampus', 'GCcampus'), results_processed))
+		return_list.append((question.title(), results_processed))
 	return return_list
 
 
