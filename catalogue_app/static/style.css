@@ -51,6 +51,9 @@ a {
 	/* Same as height of body's margin-bottom */
 	height: 60px;
 }
+.footer .goc-fip {
+	display: inline;
+}
 /***** End footer *****/
 
 
