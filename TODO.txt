@@ -15,9 +15,7 @@
 
 # RATINGS
 # Exclude all categorical + yes/no
-# Remove instructor ratings in Cognos, re-upload
 # Custom titles via Python dict
-# In Highcharts tooltip, add number of responses
 # In Bootstrap tooltip, add "Not at all" to "Bigly" or whatever
 # Correct when course has no info
 
@@ -34,8 +32,6 @@
 # Check appearance on mobile
 # Problem with e.g. C255-2?
 # Deploy Wed Dec 12
-
-
 
 
 
