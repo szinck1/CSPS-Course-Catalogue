@@ -3,7 +3,8 @@
 	<img id="ratings-title-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" width="20" />
 </h1>
 
-<!-- Loop through pass_dict.all_ratings and dynamically create a chart for every question -->
+<!-- Loop through pass_dict.all_ratings and dynamically create a chart for every question; check first if ratings exist -->
+{% if pass_dict.all_ratings %}
 {% for question in pass_dict.all_ratings %}
 	<!-- Div to hold chart -->
 	<div class="row">
@@ -39,6 +40,9 @@
 		});
 	</script>
 {% endfor %}
+{% else %}
+	<h4>Note: This course has received no ratings thus far in the fiscal year.</h4>
+{% endif %}
 
 <!-- Add tooltip contents -->
 <script>
