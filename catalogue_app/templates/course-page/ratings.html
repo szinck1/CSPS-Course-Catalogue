@@ -10,8 +10,8 @@
 		<!-- Add a tooltip explaining GCcampus Tools charts -->
 		{% if question[0] in ['Tools - Blogs', 'Tools - Forums', 'Tools - Job Aid', 'Tools - Videos'] %}
 			<h4 class="ratings-chart-title">
-			{{ question[0] }}
-			<img class="inline-tooltip gctools-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" width="20" />
+				{{ question[0] }}
+				<img class="inline-tooltip gctools-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" width="20" />
 			</h4>
 		{% else %}
 			<h4 class="ratings-chart-title">{{ question[0] }}</h4>
@@ -44,17 +44,15 @@
 <script>
 	$('#ratings-title-tooltip').tooltip({
 		placement: 'right',
-		title: 'Yo',
+		title: '<h5>Tip:</h5><p>Ratings on instructor performance are currently excluded for privacy reasons.</p>',
 		animation: true,
 		html: true
 	});
 	
 	$('.gctools-tooltip').tooltip({
 		placement: 'right',
-		title: 'Yaw',
+		title: '<h5>Tip:</h5><p>Learners report if a GCcampus tool contributed to their learning on a scale of 1 (Not at all) to 5 (To a great extent).</p>',
 		animation: true,
 		html: true
 	});
-	
 </script>
-
