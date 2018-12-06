@@ -208,7 +208,7 @@
 			xAxis: {categories: ['{{ LAST_YEAR }}', '{{ THIS_YEAR }}']},
 			yAxis: {title: {text: ''}, allowDecimals: false, min: 0},
 			legend: {layout: 'horizontal', align: 'center', verticalAlign: 'bottom'},
-			credits: {text: "{{ _('Prepared by Curriculum Management and IPSB') }}"},
+			credits: {text: ''},
 			series: [{name: "{{ _('Average All') }}", data: [{{ pass_dict.avg_no_shows_global_LY }}, {{ pass_dict.avg_no_shows_global_TY }}]},
 					 {name: '{{ pass_dict.course_code }}', data: [{{ pass_dict.avg_no_shows_LY }}, {{ pass_dict.avg_no_shows_TY }}]}]
 		});
