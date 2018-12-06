@@ -1,26 +1,60 @@
 <h1>
 	{{ pass_dict.course_title }}
-	<img id="ratings-tooltip" class="my-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" width="20" />
+	<img id="ratings-title-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" width="20" />
 </h1>
-
 
 <!-- Loop through pass_dict.all_ratings and dynamically create a chart for every question -->
 {% for question in pass_dict.all_ratings %}
 	<!-- Div to hold chart -->
 	<div class="row">
+		<!-- Add a tooltip explaining GCcampus Tools charts -->
+		{% if question[0] in ['Tools - Blogs', 'Tools - Forums', 'Tools - Job Aid', 'Tools - Videos'] %}
+			<h4 class="ratings-chart-title">
+			{{ question[0] }}
+			<img class="inline-tooltip gctools-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" width="20" />
+			</h4>
+		{% else %}
+			<h4 class="ratings-chart-title">{{ question[0] }}</h4>
+		{% endif %}
 		<div id="chart-{{ loop.index }}" class="col-xs-12"></div>
 	</div>
+	<br />
 	<br />
 	<!-- Script to build chart -->
 	<script>
 		$('#chart-{{ loop.index }}').highcharts({
 			chart: {type: 'line'},
-			title: {text: '{{ question[0] }}', style: {fontWeight: 'bold'}},
+			title: {text: ''},
 			xAxis: {categories: ['April', 'May', 'June', 'July', 'August', 'September',
 								 'October', 'November']},
 			yAxis: {title: {text: 'Average Response (Out of Five)'}, min: 0, max: 5},
 			credits: {text: ''},
-			series: [{name: '{{ THIS_YEAR }}', color: '#335075', data: {{ question[1] }}}]
+			series: [{name: '{{ THIS_YEAR }}', color: '#335075', data: {{ question[1] | safe }}}],
+			tooltip: {
+				formatter: function() {return ' ' +
+					'Monthly Average: ' + this.point.y + '<br />' +
+					'Number of Responses: ' + this.point.count + '<br />'
+				}
+			}
 		});
 	</script>
 {% endfor %}
+
+<!-- Add tooltip contents -->
+<script>
+	$('#ratings-title-tooltip').tooltip({
+		placement: 'right',
+		title: 'Yo',
+		animation: true,
+		html: true
+	});
+	
+	$('.gctools-tooltip').tooltip({
+		placement: 'right',
+		title: 'Yaw',
+		animation: true,
+		html: true
+	});
+	
+</script>
+

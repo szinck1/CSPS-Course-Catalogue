@@ -19,7 +19,7 @@ def all_ratings(fiscal_year, course_code):
 	
 	# Query each question for monthly results
 	query = """
-		SELECT month, numerical_answer
+		SELECT month, numerical_answer, count
 		FROM {0}
 		WHERE course_code = %s AND short_question = %s;
 	""".format(table_name)
@@ -27,10 +27,12 @@ def all_ratings(fiscal_year, course_code):
 	return_list = []
 	for question in questions:
 		results = query_mysql(query, (course_code, question))
+		# Convert 'results' from format [(month, numerical_answer, count), ...] to {month: (numerical_answer, count), ...}
+		results = [(tup[0], {'y': tup[1], 'count': tup[2]}) for tup in results]
 		results = dict(results)
 		results_processed = _add_months(results)
 		# Use str.title() method to nicely format question
-		return_list.append((question.title(), results_processed))
+		return_list.append((question.title().replace('Gccampus', 'GCcampus'), results_processed))
 	return return_list
 
 
@@ -40,6 +42,6 @@ def _add_months(my_dict):
 			  'November']
 	return_list = []
 	for month in months:
-		count = my_dict.get(month, 0)
+		count = my_dict.get(month, {'y': 0, 'count': 0})
 		return_list.append(count)
 	return return_list
