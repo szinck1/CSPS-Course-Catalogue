@@ -13,19 +13,23 @@
 # Account for situations where course has no data
 # Different averages / info for Online vs. Instructor-Led
 
-# RATINGS
-# Exclude all categorical + yes/no
-# Custom titles via Python dict
-# In Bootstrap tooltip, add "Not at all" to "Bigly" or whatever
-# Correct when course has no info
-
 # COMMENTS
-# Add all categorical + yes/no
-# Add all comments except Instructor
+# Consent to use comments??
+# Script to remove Inst comments (VBA?)
+# Add yes/no
+	# GCCampus Tools Used
+	# Official Language Available 
+	# Technical Issues
+# Add categorical
+	# Prepared for activity by
+	# Reason for taking activity
 # Filter comments by star like Amazon
+# Show technical if online, instructor (with disabled message) if inst-led
+# Add tooltip explaining Performance tab
 
 # GEODATA
 # Connect to MySQL
+# Different Online vs Inst-Led
 
 # Check 5 to 10 at random
 # Re-read, check for XSS, bad naming conventions
