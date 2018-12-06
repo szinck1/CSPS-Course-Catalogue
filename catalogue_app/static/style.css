@@ -225,6 +225,15 @@ a {
 
 
 
+/***** Ratings *****/
+.ratings-chart-title {
+	text-align: center;
+	font-weight: bold;
+}
+/***** End ratings*****/
+
+
+
 /***** Comments *****/
 /* Avatar */
 .thumbnail.pull-left {
