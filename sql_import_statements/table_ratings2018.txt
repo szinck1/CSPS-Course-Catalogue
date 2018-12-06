@@ -3,7 +3,8 @@ CREATE TABLE ratings2018_19(
 	course_code VARCHAR(20),
 	month VARCHAR(10),
 	short_question VARCHAR(60),
-	numerical_answer FLOAT
+	numerical_answer FLOAT,
+	count SMALLINT
 );
 
 
