@@ -94,8 +94,10 @@ def course_result():
 		# Ratings
 		'all_ratings': ratings_queries.all_ratings(THIS_YEAR, course_code),
 		# Comments
-		'general_comments': comments_queries.general_comments(course_code),
-		'instructor_comments': comments_queries.instructor_comments(course_code),
+		'general_comments': comments_queries.fetch_comments('Comment - General ', course_code),
+		'technical_comments': comments_queries.fetch_comments('Issue Description', course_code),
+		'language_comments': comments_queries.fetch_comments('Comment - OL Not Available', course_code),
+		'performance_comments': comments_queries.fetch_comments('Comment - application for performance improvement', course_code),
 		'reason_to_participate': comments_queries.reason_to_participate(course_code),
 		'technical_issues': comments_queries.technical_issues(course_code)
 	}
