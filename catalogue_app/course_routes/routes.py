@@ -98,8 +98,12 @@ def course_result():
 		'technical_comments': comments_queries.fetch_comments('Issue Description', course_code),
 		'language_comments': comments_queries.fetch_comments('Comment - OL Not Available', course_code),
 		'performance_comments': comments_queries.fetch_comments('Comment - application for performance improvement', course_code),
-		'reason_to_participate': comments_queries.reason_to_participate(course_code),
-		'technical_issues': comments_queries.technical_issues(course_code)
+		# Categorical and yes/no questions
+		'reason_to_participate': comments_queries.fetch_categorical(course_code, 'Reason to Participate'),
+		'technical_issues': comments_queries.fetch_categorical(course_code, 'Technical Issues'),
+		'languages_available': comments_queries.fetch_categorical(course_code, 'Official Language Available '),
+		'tools_used': comments_queries.fetch_categorical(course_code, 'GCCampus Tools Used'),
+		'prepared_by': comments_queries.fetch_categorical(course_code, 'Prep')
 	}
 	return render_template('/course-page/main.html', pass_dict=pass_dict)
 
