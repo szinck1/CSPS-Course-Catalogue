@@ -20,10 +20,12 @@ a {
 	color: #335075;
 }
 .table-tooltip {
+	width: 20px;
 	position: absolute;
 	margin-left: 20px;
 }
 .inline-tooltip {
+	width: 20px;
 	margin-left: 5px;
 }
 /***** End general *****/

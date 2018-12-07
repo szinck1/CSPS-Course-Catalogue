@@ -1,6 +1,6 @@
 <h1>
 	{{ pass_dict.course_title }}
-	<img id="ratings-title-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" width="20" />
+	<img id="ratings-title-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" />
 </h1>
 
 <!-- Loop through pass_dict.all_ratings and dynamically create a chart for every question; check first if ratings exist -->
@@ -12,7 +12,7 @@
 		{% if question[0] in ['Tools - Blogs', 'Tools - Forums', 'Tools - Job Aid', 'Tools - Videos'] %}
 			<h4 class="ratings-chart-title">
 				{{ question[0] }}
-				<img class="inline-tooltip gctools-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" width="20" />
+				<img class="inline-tooltip gctools-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" />
 			</h4>
 		{% else %}
 			<h4 class="ratings-chart-title">{{ question[0] }}</h4>

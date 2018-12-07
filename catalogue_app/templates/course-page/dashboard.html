@@ -23,12 +23,12 @@
 						{% if tup1[1] > 0 %}
 							<td class="text-center" style="color: red; font-weight: bold;">
 								{{ tup1[1] }}
-								<img id="open-offerings-tooltip" class="table-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" width="20" />
+								<img id="open-offerings-tooltip" class="table-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" />
 							</td>
 						{% else %}
 							<td class="text-center">
 								{{ tup1[1] }}
-								<img id="open-offerings-tooltip" class="table-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" width="20" />
+								<img id="open-offerings-tooltip" class="table-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" />
 							</td>
 						{% endif %}
 					{% else %}
