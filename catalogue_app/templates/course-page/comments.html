@@ -3,8 +3,14 @@
 <!-- Subtabs -->
 <ul class="nav nav-tabs nav-justified sub-tabs">
 	<li class="active"><a href="#general_comments">Overall</a></li>
-	<li><a href="#technical_comments">Technical</a></li>
+	<!-- Show Technical comments for Online courses; Instructor comments for Instructor-Led -->
+	{% if pass_dict.online_course %}
+		<li><a href="#technical_comments">Technical</a></li>
+	{% else %}
+		<li><a href="#instructor_comments">Instructor</a></li>
+	{% endif %}
 	<li><a href="#language_comments">Language</a></li>
+	<!-- Add tooltip explaining Performance comments -->
 	<li>
 		<a href="#performance_comments">
 			Performance
@@ -16,7 +22,14 @@
 <br />
 
 <!-- Subtabs' contents -->
-{% for comment_name in ['general_comments', 'technical_comments', 'language_comments', 'performance_comments'] %}
+<!-- List of comments to render -->
+{% if pass_dict.online_course %}
+	{% set comment_names = ['general_comments', 'technical_comments', 'language_comments', 'performance_comments'] %}
+{% else %}
+	{% set comment_names = ['general_comments', 'language_comments', 'performance_comments'] %}
+{% endif %}
+
+{% for comment_name in comment_names %}
 	<section id="{{ comment_name }}" class="tab-content {{ 'active' if loop.index == 1 else 'hide' }}">
 		{% for tup in pass_dict[comment_name] %}
 			<div class="row">
@@ -54,6 +67,11 @@
 		{% endfor %}
 	</section>
 {% endfor %}
+
+<!-- For now, instructor_comments are disabled for privacy -->
+<section id="instructor_comments" class="tab-content hide">
+	<p>Comments on instructor performance are currently disabled due to privacy restrictions.</p>
+</section>
 
 <!-- Other -->
 <section id="other" class="tab-content hide">
