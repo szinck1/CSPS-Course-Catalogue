@@ -16,16 +16,7 @@
 # COMMENTS
 # Consent to use comments??
 # Script to remove Inst comments (VBA?)
-# Add yes/no
-	# GCCampus Tools Used
-	# Official Language Available 
-	# Technical Issues
-# Add categorical
-	# Prepared for activity by
-	# Reason for taking activity
 # Filter comments by star like Amazon
-# Show technical if online, instructor (with disabled message) if inst-led
-# Add tooltip explaining Performance tab
 
 # GEODATA
 # Connect to MySQL
@@ -45,6 +36,7 @@
 # present to DGC
 # add Google Analytics
 # dropdown to change dashboard from registrations to offerings
+# add regional accessibility to geodata
 # instructors in last two years
 # add search by DG, director
 # add GA data from Lesek
