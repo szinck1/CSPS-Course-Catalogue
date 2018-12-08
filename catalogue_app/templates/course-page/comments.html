@@ -31,8 +31,23 @@
 
 {% for comment_name in comment_names %}
 	<section id="{{ comment_name }}" class="tab-content {{ 'active' if loop.index == 1 else 'hide' }}">
+		
+		<!-- Dropdown to filter by star -->
+		<div class="star-filter">
+			<p>Filter: </p>
+			<select>
+				<!-- Dropdown values filled dynamically by jQuery below -->
+				<option id="filter-all-{{ comment_name }}" value="all">All</option>
+				<option id="filter-one-{{ comment_name }}" value="one"></option>
+				<option id="filter-two-{{ comment_name }}" value="two"></option>
+				<option id="filter-three-{{ comment_name }}" value="three"></option>
+				<option id="filter-four-{{ comment_name }}" value="four"></option>
+				<option id="filter-five-{{ comment_name }}" value="five"></option>
+			</select>
+		</div>
+		
 		{% for tup in pass_dict[comment_name] %}
-			<div class="row">
+			<div class="row bob-comment star-{{ tup[1] }}">
 				<div class="col-xs-12">
 					<div class="media">
 						<!-- User avatar -->
@@ -97,6 +112,24 @@
 		animation: true,
 		html: true
 	});
+	
+	// Populate filter dropdown
+	{% for comment_name in comment_names %}
+		var oneStar = $('#{{ comment_name }} .star-1').length;
+		var twoStar = $('#{{ comment_name }} .star-2').length;
+		var threeStar = $('#{{ comment_name }} .star-3').length;
+		var fourStar = $('#{{ comment_name }} .star-4').length;
+		var fiveStar = $('#{{ comment_name }} .star-5').length;
+		<!-- Count number of divs instead of sum as very rarely a user submits comments without stars -->
+		var totalComments = $('#{{ comment_name }} .bob-comment').length;
+		
+		$('#filter-all-{{ comment_name }}').text("All - " + totalComments);
+		$('#filter-one-{{ comment_name }}').text(`One - ${oneStar} (${Math.round((oneStar / totalComments) * 100)}%)`);
+		$('#filter-two-{{ comment_name }}').text(`Two - ${twoStar} (${Math.round((twoStar / totalComments) * 100)}%)`);
+		$('#filter-three-{{ comment_name }}').text(`Three - ${threeStar} (${Math.round((threeStar / totalComments) * 100)}%)`);
+		$('#filter-four-{{ comment_name }}').text(`Four - ${fourStar} (${Math.round((fourStar / totalComments) * 100)}%)`);
+		$('#filter-five-{{ comment_name }}').text(`Five - ${fiveStar} (${Math.round((fiveStar / totalComments) * 100)}%)`);
+	{% endfor %}
 	
 	function createPieChart(id, title, data) {
 		$('#' + String(id)).highcharts({
