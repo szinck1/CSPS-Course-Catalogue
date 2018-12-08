@@ -241,6 +241,9 @@ a {
 
 /***** Comments *****/
 /* Filter */
+.bob-comment, .star-filter {
+	margin-bottom: 20px;
+}
 .star-filter {
 	text-align: right;
 }
