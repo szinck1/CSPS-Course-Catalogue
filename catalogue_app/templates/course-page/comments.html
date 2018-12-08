@@ -35,14 +35,14 @@
 		<!-- Dropdown to filter by star -->
 		<div class="star-filter">
 			<p>Filter: </p>
-			<select>
+			<select onchange="filterComments()">
 				<!-- Dropdown values filled dynamically by jQuery below -->
-				<option id="filter-all-{{ comment_name }}" value="all">All</option>
-				<option id="filter-one-{{ comment_name }}" value="one"></option>
-				<option id="filter-two-{{ comment_name }}" value="two"></option>
-				<option id="filter-three-{{ comment_name }}" value="three"></option>
-				<option id="filter-four-{{ comment_name }}" value="four"></option>
-				<option id="filter-five-{{ comment_name }}" value="five"></option>
+				<option id="filter-all-{{ comment_name }}" value="bob-comment">All</option>
+				<option id="filter-one-{{ comment_name }}" value="star-1"></option>
+				<option id="filter-two-{{ comment_name }}" value="star-2"></option>
+				<option id="filter-three-{{ comment_name }}" value="star-3"></option>
+				<option id="filter-four-{{ comment_name }}" value="star-4"></option>
+				<option id="filter-five-{{ comment_name }}" value="star-5"></option>
 			</select>
 		</div>
 		
@@ -77,8 +77,8 @@
 						</div>
 					</div>
 				</div>
+				<br />
 			</div>
-			<br />
 		{% endfor %}
 	</section>
 {% endfor %}
@@ -130,6 +130,14 @@
 		$('#filter-four-{{ comment_name }}').text(`Four - ${fourStar} (${Math.round((fourStar / totalComments) * 100)}%)`);
 		$('#filter-five-{{ comment_name }}').text(`Five - ${fiveStar} (${Math.round((fiveStar / totalComments) * 100)}%)`);
 	{% endfor %}
+	
+	// Enable dropdown to show / hide
+	function filterComments() {
+		var dropdownSelection = $('section.tab-content.active select').val();
+		var currentTabId = $('.sub-tabs li.active a:first').attr('href');
+		$(`${currentTabId} .bob-comment`).hide();
+		$(`${currentTabId} .bob-comment.${dropdownSelection}`).show();
+	}
 	
 	function createPieChart(id, title, data) {
 		$('#' + String(id)).highcharts({
