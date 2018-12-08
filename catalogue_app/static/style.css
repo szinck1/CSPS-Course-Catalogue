@@ -240,6 +240,13 @@ a {
 
 
 /***** Comments *****/
+/* Filter */
+.star-filter {
+	text-align: right;
+}
+.star-filter p {
+	display: inline;
+}
 /* Avatar */
 .thumbnail.pull-left {
 	padding: 0 !important;
