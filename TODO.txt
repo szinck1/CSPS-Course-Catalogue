@@ -15,12 +15,7 @@
 
 # COMMENTS
 # Consent to use comments??
-# Script to remove Inst comments (VBA?)
-# Filter comments by star like Amazon
-
-# GEODATA
-# Connect to MySQL
-# Different Online vs Inst-Led
+# Script to remove names (VBA?)
 
 # Check 5 to 10 at random
 # Re-read, check for XSS, bad naming conventions
