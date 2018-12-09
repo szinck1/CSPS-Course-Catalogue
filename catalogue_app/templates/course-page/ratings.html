@@ -12,7 +12,7 @@
 		{% if question[0] in ['Tools - Blogs', 'Tools - Forums', 'Tools - Job Aid', 'Tools - Videos'] %}
 			<h4 class="ratings-chart-title">
 				{{ question[0] }}
-				<img class="inline-tooltip gctools-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" />
+				<img id="gctools-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" />
 			</h4>
 		{% else %}
 			<h4 class="ratings-chart-title">{{ question[0] }}</h4>
@@ -44,8 +44,9 @@
 	<h4>Note: This course has received no ratings thus far in the fiscal year.</h4>
 {% endif %}
 
-<!-- Add tooltip contents -->
+
 <script>
+	// Add tooltip contents
 	$('#ratings-title-tooltip').tooltip({
 		placement: 'right',
 		title: '<h5>Tip:</h5><p>Ratings on instructor performance are currently disabled due to privacy restrictions.</p>',
@@ -53,7 +54,7 @@
 		html: true
 	});
 	
-	$('.gctools-tooltip').tooltip({
+	$('#gctools-tooltip').tooltip({
 		placement: 'right',
 		title: '<h5>Tip:</h5><p>Learners report if a GCcampus tool contributed to their learning on a scale of 1 (Not at all) to 5 (To a great extent).</p>',
 		animation: true,
