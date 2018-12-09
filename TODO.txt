@@ -13,6 +13,11 @@
 # Account for situations where course has no data
 # Different averages / info for Online vs. Instructor-Led
 
+# GEODATA
+# Add indexes for queries
+# Tooltip explaining Open, Delivered + all learners, regardless of status
+# Click on icon, see city name and count
+
 # COMMENTS
 # Consent to use comments??
 # Script to remove names (VBA?)
