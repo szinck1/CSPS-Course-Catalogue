@@ -1,8 +1,22 @@
 <h1>{{ pass_dict.course_title }}</h1>
-<h4>Locations of open and delivered offerings around the globe.</h4>
 
-<!-- Map -->
-<div id="map"></div>
+<!-- Dropdown to select offering-map or learner-map -->
+<div class="map-filter">
+	<p>Filter: </p>
+	<select id="filter-maps" onchange="filterMaps()">
+		<option value="offering-map">Offering Locations</option>
+		<option value="learner-map">Learner Locations</option>
+	</select>
+</div>
+
+<!-- Map headings -->
+<h4 class="offering-map">Locations of open and delivered offerings around the globe.</h4>
+<h4 class="learner-map">Locations of learners around the globe.</h4>
+
+<!-- Maps -->
+<div id="offering-map" class="offering-map"></div>
+<div id="learner-map" class="learner-map"></div>
+
 <!-- Legend -->
 <div id="legend">
 	<div id="legend-title">
@@ -32,62 +46,58 @@
 	<br />
 </div>
 
-<!-- Function to create map -->
 <script>
-	function initMap() {
+	// Enable dropdown to show / hide
+	function filterMaps() {
+		var dropdownSelection = $('#filter-maps').val();
+		$('.offering-map').hide();
+		$('.learner-map').hide();
+		$(`.${dropdownSelection}`).show();
+	}
+	
+	// Function to add marker
+	function addMarker(lat, lng, count, map) {
+		// Determine marker color based of number of offerings
+		var color;
+		if (count < 5) {
+			color = "red";
+		} else if(count >= 5 && count < 10) {
+			color = "orange";
+		} else if(count >= 10 && count < 20) {
+			color = "green";
+		} else if(count >= 20) {
+			color = "blue";
+		} else {
+			color = "red"
+		}
+		// Add marker
+		var marker = new google.maps.Marker({
+			position: {lat: lat, lng: lng},
+			map: map,
+			icon: 'http://maps.google.com/mapfiles/ms/icons/' + color + '-dot.png'
+		});
+	}
+	function initMap(id, data) {
 		// Map options
 		var options = {
 			zoom: 4.2,
 			center: {lat: 57.0, lng: -96.0}
 		};
-		
 		// Init map
-		var map = new google.maps.Map(document.getElementById('map'), options);
-		
-		// Function to add marker
-		function addMarker(lat, lng, count) {
-			// Determine marker color based of number of offerings
-			var color;
-			if (count < 5) {
-				color = "red";
-			} else if(count >= 5 && count < 10) {
-				color = "orange";
-			} else if(count >= 10 && count < 20) {
-				color = "green";
-			} else if(count >= 20) {
-				color = "blue";
-			} else {
-				color = "red"
-			}
-			// Add marker
-			var marker = new google.maps.Marker({
-				position: {lat: lat, lng: lng},
-				map: map,
-				icon: 'http://maps.google.com/mapfiles/ms/icons/' + color + '-dot.png'
-			});
-		}
-		
+		var map = new google.maps.Map(document.getElementById(id), options);
 		// List of cities to add
-		markers = {{ pass_dict.offering_city_counts | safe }};
-		
+		markers = data;
 		// Loop through list and add
 		for (var i = 0; i < markers.length; i++) {
-			addMarker(markers[i][2], markers[i][3], markers[i][1]);
+			addMarker(markers[i][2], markers[i][3], markers[i][1], map);
 		}
+	}
+	<!-- Assemble everything into single function to pass to Google Maps API -->
+	function initMaps() {
+		initMap('offering-map', {{ pass_dict.offering_city_counts | safe }});
+		initMap('learner-map', {{ pass_dict.learner_city_counts | safe }});
 	}
 </script>
 
-
-
-
-
-
-
-
-
-
-
 <!-- Load script from Google and pass API key -->
-<script async defer
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA99GCtwUy6QcS3YmzDtelxy8LpwumaCtA&callback=initMap">
-</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA99GCtwUy6QcS3YmzDtelxy8LpwumaCtA&callback=initMaps"></script>
