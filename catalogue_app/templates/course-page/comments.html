@@ -142,7 +142,11 @@
 		$('#' + String(id)).highcharts({
 			chart: {type: 'pie'},
 			title: {text: title, style: {fontWeight: 'bold'}},
-			tooltip: {enabled: false},
+			tooltip: {
+				formatter: function() {
+					return '<b>Number of Responses: ' + this.y;
+				}
+			},
 			plotOptions: {
 				pie: {
 					allowPointSelect: true,
