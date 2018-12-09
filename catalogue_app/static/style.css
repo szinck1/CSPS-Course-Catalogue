@@ -198,10 +198,20 @@ a {
 
 
 /***** Geodata *****/
-#map {
+/* Show offering-map by default */
+.learner-map {
+	display: none;
+}
+#offering-map, #learner-map {
 	float: left;
 	height: 80vh;
 	width: 92%;
+}
+.map-filter {
+	text-align: right;
+}
+.map-filter p {
+	display: inline;
 }
 #legend {
 	float: left;
