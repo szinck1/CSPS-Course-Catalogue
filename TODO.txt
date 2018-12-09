@@ -15,8 +15,6 @@
 
 # GEODATA
 # Add indexes for queries
-# Tooltip explaining Open, Delivered + all learners, regardless of status
-# Click on icon, see city name and count
 
 # COMMENTS
 # Consent to use comments??
