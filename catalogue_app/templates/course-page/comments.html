@@ -35,7 +35,7 @@
 		<!-- Dropdown to filter by star -->
 		<div class="star-filter">
 			<p>Filter: </p>
-			<select onchange="filterComments()">
+			<select id="filter-{{ comment_name }}" onchange="filterComments()">
 				<!-- Dropdown values filled dynamically by jQuery below -->
 				<option id="filter-all-{{ comment_name }}" value="bob-comment">All</option>
 				<option id="filter-one-{{ comment_name }}" value="star-1"></option>
@@ -132,10 +132,10 @@
 	
 	// Enable dropdown to show / hide
 	function filterComments() {
-		var dropdownSelection = $('section.tab-content.active select').val();
-		var currentTabId = $('.sub-tabs li.active a:first').attr('href');
-		$(`${currentTabId} .bob-comment`).hide();
-		$(`${currentTabId} .bob-comment.${dropdownSelection}`).show();
+		var currentCommentTabId= $('.sub-tabs li.active a:first').attr('href');
+		var dropdownSelection = $(`${currentCommentTabId} select`).val();
+		$(`${currentCommentTabId} .bob-comment`).hide();
+		$(`${currentCommentTabId} .bob-comment.${dropdownSelection}`).show();
 	}
 	
 	function createPieChart(id, title, data) {
