@@ -268,7 +268,7 @@ def learner_city_counts(fiscal_year, course_code):
 	query = """
 		SELECT learner_city, COUNT(DISTINCT offering_id), learner_lat, learner_lng
 		FROM {0}
-		WHERE course_code = %s AND offering_status IN ('Open - Normal', 'Delivered - Normal')
+		WHERE course_code = %s AND reg_status = 'Confirmed'
 		GROUP BY learner_city;
 	""".format(table_name)
 	results = query_mysql(query, (course_code,))
