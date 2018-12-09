@@ -62,11 +62,11 @@ def overall_numbers(fiscal_year, course_code):
 def offerings_per_region(fiscal_year, course_code):
 	table_name = 'lsr{0}'.format(fiscal_year)
 	query = """
-			SELECT offering_region, COUNT(DISTINCT offering_id)
-			FROM {0}
-			WHERE course_code = %s AND offering_status IN ('Open - Normal', 'Delivered - Normal', 'N/a')
-			GROUP BY offering_region;
-			""".format(table_name)
+		SELECT offering_region, COUNT(DISTINCT offering_id)
+		FROM {0}
+		WHERE course_code = %s AND offering_status IN ('Open - Normal', 'Delivered - Normal', 'N/a')
+		GROUP BY offering_region;
+		""".format(table_name)
 	results = query_mysql(query, (course_code,))
 	results = dict(results)
 	
@@ -82,12 +82,12 @@ def offerings_per_region(fiscal_year, course_code):
 def _query_province_drilldown(fiscal_year, course_code, region):
 	table_name = 'lsr{0}'.format(fiscal_year)
 	query = """
-			SELECT offering_province, COUNT(DISTINCT offering_id)
-			FROM {0}
-			WHERE course_code = %s AND offering_status IN ('Open - Normal', 'Delivered - Normal') AND offering_region = %s
-			GROUP BY offering_province
-			ORDER BY 1 ASC;
-			""".format(table_name)
+		SELECT offering_province, COUNT(DISTINCT offering_id)
+		FROM {0}
+		WHERE course_code = %s AND offering_status IN ('Open - Normal', 'Delivered - Normal') AND offering_region = %s
+		GROUP BY offering_province
+		ORDER BY 1 ASC;
+		""".format(table_name)
 	results = query_mysql(query, (course_code, region))
 	return results
 
@@ -105,11 +105,11 @@ def province_drilldown(fiscal_year, course_code):
 def offerings_per_lang(fiscal_year, course_code):
 	table_name = 'lsr{0}'.format(fiscal_year)
 	query = """
-			SELECT offering_language, COUNT(DISTINCT offering_id)
-			FROM {0}
-			WHERE course_code = %s AND offering_status IN ('Open - Normal', 'Delivered - Normal')
-			GROUP BY offering_language;
-			""".format(table_name)
+		SELECT offering_language, COUNT(DISTINCT offering_id)
+		FROM {0}
+		WHERE course_code = %s AND offering_status IN ('Open - Normal', 'Delivered - Normal')
+		GROUP BY offering_language;
+		""".format(table_name)
 	results = query_mysql(query, (course_code,))
 	
 	# Force 'English', 'French', and 'Bilingual' to be returned within dict
@@ -126,15 +126,15 @@ def offerings_per_lang(fiscal_year, course_code):
 def offerings_cancelled(fiscal_year, course_code):
 	table_name = 'lsr{0}'.format(fiscal_year)
 	query = """
-			SELECT SUM(a.Mars / b.Mars)
-			FROM
-				(SELECT COUNT(DISTINCT offering_id) AS Mars
-				 FROM {0}
-				 WHERE course_code = %s AND offering_status = 'Cancelled - Normal') AS a,
-				 
-				(SELECT COUNT(DISTINCT offering_id) AS Mars
-				 FROM {0}
-				 WHERE course_code = %s) AS b;
+		SELECT SUM(a.Mars / b.Mars)
+		FROM
+			(SELECT COUNT(DISTINCT offering_id) AS Mars
+			 FROM {0}
+			 WHERE course_code = %s AND offering_status = 'Cancelled - Normal') AS a,
+			 
+			(SELECT COUNT(DISTINCT offering_id) AS Mars
+			 FROM {0}
+			 WHERE course_code = %s) AS b;
 			""".format(table_name)
 	results = query_mysql(query, (course_code, course_code))
 	return as_percent(results)
@@ -144,15 +144,15 @@ def offerings_cancelled(fiscal_year, course_code):
 def offerings_cancelled_global(fiscal_year):
 	table_name = 'lsr{0}'.format(fiscal_year)
 	query = """
-			SELECT SUM(a.Mars / b.Mars)
-			FROM
-				(SELECT COUNT(DISTINCT offering_id) AS Mars
-				 FROM {0}
-				 WHERE offering_status = 'Cancelled - Normal') AS a,
-				 
-				(SELECT COUNT(DISTINCT offering_id) AS Mars
-				 FROM {0}) AS b;
-			""".format(table_name)
+		SELECT SUM(a.Mars / b.Mars)
+		FROM
+			(SELECT COUNT(DISTINCT offering_id) AS Mars
+			 FROM {0}
+			 WHERE offering_status = 'Cancelled - Normal') AS a,
+			 
+			(SELECT COUNT(DISTINCT offering_id) AS Mars
+			 FROM {0}) AS b;
+		""".format(table_name)
 	results = query_mysql(query)
 	return as_percent(results)
 
@@ -162,40 +162,40 @@ def top_5_depts(lang, fiscal_year, course_code):
 	table_name = 'lsr{0}'.format(fiscal_year)
 	
 	query = """
-			SELECT {0}, COUNT({0})
-			FROM {1}
-			WHERE course_code = %s AND reg_status = 'Confirmed'
-			GROUP BY {0}
-			ORDER BY 2 DESC
-			LIMIT 5;
-			""".format(field_name, table_name)
+		SELECT {0}, COUNT({0})
+		FROM {1}
+		WHERE course_code = %s AND reg_status = 'Confirmed'
+		GROUP BY {0}
+		ORDER BY 2 DESC
+		LIMIT 5;
+		""".format(field_name, table_name)
 	return query_mysql(query, (course_code,))
 
 
 def top_5_classifs(fiscal_year, course_code):
 	table_name = 'lsr{0}'.format(fiscal_year)
 	query = """
-			SELECT learner_classif, COUNT(learner_classif)
-			FROM {0}
-			WHERE course_code = %s AND reg_status = 'Confirmed'
-			GROUP BY learner_classif
-			ORDER BY 2 DESC
-			LIMIT 5;
-			""".format(table_name)
+		SELECT learner_classif, COUNT(learner_classif)
+		FROM {0}
+		WHERE course_code = %s AND reg_status = 'Confirmed'
+		GROUP BY learner_classif
+		ORDER BY 2 DESC
+		LIMIT 5;
+		""".format(table_name)
 	return query_mysql(query, (course_code,))
 
 
 def avg_class_size(fiscal_year, course_code):
 	table_name = 'lsr{0}'.format(fiscal_year)
 	query = """
-			SELECT AVG(class_size)
-			FROM(
-				SELECT COUNT(reg_id) AS class_size
-				FROM {0}
-				WHERE course_code = %s AND reg_status= 'Confirmed'
-				GROUP BY offering_id
-			) AS sub_table;
-			""".format(table_name)
+		SELECT AVG(class_size)
+		FROM(
+			SELECT COUNT(reg_id) AS class_size
+			FROM {0}
+			WHERE course_code = %s AND reg_status= 'Confirmed'
+			GROUP BY offering_id
+		) AS sub_table;
+		""".format(table_name)
 	results = query_mysql(query, (course_code,))
 	return as_int(results)
 
@@ -203,14 +203,14 @@ def avg_class_size(fiscal_year, course_code):
 def avg_class_size_global(fiscal_year):
 	table_name = 'lsr{0}'.format(fiscal_year)
 	query = """
-			SELECT AVG(class_size)
-			FROM(
-				SELECT COUNT(reg_id) AS class_size
-				FROM {0}
-				WHERE reg_status= 'Confirmed'
-				GROUP BY offering_id
-			) AS sub_table;
-			""".format(table_name)
+		SELECT AVG(class_size)
+		FROM(
+			SELECT COUNT(reg_id) AS class_size
+			FROM {0}
+			WHERE reg_status= 'Confirmed'
+			GROUP BY offering_id
+		) AS sub_table;
+		""".format(table_name)
 	results = query_mysql(query)
 	return as_int(results)
 
@@ -218,16 +218,16 @@ def avg_class_size_global(fiscal_year):
 def avg_no_shows(fiscal_year, course_code):
 	table_name = 'lsr{0}'.format(fiscal_year)
 	query = """
-			SELECT SUM(a.Mars / b.Mars)
-			FROM
-				(SELECT SUM(no_show) AS Mars
-				 FROM {0}
-				 WHERE course_code = %s) AS a,
-				 
-				(SELECT COUNT(DISTINCT offering_id) AS Mars
-				 FROM {0}
-				 WHERE course_code = %s AND offering_status IN ('Open - Normal', 'Delivered - Normal')) AS b;
-			""".format(table_name)
+		SELECT SUM(a.Mars / b.Mars)
+		FROM
+			(SELECT SUM(no_show) AS Mars
+			 FROM {0}
+			 WHERE course_code = %s) AS a,
+			 
+			(SELECT COUNT(DISTINCT offering_id) AS Mars
+			 FROM {0}
+			 WHERE course_code = %s AND offering_status IN ('Open - Normal', 'Delivered - Normal')) AS b;
+		""".format(table_name)
 	results = query_mysql(query, (course_code, course_code))
 	return as_float(results)
 
@@ -235,14 +235,29 @@ def avg_no_shows(fiscal_year, course_code):
 def avg_no_shows_global(fiscal_year):
 	table_name = 'lsr{0}'.format(fiscal_year)
 	query = """
-			SELECT SUM(a.Mars / b.Mars)
-			FROM
-				(SELECT SUM(no_show) AS Mars
-				 FROM {0}) AS a,
-				 
-				(SELECT COUNT(DISTINCT offering_id) AS Mars
-				 FROM {0}
-				 WHERE offering_status IN ('Open - Normal', 'Delivered - Normal')) AS b;
-			""".format(table_name)
+		SELECT SUM(a.Mars / b.Mars)
+		FROM
+			(SELECT SUM(no_show) AS Mars
+			 FROM {0}) AS a,
+			 
+			(SELECT COUNT(DISTINCT offering_id) AS Mars
+			 FROM {0}
+			 WHERE offering_status IN ('Open - Normal', 'Delivered - Normal')) AS b;
+		""".format(table_name)
 	results = query_mysql(query)
 	return as_float(results)
+
+
+# Geodata
+def offering_city_counts(fiscal_year, course_code):
+	table_name = 'lsr{0}'.format(fiscal_year)
+	query = """
+		SELECT offering_city, COUNT(DISTINCT offering_id), offering_lat, offering_lng
+		FROM {0}
+		WHERE course_code = %s AND offering_status IN ('Open - Normal', 'Delivered - Normal')
+		GROUP BY offering_city;
+	""".format(table_name)
+	results = query_mysql(query, (course_code,))
+	# Make 'results' a list of lists so can be manipulated by JavaScript
+	results = [[element for element in tup] for tup in results]
+	return results

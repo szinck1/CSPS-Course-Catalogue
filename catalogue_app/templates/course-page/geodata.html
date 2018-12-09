@@ -68,17 +68,24 @@
 		}
 		
 		// List of cities to add
-		markers = [
-			{lat: 45.4215, lng: -75.6972, count: 10},
-			{lat: 38.8899, lng: -77.0090, count: 50}
-		];
+		markers = {{ pass_dict.offering_city_counts | safe }};
 		
 		// Loop through list and add
-		for(var i=0; i<markers.length; i++){
-			addMarker(markers[i].lat, markers[i].lng, markers[i].count);
+		for (var i = 0; i < markers.length; i++) {
+			addMarker(markers[i][2], markers[i][3], markers[i][1]);
 		}
 	}
 </script>
+
+
+
+
+
+
+
+
+
+
 
 <!-- Load script from Google and pass API key -->
 <script async defer

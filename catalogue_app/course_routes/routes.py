@@ -90,7 +90,7 @@ def course_result():
 		'avg_no_shows_LY': round(lsr_queries.avg_no_shows(LAST_YEAR, course_code), 1),
 		'avg_no_shows_TY': round(lsr_queries.avg_no_shows(THIS_YEAR, course_code), 1),
 		# Geodata
-		
+		'offering_city_counts': lsr_queries.offering_city_counts(THIS_YEAR, course_code),
 		# Ratings
 		'all_ratings': ratings_queries.all_ratings(THIS_YEAR, course_code),
 		# Comments
