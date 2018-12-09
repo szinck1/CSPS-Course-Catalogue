@@ -10,8 +10,14 @@
 </div>
 
 <!-- Map headings -->
-<h4 class="offering-map">Locations of open and delivered offerings around the globe.</h4>
-<h4 class="learner-map">Locations of learners around the globe.</h4>
+<h4 class="offering-map">
+	Locations of open and delivered offerings around the globe.
+	<img id="offering-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" />
+</h4>
+<h4 class="learner-map">
+	Locations of learners around the globe.
+	<img id="learner-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" />
+</h4>
 
 <!-- Maps -->
 <div id="offering-map" class="offering-map"></div>
@@ -47,6 +53,20 @@
 </div>
 
 <script>
+	// Add tooltip contents
+	$('#offering-tooltip').tooltip({
+		placement: 'right',
+		title: "<h5>Tip:</h5><p>The map shows offerings with status 'Open' and 'Delivered'.</p>",
+		animation: true,
+		html: true
+	});
+	$('#learner-tooltip').tooltip({
+		placement: 'right',
+		title: "<h5>Tip:</h5><p>The map shows learners whose registration status is 'Confirmed'.</p>",
+		animation: true,
+		html: true
+	});
+	
 	// Enable dropdown to show / hide
 	function filterMaps() {
 		var dropdownSelection = $('#filter-maps').val();
@@ -56,7 +76,7 @@
 	}
 	
 	// Function to add marker
-	function addMarker(lat, lng, count, map) {
+	function addMarker(city_name, count, lat, lng, map) {
 		// Determine marker color based of number of offerings
 		var color;
 		if (count < 5) {
@@ -76,7 +96,17 @@
 			map: map,
 			icon: 'http://maps.google.com/mapfiles/ms/icons/' + color + '-dot.png'
 		});
+		// Add tooltip
+		var contentString = city_name + ': ' + String(count);
+		var infoWindow = new google.maps.InfoWindow({
+			content: contentString
+		});
+		// Show tooltip upon click
+		marker.addListener('click', function() {
+			infoWindow.open(map, marker);
+		});
 	}
+	
 	function initMap(id, data) {
 		// Map options
 		var options = {
@@ -89,9 +119,10 @@
 		markers = data;
 		// Loop through list and add
 		for (var i = 0; i < markers.length; i++) {
-			addMarker(markers[i][2], markers[i][3], markers[i][1], map);
+			addMarker(markers[i][0], markers[i][1], markers[i][2], markers[i][3], map);
 		}
 	}
+	
 	<!-- Assemble everything into single function to pass to Google Maps API -->
 	function initMaps() {
 		initMap('offering-map', {{ pass_dict.offering_city_counts | safe }});
