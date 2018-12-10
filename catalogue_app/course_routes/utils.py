@@ -21,10 +21,10 @@ def query_mysql(query, args=None):
 
 
 # Helper functions to convert MySQL results to desired dtype
-def as_string(my_val):
+def as_string(my_val, error_msg=False):
 	# Account for MySQL returning NULL
 	if not my_val or not my_val[0][0]:
-		return False
+		return error_msg
 	else:
 		return str(my_val[0][0])
 

@@ -6,7 +6,7 @@ def course_description(lang, course_code):
 	field_name = 'course_description'
 	query_description = "SELECT {0} FROM product_info WHERE course_code = %s LIMIT 1;".format(field_name)
 	description = query_mysql(query_description, (course_code,))
-	return as_string(description)
+	return as_string(description, error_msg='Apologies, this course is currently catalogued without a description.')
 
 
 # Helper function to fetch product info
@@ -14,8 +14,7 @@ def _query_product_info(field, lang, course_code):
 	field_name = field
 	query = "SELECT {0} FROM product_info WHERE course_code = %s LIMIT 1;".format(field_name)
 	result = query_mysql(query, (course_code,))
-	result = as_string(result)
-	return result if result else gettext('<awaiting mapping>')
+	return as_string(result, error_msg='<awaiting mapping>')
 
 
 def course_info(lang, course_code):
