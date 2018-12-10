@@ -38,7 +38,12 @@
 <table class="table table-hover">
 	<thead>
 		<tr>
-			<td class="text-center" colspan="2"><h4><strong>Additional Info</strong></h4></td>
+			<td class="text-center" colspan="2">
+				<h4>
+					<strong>Additional Info</strong>
+					<img id="additional-info-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" />
+				</h4>
+			</td>
 		</tr>
 		<tr>
 			<td><strong>Field</strong></td>
@@ -54,3 +59,13 @@
 		{% endfor %}
 	</tbody>
 </table>
+
+<script>
+	// Add tooltip
+	$('#additional-info-tooltip').tooltip({
+		placement: 'right',
+		title: '<h5>Tip:</h5><p>This information is tracked by Curriculum Management.</p>',
+		animation: true,
+		html: true
+	});
+</script>
