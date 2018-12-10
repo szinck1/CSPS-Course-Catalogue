@@ -11,6 +11,7 @@ body {
 }
 h1 {
 	color: green;
+	margin: 20px 0;
 }
 .jumbotron h1 {
 	font-size: 3.3em;
@@ -18,6 +19,9 @@ h1 {
 }
 a {
 	color: #335075;
+}
+table {
+	margin: 20px 0;
 }
 .table-tooltip {
 	width: 20px;
@@ -187,13 +191,38 @@ a {
 
 
 
-/***** Description *****/
+/***** General *****/
+/* Course description */
+.text-justify {
+	margin: 0 10px 10px 10px;
+}
+/* Glyphicons */
+#glyph-table {
+	height: 40vh;
+	width: 100%;
+	text-align: center;
+	border: 1px solid #333;
+}
+#glyph-table td {
+	width: 50%;
+}
+#glyph-table td span {
+	font-size: 4em;
+}
+#glyph-table td p {
+	font-size: 1.2em;
+	font-weight: bold;
+}
+.glyph-info {
+	font-size: 1em !important;
+	color: green;
+}
 /* Table hover */
 .table-hover tbody tr:hover th,
 .table-hover tbody tr:hover td {
 	background-color: #5fba7d;
 }
-/***** End description *****/
+/***** End general *****/
 
 
 

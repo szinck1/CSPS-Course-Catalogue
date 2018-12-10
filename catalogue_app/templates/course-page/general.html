@@ -1,27 +1,56 @@
 <h1>{{ pass_dict.course_title }}</h1>
-<br />
-<div class="row">
-	<!-- Using | safe as a) no risk, coming from server side and b) some entries contain HTML formatting, looks good -->
-	<p class="text-justify">{{ pass_dict.course_description | safe }}</p>
-</div>
-<br />
-<div class="row">
-	<!-- Overall Numbers-->
-	<div class="col-xs-12">
-		<table class="table table-hover">
+
+<p class="text-justify">{{ pass_dict.course_description | safe }}</p>
+
+<!-- Display main properties with glyphicons -->
+<table id="glyph-table">
+	<tbody>
+		<tr>
+			<td>
+				<span class="glyphicon glyphicon-education"></span>
+				<p>Provider</p>
+				<!-- Use dict.pop so that remaining elements can be rendered with for loop -->
+				<p class="glyph-info">{{ pass_dict.course_info.pop('Provider', '&lt;awaiting mapping&gt;') }}</p>
+			</td>
+			<td>
+				<span class="glyphicon glyphicon-time"></span>
+				<p>Duration</p>
+				{% set duration = pass_dict.course_info.pop('Duration', 0) %}
+				<p class="glyph-info">{{ duration }} {{ 'hours' if duration != 1 else 'hour' }}</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<span class="glyphicon glyphicon-pencil"></span>
+				<p>Business Line</p>
+				<p class="glyph-info">&lt;awaiting mapping&gt;</p>
+			</td>
+			<td>
+				<span class="glyphicon glyphicon-eye-open"></span>
+				<p>Displayed on GCcampus</p>
+				<p class="glyph-info">{{ pass_dict.course_info.pop('Displayed on GCcampus', '&lt;awaiting mapping&gt;') }}</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<!-- Additional Info -->
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<td class="text-center" colspan="2"><h4><strong>Additional Info</strong></h4></td>
+		</tr>
+		<tr>
+			<td><strong>Field</strong></td>
+			<td class="text-right"><strong>Contents</strong></td>
+		</tr>
+	</thead>
+	<tbody>
+		{% for key, value in pass_dict.course_info.items() %}
 			<tr>
-				<td class="text-center" colspan="2"><h4><strong>{{ _('Course Info') }}</strong></h4></td>
+				<td>{{ key }}</td>
+				<td class="text-right">{{ value }}</td>
 			</tr>
-			<tr>
-				<td><strong>Field</strong></td>
-				<td class="text-right"><strong>Contents</strong></td>
-			</tr>
-			{% for tup in pass_dict.course_info %}
-				<tr>
-					<td>{{ tup[0] }}</td>
-					<td class="text-right">{{ tup[1] }}</td>
-				</tr>
-			{% endfor %}
-		</table>
-	</div>
-</div>
+		{% endfor %}
+	</tbody>
+</table>
