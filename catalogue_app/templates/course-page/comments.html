@@ -144,7 +144,12 @@
 			title: {text: title, style: {fontWeight: 'bold'}},
 			tooltip: {
 				formatter: function() {
-					return '<b>Number of Responses: ' + this.y;
+					var sliceName = this.key;
+					if (sliceName == 'No response') {
+						return '<strong>Number of Responses:</strong> 0';
+					} else {
+						return '<strong>Number of Responses:</strong> ' + this.y;
+					}
 				}
 			},
 			plotOptions: {
