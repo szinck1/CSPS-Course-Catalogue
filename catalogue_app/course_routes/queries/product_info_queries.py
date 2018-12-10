@@ -25,7 +25,7 @@ def course_info(lang, course_code):
 		(gettext('Stream'), 'stream'),
 		(gettext('Main Topic'), 'main_topic'),
 		(gettext('Functional Area'), 'functional_area'),
-		(gettext('Duration (hours)'), 'duration'),
+		(gettext('Duration'), 'duration'),
 		(gettext('Displayed on GCcampus'), 'displayed_on_gccampus'),
 		(gettext('Required Training (as determined by TBS)'), 'required_training'),
 		(gettext('Life Cycle Status'), 'life_cycle_status'),
@@ -37,7 +37,7 @@ def course_info(lang, course_code):
 		(gettext('Program Manager'), 'program_manager'),
 		(gettext('Point of Contact'), 'point_of_contact')
 	]
-	results = []
+	results = {}
 	for field in fields:
-		results.append((field[0], _query_product_info(field[1], lang, course_code)))
+		results[field[0]] = _query_product_info(field[1], lang, course_code)
 	return results
