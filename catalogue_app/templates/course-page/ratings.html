@@ -7,7 +7,7 @@
 {% if pass_dict.all_ratings %}
 {% for question in pass_dict.all_ratings %}
 	<!-- Div to hold chart -->
-	<div class="row">
+	<div class="row ratings-chart">
 		<!-- Add a tooltip explaining GCcampus Tools charts -->
 		{% if question[0] in ['Tools - Blogs', 'Tools - Forums', 'Tools - Job Aid', 'Tools - Videos'] %}
 			<h4 class="ratings-chart-title">
@@ -19,8 +19,6 @@
 		{% endif %}
 		<div id="chart-{{ loop.index }}" class="col-xs-12"></div>
 	</div>
-	<br />
-	<br />
 	<!-- Script to build chart -->
 	<script>
 		$('#chart-{{ loop.index }}').highcharts({
