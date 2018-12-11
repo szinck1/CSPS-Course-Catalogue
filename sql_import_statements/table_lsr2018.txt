@@ -40,15 +40,15 @@ IGNORE 1 LINES;
 
 
 
-# Indexes for selection page + course_title
-CREATE INDEX idx_cc_cten ON lsr2018_19(course_code, course_title_en);
-CREATE INDEX idx_cc_ctfr ON lsr2018_19(course_code, course_title_fr);
+# Indexes for selection page
+CREATE INDEX idx_bt_cc_cten ON lsr2018_19(business_type, course_code, course_title_en);
+CREATE INDEX idx_bt_cten_cc ON lsr2018_19(business_type, course_title_en, course_code);
 
 # Index for open, delivered, cancelled offerings
 CREATE INDEX idx_cc_os_oid ON lsr2018_19(course_code, offering_status, offering_id);
 
 # Index for client requests
-CREATE INDEX idx_cc_cl_oid ON lsr2018_19(course_code, client, offering_id);
+CREATE INDEX idx_cc_cl_os_oid ON lsr2018_19(course_code, client, offering_status, offering_id);
 
 # Index for confirmed regs
 CREATE INDEX idx_cc_rs ON lsr2018_19(course_code, reg_status);
@@ -71,10 +71,8 @@ CREATE INDEX idx_cc_os_ol_oid ON lsr2018_19(course_code, offering_status, offeri
 # Index for offerings cancelled
 # None needed, already runs in 0.0s
 
-# Slow
 # Index for offerings cancelled global
-# Would benefit from idx_oid
-CREATE INDEX idx_os_oid ON lsr2018_19(offering_status, offering_id);
+CREATE INDEX idx_bt_os_oid ON lsr2018_19(business_type, offering_status, offering_id);
 
 # Index for top 5 departments
 CREATE INDEX idx_cc_rs_bdnen ON lsr2018_19(course_code, reg_status, billing_dept_name_en);
@@ -86,9 +84,8 @@ CREATE INDEX idx_cc_rs_lc ON lsr2018_19(course_code, reg_status, learner_classif
 # Index for average class size
 CREATE INDEX idx_cc_rs_oid ON lsr2018_19(course_code, reg_status, offering_id);
 
-# Slow
 # Index for average class size global
-CREATE INDEX idx_rs_oid ON lsr2018_19(reg_status, offering_id);
+CREATE INDEX idx_rs_bt_oid ON lsr2018_19(reg_status, business_type, offering_id);
 
 # Index for average no-shows
 # None needed, already runs in 0.0s
