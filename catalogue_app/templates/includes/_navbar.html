@@ -15,18 +15,21 @@
 				<li class="dropdown li-border-right">
 					<a href="" class="dropdown-toggle" data-toggle="dropdown">{{ _('Catalogue') }}<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="{{ url_for('course.departmental') }}">{{ _('Departmental Usage') }}</a></li>
+						<!-- <li><a href="{{ url_for('course.departmental') }}">{{ _('Departmental Usage') }}</a></li> -->
 						<li><a href="{{ url_for('course.course_code_selection') }}">{{ _('Search by Course Code') }}</a></li>
 						<li><a href="{{ url_for('course.course_title_selection') }}">{{ _('Search by Course Title') }}</a></li>
 					</ul>
 				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
+				<li class="li-border-right"><a href="{{ url_for('course.french') }}">Français</a></li>
+				<!--
 				{% if session['lang'] == 'en' %}
 					<li class="li-border-right"><a href="{{ request.path + '?lang=fr' }}">{{ _('Français') }}</a></li>
 				{% else %}
 					<li class="li-border-right"><a href="{{ request.path + '?lang=en' }}">{{ _('Français') }}</a></li>
 				{% endif %}
+				-->
 			</ul>
 		</div>
 	</div>

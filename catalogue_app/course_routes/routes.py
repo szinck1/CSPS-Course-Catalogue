@@ -114,3 +114,9 @@ def course_result():
 @course.route('/departmental')
 def departmental():
 	return render_template('departmental.html')
+
+
+# Not yet implemented
+@course.route('/french')
+def french():
+	return render_template('departmental.html')
