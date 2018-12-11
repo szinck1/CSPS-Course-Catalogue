@@ -37,7 +37,7 @@ def overall_numbers(fiscal_year, course_code):
 	query_cancelled = "SELECT COUNT(DISTINCT offering_id) FROM {0} WHERE course_code = %s AND offering_status = 'Cancelled - Normal';".format(table_name)
 	cancelled = query_mysql(query_cancelled, (course_code,))
 	
-	query_client_reqs = "SELECT COUNT(DISTINCT offering_id) FROM {0} WHERE course_code = %s AND client != '';".format(table_name)
+	query_client_reqs = "SELECT COUNT(DISTINCT offering_id) FROM {0} WHERE course_code = %s AND client != '' AND offering_status IN ('Open - Normal', 'Delivered - Normal');".format(table_name)
 	client_reqs = query_mysql(query_client_reqs, (course_code,))
 	
 	query_regs = "SELECT COUNT(reg_id) FROM {0} WHERE course_code = %s AND reg_status = 'Confirmed';".format(table_name)
@@ -81,8 +81,7 @@ def _query_province_drilldown(fiscal_year, course_code, region):
 		SELECT offering_province, COUNT(DISTINCT offering_id)
 		FROM {0}
 		WHERE course_code = %s AND offering_status IN ('Open - Normal', 'Delivered - Normal') AND offering_region = %s
-		GROUP BY offering_province
-		ORDER BY 1 ASC;
+		GROUP BY offering_province;
 		""".format(table_name)
 	results = query_mysql(query, (course_code, region))
 	return results
@@ -104,8 +103,7 @@ def _query_city_drilldown(fiscal_year, course_code, province):
 		SELECT offering_city, COUNT(DISTINCT offering_id)
 		FROM {0}
 		WHERE course_code = %s AND offering_status IN ('Open - Normal', 'Delivered - Normal') AND offering_province = %s
-		GROUP BY offering_city
-		ORDER BY 1 ASC;
+		GROUP BY offering_city;
 		""".format(table_name)
 	results = query_mysql(query, (course_code, province))
 	return results
@@ -122,18 +120,6 @@ def city_drilldown(fiscal_year, course_code):
 		cities = [list(tup) for tup in cities]
 		results_processed[province].extend(cities)
 	return results_processed
-
-
-
-
-
-
-
-
-
-
-
-# Before this point, all queries are safe for Instructor-Led
 
 
 def offerings_per_lang(fiscal_year, course_code):
@@ -174,7 +160,7 @@ def offerings_cancelled(fiscal_year, course_code):
 	return as_percent(results)
 
 
-# Need to separate global into separate function, using LIKE '%' too slow
+# Need to separate global into separate function as using LIKE '%' too slow
 def offerings_cancelled_global(fiscal_year):
 	table_name = 'lsr{0}'.format(fiscal_year)
 	query = """
@@ -182,10 +168,11 @@ def offerings_cancelled_global(fiscal_year):
 		FROM
 			(SELECT COUNT(DISTINCT offering_id) AS Mars
 			 FROM {0}
-			 WHERE offering_status = 'Cancelled - Normal') AS a,
+			 WHERE business_type = 'Instructor-Led' AND offering_status = 'Cancelled - Normal') AS a,
 			 
 			(SELECT COUNT(DISTINCT offering_id) AS Mars
-			 FROM {0}) AS b;
+			 FROM {0}
+			 WHERE business_type = 'Instructor-Led') AS b;
 		""".format(table_name)
 	results = query_mysql(query)
 	return as_percent(results)
@@ -234,6 +221,7 @@ def avg_class_size(fiscal_year, course_code):
 	return as_int(results)
 
 
+# Need to separate global into separate function as using LIKE '%' too slow
 def avg_class_size_global(fiscal_year):
 	table_name = 'lsr{0}'.format(fiscal_year)
 	query = """
@@ -241,7 +229,7 @@ def avg_class_size_global(fiscal_year):
 		FROM(
 			SELECT COUNT(reg_id) AS class_size
 			FROM {0}
-			WHERE reg_status= 'Confirmed'
+			WHERE reg_status= 'Confirmed' AND business_type = 'Instructor-Led'
 			GROUP BY offering_id
 		) AS sub_table;
 		""".format(table_name)
@@ -266,6 +254,7 @@ def avg_no_shows(fiscal_year, course_code):
 	return as_float(results)
 
 
+# Need to separate global into separate function as using LIKE '%' too slow
 def avg_no_shows_global(fiscal_year):
 	table_name = 'lsr{0}'.format(fiscal_year)
 	query = """
@@ -276,7 +265,7 @@ def avg_no_shows_global(fiscal_year):
 			 
 			(SELECT COUNT(DISTINCT offering_id) AS Mars
 			 FROM {0}
-			 WHERE offering_status IN ('Open - Normal', 'Delivered - Normal')) AS b;
+			 WHERE business_type = 'Instructor-Led' AND offering_status IN ('Open - Normal', 'Delivered - Normal')) AS b;
 		""".format(table_name)
 	results = query_mysql(query)
 	return as_float(results)
