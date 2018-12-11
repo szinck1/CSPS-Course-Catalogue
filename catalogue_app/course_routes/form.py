@@ -17,6 +17,7 @@ def course_code_form(lang, form_name):
 	query = """
 			SELECT DISTINCT course_code, {0}
 			FROM {1}
+			WHERE business_type = 'Instructor-Led'
 			ORDER BY 1 ASC;
 			""".format(field_name, table_name)
 	results = query_mysql(query)
@@ -37,6 +38,7 @@ def course_title_form(lang, form_name):
 	query = """
 			SELECT DISTINCT course_code, {0}
 			FROM {1}
+			WHERE business_type = 'Instructor-Led'
 			ORDER BY 2 ASC;
 			""".format(field_name, table_name)
 	results = query_mysql(query)
