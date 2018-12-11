@@ -43,12 +43,16 @@
 	</tbody>
 </table>
 
-<div class="row">
+<div class="row dashboard-chart">
 	<!-- Offerings per Region -->
+	<h4 class= "dashboard-chart-title">
+		Offerings per Region
+		<img id="regions-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" />
+	</h4>
 	<div id="offerings-per-region" class="col-xs-12"></div>
 </div>
 
-<div class="row">
+<div class="row dashboard-chart">
 	<!-- Offerings per Language -->
 	<div id="offerings-per-lang" class="col-xs-12 col-md-6"></div>
 	
@@ -56,7 +60,7 @@
 	<div id="offerings-cancelled" class="col-xs-12 col-md-6"></div>
 </div>
 
-<div class="row">
+<div class="row dashboard-chart">
 	<!-- Top 5 Departments -->
 	<div class="col-xs-12 col-md-6">
 		<table class="table table-hover">
@@ -104,7 +108,7 @@
 	</div>
 </div>
 
-<div class="row">
+<div class="row dashboard-chart">
 	<!-- Average Class Size -->
 	<div id="avg-class-size" class="col-xs-12 col-md-6"></div>
 	
@@ -113,10 +117,16 @@
 </div>
 
 <script>
-	// Add tooltip
+	// Add tooltips
 	$('#open-offerings-tooltip').tooltip({
 		placement: 'right',
 		title: '<h5>Tip:</h5><p>Past offerings must be closed before Level 1 surveys are sent.</p>',
+		animation: true,
+		html: true
+	});
+	$('#regions-tooltip').tooltip({
+		placement: 'right',
+		title: '<h5>Tip:</h5><p>This chart is interactive and shows offerings by Region, Province, and City.</p>',
 		animation: true,
 		html: true
 	});
@@ -124,7 +134,7 @@
 	// Offerings per Region
 	$('#offerings-per-region').highcharts({
 		chart: {type: 'column'},
-		title: {text: "{{ _('Open & Delivered Offerings per Region') }}", style: {fontWeight: 'bold'}},
+		title: {text: ''},
 		xAxis: {type: 'category'},
 		yAxis: {title: {text: ''}, allowDecimals: false, min: 0},
 		legend: {enabled: false},

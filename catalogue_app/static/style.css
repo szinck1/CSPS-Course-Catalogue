@@ -1,4 +1,4 @@
-/***** General *****/
+/***** Global *****/
 html {
 	position: relative;
 	min-height: 100%;
@@ -33,7 +33,7 @@ table {
 	width: 20px;
 	margin-left: 5px;
 }
-/***** End general *****/
+/***** End global *****/
 
 
 
@@ -245,6 +245,18 @@ table {
 
 
 
+/***** Dashboard *****/
+.dashboard-chart {
+	margin-bottom: 20px;
+}
+.dashboard-chart-title {
+	text-align: center;
+	font-weight: bold;
+}
+/***** End dashboard *****/
+
+
+
 /***** Maps *****/
 /* Show offering-map by default */
 .learner-map {
@@ -289,12 +301,12 @@ table {
 
 
 /***** Ratings *****/
+.ratings-chart {
+	margin-bottom: 20px;
+}
 .ratings-chart-title {
 	text-align: center;
 	font-weight: bold;
-}
-.ratings-chart {
-	margin-bottom: 20px;
 }
 /***** End ratings*****/
 
