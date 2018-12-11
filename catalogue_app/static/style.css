@@ -321,4 +321,7 @@ table {
 .thumbnail:hover {
 	border-color: #335075 !important;
 }
+#instructor_comments p {
+	margin: 20px 0;
+}
 /***** End comments *****/
