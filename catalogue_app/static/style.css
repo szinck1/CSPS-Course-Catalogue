@@ -207,7 +207,7 @@ table {
 	width: 50%;
 }
 #glyph-table td span {
-	font-size: 4em;
+	font-size: 3.6em;
 }
 #glyph-table td p {
 	font-size: 1.2em;
@@ -226,7 +226,7 @@ table {
 
 
 
-/***** Geodata *****/
+/***** Maps *****/
 /* Show offering-map by default */
 .learner-map {
 	display: none;
@@ -274,6 +274,9 @@ table {
 	text-align: center;
 	font-weight: bold;
 }
+.ratings-chart {
+	margin-bottom: 20px;
+}
 /***** End ratings*****/
 
 
@@ -285,6 +288,7 @@ table {
 }
 .star-filter {
 	text-align: right;
+	margin-top: 20px;
 }
 .star-filter p {
 	display: inline;
