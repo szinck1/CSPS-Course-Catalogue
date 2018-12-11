@@ -14,6 +14,7 @@ h1 {
 	margin: 20px 0;
 }
 .jumbotron h1 {
+	text-align: left;
 	font-size: 3.3em;
 	color: green;
 }
@@ -101,6 +102,24 @@ table {
 	color: #fff !important;
 }
 /***** End navbar *****/
+
+
+
+/***** Home and about *****/
+#home-page,
+#about-page {
+	text-align: justify;
+}
+#home-page p,
+#about-page p {
+	margin: 1.5em 0;
+}
+#home-page h3,
+#about-page h3 {
+	margin: 1.5em 0;
+	color: green;
+}
+/***** End home and about *****/
 
 
 

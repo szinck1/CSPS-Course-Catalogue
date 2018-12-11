@@ -1,13 +1,21 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-	<div class="container">
+	<div id="about-page" class="container">
 		<div class="jumbotron">
-			<h1>{{ _('About') }}</h1>
+			<h1>About</h1>
 		</div>
-		<p>{{ _('Visualizations generated in Python using Flask, MySQL, and Highcharts.') }}</p>
-		<br />
-		<p>{{ _('Thanks to <a href="mailto:derek.khan@canada.ca">Derek Khan</a> and team for ensuring access to quality data.') }}</p>
+		
+		<h3>This platform represents an important step in creating an agile and digitally-connected organization.</h3>
+		<p>This application is the result of a collaborative effort between all three branches at the School.</p>
+		<p>Acknowledgments:</p>
+		
+		<ul>
+			<li>IPSB</li>
+			<li>Learning Evaluation Unit</li>
+			<li>Application Management</li>
+			<li>Learning Solutions</li>
+			<li>Curriculum Management</li>
+		</ul>
 	</div>
-	<br />
 {% endblock body %}
