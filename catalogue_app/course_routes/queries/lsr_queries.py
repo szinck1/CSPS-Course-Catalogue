@@ -93,7 +93,7 @@ def province_drilldown(fiscal_year, course_code):
 	regions = ['Atlantic', 'NCR', 'Ontario', 'Pacific', 'Prairie', 'Québec', 'Outside Canada']
 	for region in regions:
 		provinces = _query_province_drilldown(fiscal_year, course_code, region)
-		provinces = [list(tup) for tup in provinces]
+		provinces = [{'name': tup[0], 'y': tup[1], 'drilldown': tup[0]} for tup in provinces]
 		results_processed[region].extend(provinces)
 	return results_processed
 
