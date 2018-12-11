@@ -12,13 +12,9 @@ from catalogue_app.course_routes.utils import query_mysql, as_string, as_float, 
 def course_title(lang, fiscal_year, course_code):
 	field_name = 'course_title_{0}'.format(lang)
 	table_name = 'lsr{0}'.format(fiscal_year)
-	
 	query = "SELECT {0} FROM {1} WHERE course_code = %s LIMIT 1;".format(field_name, table_name)
 	course_title = query_mysql(query, (course_code,))
-	if not course_title:
-		return False
-	else:
-		return as_string(course_title)
+	return as_string(course_title, error_msg=False)
 
 
 def online_course(fiscal_year, course_code):
@@ -64,7 +60,7 @@ def offerings_per_region(fiscal_year, course_code):
 	query = """
 		SELECT offering_region, COUNT(DISTINCT offering_id)
 		FROM {0}
-		WHERE course_code = %s AND offering_status IN ('Open - Normal', 'Delivered - Normal', 'N/a')
+		WHERE course_code = %s AND offering_status IN ('Open - Normal', 'Delivered - Normal')
 		GROUP BY offering_region;
 		""".format(table_name)
 	results = query_mysql(query, (course_code,))
@@ -72,7 +68,7 @@ def offerings_per_region(fiscal_year, course_code):
 	
 	# Process results into format required by Highcharts
 	results_processed = {}
-	regions = ['Atlantic', 'NCR', 'Ontario', 'Pacific', 'Prairie', 'Québec', 'Outside Canada', 'Online']
+	regions = ['Atlantic', 'NCR', 'Ontario', 'Pacific', 'Prairie', 'Québec', 'Outside Canada']
 	for region in regions:
 		count = results.get(region, 0)
 		results_processed[region] = count
@@ -100,6 +96,44 @@ def province_drilldown(fiscal_year, course_code):
 		provinces = [list(tup) for tup in provinces]
 		results_processed[region].extend(provinces)
 	return results_processed
+
+
+def _query_city_drilldown(fiscal_year, course_code, province):
+	table_name = 'lsr{0}'.format(fiscal_year)
+	query = """
+		SELECT offering_city, COUNT(DISTINCT offering_id)
+		FROM {0}
+		WHERE course_code = %s AND offering_status IN ('Open - Normal', 'Delivered - Normal') AND offering_province = %s
+		GROUP BY offering_city
+		ORDER BY 1 ASC;
+		""".format(table_name)
+	results = query_mysql(query, (course_code, province))
+	return results
+
+
+def city_drilldown(fiscal_year, course_code):
+	results_processed = defaultdict(list)
+	provinces = ['Alberta', 'British Columbia', 'Manitoba', 'NCR/RCN', 'New Brunswick',
+				 'Newfoundland and Labrador', 'Northwest Territories', 'Nova Scotia',
+				 'Nunavut', 'Ontario', 'Ontario_NCR', 'Prince Edward Island', 'Quebec',
+				 'Québec_NCR', 'Saskatchewan', 'Yukon']
+	for province in provinces:
+		cities = _query_city_drilldown(fiscal_year, course_code, province)
+		cities = [list(tup) for tup in cities]
+		results_processed[province].extend(cities)
+	return results_processed
+
+
+
+
+
+
+
+
+
+
+
+# Before this point, all queries are safe for Instructor-Led
 
 
 def offerings_per_lang(fiscal_year, course_code):

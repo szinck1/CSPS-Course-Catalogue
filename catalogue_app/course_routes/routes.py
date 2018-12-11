@@ -2,7 +2,7 @@ from flask import Blueprint, redirect, render_template, request, session, url_fo
 from flask_babel import gettext
 from catalogue_app.config import Debug
 from catalogue_app.course_routes.form import course_title_form, course_code_form
-from catalogue_app.course_routes.queries import lsr_queries, product_info_queries, comments_queries, ratings_queries
+from catalogue_app.course_routes.queries import lsr_queries, product_info_queries, ratings_queries, comments_queries
 course = Blueprint('course', __name__)
 
 # Make LAST_YEAR and THIS_YEAR available to all templates
@@ -46,7 +46,7 @@ def course_title_selection():
 def course_result():
 	# Get arguments from query string; if incomplete, return to selection page
 	if 'course_code' not in request.args:
-		return redirect(url_for('course.course_selection'))
+		return redirect(url_for('course.course_code_selection'))
 	# Automatically escaped in Jinja2 (HTML templates) and MySQL queries
 	course_code = request.args['course_code']
 	lang = session.get('lang', 'en')
@@ -73,6 +73,7 @@ def course_result():
 		'overall_numbers_TY': lsr_queries.overall_numbers(THIS_YEAR, course_code),
 		'offerings_per_region': lsr_queries.offerings_per_region(THIS_YEAR, course_code),
 		'province_drilldown': lsr_queries.province_drilldown(THIS_YEAR, course_code),
+		'city_drilldown': lsr_queries.city_drilldown(THIS_YEAR, course_code),
 		'offerings_per_lang_LY': lsr_queries.offerings_per_lang(LAST_YEAR, course_code),
 		'offerings_per_lang_TY': lsr_queries.offerings_per_lang(THIS_YEAR, course_code),
 		'offerings_cancelled_global_LY': lsr_queries.offerings_cancelled_global(LAST_YEAR),
@@ -95,10 +96,10 @@ def course_result():
 		# Ratings
 		'all_ratings': ratings_queries.all_ratings(THIS_YEAR, course_code),
 		# Comments
-		'general_comments': comments_queries.fetch_comments('Comment - General ', course_code),
-		'technical_comments': comments_queries.fetch_comments('Issue Description', course_code),
-		'language_comments': comments_queries.fetch_comments('Comment - OL Not Available', course_code),
-		'performance_comments': comments_queries.fetch_comments('Comment - application for performance improvement', course_code),
+		'general_comments': comments_queries.fetch_comments(course_code, 'Comment - General '),
+		'technical_comments': comments_queries.fetch_comments(course_code, 'Issue Description'),
+		'language_comments': comments_queries.fetch_comments(course_code, 'Comment - OL Not Available'),
+		'performance_comments': comments_queries.fetch_comments(course_code, 'Comment - application for performance improvement'),
 		# Categorical and yes/no questions
 		'reason_to_participate': comments_queries.fetch_categorical(course_code, 'Reason to Participate'),
 		'technical_issues': comments_queries.fetch_categorical(course_code, 'Technical Issues'),
