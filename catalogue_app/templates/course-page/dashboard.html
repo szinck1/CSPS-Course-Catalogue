@@ -1,5 +1,10 @@
 <h1>{{ pass_dict.course_title }}</h1>
 
+
+<p>{{ pass_dict.offerings_per_region }}</p>
+<p>{{ pass_dict.province_drilldown }}</p>
+<p>{{ pass_dict.city_drilldown }}</p>
+
 <!-- Overall Numbers-->
 <table class="table table-hover">
 	<thead>
@@ -133,25 +138,21 @@
 			name: 'Offerings',
 			colorByPoint: true,
 			data: [
-				{name: 'Atlantic', drilldown: 'Atlantic', y: {{ pass_dict.offerings_per_region['Atlantic'] }} },
-				{name: 'NCR', drilldown: 'NCR', y: {{ pass_dict.offerings_per_region['NCR'] }} },
-				{name: 'Ontario', drilldown: 'Ontario', y: {{ pass_dict.offerings_per_region['Ontario'] }} },
-				{name: 'Pacific', drilldown: 'Pacific', y: {{ pass_dict.offerings_per_region['Pacific'] }} },
-				{name: 'Prairie', drilldown: 'Prairie', y: {{ pass_dict.offerings_per_region['Prairie'] }} },
-				{name: 'Québec', drilldown: 'Québec', y: {{ pass_dict.offerings_per_region['Québec'] }} },
-				{name: 'Outside Canada', drilldown: 'Outside Canada', y: {{ pass_dict.offerings_per_region['Outside Canada'] }} }
+				{% set regions = ['Atlantic', 'NCR', 'Ontario Region', 'Pacific', 'Prairie', 'Québec Region', 'Outside Canada'] %}
+				{% for region in regions %}
+					{name: '{{ region }}', drilldown: '{{ region }}', y: {{ pass_dict.offerings_per_region[region] }} },
+				{% endfor %}
 			]
 		}],
 		drilldown: {
 			series: [
 				// Province drilldowns
-				{% set regions = ['Atlantic', 'NCR', 'Ontario', 'Pacific', 'Prairie', 'Québec', 'Outside Canada'] %}
 				{% for region in regions %}
 					{name: '{{ region }}', id: '{{ region }}', data: {{ pass_dict.province_drilldown[region] | safe }} },
 				{% endfor %}
 				
 				// City drilldowns
-				{% set provinces = ['Alberta', 'British Columbia', 'Manitoba', 'NCR/RCN', 'New Brunswick'
+				{% set provinces = ['Alberta', 'British Columbia', 'Manitoba', 'NCR/RCN', 'New Brunswick',
 									'Newfoundland and Labrador', 'Northwest Territories', 'Nova Scotia',
 									'Nunavut', 'Ontario', 'Ontario_NCR', 'Prince Edward Island', 'Quebec',
 									'Québec_NCR', 'Saskatchewan', 'Yukon'] %}

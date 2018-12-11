@@ -68,7 +68,7 @@ def offerings_per_region(fiscal_year, course_code):
 	
 	# Process results into format required by Highcharts
 	results_processed = {}
-	regions = ['Atlantic', 'NCR', 'Ontario', 'Pacific', 'Prairie', 'Québec', 'Outside Canada']
+	regions = ['Atlantic', 'NCR', 'Ontario Region', 'Pacific', 'Prairie', 'Québec Region', 'Outside Canada']
 	for region in regions:
 		count = results.get(region, 0)
 		results_processed[region] = count
@@ -90,7 +90,7 @@ def _query_province_drilldown(fiscal_year, course_code, region):
 
 def province_drilldown(fiscal_year, course_code):
 	results_processed = defaultdict(list)
-	regions = ['Atlantic', 'NCR', 'Ontario', 'Pacific', 'Prairie', 'Québec', 'Outside Canada']
+	regions = ['Atlantic', 'NCR', 'Ontario Region', 'Pacific', 'Prairie', 'Québec Region', 'Outside Canada']
 	for region in regions:
 		provinces = _query_province_drilldown(fiscal_year, course_code, region)
 		provinces = [{'name': tup[0], 'y': tup[1], 'drilldown': tup[0]} for tup in provinces]
