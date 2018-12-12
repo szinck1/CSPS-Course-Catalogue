@@ -1,24 +1,8 @@
+# notes for email: mobile friendly, beta version, French and Online courses coming soon, instructor comments + instructor names elswhere redacted, CV for Leszek
+
 ### CURRENT SPRINT ###
-
-# GENERAL
-# Note saying French under translation, coming couple days
-# Add Rob's text
-
-# DASHBOARD
-# Top job titles, job ranks
-# Fix Ontario, Québec in city drilldown
-# Account for situations where course has no data
-# Different averages / info for Online vs. Instructor-Led
-
-# COMMENTS
-# Script to remove names (VBA)
-
-# Check 5 to 10 at random
-# Check all queries run fast, have index
-# Check appearance on mobile
-# Problem with e.g. C255-2?
-# Load in fresh data
-# Deploy Wed Dec 12
+# Check 5 at random
+# Deploy Wed Dec 12, remove db password + secret_key from code!
 
 
 
@@ -28,6 +12,7 @@
 # present to DGC
 # add lifecycle info
 # add Google Analytics
+# top job titles
 # add regional accessibility to geodata
 # instructors in last two years
 # add search by DG, director
