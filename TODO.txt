@@ -2,7 +2,7 @@
 
 ### CURRENT SPRINT ###
 # Check 5 at random
-# Deploy Wed Dec 12, remove db password + secret_key from code!
+# Deploy Wed Dec 12, set environ vars for db password and secret_key
 
 
 
