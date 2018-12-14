@@ -1,22 +1,14 @@
-from configparser import ConfigParser
-import mysql.connector
-
-# Get config vals for MySQL
-parser = ConfigParser()
-parser.read('./catalogue_app/mysql_config.cfg')
+from flask import g
 
 
 # Query data from MySQL
 def query_mysql(query, args=None):
-	cnx = mysql.connector.connect(user=parser.get('db', 'user'),
-								  password=parser.get('db', 'password'),
-								  host=parser.get('db', 'host'),
-								  database=parser.get('db', 'database'))
+	cnx = g.db
 	cursor = cnx.cursor()
 	cursor.execute(query, args)
 	results = cursor.fetchall()
 	cursor.close()
-	cnx.close()
+	#cnx.close()
 	return results
 
 

@@ -1,9 +1,19 @@
-from flask import Flask, request, session
+from flask import Flask, g, request, session
 from flask_babel import Babel
 from catalogue_app.config import Debug
+import mysql.connector
 
 # Instantiate plugins
 babel = Babel()
+
+
+# Connection to db to store in g
+def get_db():
+	db = mysql.connector.connect(user='admin',
+								 password='Newton11',
+								 host='localhost',
+								 database='csps_dashboards')
+	return db
 
 
 # Application factory
@@ -40,5 +50,15 @@ def create_app(config_class=Debug):
 	def get_locale():
 		return session.get('lang', 'en')
 	
+	
+	@app.before_request
+	def before_request():
+		g.db = get_db()
+	
+	
+	@app.teardown_request
+	def teardown_request(exception):
+		if hasattr(g, 'db'):
+			g.db.close()
 	
 	return app
