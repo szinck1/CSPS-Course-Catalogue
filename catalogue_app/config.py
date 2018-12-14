@@ -1,6 +1,8 @@
+import os
+
 class Debug:
 	DEBUG = True
-	SECRET_KEY = '73bfcc84d9fd6335584f5445f76b57de380c84149f0cf9d0'
+	SECRET_KEY = os.environ.get('SECRET_KEY')
 	LAST_YEAR = '2017_18'
 	THIS_YEAR = '2018_19'
 	BABEL_DEFAULT_LOCALE = 'en'

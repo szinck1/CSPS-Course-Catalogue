@@ -1,3 +1,4 @@
+import os
 from flask import Flask, g, request, session
 from flask_babel import Babel
 from catalogue_app.config import Debug
@@ -9,10 +10,10 @@ babel = Babel()
 
 # Connection to db to store in g
 def get_db():
-	db = mysql.connector.connect(user='admin',
-								 password='Newton11',
-								 host='localhost',
-								 database='csps_dashboards')
+	db = mysql.connector.connect(host=os.environ.get('DB_HOST'),
+								 user=os.environ.get('DB_USER'),
+								 password=os.environ.get('DB_PASSWORD'),
+								 database=os.environ.get('DB_DATABASE_NAME'))
 	return db
 
 

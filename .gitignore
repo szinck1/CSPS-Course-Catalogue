@@ -1,5 +1,5 @@
 # Files
-mysql_config.cfg
+environ_vars.txt
 
 # Directories
 **/__pycache__/
