@@ -4,7 +4,7 @@
 	<!-- Highcharts -->
 	<script src="https://code.highcharts.com/highcharts.js"></script>
 	<!-- Highcharts drilldown -->
-	<script src="https://code.highcharts.com/modules/drilldown.js"></script>
+	<script src="https://code.highcharts.com/modules/drilldown.js" async></script>
 {% endblock head %}
 
 {% block body %}
@@ -45,7 +45,7 @@
 		</section>
 	</div>
 	
-	<script>
+	<script async>
 		// Activate and deactivate tabs
 		$(".main-tabs li").on("click", function() {
 			$(".main-tabs li").removeClass("active");

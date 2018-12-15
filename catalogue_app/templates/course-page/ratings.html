@@ -20,7 +20,7 @@
 		<div id="chart-{{ loop.index }}" class="col-xs-12"></div>
 	</div>
 	<!-- Script to build chart -->
-	<script>
+	<script async>
 		$('#chart-{{ loop.index }}').highcharts({
 			chart: {type: 'line'},
 			title: {text: ''},
@@ -43,7 +43,7 @@
 {% endif %}
 
 
-<script>
+<script async>
 	// Add tooltip contents
 	$('#ratings-title-tooltip').tooltip({
 		placement: 'right',
