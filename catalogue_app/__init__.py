@@ -9,12 +9,17 @@ babel = Babel()
 
 
 # Connection to db to store in g
-def get_db():
-	db = mysql.connector.connect(host=os.environ.get('DB_HOST'),
-								 user=os.environ.get('DB_USER'),
-								 password=os.environ.get('DB_PASSWORD'),
-								 database=os.environ.get('DB_DATABASE_NAME'))
-	return db
+def get_db(local=True):
+	if local:
+		return mysql.connector.connect(host='localhost',
+									   user='admin',
+									   password='Newton11',
+									   database='csps_dashboards')
+	else:
+		return mysql.connector.connect(host=os.environ.get('DB_HOST'),
+									   user=os.environ.get('DB_USER'),
+									   password=os.environ.get('DB_PASSWORD'),
+									   database=os.environ.get('DB_DATABASE_NAME'))
 
 
 # Application factory
@@ -54,7 +59,7 @@ def create_app(config_class=Debug):
 	
 	@app.before_request
 	def before_request():
-		g.db = get_db()
+		g.db = get_db(local=True)
 	
 	
 	@app.teardown_request
