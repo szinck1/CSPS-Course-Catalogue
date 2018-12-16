@@ -1,21 +1,22 @@
-# notes for email: mobile friendly, beta version, French and Online courses coming soon, instructor comments + instructor names elswhere redacted, CV for Leszek
-
 ### CURRENT SPRINT ###
-# Check 5 at random
-# Deploy Wed Dec 12, set environ vars for db password and secret_key
+# Deploy
+# Email
+# Notes for email: mobile friendly, alpha/v0 version, French and online courses coming soon, new content and data to be added e.g. Salesforce data from Linda
 
 
-
-### BACKLOG ####
-
+### UPCOMING SPRINT ####
 # add FR
+# add online + dropdown for offerings/learners
+# top job titles, job ranks, scroll instead of just top 5
+# add search by DG, provider
+# deploy beta version
 # present to DGC
+
+
+### BACKLOG ###
 # add lifecycle info
 # add Google Analytics
-# top job titles
 # add regional accessibility to geodata
-# instructors in last two years
-# add search by DG, director
 # add GA data from Lesek
 # link to content e.g. instructor's manual
 # link to offerings on gccampus
@@ -26,3 +27,4 @@
 # link / scrape course descriptions from GCcampus' catalogue / course list
 # connect directly to DWH
 # let Camille edit directly
+# add guest speakers repository
