@@ -246,6 +246,12 @@ table {
 
 
 /***** Dashboard *****/
+.dash-filter {
+	text-align: right;
+}
+.dash-filter p {
+	display: inline;
+}
 .dashboard-chart {
 	margin-bottom: 20px;
 }

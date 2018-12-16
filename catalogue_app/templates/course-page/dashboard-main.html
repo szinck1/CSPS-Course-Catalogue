@@ -1,0 +1,28 @@
+<h1>{{ pass_dict.course_title }}</h1>
+
+<!-- Dropdown to select offering-dash or learner-dash -->
+<div class="dash-filter">
+	<p>Filter: </p>
+	<select id="filter-dash" onchange="filterDashboards()">
+		<option value="offering-dash">Offering Data</option>
+		<option value="learner-dash">Learner Data</option>
+	</select>
+</div>
+
+<div id="offering-dash">
+	{% include 'course-page/dashboard-offerings.html' %}
+</div>
+
+<div id="learner-dash">
+	<p>Meow meow 69</p>
+</div>
+
+<script async>
+	// Enable dropdown to show / hide
+	function filterDashboards() {
+		var dropdownSelection = $('#filter-dash').val();
+		$('#offering-dash').hide();
+		$('#learner-dash').hide();
+		$(`#${dropdownSelection}`).show();
+	}
+</script>
