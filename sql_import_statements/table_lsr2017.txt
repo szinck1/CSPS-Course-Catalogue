@@ -85,6 +85,5 @@ CREATE INDEX idx_rs_bt_oid ON lsr2017_18(reg_status, business_type, offering_id)
 # Index for average no-shows
 # None needed, already runs in 0.0s
 
-# Slow
 # Index for average no-shows global
-# None to add
+CREATE INDEX idx_ns ON lsr2017_18(no_show);
