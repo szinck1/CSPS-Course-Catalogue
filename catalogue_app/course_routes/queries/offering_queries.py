@@ -11,32 +11,16 @@ from catalogue_app.course_routes.utils import query_mysql, as_string, as_float, 
 
 # Decorator to time queries, if needed
 # import time
-# def time_it(func):
-	# def wrapper(*args, **kwargs):
-		# t1 = time.time()
-		# result = func(*args, **kwargs)
-		# print('Func {0} took {1} sec'.format(func.__name__, round(time.time() - t1, 3)))
-		# return result
-	# return wrapper
-
-	
-def course_title(lang, fiscal_year, course_code):
-	field_name = 'course_title_{0}'.format(lang)
-	table_name = 'lsr{0}'.format(fiscal_year)
-	query = "SELECT {0} FROM {1} WHERE course_code = %s LIMIT 1;".format(field_name, table_name)
-	course_title = query_mysql(query, (course_code,))
-	return as_string(course_title, error_msg=False)
+def time_it(func):
+	def wrapper(*args, **kwargs):
+		t1 = time.time()
+		result = func(*args, **kwargs)
+		print('Func {0} took {1} sec'.format(func.__name__, round(time.time() - t1, 3)))
+		return result
+	return wrapper
 
 
-def online_course(fiscal_year, course_code):
-	table_name = 'lsr{0}'.format(fiscal_year)
-	query = "SELECT business_type FROM {0} WHERE course_code = %s LIMIT 1;".format(table_name)
-	business_type = query_mysql(query, (course_code,))
-	business_type = as_string(business_type)
-	return True if (business_type == 'Online') else False
-
-
-def overall_numbers_offerings(fiscal_year, course_code):
+def overall_numbers(fiscal_year, course_code):
 	table_name = 'lsr{0}'.format(fiscal_year)
 	
 	query_open = "SELECT COUNT(DISTINCT offering_id) FROM {0} WHERE course_code = %s AND offering_status = 'Open - Normal';".format(table_name)
@@ -64,13 +48,6 @@ def overall_numbers_offerings(fiscal_year, course_code):
 			   (gettext('Registrations'), as_int(regs)),
 			   (gettext('No-Shows'), as_int(no_shows))]
 	return results
-
-
-def overall_numbers_learners():
-	pass
-
-
-
 
 
 def offerings_per_region(fiscal_year, course_code):
