@@ -1,1 +1,75 @@
-<p>Initial upload</p>
+<!-- Overall Numbers-->
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<td class="text-center" colspan="3"><h4><strong>{{ _('Overall Numbers') }}</strong></h4></td>
+		</tr>
+		<tr>
+			<td><strong>{{ _('Fiscal Year') }}</strong></td>
+			<td class="text-center"><strong>{{ LAST_YEAR }}</strong></td>
+			<td class="text-center"><strong>{{ THIS_YEAR }}</strong></td>
+		</tr>
+	</thead>
+	<tbody>
+		{% for tup1, tup2 in pass_dict.overall_numbers_LY|zip(pass_dict.overall_numbers_TY) %}
+			<tr>
+				<!-- Name -->
+				<td>{{ tup1[0] }}</td>
+				
+				<!-- LAST_YEAR's value -->
+				<td class="text-center">{{ tup1[1] }}</td>
+				
+				<!-- THIS_YEAR's value -->
+				<td class="text-center">{{ tup2[1] }}</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+<div class="row dashboard-chart">
+	<!-- Top 5 Departments -->
+	<div class="col-xs-12 col-md-6">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<td class="text-center" colspan="2"><h4><strong>{{ _('Top 5 Departments') }}</strong></h4></td>
+				</tr>
+				<tr>
+					<td><strong>{{ _('Name') }}</strong></td>
+					<td class="text-right"><strong>{{ _('Registrations') }}</strong></td>
+				</tr>
+			</thead>
+			<tbody>
+				{% for tuple in pass_dict.top_5_depts %}
+					<tr>
+						<td>{{ tuple[0] }}</td>
+						<td class="text-right">{{ tuple[1] }}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	
+	<!-- Top 5 Classifications -->
+	<div class="col-xs-12 col-md-6">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<td class="text-center" colspan="2"><h4><strong>{{ _('Top 5 Classifications') }}</strong></h4></td>
+				</tr>
+				<tr>
+					<td><strong>{{ _('Name') }}</strong></td>
+					<td class="text-right"><strong>{{ _('Registrations') }}</strong></td>
+				</tr>
+			</thead>
+			<tbody>
+				{% for tuple in pass_dict.top_5_classifs %}
+					<tr>
+						<td>{{ tuple[0] }}</td>
+						<td class="text-right">{{ tuple[1] }}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</div>
