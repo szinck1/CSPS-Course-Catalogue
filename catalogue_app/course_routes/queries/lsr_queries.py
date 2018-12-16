@@ -261,7 +261,8 @@ def avg_no_shows_global(fiscal_year):
 		SELECT SUM(a.Mars / b.Mars)
 		FROM
 			(SELECT SUM(no_show) AS Mars
-			 FROM {0}) AS a,
+			 FROM {0}
+			 WHERE no_show = 1) AS a,
 			 
 			(SELECT COUNT(DISTINCT offering_id) AS Mars
 			 FROM {0}
