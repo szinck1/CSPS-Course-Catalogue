@@ -36,7 +36,7 @@ def online_course(fiscal_year, course_code):
 	return True if (business_type == 'Online') else False
 
 
-def overall_numbers(fiscal_year, course_code):
+def overall_numbers_offerings(fiscal_year, course_code):
 	table_name = 'lsr{0}'.format(fiscal_year)
 	
 	query_open = "SELECT COUNT(DISTINCT offering_id) FROM {0} WHERE course_code = %s AND offering_status = 'Open - Normal';".format(table_name)
@@ -64,6 +64,13 @@ def overall_numbers(fiscal_year, course_code):
 			   (gettext('Registrations'), as_int(regs)),
 			   (gettext('No-Shows'), as_int(no_shows))]
 	return results
+
+
+def overall_numbers_learners():
+	pass
+
+
+
 
 
 def offerings_per_region(fiscal_year, course_code):
@@ -189,34 +196,6 @@ def offerings_cancelled_global(fiscal_year):
 	return as_percent(results)
 
 
-def top_5_depts(lang, fiscal_year, course_code):
-	field_name =  'billing_dept_name_{0}'.format(lang)
-	table_name = 'lsr{0}'.format(fiscal_year)
-	
-	query = """
-		SELECT {0}, COUNT({0})
-		FROM {1}
-		WHERE course_code = %s AND reg_status = 'Confirmed'
-		GROUP BY {0}
-		ORDER BY 2 DESC
-		LIMIT 5;
-		""".format(field_name, table_name)
-	return query_mysql(query, (course_code,))
-
-
-def top_5_classifs(fiscal_year, course_code):
-	table_name = 'lsr{0}'.format(fiscal_year)
-	query = """
-		SELECT learner_classif, COUNT(learner_classif)
-		FROM {0}
-		WHERE course_code = %s AND reg_status = 'Confirmed'
-		GROUP BY learner_classif
-		ORDER BY 2 DESC
-		LIMIT 5;
-		""".format(table_name)
-	return query_mysql(query, (course_code,))
-
-
 def avg_class_size(fiscal_year, course_code):
 	table_name = 'lsr{0}'.format(fiscal_year)
 	query = """
@@ -281,32 +260,3 @@ def avg_no_shows_global(fiscal_year):
 		""".format(table_name)
 	results = query_mysql(query)
 	return as_float(results)
-
-
-# Geodata
-def offering_city_counts(fiscal_year, course_code):
-	table_name = 'lsr{0}'.format(fiscal_year)
-	query = """
-		SELECT offering_city, COUNT(DISTINCT offering_id), offering_lat, offering_lng
-		FROM {0}
-		WHERE course_code = %s AND offering_status IN ('Open - Normal', 'Delivered - Normal')
-		GROUP BY offering_city;
-	""".format(table_name)
-	results = query_mysql(query, (course_code,))
-	# Make 'results' a list of lists so can be manipulated by JavaScript
-	results = [[element for element in tup] for tup in results if tup[2] is not None]
-	return results
-
-
-def learner_city_counts(fiscal_year, course_code):
-	table_name = 'lsr{0}'.format(fiscal_year)
-	query = """
-		SELECT learner_city, COUNT(DISTINCT offering_id), learner_lat, learner_lng
-		FROM {0}
-		WHERE course_code = %s AND reg_status = 'Confirmed'
-		GROUP BY learner_city;
-	""".format(table_name)
-	results = query_mysql(query, (course_code,))
-	# Make 'results' a list of lists so can be manipulated by JavaScript
-	results = [[element for element in tup] for tup in results if tup[2] is not None]
-	return results
