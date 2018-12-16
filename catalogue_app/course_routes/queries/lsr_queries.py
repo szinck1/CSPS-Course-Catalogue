@@ -9,6 +9,17 @@ from catalogue_app.course_routes.utils import query_mysql, as_string, as_float, 
 # "They can not be used for other parts of SQL, such as table names, etc."
 
 
+# Decorator to time queries, if needed
+# import time
+# def time_it(func):
+	# def wrapper(*args, **kwargs):
+		# t1 = time.time()
+		# result = func(*args, **kwargs)
+		# print('Func {0} took {1} sec'.format(func.__name__, round(time.time() - t1, 3)))
+		# return result
+	# return wrapper
+
+	
 def course_title(lang, fiscal_year, course_code):
 	field_name = 'course_title_{0}'.format(lang)
 	table_name = 'lsr{0}'.format(fiscal_year)
