@@ -1,30 +1,11 @@
-<!-- Overall Numbers-->
-<table class="table table-hover">
-	<thead>
-		<tr>
-			<td class="text-center" colspan="3"><h4><strong>{{ _('Overall Numbers') }}</strong></h4></td>
-		</tr>
-		<tr>
-			<td><strong>{{ _('Fiscal Year') }}</strong></td>
-			<td class="text-center"><strong>{{ LAST_YEAR }}</strong></td>
-			<td class="text-center"><strong>{{ THIS_YEAR }}</strong></td>
-		</tr>
-	</thead>
-	<tbody>
-		{% for tup1, tup2 in pass_dict.overall_numbers_LY|zip(pass_dict.overall_numbers_TY) %}
-			<tr>
-				<!-- Name -->
-				<td>{{ tup1[0] }}</td>
-				
-				<!-- LAST_YEAR's value -->
-				<td class="text-center">{{ tup1[1] }}</td>
-				
-				<!-- THIS_YEAR's value -->
-				<td class="text-center">{{ tup2[1] }}</td>
-			</tr>
-		{% endfor %}
-	</tbody>
-</table>
+<!-- Registrations per Month -->
+<div class="row dashboard-chart">
+	<h4 class= "dashboard-chart-title">
+		Attendance per Month
+		<img id="regs-per-month-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" />
+	</h4>
+	<div id="regs-per-month" class="col-xs-12"></div>
+</div>
 
 <div class="row dashboard-chart">
 	<!-- Top 5 Departments -->
@@ -73,3 +54,28 @@
 		</table>
 	</div>
 </div>
+
+<script async>
+	// Add tooltips
+	$('#regs-per-month-tooltip').tooltip({
+		placement: 'right',
+		title: "<h5>Tip:</h5><p>Learners whose registration has status 'Confirmed' in fiscal year {{ THIS_YEAR }}.</p>",
+		animation: true,
+		html: true
+	});
+	
+	// Offerings per Language
+	$('#regs-per-month').highcharts({
+		chart: {type: 'column'},
+		title: {text: ''},
+		xAxis: {type: 'category'},
+		yAxis: {title: {text: ''}, allowDecimals: false, min: 0},
+		legend: {enabled: false},
+		credits: {text: ''},
+		series: [{
+			name: 'Learners',
+			colorByPoint: false,
+			data: {{ pass_dict.regs_per_month | safe }}
+		}]
+	});
+</script>
