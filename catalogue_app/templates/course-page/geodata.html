@@ -97,7 +97,7 @@
 			icon: 'http://maps.google.com/mapfiles/ms/icons/' + color + '-dot.png'
 		});
 		// Add tooltip
-		var contentString = city_name + ': ' + String(count);
+		var contentString = `${city_name}: ${String(count)}`;
 		var infoWindow = new google.maps.InfoWindow({
 			content: contentString
 		});
