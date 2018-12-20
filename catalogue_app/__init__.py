@@ -1,13 +1,16 @@
 import os
+import pickle
 from flask import Flask, g, request, session
 from flask_babel import Babel
 from catalogue_app.config import Debug
 import mysql.connector
 
-
 # Declare dictionary as app variable for memoization (stopgap solution before implementing Redis)
-memo_dict = {}
-
+if Debug.LOAD_FROM_PICKLE:
+	with open('memo.pickle', 'rb') as f:
+		memo_dict = pickle.load(f)
+else:
+	memo_dict = {}
 
 # Instantiate plugins
 babel = Babel()
