@@ -1,12 +1,18 @@
 ### CURRENT SPRINT ###
-# Deploy
+# finish online
+# htaccess in linux / azure, ask Steve and ask if Azure ready handle sharing link
+# add CM's logo
+# add icons to main page
+# add sean_dict
+# Deploy v-alpha
 # Email
-# Notes for email: mobile friendly, alpha/v0 version, French and online courses coming soon, new content and data to be added e.g. Salesforce data from Linda
+# Notes for email: mobile friendly, alpha/v0 version, French coming soon, new content and data to be added e.g. Salesforce data from Linda
 
 
 ### UPCOMING SPRINT ####
+
 # add FR
-# add online + dropdown for offerings/learners
+# highcharts export
 # top job titles, job ranks, scroll instead of just top 5
 # add search by DG, provider
 # deploy beta version
