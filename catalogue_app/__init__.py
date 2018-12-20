@@ -1,7 +1,7 @@
 import os
 import pickle
 from flask import Flask, g, request, session
-from flask_basicauth import BasicAuth
+from flask_httpauth import HTTPBasicAuth
 from flask_babel import Babel
 from catalogue_app.config import Config
 import mysql.connector
@@ -15,8 +15,10 @@ else:
 
 
 # Instantiate login
-basic_auth = BasicAuth()
-
+auth = HTTPBasicAuth()
+users = {
+    Config.BASIC_AUTH_USERNAME: Config.BASIC_AUTH_PASSWORD
+}
 
 # Instantiate plugins
 babel = Babel()
@@ -45,7 +47,11 @@ def create_app(config_class=Config):
 	app.jinja_env.filters['zip'] = zip
 	
 	# Register plugins
-	basic_auth.init_app(app)
+	@auth.get_password
+	def get_pw(username):
+		if username in users:
+			return users.get(username)
+		return None
 	babel.init_app(app)
 	
 	# Register blueprints
