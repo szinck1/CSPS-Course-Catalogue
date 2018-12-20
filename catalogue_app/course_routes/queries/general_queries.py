@@ -7,7 +7,6 @@ def all_course_codes(fiscal_year):
 	query = """
 			SELECT DISTINCT course_code
 			FROM {0}
-			WHERE business_type = 'Instructor-Led'
 			ORDER BY 1 ASC;
 			""".format(table_name)
 	results = query_mysql(query)

@@ -134,6 +134,7 @@ def memoize_all():
 	t1 = time.time()
 	course_codes = general_queries.all_course_codes(THIS_YEAR)
 	for code in course_codes:
+		print(code)
 		vals = memoize_func.get_vals(code)
 		memo_dict[code] = vals
 	t2 = time.time()
