@@ -35,10 +35,6 @@ IGNORE 1 LINES;
 
 
 
-# Indexes for selection page
-CREATE INDEX idx_bt_cc_cten ON lsr2017_18(business_type, course_code, course_title_en);
-CREATE INDEX idx_bt_cten_cc ON lsr2017_18(business_type, course_title_en, course_code);
-
 # Index for open, delivered, cancelled offerings
 CREATE INDEX idx_cc_os_oid ON lsr2017_18(course_code, offering_status, offering_id);
 
