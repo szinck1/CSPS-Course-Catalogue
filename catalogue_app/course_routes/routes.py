@@ -4,7 +4,7 @@ import time
 from flask import Blueprint, redirect, render_template, request, session, url_for
 from flask_babel import gettext
 from catalogue_app import memo_dict
-from catalogue_app.config import Debug
+from catalogue_app.config import Config
 from catalogue_app.course_routes.form import course_title_form, course_code_form
 from catalogue_app.course_routes.queries import comment_queries, general_queries, learner_queries, map_queries
 from catalogue_app.course_routes.queries import offering_queries, rating_queries, memoize_func
@@ -14,8 +14,8 @@ course = Blueprint('course', __name__)
 
 
 # Make LAST_YEAR and THIS_YEAR available to all templates
-LAST_YEAR = Debug.LAST_YEAR
-THIS_YEAR = Debug.THIS_YEAR
+LAST_YEAR = Config.LAST_YEAR
+THIS_YEAR = Config.THIS_YEAR
 @course.context_processor
 def context_processor():
 	return {'LAST_YEAR': LAST_YEAR.replace('_', '-'), 'THIS_YEAR': THIS_YEAR.replace('_', '-')}

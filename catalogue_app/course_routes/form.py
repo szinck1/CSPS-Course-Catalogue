@@ -1,5 +1,5 @@
 import re
-from catalogue_app.config import Debug
+from catalogue_app.config import Config
 from catalogue_app.course_routes.utils import query_mysql
 from wtforms import Form, SelectField
 
@@ -13,7 +13,7 @@ def _clean_title(course_title):
 # Search by course code
 def course_code_form(lang, form_name):
 	field_name = 'course_title_{0}'.format(lang)
-	table_name = 'lsr{}'.format(Debug.THIS_YEAR)
+	table_name = 'lsr{}'.format(Config.THIS_YEAR)
 	query = """
 			SELECT DISTINCT course_code, {0}
 			FROM {1}
@@ -34,7 +34,7 @@ def course_code_form(lang, form_name):
 # Search by course title
 def course_title_form(lang, form_name):
 	field_name = 'course_title_{0}'.format(lang)
-	table_name = 'lsr{}'.format(Debug.THIS_YEAR)
+	table_name = 'lsr{}'.format(Config.THIS_YEAR)
 	query = """
 			SELECT DISTINCT course_code, {0}
 			FROM {1}

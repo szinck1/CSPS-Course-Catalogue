@@ -2,11 +2,11 @@ import os
 import pickle
 from flask import Flask, g, request, session
 from flask_babel import Babel
-from catalogue_app.config import Debug
+from catalogue_app.config import Config
 import mysql.connector
 
 # Declare dictionary as app variable for memoization (stopgap solution before implementing Redis)
-if Debug.LOAD_FROM_PICKLE:
+if Config.LOAD_FROM_PICKLE:
 	with open('memo.pickle', 'rb') as f:
 		memo_dict = pickle.load(f)
 else:
@@ -31,7 +31,7 @@ def get_db(local=True):
 
 
 # Application factory
-def create_app(config_class=Debug):
+def create_app(config_class=Config):
 	app = Flask(__name__)
 	app.config.from_object(config_class)
 	

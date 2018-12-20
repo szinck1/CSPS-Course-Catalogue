@@ -1,9 +1,9 @@
-from catalogue_app.config import Debug
+from catalogue_app.config import Config
 from catalogue_app.course_routes.queries import comment_queries, general_queries, learner_queries, map_queries
 from catalogue_app.course_routes.queries import offering_queries, rating_queries
 
-LAST_YEAR = Debug.LAST_YEAR
-THIS_YEAR = Debug.THIS_YEAR
+LAST_YEAR = Config.LAST_YEAR
+THIS_YEAR = Config.THIS_YEAR
 
 
 def get_vals(course_code, lang='en'):
