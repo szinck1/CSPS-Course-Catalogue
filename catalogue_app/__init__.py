@@ -1,6 +1,7 @@
 import os
 import pickle
 from flask import Flask, g, request, session
+from flask_basicauth import BasicAuth
 from flask_babel import Babel
 from catalogue_app.config import Config
 import mysql.connector
@@ -11,6 +12,11 @@ if Config.LOAD_FROM_PICKLE:
 		memo_dict = pickle.load(f)
 else:
 	memo_dict = {}
+
+
+# Instantiate login
+basic_auth = BasicAuth()
+
 
 # Instantiate plugins
 babel = Babel()
@@ -39,6 +45,7 @@ def create_app(config_class=Config):
 	app.jinja_env.filters['zip'] = zip
 	
 	# Register plugins
+	basic_auth.init_app(app)
 	babel.init_app(app)
 	
 	# Register blueprints
@@ -67,7 +74,7 @@ def create_app(config_class=Config):
 	
 	@app.before_request
 	def before_request():
-		g.db = get_db(local=True)
+		g.db = get_db(local=False)
 	
 	
 	@app.teardown_request

@@ -2,6 +2,7 @@ import copy
 import pickle
 import time
 from flask import Blueprint, redirect, render_template, request, session, url_for
+from catalogue_app import basic_auth
 from flask_babel import gettext
 from catalogue_app import memo_dict
 from catalogue_app.config import Config
@@ -23,6 +24,7 @@ def context_processor():
 
 # Search by course code
 @course.route('/course-code-selection', methods=['GET', 'POST'])
+@basic_auth.required
 def course_code_selection():
 	lang = session.get('lang', 'en')
 	form_name = gettext('Course Code')
@@ -37,6 +39,7 @@ def course_code_selection():
 
 # Search by course title
 @course.route('/course-title-selection', methods=['GET', 'POST'])
+@basic_auth.required
 def course_title_selection():
 	lang = session.get('lang', 'en')
 	form_name = gettext('Course Title')
@@ -51,6 +54,7 @@ def course_title_selection():
 
 # Run queries and render template
 @course.route('/course-result')
+@basic_auth.required
 def course_result():
 	# Get arguments from query string; if incomplete, return to selection page
 	if 'course_code' not in request.args:
@@ -130,6 +134,7 @@ def course_result():
 
 # Run queries for all course codes, save to dict, and pickle
 @course.route('/memoize-all')
+@basic_auth.required
 def memoize_all():
 	t1 = time.time()
 	course_codes = general_queries.all_course_codes(THIS_YEAR)
@@ -146,11 +151,13 @@ def memoize_all():
 
 # Not yet implemented
 @course.route('/departmental')
+@basic_auth.required
 def departmental():
 	return render_template('departmental.html')
 
 
 # Not yet implemented
 @course.route('/french')
+@basic_auth.required
 def french():
 	return render_template('departmental.html')
