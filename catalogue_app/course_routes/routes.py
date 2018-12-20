@@ -69,7 +69,7 @@ def course_result():
 	# Check if already memoized in app var memo_dict
 	if course_code in memo_dict:
 		print('Using memoized values')
-		return render_template('/course-page/main.html', pass_dict=memo_dict[course_code])
+		return render_template('/course-page/main.html', pass_dict=copy.deepcopy(memo_dict[course_code]))
 	else:
 		print('Running query for first time')
 		pass_dict = {
