@@ -1,11 +1,13 @@
 import copy
+import pickle
+import time
 from flask import Blueprint, redirect, render_template, request, session, url_for
 from flask_babel import gettext
 from catalogue_app import memo_dict
 from catalogue_app.config import Debug
 from catalogue_app.course_routes.form import course_title_form, course_code_form
 from catalogue_app.course_routes.queries import comment_queries, general_queries, learner_queries, map_queries
-from catalogue_app.course_routes.queries import offering_queries, rating_queries
+from catalogue_app.course_routes.queries import offering_queries, rating_queries, memoize_func
 
 # Instantiate blueprint
 course = Blueprint('course', __name__)
@@ -124,6 +126,21 @@ def course_result():
 		# Memoize new query results
 		memo_dict[course_code] = pass_dict
 		return render_template('/course-page/main.html', pass_dict=copy.deepcopy(memo_dict[course_code]))
+
+
+# Run queries for all course codes, save to dict, and pickle
+@course.route('/memoize-all')
+def memoize_all():
+	t1 = time.time()
+	course_codes = general_queries.all_course_codes(THIS_YEAR)
+	for code in course_codes:
+		vals = memoize_func.get_vals(code)
+		memo_dict[code] = vals
+	t2 = time.time()
+	# Save memo_dict to binary file
+	with open('memo.pickle', 'wb') as f:
+		pickle.dump(memo_dict, f, protocol=pickle.HIGHEST_PROTOCOL)
+	return '<h1>Done!</h1><p>Time elapsed: {0}</p><p>Another great day in DIS.</p>'.format(t2 - t1)
 
 
 # Not yet implemented
