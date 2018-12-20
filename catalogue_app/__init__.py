@@ -4,6 +4,11 @@ from flask_babel import Babel
 from catalogue_app.config import Debug
 import mysql.connector
 
+
+# Declare dictionary as app variable for memoization (stopgap solution before implementing Redis)
+memo_dict = {}
+
+
 # Instantiate plugins
 babel = Babel()
 
