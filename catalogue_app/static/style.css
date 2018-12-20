@@ -246,10 +246,6 @@ table {
 
 
 /***** Dashboard *****/
-/* Show offering-dash by default */
-#learner-dash {
-	display: none;
-}
 .dash-filter {
 	text-align: right;
 }

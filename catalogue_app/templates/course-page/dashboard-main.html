@@ -2,22 +2,39 @@
 
 <!-- Dropdown to select offering-dash or learner-dash -->
 <div class="dash-filter">
-	<p>Filter: </p>
-	<select id="filter-dash" onchange="filterDashboards()">
-		<option value="offering-dash">Offering Data</option>
-		<option value="learner-dash">Learner Data</option>
-	</select>
+	<!-- If an online course, disable div offering-dash and add tooltip with explanation -->
+	{% if pass_dict.online_course %}
+		<p>Filter: </p>
+		<select id="filter-dash" onchange="filterDashboards()">
+			<option value="learner-dash">Learner Data</option>
+		</select>
+		<img id="online-disabled-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" />
+	{% else %}
+		<p>Filter: </p>
+		<select id="filter-dash" onchange="filterDashboards()">
+			<option value="offering-dash">Offering Data</option>
+			<option value="learner-dash">Learner Data</option>
+		</select>
+	{% endif %}
 </div>
 
-<div id="offering-dash">
+<div id="offering-dash" {{ 'style="display: none;"' | safe if pass_dict.online_course else '' }}>
 	{% include 'course-page/dashboard-offerings.html' %}
 </div>
 
-<div id="learner-dash">
+<div id="learner-dash" {{ '' | safe if pass_dict.online_course else 'style="display: none;"' }}>
 	{% include 'course-page/dashboard-learners.html' %}
 </div>
 
 <script async>
+	// Add tooltip contents
+	$('#online-disabled-tooltip').tooltip({
+		placement: 'right',
+		title: "<h5>Tip:</h5><p>The Offering Data section is disabled for online courses as they have no physical location. Try an instructor-led course like D101 to see more.</p>",
+		animation: true,
+		html: true
+	});
+	
 	// Enable dropdown to show / hide
 	function filterDashboards() {
 		var dropdownSelection = $('#filter-dash').val();
