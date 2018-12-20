@@ -1,3 +1,4 @@
+import copy
 from flask import Blueprint, redirect, render_template, request, session, url_for
 from flask_babel import gettext
 from catalogue_app import memo_dict
@@ -122,7 +123,7 @@ def course_result():
 		}
 		# Memoize new query results
 		memo_dict[course_code] = pass_dict
-		return render_template('/course-page/main.html', pass_dict=memo_dict[course_code])
+		return render_template('/course-page/main.html', pass_dict=copy.deepcopy(memo_dict[course_code]))
 
 
 # Not yet implemented
