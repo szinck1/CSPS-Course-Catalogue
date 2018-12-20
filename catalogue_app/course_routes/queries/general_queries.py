@@ -2,6 +2,19 @@ from flask_babel import gettext
 from catalogue_app.course_routes.utils import query_mysql, as_string
 
 
+def all_course_codes(fiscal_year):
+	table_name = 'lsr{}'.format(fiscal_year)
+	query = """
+			SELECT DISTINCT course_code
+			FROM {0}
+			WHERE business_type = 'Instructor-Led'
+			ORDER BY 1 ASC;
+			""".format(table_name)
+	results = query_mysql(query)
+	results = [tup[0] for tup in results]
+	return results
+
+
 def course_title(lang, fiscal_year, course_code):
 	field_name = 'course_title_{0}'.format(lang)
 	table_name = 'lsr{0}'.format(fiscal_year)
