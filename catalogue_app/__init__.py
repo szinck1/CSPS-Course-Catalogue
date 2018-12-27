@@ -57,8 +57,10 @@ def create_app(config_class=Config):
 	# Register blueprints
 	from catalogue_app.course_routes.routes import course
 	from catalogue_app.main_routes.routes import main
+	from catalogue_app.api.routes import api
 	app.register_blueprint(course)
 	app.register_blueprint(main)
+	app.register_blueprint(api)
 	
 	
 	# Set language
