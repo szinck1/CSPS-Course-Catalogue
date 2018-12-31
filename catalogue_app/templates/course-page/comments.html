@@ -120,19 +120,19 @@
 		var totalComments = $('#{{ comment_name }} .bob-comment').length;
 		
 		$('#filter-all-{{ comment_name }}').text("All - " + totalComments);
-		$('#filter-one-{{ comment_name }}').text(`One - ${oneStar} (${Math.round((oneStar / totalComments) * 100)}%)`);
-		$('#filter-two-{{ comment_name }}').text(`Two - ${twoStar} (${Math.round((twoStar / totalComments) * 100)}%)`);
-		$('#filter-three-{{ comment_name }}').text(`Three - ${threeStar} (${Math.round((threeStar / totalComments) * 100)}%)`);
-		$('#filter-four-{{ comment_name }}').text(`Four - ${fourStar} (${Math.round((fourStar / totalComments) * 100)}%)`);
-		$('#filter-five-{{ comment_name }}').text(`Five - ${fiveStar} (${Math.round((fiveStar / totalComments) * 100)}%)`);
+		$('#filter-one-{{ comment_name }}').text('One - ' + oneStar + ' ' + Math.round((oneStar / totalComments) * 100) + '%');
+		$('#filter-two-{{ comment_name }}').text('Two - ' + twoStar + ' ' + Math.round((twoStar / totalComments) * 100) + '%');
+		$('#filter-three-{{ comment_name }}').text('Three - ' + threeStar + ' ' + Math.round((threeStar / totalComments) * 100) + '%');
+		$('#filter-four-{{ comment_name }}').text('Four - ' + fourStar + ' ' + Math.round((fourStar / totalComments) * 100) + '%');
+		$('#filter-five-{{ comment_name }}').text('Five - ' + fiveStar + ' ' + Math.round((fiveStar / totalComments) * 100) + '%');
 	{% endfor %}
 	
 	// Enable dropdown to show / hide
 	function filterComments() {
 		var currentCommentTabId= $('.sub-tabs li.active a:first').attr('href');
-		var dropdownSelection = $(`${currentCommentTabId} select`).val();
-		$(`${currentCommentTabId} .bob-comment`).hide();
-		$(`${currentCommentTabId} .bob-comment.${dropdownSelection}`).show();
+		var dropdownSelection = $(currentCommentTabId + ' select').val();
+		$(currentCommentTabId + ' .bob-comment').hide();
+		$(currentCommentTabId + ' .bob-comment.' + dropdownSelection).show();
 	}
 	
 	function createPieChart(id, title, data) {

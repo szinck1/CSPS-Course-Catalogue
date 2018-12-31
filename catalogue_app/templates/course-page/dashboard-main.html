@@ -18,11 +18,11 @@
 	{% endif %}
 </div>
 
-<div id="offering-dash" {{ 'style="display: none;"' | safe if pass_dict.online_course else '' }}>
+<div id="offering-dash">
 	{% include 'course-page/dashboard-offerings.html' %}
 </div>
 
-<div id="learner-dash" {{ '' | safe if pass_dict.online_course else 'style="display: none;"' }}>
+<div id="learner-dash">
 	{% include 'course-page/dashboard-learners.html' %}
 </div>
 
@@ -35,11 +35,20 @@
 		html: true
 	});
 	
+	// Unsual structure to fix IE11 jQuery bug: hide with JS, not with CSS
+	$('#offering-dash').hide();
+	$('#learner-dash').hide();
+	{% if pass_dict.online_course %}
+		$('#learner-dash').show();
+	{% else %}
+		$('#offering-dash').show();
+	{% endif %}
+	
 	// Enable dropdown to show / hide
 	function filterDashboards() {
 		var dropdownSelection = $('#filter-dash').val();
 		$('#offering-dash').hide();
 		$('#learner-dash').hide();
-		$(`#${dropdownSelection}`).show();
+		$('#' + dropdownSelection).show();
 	}
 </script>

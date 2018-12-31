@@ -52,7 +52,7 @@
 	<br />
 </div>
 
-<script async>
+<script>
 	// Add tooltip contents
 	$('#offering-tooltip').tooltip({
 		placement: 'right',
@@ -72,7 +72,7 @@
 		var dropdownSelection = $('#filter-maps').val();
 		$('.offering-map').hide();
 		$('.learner-map').hide();
-		$(`.${dropdownSelection}`).show();
+		$('.' + dropdownSelection).show();
 	}
 	
 	// Function to add marker
@@ -97,7 +97,7 @@
 			icon: 'http://maps.google.com/mapfiles/ms/icons/' + color + '-dot.png'
 		});
 		// Add tooltip
-		var contentString = `${city_name}: ${String(count)}`;
+		var contentString = city_name + ': ' + String(count);
 		var infoWindow = new google.maps.InfoWindow({
 			content: contentString
 		});
