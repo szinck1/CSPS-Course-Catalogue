@@ -25,7 +25,7 @@ babel = Babel()
 
 
 # Connection to db to store in g
-def get_db(local=True):
+def get_db(local):
 	if local:
 		return mysql.connector.connect(host='localhost',
 									   user='admin',
@@ -80,7 +80,7 @@ def create_app(config_class=Config):
 	
 	@app.before_request
 	def before_request():
-		g.db = get_db(local=False)
+		g.db = get_db(local=config_class.LOCAL_DB)
 	
 	
 	@app.teardown_request

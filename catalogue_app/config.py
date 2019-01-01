@@ -2,10 +2,12 @@ import os
 
 class Config:
 	DEBUG = False
-	LOAD_FROM_PICKLE = True
-	BASIC_AUTH_USERNAME = os.environ.get('BASIC_AUTH_USERNAME')
-	BASIC_AUTH_PASSWORD = os.environ.get('BASIC_AUTH_PASSWORD')
-	SECRET_KEY = os.environ.get('SECRET_KEY')
+	LOAD_FROM_PICKLE = False
+	LOCAL_DB = True
 	LAST_YEAR = '2017_18'
 	THIS_YEAR = '2018_19'
 	BABEL_DEFAULT_LOCALE = 'en'
+	# From environ vars
+	BASIC_AUTH_USERNAME = os.environ.get('BASIC_AUTH_USERNAME')
+	BASIC_AUTH_PASSWORD = os.environ.get('BASIC_AUTH_PASSWORD')
+	SECRET_KEY = os.environ.get('SECRET_KEY')
