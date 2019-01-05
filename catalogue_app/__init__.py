@@ -62,8 +62,8 @@ def create_app(config_class=Config):
 	
 	
 	# Set language
-	@app.before_request
-	def get_lang():
+	@babel.localeselector
+	def get_locale():
 		# Use if statements to avoid directly passing user input to code
 		if 'lang' in request.args:
 			if request.args['lang'] == 'fr':
@@ -71,18 +71,18 @@ def create_app(config_class=Config):
 			# If 'en'/junk/nothing is passed, default to en
 			else:
 				session['lang'] = 'en'
-	
-	
-	@babel.localeselector
-	def get_locale():
+		
 		return session.get('lang', 'en')
 	
 	
+	# Open connection to DB at start of request
+	# Store in g (lasts for duration of request)
 	@app.before_request
 	def before_request():
 		g.db = get_db(local=config_class.LOCAL_DB)
 	
 	
+	# Close connection to DB at end of request
 	@app.teardown_request
 	def teardown_request(exception):
 		if hasattr(g, 'db'):
