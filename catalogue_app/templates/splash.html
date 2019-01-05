@@ -1,0 +1,84 @@
+<!DOCTYPE html><!--[if lt IE 9]><html class="no-js lt-ie9" lang="en" dir="ltr"><![endif]--><!--[if gt IE 8]><!-->
+    <html class="no-js" lang="en" dir="ltr">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!--<![endif]-->
+
+     <head>
+       <title>CSPS Course Catagolue | EFPC </title>
+      <!--[if lt IE 9]>
+        <script src="https://gccollab.ca/vendors/html5shiv.js"></script>
+      <![endif]-->
+
+     <link rel="stylesheet" href="https://gccollab.ca/cache/1544929760/default/css/elgg"> 
+
+
+         <link rel="stylesheet" href="https://gccollab.ca/mod/wet4/views/default/css/awesome/font-awesome.min.css" type="text/css" />
+        <meta charset="utf-8" />
+
+
+
+     </head>
+    <body vocab='https://schema.org/' typeof='WebPage'>
+        <div class="splash">
+    <div id="bg" style="background: url({{ url_for('static', filename='splash.jpg') }}) no-repeat center center fixed; background-size: cover;">
+    </div>
+    <main role="main">
+        <script type="text/javascript">
+            function form_submit(lang) {
+                set_cookie("lang", lang);
+                console.log(lang)
+                parent.location.href = "/home";
+            }
+    
+            function set_cookie(name, value) {
+                var today = new Date();
+                today.setTime(today.getTime());
+                expires = 1000 * 60 * 60 * 24;
+                var expires_date = new Date( today.getTime() + (expires) );
+                document.cookie = name + "=" + escape(value) + ";path=/" + ";expires=" + expires_date.toGMTString() + ";";
+            }
+        </script>
+
+     <div class="sp-hb">
+    <div class="sp-bx col-xs-12">
+    <h1 property="name" class="wb-inv">Welcome to GCcollab</h1>
+    <div class="row">
+    <div class="col-xs-11 col-md-8">
+    <img tabindex="-1" role="img" src="{{ url_for('static', filename='FIPs/csps_en.png') }}" width="283" aria-label="Canada School of the Public Service - Ecole de la fonction publique du Canada"></object>
+    </div>
+    </div>
+    <div class="row">
+    <section class="col-xs-6 text-right">
+    <h2 class="wb-inv">GCcollab English</h2>
+    <p><a href="#" onclick="form_submit('en')" class="btn btn-primary">English</a></p>
+    </section>
+    <section class="col-xs-6" lang="fr">
+    <h2 class="wb-inv">GCcollab Français</h2>
+    <p><a href="#" onclick="form_submit('fr')" class="btn btn-primary">Fran&#231;ais</a></p>
+    </section>
+
+
+     </div>
+    </div>
+
+
+     <div class="sp-bx-bt col-xs-12" style='display:none'>
+    <div class="row">
+    <div class="col-xs-7 col-md-8">
+    <a href="https://gccollab.ca/terms" onclick="form_submit('en')" class="sp-lk">Terms & Conditions of Use</a> <span class="glyphicon glyphicon-asterisk"></span> <a href="/termes" onclick="form_submit('fr')" class="sp-lk" lang="fr">Conditions d'utilisation</a>
+    </div>
+    <div class="col-xs-5 col-md-4 text-right mrgn-bttm-md">
+    <object type="image/svg+xml" tabindex="-1" role="img" data="https://gccollab.ca//mod/gccollab_theme/graphics/wmms-blk.svg" width="127" aria-label="Symbol of the Government of Canada / Symbole du gouvernement du Canada"></object>
+    </div>
+    </div>
+    </div>
+
+
+ </div>
+        <div class="splash_identifier wb-inv"><span class="bold-gc">GC</span>collab</div>
+    </main>
+    <div>
+
+
+         </body>
+    </html>
