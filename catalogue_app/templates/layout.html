@@ -28,7 +28,12 @@
 				<div class="row">
 					<div class="col-xs-8 col-sm-9 col-md-6 pull-left">
 						<a href="https://www.csps-efpc.gc.ca">
-							<img class="goc-fip img-responsive" src="{{ url_for('static', filename='FIPs/csps.png') }}" alt="CSPS Logo" />
+							{% set lang = session.get('lang', 'en') %}
+							{% if lang == 'en' %}
+								<img class="goc-fip img-responsive" src="{{ url_for('static', filename='FIPs/csps_en.png') }}" alt="CSPS Logo" />
+							{% else %}
+								<img class="goc-fip img-responsive" src="{{ url_for('static', filename='FIPs/csps_fr.png') }}" alt="CSPS Logo" />
+							{% endif %}
 						</a>
 					</div>
 				</div>
