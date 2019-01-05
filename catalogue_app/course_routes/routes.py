@@ -149,15 +149,8 @@ def memoize_all():
 	return '<h1>Done!</h1><p>Time elapsed: {0}</p><p>Another great day in DIS.</p>'.format(t2 - t1)
 
 
-# Not yet implemented
+# Coming soon
 @course.route('/departmental')
 @auth.login_required
 def departmental():
-	return render_template('departmental.html')
-
-
-# Not yet implemented
-@course.route('/french')
-@auth.login_required
-def french():
 	return render_template('departmental.html')
