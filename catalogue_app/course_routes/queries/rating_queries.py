@@ -39,7 +39,7 @@ def all_ratings(fiscal_year, course_code):
 # Helper function to ensure every month accounted for
 def _add_months(my_dict):
 	months = ['April', 'May', 'June', 'July', 'August', 'September', 'October',
-			  'November']
+			  'November', 'December']
 	return_list = []
 	for month in months:
 		count = my_dict.get(month, {'y': 0, 'count': 0})
