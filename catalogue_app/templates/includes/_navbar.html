@@ -22,14 +22,12 @@
 				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li class="li-border-right"><a href="{{ url_for('course.french') }}">Français</a></li>
-				<!--
-				{% if session['lang'] == 'en' %}
+				{% set lang = session.get('lang', 'en') %}
+				{% if lang == 'en' %}
 					<li class="li-border-right"><a href="{{ request.path + '?lang=fr' }}">{{ _('Français') }}</a></li>
 				{% else %}
 					<li class="li-border-right"><a href="{{ request.path + '?lang=en' }}">{{ _('Français') }}</a></li>
 				{% endif %}
-				-->
 			</ul>
 		</div>
 	</div>
