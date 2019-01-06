@@ -2,15 +2,14 @@
 # add FR
 # add cookie for lang
 # fix splash
-
-
+# lazy_gettext for bilingual urls?
+# move all possible columns from lsr to product_info table
 
 
 ### UPCOMING SPRINT ####
 # get way to push csv from steve
 # add icons to main page
 # add datatables
-# add FR
 # highcharts export
 # top job titles, job ranks, scroll instead of just top 5
 # add search by DG, provider
@@ -28,7 +27,6 @@
 # dropdown to divide dashboard into sections e.g. registrations, OL accessibility (learner lang vs offering lang)
 # focus group w/ users, brainstorm for new KPIs for curriculum review process
 # unit testing
-# caching / caching upon ETL for faster load times
 # link / scrape course descriptions from GCcampus' catalogue / course list
 # connect directly to DWH
 # let Camille edit directly
