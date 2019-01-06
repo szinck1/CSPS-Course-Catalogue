@@ -1,5 +1,7 @@
 ### CURRENT SPRINT ###
-# Notes for email: mobile friendly, alpha/v0 version, all Instructor-Led and Online, French coming soon, new content and data to be added e.g. Salesforce data from Linda, great courses to try: G110-Module 8 for online, P901 for instructor-led
+# add FR
+# add cookie for lang
+# fix splash
 
 
 
