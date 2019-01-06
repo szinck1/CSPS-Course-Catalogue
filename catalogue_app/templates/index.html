@@ -3,24 +3,26 @@
 {% block body %}
 	<div id="home-page" class="container">
 		<div class="jumbotron">
-			<h1>Welcome to the CSPS Course Catalogue</h1>
+			<h1>{{ _('Welcome to the CSPS Course Catalogue') }}</h1>
 		</div>
 		<p>
-			This platform brings all the School’s data into one place and makes it accessible to everyone (no programming skills required).
+			{{ _('This platform brings all the School’s data into one place and makes it accessible to everyone (no programming skills required).') }}
 		</p>
 		<p>
-			Working from one shared access point increases our ability to quickly sense and adapt to external and internal changes to deliver results productively and cost-effectively.
+			{{ _('Working from one shared access point increases our ability to quickly sense and adapt to external and internal changes to deliver results productively and cost-effectively.') }}
 		</p>
 		<p>
-			From here you can easily explore data that will enable you to keep track of your learning products and make the necessary adjustments to maintain peak performance.  If you are preparing a business case, this platform will give you access to a wealth of information that can help tell your story to the executive management team.
+			{{ _('From here you can easily explore data that will enable you to keep track of your learning products and make the necessary adjustments to maintain peak performance.  If you are preparing a business case, this platform will give you access to a wealth of information that can help tell your story to the executive management team.') }}
 		</p>
 		
-		<h3>Our ability to achieve greater agility depends on you.</h3>
+		<h3>{{ _('Our ability to achieve greater agility depends on you.') }}</h3>
 		<p>
-			Tell us what you want and need in this platform. Together, with your feedback, we can develop a catalogue that will evolve to better meet your needs. (Send your feedback <a href="mailto:sam.louden@canada.ca">here</a>.)
+			{{ _('Tell us what you want and need in this platform. Together, with your feedback, we can develop a catalogue that will evolve to better meet your needs. (Send your feedback <a href="mailto:sam.louden@canada.ca">here</a>.)') }}
 		</p>
 		
-		<p>If you encounter any bugs, please contact <a href="mailto:sam.louden@canada.ca">Sam Louden</a>.</p>
+		<p>
+			{{ _('If you encounter any bugs, please contact <a href="mailto:sam.louden@canada.ca">Sam Louden</a>.') }}
+		</p>
 		<img class="img-responsive" style="max-height: 80px; margin: 10px; display: inline;" src="{{ url_for('static', filename='FIPs/logo_CM.png') }}" alt="Curriculum Management Logo" />
 		<img class="img-responsive" style="max-height: 80px; margin: 10px; display: inline;" src="{{ url_for('static', filename='FIPs/digital_academy.png') }}" alt="Digital Academy Logo" />
 	</div>
