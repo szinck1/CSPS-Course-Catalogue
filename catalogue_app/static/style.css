@@ -118,6 +118,7 @@ table {
 #about-page h3 {
 	margin: 1.5em 0;
 	color: green;
+	text-align: left;
 }
 /***** End home and about *****/
 
