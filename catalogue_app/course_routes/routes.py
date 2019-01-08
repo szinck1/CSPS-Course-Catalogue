@@ -27,7 +27,7 @@ def context_processor():
 @auth.login_required
 def course_code_selection():
 	lang = session.get('lang', 'en')
-	form_name = gettext('Course Code')
+	form_name = ''
 	form = course_code_form(lang, form_name)
 	form = form(request.form)
 	
