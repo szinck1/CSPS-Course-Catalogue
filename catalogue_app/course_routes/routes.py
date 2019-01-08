@@ -154,3 +154,10 @@ def memoize_all():
 @auth.login_required
 def departmental():
 	return render_template('departmental.html')
+
+
+# Coming soon
+@course.route('/fr')
+@auth.login_required
+def fr():
+	return render_template('fr.html')
