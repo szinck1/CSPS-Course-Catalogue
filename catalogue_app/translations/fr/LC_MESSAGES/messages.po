@@ -1,15 +1,16 @@
-# French translations for PROJECT.
-# Copyright (C) 2018 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
+# French translations for CSPS Course Catalogue.
+# Copyright (C) 2019 ORGANIZATION
+# This file is distributed under the same license as the CSPS Course
+# Catalogue project.
+# FIRST AUTHOR sam.louden@canada.ca, 2019.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-11-05 00:12-0500\n"
-"PO-Revision-Date: 2018-10-31 10:53-0400\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Project-Id-Version:  0.2\n"
+"Report-Msgid-Bugs-To: sam.louden@canada.ca\n"
+"POT-Creation-Date: 2019-01-07 19:25-0500\n"
+"PO-Revision-Date: 2019-01-06 13:06-0500\n"
+"Last-Translator: SAM LOUDEN sam.louden@canada.ca\n"
 "Language: fr\n"
 "Language-Team: fr <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
@@ -18,81 +19,164 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.6.0\n"
 
-#: dashboard_routes/inst_led_queries.py:55
-msgid "Duration (hours)"
-msgstr "Durée (heures)"
+#: course_routes/routes.py:30
+msgid "Course Code"
+msgstr "Code de cours"
 
-#: dashboard_routes/inst_led_queries.py:56
-msgid "Stream"
-msgstr "Volet"
-
-#: dashboard_routes/inst_led_queries.py:57
-msgid "Main Topic"
-msgstr "Sujet principal"
-
-#: dashboard_routes/inst_led_queries.py:58 templates/instructor-led.html:33
-msgid "Open Offerings"
-msgstr "Offres ouvertes"
-
-#: dashboard_routes/inst_led_queries.py:59
-msgid "Delivered Offerings"
-msgstr "Offres livrées"
-
-#: dashboard_routes/inst_led_queries.py:60
-msgid "Cancelled Offerings"
-msgstr "Offres annulées"
-
-#: dashboard_routes/inst_led_queries.py:61
-msgid "Client Requests"
-msgstr "Demandes des clients"
-
-#: dashboard_routes/inst_led_queries.py:62 templates/instructor-led.html:69
-#: templates/instructor-led.html:88
-msgid "Registrations"
-msgstr "Inscriptions"
-
-#: dashboard_routes/inst_led_queries.py:63
-msgid "No-Shows"
-msgstr "Absences"
-
-#: dashboard_routes/routes.py:20
-msgid "Course Title"
-msgstr "Titre du cours"
-
-#: dashboard_routes/routes.py:28
+#: course_routes/routes.py:37 course_routes/routes.py:52
 msgid "Selection"
 msgstr "Sélection"
 
-#: dashboard_routes/routes.py:28
+#: course_routes/routes.py:37 course_routes/routes.py:52
 msgid "Go"
 msgstr "Aller"
+
+#: course_routes/routes.py:45
+msgid "Course Title"
+msgstr "Titre du cours"
+
+#: course_routes/queries/general_queries.py:50
+msgid "Provider"
+msgstr "Fournisseur"
+
+#: course_routes/queries/general_queries.py:51
+msgid "Business Type"
+msgstr ""
+
+#: course_routes/queries/general_queries.py:52
+msgid "Business Line"
+msgstr ""
+
+#: course_routes/queries/general_queries.py:53
+msgid "Stream"
+msgstr "Volet"
+
+#: course_routes/queries/general_queries.py:54
+msgid "Main Topic"
+msgstr "Sujet principal"
+
+#: course_routes/queries/general_queries.py:55
+msgid "Functional Area"
+msgstr ""
+
+#: course_routes/queries/general_queries.py:56
+msgid "Duration"
+msgstr "Durée"
+
+#: course_routes/queries/general_queries.py:57
+msgid "Displayed on GCcampus"
+msgstr "Affiché sur GCcampus"
+
+#: course_routes/queries/general_queries.py:58
+msgid "Required Training (as determined by TBS)"
+msgstr "Formation requise (déterminée par le SCT)"
+
+#: course_routes/queries/general_queries.py:59
+msgid "Life Cycle Status"
+msgstr "Statut du cycle de vie"
+
+#: course_routes/queries/general_queries.py:60
+msgid "Learning Outcome"
+msgstr "Résultat d'apprentissage"
+
+#: course_routes/queries/general_queries.py:61
+msgid "Communities"
+msgstr "Communautés"
+
+#: course_routes/queries/general_queries.py:62
+msgid "Organization Unit"
+msgstr "Équipe"
+
+#: course_routes/queries/general_queries.py:63
+msgid "Director"
+msgstr "Directeur"
+
+#: course_routes/queries/general_queries.py:64
+msgid "Project Lead"
+msgstr "Chef de projet"
+
+#: course_routes/queries/general_queries.py:65
+msgid "Program Manager"
+msgstr "Gestionnaire de programme"
+
+#: course_routes/queries/general_queries.py:66
+msgid "Point of Contact"
+msgstr "Point de contact"
+
+#: course_routes/queries/offering_queries.py:44
+#: templates/course-page/dashboard-offerings.html:20
+msgid "Open Offerings"
+msgstr "Offres ouvertes"
+
+#: course_routes/queries/offering_queries.py:45
+msgid "Delivered Offerings"
+msgstr "Offres livrées"
+
+#: course_routes/queries/offering_queries.py:46
+msgid "Cancelled Offerings"
+msgstr "Offres annulées"
+
+#: course_routes/queries/offering_queries.py:47
+msgid "Client Requests"
+msgstr "Demandes des clients"
+
+#: course_routes/queries/offering_queries.py:48
+#: templates/course-page/dashboard-learners.html:20
+#: templates/course-page/dashboard-learners.html:43
+msgid "Registrations"
+msgstr "Inscriptions"
+
+#: course_routes/queries/offering_queries.py:49
+msgid "No-Shows"
+msgstr "Absences"
 
 #: templates/about.html:6 templates/includes/_navbar.html:14
 msgid "About"
 msgstr "À propos"
 
-#: templates/about.html:8
-msgid "Visualizations generated in Python using Flask, MySQL, and Highcharts."
+#: templates/about.html:9
+msgid ""
+"This platform represents an important step in creating an agile and "
+"digitally-connected organization."
 msgstr ""
-"Les visualisations sont générées en Python à l'aide de Flask, MySQL, et "
-"Highcharts."
 
 #: templates/about.html:10
 msgid ""
-"Thanks to <a href=\"mailto:derek.khan@canada.ca\">Derek Khan</a> and team"
-" for ensuring access to quality data."
+"This application is the result of a collaborative effort between all "
+"three branches at the School."
 msgstr ""
-"Merci à l'équipe de <a href=\"mailto:derek.khan@canada.ca\">Derek "
-"Khan</a> pour continuer de garantir l'accès à des données fiables."
 
-#: templates/departmental.html:6 templates/index.html:21
-#: templates/online.html:6
+#: templates/about.html:11
+msgid "Acknowledgments:"
+msgstr "Remerciements"
+
+#: templates/about.html:14
+msgid "Curriculum Management"
+msgstr "Gestion du curriculum"
+
+#: templates/about.html:15
+msgid "Digital Academy"
+msgstr "Académie du numérique"
+
+#: templates/about.html:16
+msgid "Learning Evaluation Unit"
+msgstr "Évaluation de l'apprentissage"
+
+#: templates/about.html:17
+msgid "Application Management"
+msgstr "Gestion des applications"
+
+#: templates/about.html:18
+msgid "Learning Solutions"
+msgstr "Solutions d'apprentissage"
+
+#: templates/api.html:6
+msgid "CSPS Course Catalogue API"
+msgstr "API du Catalogue de cours de l'EFPC"
+
+#: templates/departmental.html:6
 msgid "Coming Soon"
-msgstr "En cours de développement"
-
-#: templates/form.html:7
-msgid "TEST - FAKE DATA"
-msgstr "TEST - DONNÉES INVENTÉES"
+msgstr "Bientôt disponible"
 
 #: templates/index.html:6
 msgid "Welcome to the CSPS Course Catalogue"
@@ -100,157 +184,64 @@ msgstr "Bienvenue au Catalogue de cours de l'EFPC"
 
 #: templates/index.html:9
 msgid ""
-"Your two favourite teams, <strong>Curriculum Management</strong> and the"
-" \n"
-"\t\t\t<strong>Innovation and Policy Services Branch</strong>, are "
-"updating the School's \n"
-"\t\t\tPDF dashboards and combining them with an interactive course "
-"catalogue to help track \n"
-"\t\t\tand administer the curriculum."
-msgstr ""
-"Vos équipes préférées, <strong>Gestion du Curriculum</strong> et la "
-"<strong>Direction générale des services "
-"d'innovation et de politiques</strong>, "
-"œuvrent à mettre à jour les tableaux de "
-"bord de format PDF de l'École et à les combiner avec "
-"un catalogue intéractif afin d'aider "
-"à évaluer et gérer le cursus."
+"This platform brings all the School’s data into one place and makes it "
+"accessible to everyone (no programming skills required)."
+msgstr "Cette plate-forme rassemble toutes les données de l’École dans un "
+"même endroit et les rend accessibles à tous (aucune connaissance en programmation n’est requise)."
 
-#: templates/index.html:16
-msgid "Currently Catalogued"
-msgstr "Présentement dans le catalogue"
+#: templates/index.html:12
+msgid ""
+"Working from one shared access point increases our ability to quickly "
+"sense and adapt to external and internal changes to deliver results "
+"productively and cost-effectively."
+msgstr ""
+"Travailler à partir d'un point d'accès partagé augmente notre capacité "
+"d’apercevoir les changements externes et internes et de s’y ajuster plus "
+"rapidement en nous permettant d'obtenir des résultats productifs et rentables."
+
+#: templates/index.html:15
+msgid ""
+"From here you can easily explore data that will enable you to keep track "
+"of your learning products and make the necessary adjustments to maintain "
+"peak performance.  If you are preparing a business case, this platform "
+"will give you access to a wealth of information that can help tell your "
+"story to the executive management team."
+msgstr ""
+"À partir d’ici, vous pourrez facilement explorer des données qui vous permettront "
+"de suivre vos produits d’apprentissage et d’apporter les ajustements nécessaires "
+"pour maintenir des performances optimales. Si vous préparez une analyse de "
+"rentabilisation, cette plate-forme vous donne accès à une mine d'information "
+"pouvant vous aider à raconter votre historique à l'équipe de direction."
 
 #: templates/index.html:18
-msgid "Instructor-Led Courses"
-msgstr "Cours dirigés par un instructeur"
+msgid "Our ability to achieve greater agility depends on you."
+msgstr "Notre capacité à atteindre une plus grande agilité dépend de vous."
 
-#: templates/index.html:23
-msgid "Online Courses"
-msgstr "Cours en ligne"
+#: templates/index.html:20
+msgid ""
+"Tell us what you want and need in this platform. Together, with your "
+"feedback, we can develop a catalogue that will evolve to better meet your"
+" needs. (Send your feedback <a "
+"href=\"mailto:sam.louden@canada.ca\">here</a>.)"
+msgstr ""
+"Dites-nous ce que vous désirez et ce dont vous avez besoin de voir dans cette "
+"plate-forme. Ensemble, avec vos commentaires, nous pourrons développer un catalogue "
+"qui évoluera pour mieux répondre à vos besoins. (Envoyez vos commentaires <a "
+"href=\"mailto:sam.louden@canada.ca\">ici</a>.)"
 
 #: templates/index.html:24
-msgid "Departmental Usage"
-msgstr "Usage ministériel"
-
-#: templates/index.html:27
 msgid ""
 "If you encounter any bugs, please contact <a "
 "href=\"mailto:sam.louden@canada.ca\">Sam Louden</a>."
 msgstr ""
-"Si vous rencontrez des bugs, veuillez contacter <a "
+"Si vous rencontrez de bugs, veuillez contacter <a "
 "href=\"mailto:sam.louden@canada.ca\">Sam Louden</a>."
-
-#: templates/instructor-led.html:11
-msgid "Course Description"
-msgstr "Description du cours"
-
-#: templates/instructor-led.html:12
-msgid "Operational Info"
-msgstr "Informations opérationnelles"
-
-#: templates/instructor-led.html:13
-msgid "Dashboard"
-msgstr "Tableau de bord"
-
-#: templates/instructor-led.html:22
-msgid "Course Information and Overall Numbers"
-msgstr "Informations et chiffres globaux"
-
-#: templates/instructor-led.html:25
-msgid "Indicator"
-msgstr "Indicateur"
-
-#: templates/instructor-led.html:65
-msgid "Top 5 Departments"
-msgstr "Top 5 des ministères"
-
-#: templates/instructor-led.html:68 templates/instructor-led.html:87
-msgid "Name"
-msgstr "Nom"
-
-#: templates/instructor-led.html:84
-msgid "Top 5 Classifications"
-msgstr "Top 5 des classifications"
-
-#: templates/instructor-led.html:126
-msgid "Open & Delivered Offerings per Region"
-msgstr "Offres ouvertes et livrées par région"
-
-#: templates/instructor-led.html:127
-msgid "Offerings"
-msgstr "Offres"
-
-#: templates/instructor-led.html:132
-msgid "Atlantic"
-msgstr "Atlantique"
-
-#: templates/instructor-led.html:133
-msgid "NCR"
-msgstr "RCN"
-
-#: templates/instructor-led.html:134
-msgid "Ontario"
-msgstr "Ontario"
-
-#: templates/instructor-led.html:135
-msgid "Pacific"
-msgstr "Pacifique"
-
-#: templates/instructor-led.html:136
-msgid "Prairie"
-msgstr "Prairie"
-
-#: templates/instructor-led.html:137
-msgid "Quebec"
-msgstr "Québec"
-
-#: templates/instructor-led.html:138
-msgid "Outside Canada"
-msgstr "Hors du Canada"
-
-#: templates/instructor-led.html:145
-msgid "Open & Delivered Offerings per Language"
-msgstr "Offres ouvertes et livrées par langue"
-
-#: templates/instructor-led.html:151
-msgid "English"
-msgstr "Anglais"
-
-#: templates/instructor-led.html:152
-msgid "French"
-msgstr "Français"
-
-#: templates/instructor-led.html:153
-msgid "Bilingual"
-msgstr "Bilingue"
-
-#: templates/instructor-led.html:160
-#, python-format
-msgid "%% of Offerings Cancelled"
-msgstr "%% d'offres annulées"
-
-#: templates/instructor-led.html:172 templates/instructor-led.html:185
-#: templates/instructor-led.html:197
-msgid "Average All"
-msgstr "Moyenne globale"
-
-#: templates/instructor-led.html:180
-msgid "Average Class Size"
-msgstr "Effectif de classe moyen"
-
-#: templates/instructor-led.html:192
-msgid "Average No-Shows per Offering"
-msgstr "Absences moyennes par offre"
-
-#: templates/instructor-led.html:196
-msgid "Prepared by Curriculum Management and IPSB"
-msgstr "Préparé par Gestion du Curriculum et SIP"
 
 #: templates/includes/_navbar.html:4 templates/layout.html:8
 msgid "CSPS Course Catalogue"
 msgstr "Catalogue de cours de l'EFPC"
 
-#: templates/layout.html:49
+#: templates/layout.html:53
 msgid "Top of page"
 msgstr "Haut de la page"
 
@@ -260,7 +251,138 @@ msgstr "Cours introuvable"
 
 #: templates/not-found.html:8
 msgid "Please try again."
-msgstr "Veuillez essayer de nouveau."
+msgstr "Veuillez essayer à nouveau."
+
+#: templates/course-page/comments.html:17
+#: templates/course-page/dashboard-learners.html:5
+#: templates/course-page/dashboard-main.html:11
+#: templates/course-page/dashboard-offerings.html:25
+#: templates/course-page/dashboard-offerings.html:30
+#: templates/course-page/dashboard-offerings.html:48
+#: templates/course-page/general.html:44 templates/course-page/geodata.html:15
+#: templates/course-page/geodata.html:19 templates/course-page/ratings.html:3
+#: templates/course-page/ratings.html:15
+msgid "Tooltip"
+msgstr "Infobulle"
+
+#: templates/course-page/dashboard-learners.html:16
+msgid "Top 5 Departments"
+msgstr "Top 5 des ministères"
+
+#: templates/course-page/dashboard-learners.html:19
+#: templates/course-page/dashboard-learners.html:42
+msgid "Name"
+msgstr "Nom"
+
+#: templates/course-page/dashboard-learners.html:39
+msgid "Top 5 Classifications"
+msgstr "Top 5 des classifications"
+
+#: templates/course-page/dashboard-offerings.html:5
+msgid "Overall Numbers"
+msgstr "Chiffres globaux"
+
+#: templates/course-page/dashboard-offerings.html:8
+msgid "Fiscal Year"
+msgstr "Année fiscale"
+
+#: templates/course-page/dashboard-offerings.html:123
+msgid "Open & Delivered Offerings per Language"
+msgstr "Offres ouvertes & livrées par langue"
+
+#: templates/course-page/dashboard-offerings.html:129
+msgid "English"
+msgstr "Anglais"
+
+#: templates/course-page/dashboard-offerings.html:130
+msgid "French"
+msgstr "Français"
+
+#: templates/course-page/dashboard-offerings.html:131
+msgid "Bilingual"
+msgstr "Bilingue"
+
+#: templates/course-page/dashboard-offerings.html:137
+#, python-format
+msgid "%% of Offerings Cancelled"
+msgstr "%% d'offres annulées"
+
+#: templates/course-page/dashboard-offerings.html:149
+#: templates/course-page/dashboard-offerings.html:161
+#: templates/course-page/dashboard-offerings.html:172
+msgid "Average All"
+msgstr "Moyenne globale"
+
+#: templates/course-page/dashboard-offerings.html:156
+msgid "Average Class Size"
+msgstr "Effectif de classe moyen"
+
+#: templates/course-page/dashboard-offerings.html:167
+msgid "Average No-Shows per Offering"
+msgstr "Absences moyennes par offre"
+
+#: templates/course-page/ratings.html:27
+msgid "April"
+msgstr "Avril"
+
+#: templates/course-page/ratings.html:27
+msgid "May"
+msgstr "Mai"
+
+#: templates/course-page/ratings.html:27
+msgid "June"
+msgstr "Juin"
+
+#: templates/course-page/ratings.html:27
+msgid "July"
+msgstr "Juillet"
+
+#: templates/course-page/ratings.html:28
+msgid "August"
+msgstr "Août"
+
+#: templates/course-page/ratings.html:28
+msgid "September"
+msgstr "Septembre"
+
+#: templates/course-page/ratings.html:28
+msgid "October"
+msgstr "Octobre"
+
+#: templates/course-page/ratings.html:28
+msgid "November"
+msgstr "Novembre"
+
+#: templates/course-page/ratings.html:29
+msgid "December"
+msgstr "Décembre"
+
+#: templates/course-page/ratings.html:29
+msgid "January"
+msgstr "Janvier"
+
+#: templates/course-page/ratings.html:30
+msgid "Average Response (Out of Five)"
+msgstr "Février"
+
+#: templates/course-page/ratings.html:35
+msgid "Monthly Average: "
+msgstr "Moyenne mensuelle : "
+
+#: templates/course-page/ratings.html:36
+msgid "Number of Responses: "
+msgstr "Numéro de réponses : "
+
+#: templates/course-page/ratings.html:43
+msgid "Note: This course has received no ratings thus far in the fiscal year."
+msgstr "Attention : Ce cours n'a reçu aucun x cette année fiscale."
+
+#: templates/course-page/ratings.html:51
+msgid ""
+"<h5>Tip:</h5><p>Ratings on instructor performance are currently disabled "
+"due to privacy restrictions.</p>"
+msgstr ""
+"<h5>Indice :</h5><p></p>"
 
 #: templates/includes/_navbar.html:13
 msgid "Home"
@@ -271,17 +393,18 @@ msgid "Catalogue"
 msgstr "Catalogue"
 
 #: templates/includes/_navbar.html:18
-msgid "Departmental"
-msgstr "Ministériels"
+msgid "Search by Course Code"
+msgstr "Recherche par code de cours"
 
 #: templates/includes/_navbar.html:19
-msgid "Instructor-Led"
-msgstr "Dirigés par un instructeur"
+msgid "Search by Course Title"
+msgstr "Recherche par titre de cours"
 
 #: templates/includes/_navbar.html:20
-msgid "Online"
-msgstr "En ligne"
+msgid "Search by Department"
+msgstr "Recherche par ministère"
 
-#: templates/includes/_navbar.html:26 templates/includes/_navbar.html:28
+#: templates/includes/_navbar.html:27 templates/includes/_navbar.html:29
 msgid "Français"
 msgstr "English"
+
