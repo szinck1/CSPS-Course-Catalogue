@@ -33,7 +33,7 @@ msgstr "Aller"
 
 #: course_routes/routes.py:45
 msgid "Course Title"
-msgstr "Titre du cours"
+msgstr "Titre de cours"
 
 #: course_routes/queries/general_queries.py:50
 msgid "Provider"
@@ -139,12 +139,16 @@ msgid ""
 "This platform represents an important step in creating an agile and "
 "digitally-connected organization."
 msgstr ""
+"Cette plate-forme représente une étape importante dans la création "
+"d’une organisation agile et connectée."
 
 #: templates/about.html:10
 msgid ""
 "This application is the result of a collaborative effort between all "
 "three branches at the School."
 msgstr ""
+"Cette application est le résultat d'un effort de collaboration entre "
+"les trois branches de l'École."
 
 #: templates/about.html:11
 msgid "Acknowledgments:"
