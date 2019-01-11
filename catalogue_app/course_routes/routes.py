@@ -114,7 +114,7 @@ def course_result():
 			'offering_city_counts': map_queries.offering_city_counts(THIS_YEAR, course_code),
 			'learner_city_counts': map_queries.learner_city_counts(THIS_YEAR, course_code),
 			# Ratings
-			'all_ratings': rating_queries.all_ratings(THIS_YEAR, course_code),
+			'all_ratings': rating_queries.all_ratings(course_code, 'en'),
 			# Comments
 			'general_comments': comment_queries.fetch_comments(course_code, 'Comment - General '),
 			'technical_comments': comment_queries.fetch_comments(course_code, 'Issue Description'),

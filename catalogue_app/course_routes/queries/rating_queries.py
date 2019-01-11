@@ -2,15 +2,15 @@ from flask_babel import gettext
 from catalogue_app.course_routes.utils import query_mysql
 
 
-def all_ratings(fiscal_year, course_code):
-	table_name = 'ratings{0}'.format(fiscal_year)
+def all_ratings(course_code, lang):
 	# Get list of questions answered for given course code
+	field_name = 'short_question_{0}'.format(lang)
 	questions_query = """
-		SELECT DISTINCT short_question
-		FROM {0}
+		SELECT DISTINCT {0}
+		FROM ratings
 		WHERE course_code = %s
 		ORDER BY 1 ASC;
-	""".format(table_name)
+	""".format(field_name)
 	questions = query_mysql(questions_query, (course_code,))
 	questions = [tup[0] for tup in questions]
 	# Account courses with no feedback
@@ -20,9 +20,9 @@ def all_ratings(fiscal_year, course_code):
 	# Query each question for monthly results
 	query = """
 		SELECT month, numerical_answer, count
-		FROM {0}
-		WHERE course_code = %s AND short_question = %s;
-	""".format(table_name)
+		FROM ratings
+		WHERE course_code = %s AND {0} = %s;
+	""".format(field_name)
 	# Return a list of dictionaries
 	return_list = []
 	for question in questions:
@@ -31,8 +31,7 @@ def all_ratings(fiscal_year, course_code):
 		results = [(tup[0], {'y': tup[1], 'count': tup[2]}) for tup in results]
 		results = dict(results)
 		results_processed = _add_months(results)
-		# Use str.title() method to nicely format question
-		return_list.append((question.title(), results_processed))
+		return_list.append((question, results_processed))
 	return return_list
 
 
