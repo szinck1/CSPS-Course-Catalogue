@@ -1,16 +1,19 @@
-CREATE TABLE ratings2018_19(
-	course_title VARCHAR(200),
+CREATE TABLE ratings(
 	course_code VARCHAR(20),
 	month VARCHAR(10),
-	short_question VARCHAR(60),
+	short_question_en VARCHAR(60),
+	short_question_fr VARCHAR(60),
+	long_question_en VARCHAR(170),
+	long_question_fr VARCHAR(170),
 	numerical_answer FLOAT,
+	four_or_five SMALLINT,
 	count SMALLINT
 );
 
 
 
-LOAD DATA INFILE 'D:\\ratings2018_19.csv'
-INTO TABLE ratings2018_19
+LOAD DATA INFILE 'D:\\ratings.csv'
+INTO TABLE ratings
 FIELDS OPTIONALLY ENCLOSED BY '"'
 TERMINATED BY ','
 LINES TERMINATED BY '\r\n'
@@ -19,4 +22,4 @@ IGNORE 1 LINES;
 
 
 # Index
-CREATE INDEX idx_cc_sq ON ratings2018_19(course_code, short_question);
+CREATE INDEX idx_cc_sq ON ratings(course_code, short_question_en);
