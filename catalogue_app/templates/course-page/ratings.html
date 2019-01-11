@@ -21,8 +21,8 @@
 		$('#chart-{{ loop.index }}').highcharts({
 			chart: {type: 'line'},
 			title: {text: ''},
-			xAxis: {categories: ['April', 'May', 'June', 'July', 'August', 'September',
-								 'October', 'November', 'December', 'January']},
+			xAxis: {categories: ['February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October',
+								 'November', 'December', 'January']},
 			yAxis: {title: {text: 'Average Response (Out of Five)'}, min: 0, max: 5},
 			credits: {text: ''},
 			series: [{name: 'Last 12 Months', color: '#335075', data: {{ question[2] | safe }}}],
@@ -35,7 +35,7 @@
 		});
 		// Add tooltip contents
 		$('#chart-{{ loop.index }}-tooltip').tooltip({
-			placement: 'right',
+			placement: 'bottom',
 			title: "<h5>Full Question:</h5><p>{{ question[1] }}</p>",
 			animation: true,
 			html: true

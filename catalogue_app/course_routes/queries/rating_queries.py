@@ -37,7 +37,7 @@ def all_ratings(course_code, lang):
 
 # Helper function to ensure every month accounted for
 def _add_months(my_dict):
-	months = ['April', 'May', 'June', 'July', 'August', 'September', 'October',
+	months = ['February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October',
 			  'November', 'December', 'January']
 	return_list = []
 	for month in months:
