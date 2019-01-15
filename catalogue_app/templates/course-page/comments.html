@@ -32,7 +32,7 @@
 	<section id="{{ comment_name }}" class="tab-content {{ 'active' if loop.index == 1 else 'hide' }}">
 		
 		<!-- Dropdown to filter by star -->
-		<div class="comment-filter">
+		<div class="star-filter">
 			<p>{{ _('Stars: ') }}</p>
 			<select id="filter-stars-{{ comment_name }}" onchange="filterComments()">
 				<!-- Dropdown values filled dynamically by jQuery below -->
@@ -46,7 +46,7 @@
 		</div>
 		
 		<!-- Dropdown to filter by period -->
-		<div class="comment-filter">
+		<div class="year-filter">
 			<p>{{ _('Fiscal Year: ') }}</p>
 			<select id="filter-period-{{ comment_name }}" onchange="filterComments()">
 				<!-- Dropdown values filled dynamically by jQuery below -->
@@ -124,14 +124,16 @@
 	
 	// Populate filter dropdown
 	{% for comment_name in comment_names %}
+		// Get counts
 		var oneStar = $('#{{ comment_name }} .star-1').length;
 		var twoStar = $('#{{ comment_name }} .star-2').length;
 		var threeStar = $('#{{ comment_name }} .star-3').length;
 		var fourStar = $('#{{ comment_name }} .star-4').length;
 		var fiveStar = $('#{{ comment_name }} .star-5').length;
-		<!-- Count number of divs instead of sum as very rarely a user submits comments without stars -->
+		// Count number of divs instead of sum as very rarely a user submits comments without stars
 		var totalComments = $('#{{ comment_name }} .bob-comment').length;
 		
+		// Add counts to dropdown
 		$('#filter-stars-all-{{ comment_name }}').text("All - " + totalComments);
 		$('#filter-stars-one-{{ comment_name }}').text('One - ' + oneStar + ' - ' + Math.round((oneStar / totalComments) * 100) + '%');
 		$('#filter-stars-two-{{ comment_name }}').text('Two - ' + twoStar + ' - ' + Math.round((twoStar / totalComments) * 100) + '%');
