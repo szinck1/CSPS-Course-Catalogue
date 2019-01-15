@@ -1,7 +1,8 @@
 CREATE TABLE comments(
-	course_title VARCHAR(200),
 	course_code VARCHAR(20),
 	survey_id VARCHAR(15),
+	fiscal_year VARCHAR(9),
+	quarter VARCHAR(5),
 	learner_classif VARCHAR(80),
 	offering_city VARCHAR(60),
 	short_question VARCHAR(60),
