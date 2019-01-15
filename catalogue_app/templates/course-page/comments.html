@@ -47,18 +47,18 @@
 		
 		<!-- Dropdown to filter by period -->
 		<div class="comment-filter">
-			<p>{{ _('Period: ') }}</p>
+			<p>{{ _('Fiscal Year: ') }}</p>
 			<select id="filter-period-{{ comment_name }}" onchange="filterComments()">
 				<!-- Dropdown values filled dynamically by jQuery below -->
+				<option id="filter-period-all-{{ comment_name }}" value="bob-comment">All</option>
+				<option id="filter-2016-17-{{ comment_name }}" value="FY2016-17">2016-17</option>
+				<option id="filter-2016-17-{{ comment_name }}" value="FY2017-18">2017-18</option>
+				<option id="filter-2016-17-{{ comment_name }}" value="FY2018-19">2018-19</option>
 			</select>
 		</div>
 		
-		
-		
-		
-		
 		{% for tup in pass_dict[comment_name] %}
-			<div class="bob-comment star-{{ tup[1] }} {{ tup[5] }}-{{ tup[4] }}">
+			<div class="bob-comment star-{{ tup[1] }} FY{{ tup[4] }}">
 				<div class="media">
 					<!-- User avatar -->
 					<a class="thumbnail pull-left">
@@ -144,8 +144,9 @@
 	function filterComments() {
 		var currentCommentTabId= $('.sub-tabs li.active a:first').attr('href');
 		var starDropdownSelection = $(currentCommentTabId + ' select')[0].value;
+		var periodDropdownSelection = $(currentCommentTabId + ' select')[1].value;
 		$(currentCommentTabId + ' .bob-comment').hide();
-		$(currentCommentTabId + ' .bob-comment' + '.' + starDropdownSelection).show();
+		$(currentCommentTabId + ' .bob-comment' + '.' + starDropdownSelection + '.' + periodDropdownSelection).show();
 	}
 	
 	function createPieChart(id, title, data) {
