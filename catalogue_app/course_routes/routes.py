@@ -116,15 +116,15 @@ def course_result():
 			# Ratings
 			'all_ratings': rating_queries.all_ratings(course_code, 'en'),
 			# Comments
-			'general_comments': comment_queries.fetch_comments(course_code, 'Comment - General '),
-			'technical_comments': comment_queries.fetch_comments(course_code, 'Issue Description'),
-			'language_comments': comment_queries.fetch_comments(course_code, 'Comment - OL Not Available'),
-			'performance_comments': comment_queries.fetch_comments(course_code, 'Comment - application for performance improvement'),
+			'general_comments': comment_queries.fetch_comments(course_code, 'Comment - General'),
+			'technical_comments': comment_queries.fetch_comments(course_code, 'Comment - Technical'),
+			'language_comments': comment_queries.fetch_comments(course_code, 'Comment - OL'),
+			'performance_comments': comment_queries.fetch_comments(course_code, 'Comment - Performance'),
 			# Categorical and yes/no questions
 			'reason_to_participate': comment_queries.fetch_categorical(course_code, 'Reason to Participate'),
 			'technical_issues': comment_queries.fetch_categorical(course_code, 'Technical Issues'),
-			'languages_available': comment_queries.fetch_categorical(course_code, 'Official Language Available '),
-			'tools_used': comment_queries.fetch_categorical(course_code, 'GCCampus Tools Used'),
+			'languages_available': comment_queries.fetch_categorical(course_code, 'OL Available '),
+			'tools_used': comment_queries.fetch_categorical(course_code, 'GCcampus Tools Used'),
 			'prepared_by': comment_queries.fetch_categorical(course_code, 'Prep')
 		}
 		# Memoize new query results
