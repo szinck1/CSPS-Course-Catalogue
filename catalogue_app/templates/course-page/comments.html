@@ -46,7 +46,7 @@
 		</div>
 		
 		{% for tup in pass_dict[comment_name] %}
-			<div class="bob-comment star-{{ tup[1] }}">
+			<div class="bob-comment star-{{ tup[1] }} period-{{ tup[4] }}-{{ tup[5] }}">
 				<div class="media">
 					<!-- User avatar -->
 					<a class="thumbnail pull-left">
@@ -69,6 +69,7 @@
 							{% elif tup[1] == 1 %}
 								<img src="{{ url_for('static', filename='stars/one.png') }}" alt="One star" />
 							{% endif %}
+							<span class="comment-date">{{ tup[5] }} {{ tup[4] }}</span>
 						</h5>
 						<!-- User comment -->
 						<p>{{ tup[0] }}</p>
@@ -120,11 +121,11 @@
 		var totalComments = $('#{{ comment_name }} .bob-comment').length;
 		
 		$('#filter-all-{{ comment_name }}').text("All - " + totalComments);
-		$('#filter-one-{{ comment_name }}').text('One - ' + oneStar + ' ' + Math.round((oneStar / totalComments) * 100) + '%');
-		$('#filter-two-{{ comment_name }}').text('Two - ' + twoStar + ' ' + Math.round((twoStar / totalComments) * 100) + '%');
-		$('#filter-three-{{ comment_name }}').text('Three - ' + threeStar + ' ' + Math.round((threeStar / totalComments) * 100) + '%');
-		$('#filter-four-{{ comment_name }}').text('Four - ' + fourStar + ' ' + Math.round((fourStar / totalComments) * 100) + '%');
-		$('#filter-five-{{ comment_name }}').text('Five - ' + fiveStar + ' ' + Math.round((fiveStar / totalComments) * 100) + '%');
+		$('#filter-one-{{ comment_name }}').text('One - ' + oneStar + ' - ' + Math.round((oneStar / totalComments) * 100) + '%');
+		$('#filter-two-{{ comment_name }}').text('Two - ' + twoStar + ' - ' + Math.round((twoStar / totalComments) * 100) + '%');
+		$('#filter-three-{{ comment_name }}').text('Three - ' + threeStar + ' - ' + Math.round((threeStar / totalComments) * 100) + '%');
+		$('#filter-four-{{ comment_name }}').text('Four - ' + fourStar + ' - ' + Math.round((fourStar / totalComments) * 100) + '%');
+		$('#filter-five-{{ comment_name }}').text('Five - ' + fiveStar + ' - ' + Math.round((fiveStar / totalComments) * 100) + '%');
 	{% endfor %}
 	
 	// Enable dropdown to show / hide

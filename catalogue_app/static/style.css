@@ -320,6 +320,10 @@ table {
 
 
 /***** Comments *****/
+/* Date of comment */
+.comment-date {
+	float: right;
+}
 /* Filter */
 .bob-comment, .star-filter {
 	margin-bottom: 20px;

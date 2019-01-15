@@ -4,14 +4,14 @@ from catalogue_app.course_routes.utils import query_mysql
 
 def fetch_comments(course_code, question):
 	query = """
-		SELECT text_answer, stars, learner_classif, offering_city
+		SELECT text_answer, stars, learner_classif, offering_city, fiscal_year, quarter
 		FROM comments
 		WHERE course_code = %s AND short_question = %s
 		ORDER BY RAND();
 		"""
 	results = query_mysql(query, (course_code, question))
 	# Correct city names e.g. NORTH YORK -> North York via str.title()
-	results = [(tup[0], tup[1], tup[2].replace(' - Unknown', ''), tup[3].title().replace('(Ncr)', '(NCR)').replace("'S", "'s")) for tup in results]
+	results = [(tup[0], tup[1], tup[2].replace(' - Unknown', ''), tup[3].title().replace('(Ncr)', '(NCR)').replace("'S", "'s"), tup[4].replace('-20', '-'), tup[5]) for tup in results]
 	return results
 
 
