@@ -32,21 +32,33 @@
 	<section id="{{ comment_name }}" class="tab-content {{ 'active' if loop.index == 1 else 'hide' }}">
 		
 		<!-- Dropdown to filter by star -->
-		<div class="star-filter">
-			<p>Filter: </p>
-			<select id="filter-{{ comment_name }}" onchange="filterComments()">
+		<div class="comment-filter">
+			<p>{{ _('Stars: ') }}</p>
+			<select id="filter-stars-{{ comment_name }}" onchange="filterComments()">
 				<!-- Dropdown values filled dynamically by jQuery below -->
-				<option id="filter-all-{{ comment_name }}" value="bob-comment">All</option>
-				<option id="filter-one-{{ comment_name }}" value="star-1"></option>
-				<option id="filter-two-{{ comment_name }}" value="star-2"></option>
-				<option id="filter-three-{{ comment_name }}" value="star-3"></option>
-				<option id="filter-four-{{ comment_name }}" value="star-4"></option>
-				<option id="filter-five-{{ comment_name }}" value="star-5"></option>
+				<option id="filter-stars-all-{{ comment_name }}" value="bob-comment">All</option>
+				<option id="filter-stars-one-{{ comment_name }}" value="star-1"></option>
+				<option id="filter-stars-two-{{ comment_name }}" value="star-2"></option>
+				<option id="filter-stars-three-{{ comment_name }}" value="star-3"></option>
+				<option id="filter-stars-four-{{ comment_name }}" value="star-4"></option>
+				<option id="filter-stars-five-{{ comment_name }}" value="star-5"></option>
 			</select>
 		</div>
 		
+		<!-- Dropdown to filter by period -->
+		<div class="comment-filter">
+			<p>{{ _('Period: ') }}</p>
+			<select id="filter-period-{{ comment_name }}" onchange="filterComments()">
+				<!-- Dropdown values filled dynamically by jQuery below -->
+			</select>
+		</div>
+		
+		
+		
+		
+		
 		{% for tup in pass_dict[comment_name] %}
-			<div class="bob-comment star-{{ tup[1] }} period-{{ tup[4] }}-{{ tup[5] }}">
+			<div class="bob-comment star-{{ tup[1] }} {{ tup[5] }}-{{ tup[4] }}">
 				<div class="media">
 					<!-- User avatar -->
 					<a class="thumbnail pull-left">
@@ -120,20 +132,20 @@
 		<!-- Count number of divs instead of sum as very rarely a user submits comments without stars -->
 		var totalComments = $('#{{ comment_name }} .bob-comment').length;
 		
-		$('#filter-all-{{ comment_name }}').text("All - " + totalComments);
-		$('#filter-one-{{ comment_name }}').text('One - ' + oneStar + ' - ' + Math.round((oneStar / totalComments) * 100) + '%');
-		$('#filter-two-{{ comment_name }}').text('Two - ' + twoStar + ' - ' + Math.round((twoStar / totalComments) * 100) + '%');
-		$('#filter-three-{{ comment_name }}').text('Three - ' + threeStar + ' - ' + Math.round((threeStar / totalComments) * 100) + '%');
-		$('#filter-four-{{ comment_name }}').text('Four - ' + fourStar + ' - ' + Math.round((fourStar / totalComments) * 100) + '%');
-		$('#filter-five-{{ comment_name }}').text('Five - ' + fiveStar + ' - ' + Math.round((fiveStar / totalComments) * 100) + '%');
+		$('#filter-stars-all-{{ comment_name }}').text("All - " + totalComments);
+		$('#filter-stars-one-{{ comment_name }}').text('One - ' + oneStar + ' - ' + Math.round((oneStar / totalComments) * 100) + '%');
+		$('#filter-stars-two-{{ comment_name }}').text('Two - ' + twoStar + ' - ' + Math.round((twoStar / totalComments) * 100) + '%');
+		$('#filter-stars-three-{{ comment_name }}').text('Three - ' + threeStar + ' - ' + Math.round((threeStar / totalComments) * 100) + '%');
+		$('#filter-stars-four-{{ comment_name }}').text('Four - ' + fourStar + ' - ' + Math.round((fourStar / totalComments) * 100) + '%');
+		$('#filter-stars-five-{{ comment_name }}').text('Five - ' + fiveStar + ' - ' + Math.round((fiveStar / totalComments) * 100) + '%');
 	{% endfor %}
 	
-	// Enable dropdown to show / hide
+	// Enable star and period dropdowns to show / hide
 	function filterComments() {
 		var currentCommentTabId= $('.sub-tabs li.active a:first').attr('href');
-		var dropdownSelection = $(currentCommentTabId + ' select').val();
+		var starDropdownSelection = $(currentCommentTabId + ' select')[0].value;
 		$(currentCommentTabId + ' .bob-comment').hide();
-		$(currentCommentTabId + ' .bob-comment.' + dropdownSelection).show();
+		$(currentCommentTabId + ' .bob-comment' + '.' + starDropdownSelection).show();
 	}
 	
 	function createPieChart(id, title, data) {

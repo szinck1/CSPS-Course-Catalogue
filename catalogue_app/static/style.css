@@ -325,14 +325,15 @@ table {
 	float: right;
 }
 /* Filter */
-.bob-comment, .star-filter {
+.bob-comment {
 	margin-bottom: 20px;
 }
-.star-filter {
+.comment-filter {
 	text-align: right;
 	margin-top: 20px;
+	margin-bottom: 20px;
 }
-.star-filter p {
+.comment-filter p {
 	display: inline;
 }
 /* Avatar */
