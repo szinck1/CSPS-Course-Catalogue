@@ -45,8 +45,8 @@
 			</select>
 		</div>
 		
-		<!-- Only general_comments have multiple years of data -->
-		{% if comment_name == 'general_comments' %}
+		<!-- Only general_comments and technical_comments have multiple years of data -->
+		{% if comment_name in ['general_comments', 'technical_comments'] %}
 			<!-- Dropdown to filter by period -->
 			<div class="year-filter">
 				<p>{{ _('Fiscal Year: ') }}</p>
