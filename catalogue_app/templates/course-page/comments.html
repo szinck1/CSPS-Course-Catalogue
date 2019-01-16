@@ -37,26 +37,29 @@
 			<select id="filter-stars-{{ comment_name }}" onchange="filterComments()">
 				<!-- Dropdown values filled dynamically by jQuery below -->
 				<option id="filter-stars-all-{{ comment_name }}" value="bob-comment">All</option>
-				<option id="filter-stars-one-{{ comment_name }}" value="star-1"></option>
-				<option id="filter-stars-two-{{ comment_name }}" value="star-2"></option>
-				<option id="filter-stars-three-{{ comment_name }}" value="star-3"></option>
-				<option id="filter-stars-four-{{ comment_name }}" value="star-4"></option>
-				<option id="filter-stars-five-{{ comment_name }}" value="star-5"></option>
+				<option id="filter-stars-one-{{ comment_name }}" value="star-1">One</option>
+				<option id="filter-stars-two-{{ comment_name }}" value="star-2">Two</option>
+				<option id="filter-stars-three-{{ comment_name }}" value="star-3">Three</option>
+				<option id="filter-stars-four-{{ comment_name }}" value="star-4">Four</option>
+				<option id="filter-stars-five-{{ comment_name }}" value="star-5">Five</option>
 			</select>
 		</div>
 		
-		<!-- Dropdown to filter by period -->
-		<div class="year-filter">
-			<p>{{ _('Fiscal Year: ') }}</p>
-			<select id="filter-period-{{ comment_name }}" onchange="filterComments()">
-				<!-- Dropdown values filled dynamically by jQuery below -->
-				<option id="filter-period-all-{{ comment_name }}" value="bob-comment">All</option>
-				<option id="filter-2015-16-{{ comment_name }}" value="FY2015-16">2015-16</option>
-				<option id="filter-2016-17-{{ comment_name }}" value="FY2016-17">2016-17</option>
-				<option id="filter-2017-18-{{ comment_name }}" value="FY2017-18">2017-18</option>
-				<option id="filter-2018-19-{{ comment_name }}" value="FY2018-19">2018-19</option>
-			</select>
-		</div>
+		<!-- Only general_comments have multiple years of data -->
+		{% if comment_name == 'general_comments' %}
+			<!-- Dropdown to filter by period -->
+			<div class="year-filter">
+				<p>{{ _('Fiscal Year: ') }}</p>
+				<select id="filter-period-{{ comment_name }}" onchange="filterComments()">
+					<!-- Dropdown values filled dynamically by jQuery below -->
+					<option id="filter-period-all-{{ comment_name }}" value="bob-comment">All</option>
+					<option id="filter-2015-16-{{ comment_name }}" value="FY2015-16">2015-16</option>
+					<option id="filter-2016-17-{{ comment_name }}" value="FY2016-17">2016-17</option>
+					<option id="filter-2017-18-{{ comment_name }}" value="FY2017-18">2017-18</option>
+					<option id="filter-2018-19-{{ comment_name }}" value="FY2018-19">2018-19</option>
+				</select>
+			</div>
+		{% endif %}
 		
 		{% for tup in pass_dict[comment_name] %}
 			<div class="bob-comment star-{{ tup[1] }} FY{{ tup[4] }}">
@@ -124,32 +127,43 @@
 	});
 	
 	// Populate filter dropdown
-	{% for comment_name in comment_names %}
-		// Get counts
-		var oneStar = $('#{{ comment_name }} .star-1').length;
-		var twoStar = $('#{{ comment_name }} .star-2').length;
-		var threeStar = $('#{{ comment_name }} .star-3').length;
-		var fourStar = $('#{{ comment_name }} .star-4').length;
-		var fiveStar = $('#{{ comment_name }} .star-5').length;
-		// Count number of divs instead of sum as very rarely a user submits comments without stars
-		var totalComments = $('#{{ comment_name }} .bob-comment').length;
-		
-		// Add counts to dropdown
-		$('#filter-stars-all-{{ comment_name }}').text("All - " + totalComments);
-		$('#filter-stars-one-{{ comment_name }}').text('One - ' + oneStar + ' - ' + Math.round((oneStar / totalComments) * 100) + '%');
-		$('#filter-stars-two-{{ comment_name }}').text('Two - ' + twoStar + ' - ' + Math.round((twoStar / totalComments) * 100) + '%');
-		$('#filter-stars-three-{{ comment_name }}').text('Three - ' + threeStar + ' - ' + Math.round((threeStar / totalComments) * 100) + '%');
-		$('#filter-stars-four-{{ comment_name }}').text('Four - ' + fourStar + ' - ' + Math.round((fourStar / totalComments) * 100) + '%');
-		$('#filter-stars-five-{{ comment_name }}').text('Five - ' + fiveStar + ' - ' + Math.round((fiveStar / totalComments) * 100) + '%');
-	{% endfor %}
+	function populateDropdown() {
+		{% for comment_name in comment_names %}
+			// Get counts
+			var oneStar = $('#{{ comment_name }} .star-1').length;
+			var twoStar = $('#{{ comment_name }} .star-2').length;
+			var threeStar = $('#{{ comment_name }} .star-3').length;
+			var fourStar = $('#{{ comment_name }} .star-4').length;
+			var fiveStar = $('#{{ comment_name }} .star-5').length;
+			// Count number of divs instead of sum as very rarely a user submits comments without stars
+			var totalComments = $('#{{ comment_name }} .bob-comment').length;
+			
+			// Add counts to dropdown
+			$('#filter-stars-all-{{ comment_name }}').text("All - " + totalComments);
+			$('#filter-stars-one-{{ comment_name }}').text('One - ' + oneStar + ' - ' + Math.round((oneStar / totalComments) * 100) + '%');
+			$('#filter-stars-two-{{ comment_name }}').text('Two - ' + twoStar + ' - ' + Math.round((twoStar / totalComments) * 100) + '%');
+			$('#filter-stars-three-{{ comment_name }}').text('Three - ' + threeStar + ' - ' + Math.round((threeStar / totalComments) * 100) + '%');
+			$('#filter-stars-four-{{ comment_name }}').text('Four - ' + fourStar + ' - ' + Math.round((fourStar / totalComments) * 100) + '%');
+			$('#filter-stars-five-{{ comment_name }}').text('Five - ' + fiveStar + ' - ' + Math.round((fiveStar / totalComments) * 100) + '%');
+		{% endfor %}
+	}
 	
 	// Enable star and period dropdowns to show / hide
 	function filterComments() {
+		// Get current tab
 		var currentCommentTabId= $('.sub-tabs li.active a:first').attr('href');
-		var starDropdownSelection = $(currentCommentTabId + ' select')[0].value;
-		var periodDropdownSelection = $(currentCommentTabId + ' select')[1].value;
+		// Get value of star dropdown (always present)
+		var dropdowns = $(currentCommentTabId + ' select');
+		var starDropdown = dropdowns[0].value;
+		// Hide all comments
 		$(currentCommentTabId + ' .bob-comment').hide();
-		$(currentCommentTabId + ' .bob-comment' + '.' + starDropdownSelection + '.' + periodDropdownSelection).show();
+		// Show comments according to selection in dropdown(s)
+		if (dropdowns.length == 1) {
+			$(currentCommentTabId + ' .bob-comment' + '.' + starDropdown).show();
+		} else {
+			var periodDropdown = dropdowns[1].value;
+			$(currentCommentTabId + ' .bob-comment' + '.' + starDropdown + '.' + periodDropdown).show();
+		}
 	}
 	
 	function createPieChart(id, title, data) {
