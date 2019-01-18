@@ -1,6 +1,5 @@
 ### CURRENT SPRINT ###
 # add FR
-# autocomplete search bar
 # add cookie for lang
 # fix splash
 # new colour scheme?
