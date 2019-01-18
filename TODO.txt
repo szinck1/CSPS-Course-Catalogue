@@ -1,7 +1,6 @@
 ### CURRENT SPRINT ###
 # add FR
 # add cookie for lang
-# fix splash
 # new colour scheme?
 # lazy_gettext for bilingual urls?
 # move all possible columns from lsr to product_info table
