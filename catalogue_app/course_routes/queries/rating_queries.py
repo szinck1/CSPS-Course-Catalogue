@@ -1,5 +1,5 @@
 from flask_babel import gettext
-from catalogue_app.course_routes.utils import query_mysql
+from catalogue_app.db import query_mysql
 
 
 def all_ratings(course_code, lang):

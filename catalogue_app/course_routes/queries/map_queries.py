@@ -1,4 +1,4 @@
-from catalogue_app.course_routes.utils import query_mysql
+from catalogue_app.db import query_mysql
 
 
 def offering_city_counts(fiscal_year, course_code):

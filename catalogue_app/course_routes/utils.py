@@ -1,16 +1,3 @@
-from flask import g
-
-
-# Query data from MySQL
-def query_mysql(query, args=None):
-	cnx = g.db
-	cursor = cnx.cursor()
-	cursor.execute(query, args)
-	results = cursor.fetchall()
-	cursor.close()
-	#cnx.close()
-	return results
-
 
 # Helper functions to convert MySQL results to desired dtype
 def as_string(my_val, error_msg=False):

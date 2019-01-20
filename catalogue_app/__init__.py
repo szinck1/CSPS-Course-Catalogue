@@ -4,7 +4,6 @@ from flask import Flask, g, request, session
 from flask_httpauth import HTTPBasicAuth
 from flask_babel import Babel
 from catalogue_app.config import Config
-import mysql.connector
 
 # Declare dictionary as app variable for memoization (stopgap solution before implementing Redis)
 if Config.LOAD_FROM_PICKLE:
@@ -24,20 +23,6 @@ users = {
 babel = Babel()
 
 
-# Connection to db to store in g
-def get_db(local):
-	if local:
-		return mysql.connector.connect(host='localhost',
-									   user='admin',
-									   password='Newton11',
-									   database='csps_dashboards')
-	else:
-		return mysql.connector.connect(host=os.environ.get('DB_HOST'),
-									   user=os.environ.get('DB_USER'),
-									   password=os.environ.get('DB_PASSWORD'),
-									   database=os.environ.get('DB_DATABASE_NAME'))
-
-
 # Application factory
 def create_app(config_class=Config):
 	app = Flask(__name__)
@@ -45,6 +30,11 @@ def create_app(config_class=Config):
 	
 	# Add Python's internal func 'zip' to Jinja2
 	app.jinja_env.filters['zip'] = zip
+	
+	# Register database
+	from catalogue_app import db
+	db.init_app(app)
+	
 	
 	# Register plugins
 	@auth.get_password
@@ -57,10 +47,10 @@ def create_app(config_class=Config):
 	# Register blueprints
 	from catalogue_app.course_routes.routes import course
 	from catalogue_app.main_routes.routes import main
-	from catalogue_app.api.routes import api
+	#from catalogue_app.api.routes import api
 	app.register_blueprint(course)
 	app.register_blueprint(main)
-	app.register_blueprint(api)
+	#app.register_blueprint(api)
 	
 	
 	# Set language
@@ -75,19 +65,5 @@ def create_app(config_class=Config):
 				session['lang'] = 'en'
 		
 		return session.get('lang', 'en')
-	
-	
-	# Open connection to DB at start of request
-	# Store in g (lasts for duration of request)
-	@app.before_request
-	def before_request():
-		g.db = get_db(local=config_class.LOCAL_DB)
-	
-	
-	# Close connection to DB at end of request
-	@app.teardown_request
-	def teardown_request(exception):
-		if hasattr(g, 'db'):
-			g.db.close()
 	
 	return app

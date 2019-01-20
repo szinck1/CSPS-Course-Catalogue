@@ -1,7 +1,7 @@
 import re
 from catalogue_app.config import Config
-from catalogue_app.course_routes.utils import query_mysql
 from wtforms import Form, SelectField
+from catalogue_app.db import query_mysql
 
 
 # Internal func to remove course codes from titles
