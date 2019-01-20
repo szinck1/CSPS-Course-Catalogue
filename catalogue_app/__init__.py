@@ -1,17 +1,15 @@
-import os
 import pickle
-from flask import Flask, g, request, session
+from flask import Flask, request, session
 from flask_httpauth import HTTPBasicAuth
 from flask_babel import Babel
 from catalogue_app.config import Config
 
-# Declare dictionary as app variable for memoization (stopgap solution before implementing Redis)
+# Declare dictionary as app variable for memoization
 if Config.LOAD_FROM_PICKLE:
 	with open('memo.pickle', 'rb') as f:
 		memo_dict = pickle.load(f)
 else:
 	memo_dict = {}
-
 
 # Instantiate login
 auth = HTTPBasicAuth()
@@ -19,7 +17,7 @@ users = {
     Config.BASIC_AUTH_USERNAME: Config.BASIC_AUTH_PASSWORD
 }
 
-# Instantiate plugins
+# Instantiate Babel for bilingual text
 babel = Babel()
 
 
@@ -63,7 +61,6 @@ def create_app(config_class=Config):
 			# If 'en'/junk/nothing is passed, default to en
 			else:
 				session['lang'] = 'en'
-		
 		return session.get('lang', 'en')
 	
 	return app
