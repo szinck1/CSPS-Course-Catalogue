@@ -3,12 +3,12 @@ import pickle
 import time
 from flask import Blueprint, redirect, render_template, request, session, url_for
 from flask_babel import gettext
-from catalogue_app import memo_dict
+from catalogue_app import auth, memo_dict
 from catalogue_app.config import Config
 from catalogue_app.course_routes.forms import course_form
-from catalogue_app.course_routes.queries import comment_queries, general_queries, learner_queries, map_queries
-from catalogue_app.course_routes.queries import offering_queries, rating_queries, memoize_func
-from catalogue_app import auth
+from catalogue_app.course_routes.queries import (
+	comment_queries, general_queries, learner_queries, map_queries, memoize_func, offering_queries, rating_queries
+)
 
 # Instantiate blueprint
 course = Blueprint('course', __name__)
@@ -26,6 +26,7 @@ def context_processor():
 @course.route('/course-selection', methods=['GET', 'POST'])
 @auth.login_required
 def course_selection():
+	# FIX: Don't query possible course codes if POST
 	lang = session.get('lang', 'en')
 	form = course_form(lang)
 	form = form(request.form)

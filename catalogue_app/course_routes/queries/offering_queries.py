@@ -10,28 +10,35 @@ from catalogue_app.course_routes.utils import as_string, as_float, as_int, as_pe
 # "They can not be used for other parts of SQL, such as table names, etc."
 
 
-# Decorator to time queries, if needed
-# import time
-def time_it(func):
-	def wrapper(*args, **kwargs):
-		t1 = time.time()
-		result = func(*args, **kwargs)
-		print('Func {0} took {1} sec'.format(func.__name__, round(time.time() - t1, 3)))
-		return result
-	return wrapper
-
-
 def overall_numbers(fiscal_year, course_code):
+	"""Run queries for the 'Overall Numbers' section of the 'Dashboard' tab."""
+	results = []
+	component_1 = _offering_status_counts(fiscal_year, course_code)
+	component_2 = _offering_additional_counts(fiscal_year, course_code)
+	results.extend(component_1)
+	results.extend(component_2)
+	return results
+
+
+def _offering_status_counts(fiscal_year, course_code):
+	"""Query number of offerings by status for a given fiscal year."""
 	table_name = 'lsr{0}'.format(fiscal_year)
-	
-	query_open = "SELECT COUNT(DISTINCT offering_id) FROM {0} WHERE course_code = %s AND offering_status = 'Open - Normal';".format(table_name)
-	open = query_mysql(query_open, (course_code,))
-	
-	query_delivered = "SELECT COUNT(DISTINCT offering_id) FROM {0} WHERE course_code = %s AND offering_status = 'Delivered - Normal';".format(table_name)
-	delivered = query_mysql(query_delivered, (course_code,))
-	
-	query_cancelled = "SELECT COUNT(DISTINCT offering_id) FROM {0} WHERE course_code = %s AND offering_status = 'Cancelled - Normal';".format(table_name)
-	cancelled = query_mysql(query_cancelled, (course_code,))
+	query = "SELECT offering_status, COUNT(DISTINCT offering_id) FROM {0} WHERE course_code = %s GROUP BY offering_status;".format(table_name)
+	results = query_mysql(query, (course_code,))
+	# Ensure all possible statuses returned (if count of 0, ignored by GROUP BY)
+	results = dict(results)
+	statuses = {
+		gettext('Open Offerings'): 'Open - Normal',
+		gettext('Delivered Offerings'): 'Delivered - Normal',
+		gettext('Cancelled Offerings'): 'Cancelled - Normal'
+	}
+	results_processed = [(key, results.get(val, 0)) for (key, val) in statuses.items()]
+	return results_processed
+
+
+def _offering_additional_counts(fiscal_year, course_code):
+	"""Additional information diplayed with _offering_status_counts."""
+	table_name = 'lsr{0}'.format(fiscal_year)
 	
 	query_client_reqs = "SELECT COUNT(DISTINCT offering_id) FROM {0} WHERE course_code = %s AND client != '' AND offering_status IN ('Open - Normal', 'Delivered - Normal');".format(table_name)
 	client_reqs = query_mysql(query_client_reqs, (course_code,))
@@ -42,13 +49,15 @@ def overall_numbers(fiscal_year, course_code):
 	query_no_shows = "SELECT SUM(no_show) FROM {0} WHERE course_code = %s;".format(table_name)
 	no_shows = query_mysql(query_no_shows, (course_code,))
 	
-	results = [(gettext('Open Offerings'), as_int(open)),
-			   (gettext('Delivered Offerings'), as_int(delivered)),
-			   (gettext('Cancelled Offerings'), as_int(cancelled)),
-			   (gettext('Client Requests'), as_int(client_reqs)),
+	results = [(gettext('Client Requests'), as_int(client_reqs)),
 			   (gettext('Registrations'), as_int(regs)),
 			   (gettext('No-Shows'), as_int(no_shows))]
 	return results
+
+
+
+
+
 
 
 def offerings_per_region(fiscal_year, course_code):
