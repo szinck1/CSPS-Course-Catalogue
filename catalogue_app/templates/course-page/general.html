@@ -35,6 +35,8 @@
 </table>
 
 <!-- Additional Info -->
+<!-- Remvove course code from dict as no need to display -->
+{% set _ = pass_dict.course_info.pop('Course Code', none) %}
 <table class="table table-hover">
 	<thead>
 		<tr>

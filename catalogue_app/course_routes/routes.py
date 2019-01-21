@@ -5,7 +5,7 @@ from flask import Blueprint, redirect, render_template, request, session, url_fo
 from flask_babel import gettext
 from catalogue_app import memo_dict
 from catalogue_app.config import Config
-from catalogue_app.course_routes.form import course_title_form, course_code_form
+from catalogue_app.course_routes.forms import course_form
 from catalogue_app.course_routes.queries import comment_queries, general_queries, learner_queries, map_queries
 from catalogue_app.course_routes.queries import offering_queries, rating_queries, memoize_func
 from catalogue_app import auth
@@ -22,13 +22,12 @@ def context_processor():
 	return {'LAST_YEAR': LAST_YEAR.replace('_', '-'), 'THIS_YEAR': THIS_YEAR.replace('_', '-')}
 
 
-# Search by course code
-@course.route('/course-code-selection', methods=['GET', 'POST'])
+# Course selection
+@course.route('/course-selection', methods=['GET', 'POST'])
 @auth.login_required
-def course_code_selection():
+def course_selection():
 	lang = session.get('lang', 'en')
-	form_name = ''
-	form = course_code_form(lang, form_name)
+	form = course_form(lang)
 	form = form(request.form)
 	
 	if request.method == 'POST' and form.validate():
@@ -37,33 +36,18 @@ def course_code_selection():
 	return render_template('form.html', form=form, title=gettext("Selection"), button_val=gettext("Go"))
 
 
-# Search by course title
-@course.route('/course-title-selection', methods=['GET', 'POST'])
-@auth.login_required
-def course_title_selection():
-	lang = session.get('lang', 'en')
-	form_name = gettext('Course Title')
-	form = course_title_form(lang, form_name)
-	form = form(request.form)
-	
-	if request.method == 'POST' and form.validate():
-		course_code = form.course_selection.data
-		return redirect(url_for('course.course_result', course_code=course_code))
-	return render_template('form.html', form=form, title=gettext("Selection"), button_val=gettext("Go"))
-
-
-# Run queries and render template
+# Catalogue's entry for a given course: the meat & potatoes of the app
 @course.route('/course-result')
 @auth.login_required
 def course_result():
 	# Get arguments from query string; if incomplete, return to selection page
 	if 'course_code' not in request.args:
-		return redirect(url_for('course.course_code_selection'))
-	# Automatically escaped in Jinja2 (HTML templates) and MySQL queries
+		return redirect(url_for('course.course_selection'))
+	# Argument is automatically escaped in Jinja2 (HTML templates) and MySQL queries
 	course_code = request.args['course_code']
 	lang = session.get('lang', 'en')
 	
-	# If course_code doesn't exist, render not_found.html
+	# Security check: If course_code doesn't exist, render not_found.html
 	course_title = general_queries.course_title(lang, THIS_YEAR, course_code)
 	if not course_title:
 		return render_template('not-found.html')
@@ -127,7 +111,7 @@ def course_result():
 		return render_template('/course-page/main.html', pass_dict=copy.deepcopy(memo_dict[course_code]))
 
 
-# Run queries for all course codes, save to dict, and pickle
+# Temporary solution: Run queries for all course codes, store in dict, export to pickle
 @course.route('/memoize-all')
 @auth.login_required
 def memoize_all():
