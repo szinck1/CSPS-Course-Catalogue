@@ -68,9 +68,6 @@ def course_result():
 	if not course_title:
 		return render_template('not-found.html')
 	
-	# Check if course is online - needed for certain templates
-	online_course = general_queries.online_course(THIS_YEAR, course_code)
-	
 	# Run queries and save in dict to be passed to templates
 	# Check if already memoized in app var memo_dict
 	if course_code in memo_dict:
@@ -82,7 +79,6 @@ def course_result():
 			#Global
 			'course_code': course_code,
 			'course_title': course_title,
-			'online_course': online_course,
 			# General
 			'course_info': general_queries.course_info(course_code),
 			# Dashboard - offerings

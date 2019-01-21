@@ -4,7 +4,7 @@
 <ul class="nav nav-tabs nav-justified sub-tabs">
 	<li class="active"><a href="#general_comments">Overall</a></li>
 	<!-- Show Technical comments for Online courses; Instructor comments for Instructor-Led -->
-	{% if pass_dict.online_course %}
+	{% if pass_dict.course_info['Business Type'] == 'Online' %}
 		<li><a href="#technical_comments">Technical</a></li>
 	{% else %}
 		<li><a href="#instructor_comments">Instructor</a></li>
@@ -22,7 +22,7 @@
 
 <!-- Subtabs' contents -->
 <!-- List of comments to render -->
-{% if pass_dict.online_course %}
+{% if pass_dict.course_info['Business Type'] == 'Online' %}
 	{% set comment_names = ['general_comments', 'technical_comments', 'language_comments', 'performance_comments'] %}
 {% else %}
 	{% set comment_names = ['general_comments', 'language_comments', 'performance_comments'] %}

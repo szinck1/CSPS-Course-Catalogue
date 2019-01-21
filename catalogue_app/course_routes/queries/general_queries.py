@@ -2,6 +2,7 @@ from catalogue_app.db import query_mysql
 from catalogue_app.course_routes.utils import as_string
 
 
+# Combine this with WTForms
 def all_course_codes(fiscal_year):
 	"""Funcs should all have docstrings + this one should
 	be combined with those for the selection form.
@@ -17,20 +18,13 @@ def all_course_codes(fiscal_year):
 	return results
 
 
+# Get this info simply from WTForms?
 def course_title(lang, fiscal_year, course_code):
 	field_name = 'course_title_{0}'.format(lang)
 	table_name = 'lsr{0}'.format(fiscal_year)
 	query = "SELECT {0} FROM {1} WHERE course_code = %s LIMIT 1;".format(field_name, table_name)
 	course_title = query_mysql(query, (course_code,))
 	return as_string(course_title, error_msg=False)
-
-
-def online_course(fiscal_year, course_code):
-	table_name = 'lsr{0}'.format(fiscal_year)
-	query = "SELECT business_type FROM {0} WHERE course_code = %s LIMIT 1;".format(table_name)
-	business_type = query_mysql(query, (course_code,))
-	business_type = as_string(business_type)
-	return True if (business_type == 'Online') else False
 
 
 def course_info(course_code):
