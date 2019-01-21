@@ -1,7 +1,7 @@
 ### CURRENT SPRINT ###
 # add FR
 # add cookie for lang
-# new colour scheme?
+# new colour scheme from ODSC
 # lazy_gettext for bilingual urls?
 # move all possible columns from lsr to product_info table
 
