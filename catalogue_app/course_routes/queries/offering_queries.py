@@ -1,4 +1,5 @@
 from collections import defaultdict
+import pandas as pd
 from flask_babel import gettext
 from catalogue_app.db import query_mysql
 from catalogue_app.course_routes.utils import as_string, as_float, as_int, as_percent
@@ -57,6 +58,33 @@ def _offering_additional_counts(fiscal_year, course_code):
 
 
 
+# Let's make this badboy into a class right now
+# One method to query, store df as attribute
+# Two other methods: breakdown by prov and by city
+
+def city_drilldown(fiscal_year, course_code):
+	table_name = 'lsr{0}'.format(fiscal_year)
+	query = """
+		SELECT offering_region, offering_province, offering_city, COUNT(DISTINCT offering_id)
+		FROM {0}
+		WHERE course_code = %s AND offering_status IN ('Open - Normal', 'Delivered - Normal')
+		GROUP BY offering_region, offering_province, offering_city;
+	""".format(table_name)
+	results = query_mysql(query, (course_code,))
+	results = pd.DataFrame(results, columns=['offering_region', 'offering_province', 'offering_city', 'count'])
+	# Get list of provinces in which the course has offerings
+	provinces = results.loc[:, 'offering_province'].unique()
+	# Counts by city
+	counts = results.groupby(['offering_province', 'offering_city'], as_index=False).sum()
+	# Process into form required by Highcharts
+	results_processed = {}
+	for province in provinces:
+		city_counts = counts.loc[counts['offering_province'] == province, ['offering_city', 'count']].values.tolist()
+		results_processed[province] = city_counts
+	return results_processed
+
+
+
 
 
 
@@ -67,7 +95,7 @@ def offerings_per_region(fiscal_year, course_code):
 		FROM {0}
 		WHERE course_code = %s AND offering_status IN ('Open - Normal', 'Delivered - Normal')
 		GROUP BY offering_region;
-		""".format(table_name)
+	""".format(table_name)
 	results = query_mysql(query, (course_code,))
 	results = dict(results)
 	
@@ -87,7 +115,7 @@ def _query_province_drilldown(fiscal_year, course_code, region):
 		FROM {0}
 		WHERE course_code = %s AND offering_status IN ('Open - Normal', 'Delivered - Normal') AND offering_region = %s
 		GROUP BY offering_province;
-		""".format(table_name)
+	""".format(table_name)
 	results = query_mysql(query, (course_code, region))
 	return results
 
@@ -102,29 +130,10 @@ def province_drilldown(fiscal_year, course_code):
 	return results_processed
 
 
-def _query_city_drilldown(fiscal_year, course_code, province):
-	table_name = 'lsr{0}'.format(fiscal_year)
-	query = """
-		SELECT offering_city, COUNT(DISTINCT offering_id)
-		FROM {0}
-		WHERE course_code = %s AND offering_status IN ('Open - Normal', 'Delivered - Normal') AND offering_province = %s
-		GROUP BY offering_city;
-		""".format(table_name)
-	results = query_mysql(query, (course_code, province))
-	return results
 
 
-def city_drilldown(fiscal_year, course_code):
-	results_processed = defaultdict(list)
-	provinces = ['Alberta', 'British Columbia', 'Manitoba', 'NCR/RCN', 'New Brunswick',
-				 'Newfoundland and Labrador', 'Northwest Territories', 'Nova Scotia',
-				 'Nunavut', 'Ontario', 'Ontario_NCR', 'Prince Edward Island', 'Quebec',
-				 'Québec_NCR', 'Saskatchewan', 'Yukon']
-	for province in provinces:
-		cities = _query_city_drilldown(fiscal_year, course_code, province)
-		cities = [list(tup) for tup in cities]
-		results_processed[province].extend(cities)
-	return results_processed
+
+
 
 
 def offerings_per_lang(fiscal_year, course_code):
@@ -134,7 +143,7 @@ def offerings_per_lang(fiscal_year, course_code):
 		FROM {0}
 		WHERE course_code = %s AND offering_status IN ('Open - Normal', 'Delivered - Normal')
 		GROUP BY offering_language;
-		""".format(table_name)
+	""".format(table_name)
 	results = query_mysql(query, (course_code,))
 	
 	# Force 'English', 'French', and 'Bilingual' to be returned within dict
@@ -160,7 +169,7 @@ def offerings_cancelled(fiscal_year, course_code):
 			(SELECT COUNT(DISTINCT offering_id) AS Mars
 			 FROM {0}
 			 WHERE course_code = %s) AS b;
-			""".format(table_name)
+	""".format(table_name)
 	results = query_mysql(query, (course_code, course_code))
 	return as_percent(results)
 
@@ -178,7 +187,7 @@ def offerings_cancelled_global(fiscal_year):
 			(SELECT COUNT(DISTINCT offering_id) AS Mars
 			 FROM {0}
 			 WHERE business_type = 'Instructor-Led') AS b;
-		""".format(table_name)
+	""".format(table_name)
 	results = query_mysql(query)
 	return as_percent(results)
 
@@ -193,7 +202,7 @@ def avg_class_size(fiscal_year, course_code):
 			WHERE course_code = %s AND reg_status= 'Confirmed'
 			GROUP BY offering_id
 		) AS sub_table;
-		""".format(table_name)
+	""".format(table_name)
 	results = query_mysql(query, (course_code,))
 	return as_int(results)
 
@@ -209,7 +218,7 @@ def avg_class_size_global(fiscal_year):
 			WHERE reg_status= 'Confirmed' AND business_type = 'Instructor-Led'
 			GROUP BY offering_id
 		) AS sub_table;
-		""".format(table_name)
+	""".format(table_name)
 	results = query_mysql(query)
 	return as_int(results)
 
@@ -226,7 +235,7 @@ def avg_no_shows(fiscal_year, course_code):
 			(SELECT COUNT(DISTINCT offering_id) AS Mars
 			 FROM {0}
 			 WHERE course_code = %s AND offering_status IN ('Open - Normal', 'Delivered - Normal')) AS b;
-		""".format(table_name)
+	""".format(table_name)
 	results = query_mysql(query, (course_code, course_code))
 	return as_float(results)
 
@@ -244,6 +253,6 @@ def avg_no_shows_global(fiscal_year):
 			(SELECT COUNT(DISTINCT offering_id) AS Mars
 			 FROM {0}
 			 WHERE business_type = 'Instructor-Led' AND offering_status IN ('Open - Normal', 'Delivered - Normal')) AS b;
-		""".format(table_name)
+	""".format(table_name)
 	results = query_mysql(query)
 	return as_float(results)

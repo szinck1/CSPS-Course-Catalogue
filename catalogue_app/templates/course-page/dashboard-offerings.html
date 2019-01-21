@@ -107,12 +107,9 @@
 				{% endfor %}
 				
 				// City drilldowns
-				{% set provinces = ['Alberta', 'British Columbia', 'Manitoba', 'NCR/RCN', 'New Brunswick',
-									'Newfoundland and Labrador', 'Northwest Territories', 'Nova Scotia',
-									'Nunavut', 'Ontario', 'Ontario_NCR', 'Prince Edward Island', 'Quebec',
-									'Québec_NCR', 'Saskatchewan', 'Yukon'] %}
-				{% for province in provinces %}
-					{name: '{{ province }}', id: '{{ province }}', data: {{ pass_dict.city_drilldown[province] | safe }} },
+				
+				{% for province, cities in pass_dict.city_drilldown.items() %}
+					{name: '{{ province | safe }}', id: '{{ province | safe }}', data: {{ cities | safe }} },
 				{% endfor %}
 			]
 		}

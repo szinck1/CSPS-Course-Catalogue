@@ -69,9 +69,14 @@ def course_result():
 			# Dashboard - offerings
 			'overall_numbers_LY': offering_queries.overall_numbers(LAST_YEAR, course_code),
 			'overall_numbers_TY': offering_queries.overall_numbers(THIS_YEAR, course_code),
+			
+			
 			'offerings_per_region': offering_queries.offerings_per_region(THIS_YEAR, course_code),
 			'province_drilldown': offering_queries.province_drilldown(THIS_YEAR, course_code),
 			'city_drilldown': offering_queries.city_drilldown(THIS_YEAR, course_code),
+			
+			
+			
 			'offerings_per_lang_LY': offering_queries.offerings_per_lang(LAST_YEAR, course_code),
 			'offerings_per_lang_TY': offering_queries.offerings_per_lang(THIS_YEAR, course_code),
 			'offerings_cancelled_global_LY': offering_queries.offerings_cancelled_global(LAST_YEAR),
