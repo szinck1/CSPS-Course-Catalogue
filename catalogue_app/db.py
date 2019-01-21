@@ -4,6 +4,7 @@ import mysql.connector
 from catalogue_app.config import Config
 
 
+# Origin query count, excluding 'Selection' page: 106!!!
 ctr = 0
 def query_mysql(query, args=None, dict_=False):
 	"""Execute query on connection stored in g."""
