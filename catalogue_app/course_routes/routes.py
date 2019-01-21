@@ -60,6 +60,10 @@ def course_result():
 		return render_template('/course-page/main.html', pass_dict=copy.deepcopy(memo_dict[course_code]))
 	else:
 		print('Running query for first time')
+		
+		# Instantiate OfferingLocations
+		locations = offering_queries.OfferingLocations(THIS_YEAR, course_code).load()
+		
 		pass_dict = {
 			#Global
 			'course_code': course_code,
@@ -69,14 +73,9 @@ def course_result():
 			# Dashboard - offerings
 			'overall_numbers_LY': offering_queries.overall_numbers(LAST_YEAR, course_code),
 			'overall_numbers_TY': offering_queries.overall_numbers(THIS_YEAR, course_code),
-			
-			
-			'offerings_per_region': offering_queries.offerings_per_region(THIS_YEAR, course_code),
-			'province_drilldown': offering_queries.OfferingLocations(THIS_YEAR, course_code).province_drilldown(),
-			'city_drilldown': offering_queries.OfferingLocations(THIS_YEAR, course_code).city_drilldown(),
-			
-			
-			
+			'region_drilldown': locations.region_drilldown(),
+			'province_drilldown': locations.province_drilldown(),
+			'city_drilldown': locations.city_drilldown(),
 			'offerings_per_lang_LY': offering_queries.offerings_per_lang(LAST_YEAR, course_code),
 			'offerings_per_lang_TY': offering_queries.offerings_per_lang(THIS_YEAR, course_code),
 			'offerings_cancelled_global_LY': offering_queries.offerings_cancelled_global(LAST_YEAR),

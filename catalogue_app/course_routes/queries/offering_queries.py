@@ -56,11 +56,33 @@ def _offering_additional_counts(fiscal_year, course_code):
 	return results
 
 
+# This query probably needs an index
 class OfferingLocations:
 	def __init__(self, fiscal_year, course_code):
 		self.fiscal_year = fiscal_year
 		self.course_code = course_code
-		self.data = self._query_data()
+		self.data = None
+	
+	
+	def load(self):
+		table_name = 'lsr{0}'.format(self.fiscal_year)
+		query = """
+			SELECT offering_region, offering_province, offering_city, COUNT(DISTINCT offering_id)
+			FROM {0}
+			WHERE course_code = %s AND offering_status IN ('Open - Normal', 'Delivered - Normal')
+			GROUP BY offering_region, offering_province, offering_city;
+		""".format(table_name)
+		results = query_mysql(query, (self.course_code,))
+		results = pd.DataFrame(results, columns=['offering_region', 'offering_province', 'offering_city', 'count'])
+		self.data = results
+		# Return self to allow method chaining
+		return self
+	
+	
+	def region_drilldown(self):
+		results = self.data.groupby('offering_region', as_index=False).sum()
+		results_processed = dict(results.values.tolist())
+		return results_processed
 	
 	
 	def province_drilldown(self):
@@ -90,19 +112,6 @@ class OfferingLocations:
 		return results_processed
 	
 	
-	def _query_data(self):
-		table_name = 'lsr{0}'.format(self.fiscal_year)
-		query = """
-			SELECT offering_region, offering_province, offering_city, COUNT(DISTINCT offering_id)
-			FROM {0}
-			WHERE course_code = %s AND offering_status IN ('Open - Normal', 'Delivered - Normal')
-			GROUP BY offering_region, offering_province, offering_city;
-		""".format(table_name)
-		results = query_mysql(query, (self.course_code,))
-		results = pd.DataFrame(results, columns=['offering_region', 'offering_province', 'offering_city', 'count'])
-		return results
-	
-	
 	@staticmethod
 	def _process_counts(my_list):
 		"""Take a nested list of form [['Ottawa', 10], ...] and covert to
@@ -110,58 +119,6 @@ class OfferingLocations:
 		"""
 		results_processed = [{'name': list_[0], 'drilldown': list_[0], 'y': list_[1]} for list_ in my_list]
 		return results_processed
-
-
-
-
-
-
-def offerings_per_region(fiscal_year, course_code):
-	table_name = 'lsr{0}'.format(fiscal_year)
-	query = """
-		SELECT offering_region, COUNT(DISTINCT offering_id)
-		FROM {0}
-		WHERE course_code = %s AND offering_status IN ('Open - Normal', 'Delivered - Normal')
-		GROUP BY offering_region;
-	""".format(table_name)
-	results = query_mysql(query, (course_code,))
-	results = dict(results)
-	
-	# Process results into format required by Highcharts
-	results_processed = {}
-	regions = ['Atlantic', 'NCR', 'Ontario Region', 'Pacific', 'Prairie', 'Québec Region', 'Outside Canada']
-	for region in regions:
-		count = results.get(region, 0)
-		results_processed[region] = count
-	return results_processed
-
-
-def _query_province_drilldown(fiscal_year, course_code, region):
-	table_name = 'lsr{0}'.format(fiscal_year)
-	query = """
-		SELECT offering_province, COUNT(DISTINCT offering_id)
-		FROM {0}
-		WHERE course_code = %s AND offering_status IN ('Open - Normal', 'Delivered - Normal') AND offering_region = %s
-		GROUP BY offering_province;
-	""".format(table_name)
-	results = query_mysql(query, (course_code, region))
-	return results
-
-
-def province_drilldown(fiscal_year, course_code):
-	results_processed = defaultdict(list)
-	regions = ['Atlantic', 'NCR', 'Ontario Region', 'Pacific', 'Prairie', 'Québec Region', 'Outside Canada']
-	for region in regions:
-		provinces = _query_province_drilldown(fiscal_year, course_code, region)
-		provinces = [{'name': tup[0], 'y': tup[1], 'drilldown': tup[0]} for tup in provinces]
-		results_processed[region].extend(provinces)
-	return results_processed
-
-
-
-
-
-
 
 
 def offerings_per_lang(fiscal_year, course_code):
