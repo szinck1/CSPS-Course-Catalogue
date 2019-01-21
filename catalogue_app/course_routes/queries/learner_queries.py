@@ -8,7 +8,7 @@ def regs_per_month(fiscal_year, course_code):
 		FROM {0}
 		WHERE course_code = %s AND reg_status = 'Confirmed'
 		GROUP BY month;
-		""".format(table_name)
+	""".format(table_name)
 	results = query_mysql(query, (course_code,))
 	results = dict(results)
 	
@@ -32,7 +32,7 @@ def top_5_depts(lang, fiscal_year, course_code):
 		GROUP BY {0}
 		ORDER BY 2 DESC
 		LIMIT 5;
-		""".format(field_name, table_name)
+	""".format(field_name, table_name)
 	return query_mysql(query, (course_code,))
 
 
@@ -45,5 +45,5 @@ def top_5_classifs(fiscal_year, course_code):
 		GROUP BY learner_classif
 		ORDER BY 2 DESC
 		LIMIT 5;
-		""".format(table_name)
+	""".format(table_name)
 	return query_mysql(query, (course_code,))

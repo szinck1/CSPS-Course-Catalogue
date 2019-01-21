@@ -9,10 +9,10 @@ def all_course_codes(fiscal_year):
 	"""
 	table_name = 'lsr{}'.format(fiscal_year)
 	query = """
-			SELECT DISTINCT course_code
-			FROM {0}
-			ORDER BY 1 ASC;
-			""".format(table_name)
+		SELECT DISTINCT course_code
+		FROM {0}
+		ORDER BY 1 ASC;
+	""".format(table_name)
 	results = query_mysql(query)
 	results = [tup[0] for tup in results]
 	return results
