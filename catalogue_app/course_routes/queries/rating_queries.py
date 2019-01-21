@@ -18,7 +18,8 @@ class Ratings:
 		"""
 		results = query_mysql(query, (self.course_code,))
 		results = pd.DataFrame(results, columns=['short_question', 'month', 'average', 'count'])
-		self.data = results
+		# Return False if course has received no feedback
+		self.data = False if results.empty else results
 		return self
 	
 	
