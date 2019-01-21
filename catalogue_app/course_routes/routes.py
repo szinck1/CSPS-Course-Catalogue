@@ -61,8 +61,11 @@ def course_result():
 	else:
 		print('Running query for first time')
 		
-		# Instantiate OfferingLocations
+		# Instantiate classes
 		locations = offering_queries.OfferingLocations(THIS_YEAR, course_code).load()
+		ratings = rating_queries.Ratings(course_code).load()
+		print(ratings.data)
+		
 		
 		pass_dict = {
 			#Global
