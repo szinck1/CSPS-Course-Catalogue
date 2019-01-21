@@ -17,7 +17,7 @@ def query_mysql(query, args=None, dict_=False):
 	# Temporary code to track number of queries
 	global ctr
 	ctr += 1
-	print(ctr)
+	print('{0}: {1}'.format(ctr, query))
 	
 	return results
 
