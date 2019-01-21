@@ -1,5 +1,31 @@
+import pandas as pd
 from flask_babel import gettext
 from catalogue_app.db import query_mysql
+
+
+# This query probably needs an index
+class Ratings:
+	def __init__(self, course_code):
+		self.course_code = course_code
+		self.data = None
+	
+	
+	def load(self):
+		query = """
+			SELECT short_question_en, month, numerical_answer, count
+			FROM ratings
+			WHERE course_code = %s;
+		"""
+		results = query_mysql(query, (self.course_code,))
+		results = pd.DataFrame(results, columns=['short_question', 'month', 'average', 'count'])
+		# Return False if course has received no feedback
+		self.data = False if results.empty else results
+		return self
+	
+	
+	def all_ratings(self):
+		pass
+	
 
 
 def all_ratings(course_code, lang):

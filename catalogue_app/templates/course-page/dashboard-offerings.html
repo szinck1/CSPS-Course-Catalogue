@@ -93,26 +93,24 @@
 			name: 'Offerings',
 			colorByPoint: true,
 			data: [
-				{% set regions = ['Atlantic', 'NCR', 'Ontario Region', 'Pacific', 'Prairie', 'Québec Region', 'Outside Canada'] %}
+				// Explicitely name regions to ensure all are shown
+				{% set regions = [_('Atlantic'), _('NCR'), _('Ontario Region'), _('Pacific'),
+								  _('Prairie'), _('Québec Region'), _('Outside Canada')] %}
 				{% for region in regions %}
-					{name: '{{ region }}', drilldown: '{{ region }}', y: {{ pass_dict.offerings_per_region[region] }} },
+					{name: '{{ region }}', drilldown: '{{ region }}', y: {{ pass_dict.region_drilldown.get(region, 0) }}},
 				{% endfor %}
 			]
 		}],
 		drilldown: {
 			series: [
 				// Province drilldowns
-				{% for region in regions %}
-					{name: '{{ region }}', id: '{{ region }}', data: {{ pass_dict.province_drilldown[region] | safe }} },
+				{% for region, provinces in pass_dict.province_drilldown.items() %}
+					{name: '{{ region | safe }}', id: '{{ region | safe }}', data: {{ provinces | safe }}},
 				{% endfor %}
 				
 				// City drilldowns
-				{% set provinces = ['Alberta', 'British Columbia', 'Manitoba', 'NCR/RCN', 'New Brunswick',
-									'Newfoundland and Labrador', 'Northwest Territories', 'Nova Scotia',
-									'Nunavut', 'Ontario', 'Ontario_NCR', 'Prince Edward Island', 'Quebec',
-									'Québec_NCR', 'Saskatchewan', 'Yukon'] %}
-				{% for province in provinces %}
-					{name: '{{ province }}', id: '{{ province }}', data: {{ pass_dict.city_drilldown[province] | safe }} },
+				{% for province, cities in pass_dict.city_drilldown.items() %}
+					{name: '{{ province | safe }}', id: '{{ province | safe }}', data: {{ cities | safe }}},
 				{% endfor %}
 			]
 		}

@@ -8,7 +8,7 @@ def fetch_comments(course_code, question):
 		FROM comments
 		WHERE course_code = %s AND short_question = %s
 		ORDER BY RAND();
-		"""
+	"""
 	results = query_mysql(query, (course_code, question))
 	# Correct city names e.g. NORTH YORK -> North York via str.title()
 	results = [(tup[0], tup[1], tup[2].replace(' - Unknown', ''), tup[3].title().replace('(Ncr)', '(NCR)').replace("'S", "'s"), tup[4].replace('-20', '-'), tup[5]) for tup in results]
@@ -17,11 +17,11 @@ def fetch_comments(course_code, question):
 
 def fetch_categorical(course_code, question):
 	query = """
-	SELECT text_answer, COUNT(text_answer)
-	FROM comments
-	WHERE course_code = %s AND short_question = %s
-	GROUP BY text_answer
-	ORDER BY 1 ASC;
+		SELECT text_answer, COUNT(text_answer)
+		FROM comments
+		WHERE course_code = %s AND short_question = %s
+		GROUP BY text_answer
+		ORDER BY 1 ASC;
 	"""
 	results = query_mysql(query, (course_code, question))
 	
