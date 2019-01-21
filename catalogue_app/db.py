@@ -4,6 +4,7 @@ import mysql.connector
 from catalogue_app.config import Config
 
 
+ctr = 0
 def query_mysql(query, args=None, dict_=False):
 	"""Execute query on connection stored in g."""
 	cnx = get_db(local=Config.LOCAL_DB)
@@ -11,6 +12,12 @@ def query_mysql(query, args=None, dict_=False):
 	cursor.execute(query, args)
 	results = cursor.fetchall()
 	cursor.close()
+	
+	# Temporary code to track number of queries
+	global ctr
+	ctr += 1
+	print(ctr)
+	
 	return results
 
 
