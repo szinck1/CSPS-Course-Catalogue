@@ -56,32 +56,60 @@ def _offering_additional_counts(fiscal_year, course_code):
 	return results
 
 
-
-
-# Let's make this badboy into a class right now
-# One method to query, store df as attribute
-# Two other methods: breakdown by prov and by city
-
-def city_drilldown(fiscal_year, course_code):
-	table_name = 'lsr{0}'.format(fiscal_year)
-	query = """
-		SELECT offering_region, offering_province, offering_city, COUNT(DISTINCT offering_id)
-		FROM {0}
-		WHERE course_code = %s AND offering_status IN ('Open - Normal', 'Delivered - Normal')
-		GROUP BY offering_region, offering_province, offering_city;
-	""".format(table_name)
-	results = query_mysql(query, (course_code,))
-	results = pd.DataFrame(results, columns=['offering_region', 'offering_province', 'offering_city', 'count'])
-	# Get list of provinces in which the course has offerings
-	provinces = results.loc[:, 'offering_province'].unique()
-	# Counts by city
-	counts = results.groupby(['offering_province', 'offering_city'], as_index=False).sum()
-	# Process into form required by Highcharts
-	results_processed = {}
-	for province in provinces:
-		city_counts = counts.loc[counts['offering_province'] == province, ['offering_city', 'count']].values.tolist()
-		results_processed[province] = city_counts
-	return results_processed
+class OfferingLocations:
+	def __init__(self, fiscal_year, course_code):
+		self.fiscal_year = fiscal_year
+		self.course_code = course_code
+		self.data = self._query_data()
+	
+	
+	def province_drilldown(self):
+		# Get list of regions in which the course has offerings
+		regions = self.data.loc[:, 'offering_region'].unique()
+		# Counts by province
+		counts = self.data.groupby(['offering_region', 'offering_province'], as_index=False).sum()
+		# Process into form required by Highcharts
+		results_processed = {}
+		for region in regions:
+			province_counts = counts.loc[counts['offering_region'] == region, ['offering_province', 'count']].values.tolist()
+			province_counts_processed = self._process_counts(province_counts)
+			results_processed[region] = province_counts_processed
+		return results_processed
+	
+	
+	def city_drilldown(self):
+		# Get list of provinces in which the course has offerings
+		provinces = self.data.loc[:, 'offering_province'].unique()
+		# Counts by city
+		counts = self.data.groupby(['offering_province', 'offering_city'], as_index=False).sum()
+		# Process into form required by Highcharts
+		results_processed = {}
+		for province in provinces:
+			city_counts = counts.loc[counts['offering_province'] == province, ['offering_city', 'count']].values.tolist()
+			results_processed[province] = city_counts
+		return results_processed
+	
+	
+	def _query_data(self):
+		table_name = 'lsr{0}'.format(self.fiscal_year)
+		query = """
+			SELECT offering_region, offering_province, offering_city, COUNT(DISTINCT offering_id)
+			FROM {0}
+			WHERE course_code = %s AND offering_status IN ('Open - Normal', 'Delivered - Normal')
+			GROUP BY offering_region, offering_province, offering_city;
+		""".format(table_name)
+		results = query_mysql(query, (self.course_code,))
+		results = pd.DataFrame(results, columns=['offering_region', 'offering_province', 'offering_city', 'count'])
+		return results
+	
+	
+	@staticmethod
+	def _process_counts(my_list):
+		"""Take a nested list of form [['Ottawa', 10], ...] and covert to
+		form [{'name': 'Ottawa', 'drilldown': 'Ottawa, 'y': 10}, ...]
+		"""
+		results_processed = [{'name': list_[0], 'drilldown': list_[0], 'y': list_[1]} for list_ in my_list]
+		return results_processed
 
 
 

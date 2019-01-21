@@ -72,8 +72,8 @@ def course_result():
 			
 			
 			'offerings_per_region': offering_queries.offerings_per_region(THIS_YEAR, course_code),
-			'province_drilldown': offering_queries.province_drilldown(THIS_YEAR, course_code),
-			'city_drilldown': offering_queries.city_drilldown(THIS_YEAR, course_code),
+			'province_drilldown': offering_queries.OfferingLocations(THIS_YEAR, course_code).province_drilldown(),
+			'city_drilldown': offering_queries.OfferingLocations(THIS_YEAR, course_code).city_drilldown(),
 			
 			
 			

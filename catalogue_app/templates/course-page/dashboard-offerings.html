@@ -102,12 +102,11 @@
 		drilldown: {
 			series: [
 				// Province drilldowns
-				{% for region in regions %}
-					{name: '{{ region }}', id: '{{ region }}', data: {{ pass_dict.province_drilldown[region] | safe }} },
+				{% for region, provinces in pass_dict.province_drilldown.items() %}
+					{name: '{{ region | safe }}', id: '{{ region | safe }}', data: {{ provinces | safe }} },
 				{% endfor %}
 				
 				// City drilldowns
-				
 				{% for province, cities in pass_dict.city_drilldown.items() %}
 					{name: '{{ province | safe }}', id: '{{ province | safe }}', data: {{ cities | safe }} },
 				{% endfor %}
