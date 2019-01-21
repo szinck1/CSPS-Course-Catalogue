@@ -1,9 +1,11 @@
-from flask_babel import gettext
 from catalogue_app.db import query_mysql
 from catalogue_app.course_routes.utils import as_string
 
 
 def all_course_codes(fiscal_year):
+	"""Funcs should all have docstrings + this one should
+	be combined with those for the selection form.
+	"""
 	table_name = 'lsr{}'.format(fiscal_year)
 	query = """
 			SELECT DISTINCT course_code
@@ -31,16 +33,17 @@ def online_course(fiscal_year, course_code):
 	return True if (business_type == 'Online') else False
 
 
-def course_description(lang, course_code):
-	field_name = 'course_description'
-	query_description = "SELECT {0} FROM product_info WHERE course_code = %s LIMIT 1;".format(field_name)
-	description = query_mysql(query_description, (course_code,))
-	return as_string(description, error_msg='Apologies, this course is currently catalogued without a description.')
-
-
 def course_info(course_code):
 	query = "SELECT * FROM product_info WHERE course_code = %s LIMIT 1;"
 	results = query_mysql(query, (course_code,), dict_=True)
-	# Replace keys with EN/FR text
-	results_processed = {gettext(key): val for (key, val) in results[0].items()}
+	# Format keys for displaying on page
+	results_processed = {_clean_key(key): val for (key, val) in results[0].items()}
 	return results_processed
+
+
+def _clean_key(key):
+	key = key.title()
+	replace_dict = {'Of': 'of', 'On': 'on', 'Gccampus': 'GCcampus', '_': ' '}
+	for old, new in replace_dict.items():
+		key = key.replace(old, new)
+	return key

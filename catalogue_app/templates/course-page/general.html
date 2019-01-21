@@ -1,6 +1,6 @@
 <h1>{{ pass_dict.course_title }}</h1>
 
-<p class="text-justify">{{ pass_dict.course_description | safe }}</p>
+<p class="text-justify">{{ pass_dict.course_info.pop('Course Description', 'Apologies, this course is currently catalogued without a description.') | safe }}</p>
 
 <!-- Display main properties with glyphicons -->
 <table id="glyph-table">
