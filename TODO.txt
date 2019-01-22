@@ -1,28 +1,28 @@
 ### CURRENT SPRINT ###
+# finish optimizing db
+	# unnecessary columns in tables?
+	# re-index
+# make OOP
 # add FR
+# add API
 # add cookie for lang
+	# legal issues?
 # new colour scheme from ODSC
 # lazy_gettext for bilingual urls?
-# move all possible columns from lsr to product_info table
 
-
-### UPCOMING SPRINT ####
-# make OOP
-# add search by DG, provider
-# link / scrape course descriptions from GCcampus' catalogue / course list
-# add prep & admin
-# add dept usage
-# get way to push csv from steve
-# add datatables i.e. scroll instead of top 5
-# export to PDF
-# deploy beta version
-# present to DGC
 
 
 ### BACKLOG ###
-# add lifecycle info
-# add Google Analytics
+# make OOP
+# add search by DG, provider
 # add regional accessibility to geodata
+# link / scrape course descriptions from GCcampus' catalogue / course list
+# add prep & admin
+# add datatables i.e. scroll instead of top 5
+# export to PDF
+# add lifecycle info
+# add dept usage
+# get way to push csv from steve
 # add GA data from Lesek
 # link to offerings on gccampus
 # dropdown to divide dashboard into sections e.g. registrations, OL accessibility (learner lang vs offering lang)
