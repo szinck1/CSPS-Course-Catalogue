@@ -4,6 +4,9 @@ from catalogue_app.db import query_mysql
 
 
 # This query probably needs an index
+# Should probably store results_processed as attribute
+
+
 class Ratings:
 	def __init__(self, course_code, lang):
 		self.course_code = course_code
@@ -23,6 +26,7 @@ class Ratings:
 		results = pd.DataFrame(results, columns=['short_question', 'long_question', 'month', 'average', 'count'])
 		# Return False if course has received no feedback
 		self.data = False if results.empty else results
+		# Return self to allow method chaining
 		return self
 	
 	
