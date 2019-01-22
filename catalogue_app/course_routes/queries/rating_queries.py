@@ -5,68 +5,53 @@ from catalogue_app.db import query_mysql
 
 # This query probably needs an index
 class Ratings:
-	def __init__(self, course_code):
+	def __init__(self, course_code, lang):
 		self.course_code = course_code
+		self.lang = lang
 		self.data = None
 	
 	
 	def load(self):
+		field_name_1 = 'short_question_{0}'.format(self.lang)
+		field_name_2 = 'long_question_{0}'.format(self.lang)
 		query = """
-			SELECT short_question_en, month, numerical_answer, count
+			SELECT {0}, {1}, month, numerical_answer, count
 			FROM ratings
 			WHERE course_code = %s;
-		"""
+		""".format(field_name_1, field_name_2)
 		results = query_mysql(query, (self.course_code,))
-		results = pd.DataFrame(results, columns=['short_question', 'month', 'average', 'count'])
+		results = pd.DataFrame(results, columns=['short_question', 'long_question', 'month', 'average', 'count'])
 		# Return False if course has received no feedback
 		self.data = False if results.empty else results
 		return self
 	
 	
 	def all_ratings(self):
-		pass
+		# Get list of questions for which the course has answers
+		questions = self.data.loc[:, ['short_question', 'long_question']].drop_duplicates(inplace=False)
+		# Process into form required by Highcharts
+		results_processed = []
+		for question in questions.itertuples(index=False):
+			short_question = question[0]
+			long_question = question[1]
+			question_data = self.data.loc[self.data['short_question'] == short_question, ['month', 'average', 'count']]
+			monthly_values = self._get_monthly_values(question_data)
+			results_processed.append((short_question, long_question, monthly_values))
+		return results_processed
 	
-
-
-def all_ratings(course_code, lang):
-	# Get list of questions answered for given course code
-	field_name_1 = 'short_question_{0}'.format(lang)
-	field_name_2 = 'long_question_{0}'.format(lang)
-	questions_query = """
-		SELECT DISTINCT {0}, {1}
-		FROM ratings
-		WHERE course_code = %s
-		ORDER BY 1 ASC;
-	""".format(field_name_1, field_name_2)
-	questions = query_mysql(questions_query, (course_code,))
-	# Account courses with no feedback
-	if not questions:
-		return False
 	
-	# Query each question for monthly results
-	query = """
-		SELECT month, numerical_answer, count
-		FROM ratings
-		WHERE course_code = %s AND {0} = %s;
-	""".format(field_name_1)
-	# Return a list of dictionaries
-	return_list = []
-	for question in questions:
-		results = query_mysql(query, (course_code, question[0]))
-		# Convert 'results' from format [(April, numerical_answer, count), ...] to {April: (numerical_answer, count), May: ...}
-		results = [(tup[0], {'y': tup[1], 'count': tup[2]}) for tup in results]
-		results = dict(results)
-		results_processed = _add_months(results)
-		return_list.append((question[0], question[1], results_processed))
-	return return_list
-
-
-# Helper function to ensure every month accounted for
-def _add_months(my_dict):
-	months = ['February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October',
-			  'November', 'December', 'January']
-	return_list = []
-	for month in months:
-		count = my_dict.get(month, {'y': 0, 'count': 0})
-		return_list.append(count)
-	return return_list
+	@staticmethod
+	def _get_monthly_values(df):
+		months = ['February', 'March', 'April', 'May', 'June', 'July', 'August', 'September',
+				  'October', 'November', 'December', 'January']
+		monthly_values = []
+		for month in months:
+			df_month = df.loc[df['month'] == month, :]
+			try:
+				average = df_month.iloc[0]['average']
+				count = df_month.iloc[0]['count']
+			except IndexError:
+				average = 0
+				count = 0
+			monthly_values.append({'y': average, 'count': count})
+		return monthly_values
