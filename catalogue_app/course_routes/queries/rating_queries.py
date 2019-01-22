@@ -38,8 +38,8 @@ class Ratings:
 		for question in questions.itertuples(index=False):
 			short_question = question[0]
 			long_question = question[1]
-			question_data = self.data.loc[self.data['short_question'] == short_question, ['month', 'average', 'count']]
-			monthly_values = self._get_monthly_values(question_data)
+			data_filtered = self.data.loc[self.data['short_question'] == short_question, ['month', 'average', 'count']]
+			monthly_values = self._get_monthly_values(data_filtered)
 			results_processed.append((short_question, long_question, monthly_values))
 		return results_processed
 	

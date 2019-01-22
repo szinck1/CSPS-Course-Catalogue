@@ -65,6 +65,7 @@ def course_result():
 		locations = offering_queries.OfferingLocations(THIS_YEAR, course_code).load()
 		ratings = rating_queries.Ratings(course_code, lang).load()
 		comments = comment_queries.Comments(course_code).load()
+		comments2 = comment_queries.Comments2(course_code).load()
 		
 		pass_dict = {
 			#Global
@@ -102,10 +103,10 @@ def course_result():
 			# Ratings
 			'all_ratings': ratings.all_ratings(),
 			# Comments
-			'general_comments': comments.general,
-			'technical_comments': comments.technical,
-			'language_comments': comments.language,
-			'performance_comments': comments.performance,
+			'general_comments': comments2.general,
+			'technical_comments': comments2.technical,
+			'language_comments': comments2.language,
+			'performance_comments': comments2.performance,
 			# Categorical and yes/no questions
 			'reason_to_participate': comments.reason,
 			'technical_issues': comments.technical_bool,
