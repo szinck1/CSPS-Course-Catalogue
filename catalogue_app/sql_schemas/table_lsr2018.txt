@@ -90,7 +90,7 @@ CREATE INDEX idx_rs_bt_oid ON lsr2018_19(reg_status, business_type, offering_id)
 # None needed, already runs in 0.0s
 
 # Index for average no-shows global
-CREATE INDEX idx_ns ON lsr2017_18(no_show);
+CREATE INDEX idx_ns ON lsr2018_19(no_show);
 
 # Index for offering city counts
 CREATE INDEX idx_cc_os_oc_olat_olng_oid ON lsr2018_19(course_code, offering_status, offering_city, offering_lat, offering_lng, offering_id);

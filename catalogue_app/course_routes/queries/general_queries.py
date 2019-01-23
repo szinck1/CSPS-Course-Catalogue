@@ -2,11 +2,8 @@ from catalogue_app.db import query_mysql
 from catalogue_app.course_routes.utils import as_string
 
 
-# Combine this with WTForms
 def all_course_codes(fiscal_year):
-	"""Funcs should all have docstrings + this one should
-	be combined with those for the selection form.
-	"""
+	"""Should be gone after refactoring memoize_all."""
 	table_name = 'lsr{}'.format(fiscal_year)
 	query = """
 		SELECT DISTINCT course_code
@@ -18,7 +15,6 @@ def all_course_codes(fiscal_year):
 	return results
 
 
-# Get this info simply from WTForms?
 def course_title(lang, fiscal_year, course_code):
 	field_name = 'course_title_{0}'.format(lang)
 	table_name = 'lsr{0}'.format(fiscal_year)
