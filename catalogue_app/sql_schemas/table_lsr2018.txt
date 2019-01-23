@@ -6,7 +6,6 @@ CREATE TABLE lsr2018_19(
 	offering_id INT,
 	month VARCHAR(10),
 	client VARCHAR(50),
-	instructor_name VARCHAR(150),
 	offering_status VARCHAR(30),
 	offering_language VARCHAR(50),
 	offering_region VARCHAR(30),
