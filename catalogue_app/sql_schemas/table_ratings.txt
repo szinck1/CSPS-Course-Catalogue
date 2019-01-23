@@ -22,4 +22,4 @@ IGNORE 1 LINES;
 
 
 # Index
-CREATE INDEX idx_cc_sq ON ratings(course_code, short_question_en);
+CREATE INDEX idx_cc ON ratings(course_code);
