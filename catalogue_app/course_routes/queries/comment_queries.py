@@ -2,7 +2,6 @@ import pandas as pd
 from catalogue_app.db import query_mysql
 
 
-# This query probably needs an index
 # Should probably store results_processed as attribute
 class Comments:
 	def __init__(self, course_code):

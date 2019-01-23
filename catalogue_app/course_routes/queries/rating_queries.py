@@ -3,10 +3,7 @@ from flask_babel import gettext
 from catalogue_app.db import query_mysql
 
 
-# This query probably needs an index
 # Should probably store results_processed as attribute
-
-
 class Ratings:
 	def __init__(self, course_code, lang):
 		self.course_code = course_code
