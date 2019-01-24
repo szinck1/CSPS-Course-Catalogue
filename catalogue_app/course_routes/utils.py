@@ -1,4 +1,4 @@
-# Make a class
+# Make a class?
 
 def as_string(my_val, error_msg=False):
 	"""Convert from MySQL to Python dtypes."""
