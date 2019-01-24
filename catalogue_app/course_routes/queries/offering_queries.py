@@ -56,7 +56,7 @@ def _offering_additional_counts(fiscal_year, course_code):
 	return results
 
 
-# This query probably needs an index
+# Should probably store results_processed as attribute
 class OfferingLocations:
 	def __init__(self, fiscal_year, course_code):
 		self.fiscal_year = fiscal_year

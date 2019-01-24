@@ -63,9 +63,8 @@ def course_result():
 		
 		# Instantiate classes
 		locations = offering_queries.OfferingLocations(THIS_YEAR, course_code).load()
-		ratings = rating_queries.Ratings(course_code).load()
-		print(ratings.data)
-		
+		ratings = rating_queries.Ratings(course_code, lang).load()
+		comments = comment_queries.Comments(course_code).load()
 		
 		pass_dict = {
 			#Global
@@ -101,18 +100,18 @@ def course_result():
 			'offering_city_counts': map_queries.offering_city_counts(THIS_YEAR, course_code),
 			'learner_city_counts': map_queries.learner_city_counts(THIS_YEAR, course_code),
 			# Ratings
-			'all_ratings': rating_queries.all_ratings(course_code, 'en'),
+			'all_ratings': ratings.all_ratings(),
 			# Comments
-			'general_comments': comment_queries.fetch_comments(course_code, 'Comment - General'),
-			'technical_comments': comment_queries.fetch_comments(course_code, 'Comment - Technical'),
-			'language_comments': comment_queries.fetch_comments(course_code, 'Comment - OL'),
-			'performance_comments': comment_queries.fetch_comments(course_code, 'Comment - Performance'),
+			'general_comments': comments.general,
+			'technical_comments': comments.technical,
+			'language_comments': comments.language,
+			'performance_comments': comments.performance,
 			# Categorical and yes/no questions
-			'reason_to_participate': comment_queries.fetch_categorical(course_code, 'Reason to Participate'),
-			'technical_issues': comment_queries.fetch_categorical(course_code, 'Technical Issues'),
-			'languages_available': comment_queries.fetch_categorical(course_code, 'OL Available '),
-			'tools_used': comment_queries.fetch_categorical(course_code, 'GCcampus Tools Used'),
-			'prepared_by': comment_queries.fetch_categorical(course_code, 'Prep')
+			'reason_to_participate': comments.reason,
+			'technical_issues': comments.technical_bool,
+			'languages_available': comments.language_bool,
+			'tools_used': comments.gccampus_bool,
+			'prepared_by': comments.preparation
 		}
 		# Memoize new query results
 		memo_dict[course_code] = pass_dict

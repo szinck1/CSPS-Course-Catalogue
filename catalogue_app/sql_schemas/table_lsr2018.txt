@@ -6,7 +6,6 @@ CREATE TABLE lsr2018_19(
 	offering_id INT,
 	month VARCHAR(10),
 	client VARCHAR(50),
-	instructor_name VARCHAR(150),
 	offering_status VARCHAR(30),
 	offering_language VARCHAR(50),
 	offering_region VARCHAR(30),
@@ -55,14 +54,8 @@ CREATE INDEX idx_cc_rs ON lsr2018_19(course_code, reg_status);
 # Index for no-shows
 CREATE INDEX idx_cc_ns ON lsr2018_19(course_code, no_show);
 
-# Index for offerings per region
-CREATE INDEX idx_cc_os_or_oid ON lsr2018_19(course_code, offering_status, offering_region, offering_id);
-
-# Index for offerings per province drilldown
-CREATE INDEX idx_cc_os_or_op_oid ON lsr2018_19(course_code, offering_status, offering_region, offering_province, offering_id);
-
-# Index for offerings per city drilldown
-CREATE INDEX idx_cc_os_op_oc_oid ON lsr2018_19(course_code, offering_status, offering_province, offering_city, offering_id);
+# Index for class OfferingLocations
+CREATE INDEX idx_cc_os_or_op_oc_oid ON lsr2018_19(course_code, offering_status, offering_region, offering_province, offering_city, offering_id);
 
 # Index for offerings per language
 CREATE INDEX idx_cc_os_ol_oid ON lsr2018_19(course_code, offering_status, offering_language, offering_id);
@@ -90,7 +83,7 @@ CREATE INDEX idx_rs_bt_oid ON lsr2018_19(reg_status, business_type, offering_id)
 # None needed, already runs in 0.0s
 
 # Index for average no-shows global
-CREATE INDEX idx_ns ON lsr2017_18(no_show);
+CREATE INDEX idx_ns ON lsr2018_19(no_show);
 
 # Index for offering city counts
 CREATE INDEX idx_cc_os_oc_olat_olng_oid ON lsr2018_19(course_code, offering_status, offering_city, offering_lat, offering_lng, offering_id);
