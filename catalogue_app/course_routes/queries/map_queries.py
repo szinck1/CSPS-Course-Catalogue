@@ -27,3 +27,10 @@ def learner_city_counts(fiscal_year, course_code):
 	# Make 'results' a list of lists so can be manipulated by JavaScript
 	results = [[element for element in tup] for tup in results if tup[2] is not None]
 	return results
+
+
+def _combine_overlapping_cities(my_list):
+	"""If two cities overlap, displace the marker of the smaller city (as
+	determined by count) by an arbitrary amount.
+	"""
+	pass
