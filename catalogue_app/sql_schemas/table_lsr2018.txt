@@ -89,7 +89,7 @@ CREATE INDEX idx_ns ON lsr2018_19(no_show);
 CREATE INDEX idx_cc_os_oc_olat_olng_oid ON lsr2018_19(course_code, offering_status, offering_city, offering_lat, offering_lng, offering_id);
 
 # Index for learner city counts
-CREATE INDEX idx_cc_rs_lc_llat_llng_oid ON lsr2018_19(course_code, reg_status, learner_city, learner_lat, learner_lng, offering_id);
+CREATE INDEX idx_cc_rs_lc_llat_llng_lid ON lsr2018_19(course_code, reg_status, learner_city, learner_lat, learner_lng, learner_id);
 
 # Index for regs per month
 CREATE INDEX idx_cc_rs_mn ON lsr2018_19(course_code, reg_status, month);
