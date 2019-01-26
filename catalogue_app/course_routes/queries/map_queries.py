@@ -1,3 +1,4 @@
+import time
 from catalogue_app.db import query_mysql
 
 
@@ -16,7 +17,7 @@ def offering_city_counts(fiscal_year, course_code):
 	results = query_mysql(query, (course_code,))
 	# Make 'results' a list of lists so can be manipulated by JavaScript
 	results = [[element for element in tup] for tup in results if tup[2] is not None]
-	results = _combine_overlapping_cities(results)
+	results = _combine_overlapping_cities_hashed(results)
 	return results
 
 
@@ -35,14 +36,47 @@ def learner_city_counts(fiscal_year, course_code):
 	results = query_mysql(query, (course_code,))
 	# Make 'results' a list of lists so can be manipulated by JavaScript
 	results = [[element for element in tup] for tup in results if tup[2] is not None]
-	results = _combine_overlapping_cities(results)
+	results = _combine_overlapping_cities_hashed(results)
 	return results
 
 
+def _combine_overlapping_cities_hashed(my_list):
+	t1 = time.clock()
+	"""If two cities' markers overlap, combine them into a single entry."""
+	# Explanation: Use latitude and longitude rounded to N_DIGIT to create
+	# a PKEY for each city. Log cities within dictionary and merge
+	# overlapping cities. As queries above make use of 'ORDER BY x DESC',
+	# the largest cities appear and are logged first. This means that e.g.
+	# 2 occurrences of Kanata will be merged into Ottawa's 30 occurrences.
+	N_DIGITS = 3
+	merge_dict = {}
+	# my_list is a list of lists
+	# Each nested list has form ['city_name', count, latitude, longitude]
+	for elem in my_list:
+		city_name = elem[0]
+		count = elem[1]
+		# Python's 'round' internal func uses method 'round half to even'
+		# https://en.wikipedia.org/wiki/Rounding#Round_half_to_even
+		lat = round(elem[2], N_DIGITS)
+		lng = round(elem[3], N_DIGITS)
+		pkey = str(lat) + str(lng)
+		# Log first occurrence
+		if pkey not in merge_dict:
+			merge_dict[pkey] = [city_name, count, lat, lng]
+		# If lat/lng already logged, combine cities
+		else:
+			# print(f'Merging {city_name} into {merge_dict[pkey][0]}')
+			merge_dict[pkey][1] += count
+	# Return merge_dict's values in list
+	mars = [value for value in merge_dict.values()]
+	t2 = time.clock()
+	print(t2 - t1)
+	return mars
+
+
 def _combine_overlapping_cities(my_list):
-	"""If two cities' markers overlap, merge into the larger (as determined
-	by count) city.
-	"""
+	"""If two cities' markers overlap, combine them into a single entry."""
+	t1 = time.clock()
 	COMPARISON_DISTANCE = 0.005
 	# my_list is a list of lists
 	# Each nested list has form ['city_name', count, latitude, longitude]
@@ -56,12 +90,14 @@ def _combine_overlapping_cities(my_list):
 			if comparison_element is None:
 				continue
 			# Check if cities overlap
-			# Could replace with Euclidean distance but why add extra operations
-			if (abs(current_element[2] - comparison_element[2]) < COMPARISON_DISTANCE) or \
+			if (abs(current_element[2] - comparison_element[2]) < COMPARISON_DISTANCE) and \
 				(abs(current_element[3] - comparison_element[3]) < COMPARISON_DISTANCE):
 				# Take count away from comparison_element and set it to None
+				# print(f'Merging {my_list[j][0]} into {my_list[i][0]}')
 				my_list[i][1] += my_list[j][1]
 				my_list[j] = None
 	# Remove null entries	
 	my_list = [elem for elem in my_list if elem is not None]
+	t2 = time.clock()
+	print(t2 - t1)
 	return my_list
