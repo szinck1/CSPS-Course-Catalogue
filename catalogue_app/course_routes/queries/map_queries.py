@@ -4,7 +4,7 @@ from catalogue_app.db import query_mysql
 def offering_city_counts(fiscal_year, course_code):
 	table_name = 'lsr{0}'.format(fiscal_year)
 	# Sort by count so that when overlapping markers are combined by function
-	# _combine_overlapping_cities, it's the city with the largest count into
+	# _combine_overlapping_cities[_hashed], it's the city with the largest count into
 	# which all others all merged
 	query = """
 		SELECT offering_city, COUNT(DISTINCT offering_id), offering_lat, offering_lng
@@ -23,7 +23,7 @@ def offering_city_counts(fiscal_year, course_code):
 def learner_city_counts(fiscal_year, course_code):
 	table_name = 'lsr{0}'.format(fiscal_year)
 	# Sort by count so that when overlapping markers are combined by function
-	# _combine_overlapping_cities, it's the city with the largest count into
+	# _combine_overlapping_cities[_hashed], it's the city with the largest count into
 	# which all others all merged
 	query = """
 		SELECT learner_city, COUNT(DISTINCT learner_id), learner_lat, learner_lng
@@ -60,7 +60,8 @@ def _combine_overlapping_cities_hashed(my_list):
 		pkey = str(lat) + str(lng)
 		# Log first occurrence
 		if pkey not in merge_dict:
-			merge_dict[pkey] = [city_name, count, lat, lng]
+			# Log non-rounded values for maximum accuracy
+			merge_dict[pkey] = [city_name, count, elem[2], elem[3]]
 		# If lat/lng already logged, combine cities
 		else:
 			# print(f'Merging {city_name} into {merge_dict[pkey][0]}')
