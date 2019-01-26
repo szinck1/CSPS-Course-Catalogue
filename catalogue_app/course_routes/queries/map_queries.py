@@ -1,4 +1,3 @@
-import time
 from catalogue_app.db import query_mysql
 
 
@@ -41,7 +40,6 @@ def learner_city_counts(fiscal_year, course_code):
 
 
 def _combine_overlapping_cities_hashed(my_list):
-	t1 = time.clock()
 	"""If two cities' markers overlap, combine them into a single entry."""
 	# Explanation: Use latitude and longitude rounded to N_DIGIT to create
 	# a PKEY for each city. Log cities within dictionary and merge
@@ -69,14 +67,11 @@ def _combine_overlapping_cities_hashed(my_list):
 			merge_dict[pkey][1] += count
 	# Return merge_dict's values in list
 	mars = [value for value in merge_dict.values()]
-	t2 = time.clock()
-	print(t2 - t1)
 	return mars
 
 
 def _combine_overlapping_cities(my_list):
 	"""If two cities' markers overlap, combine them into a single entry."""
-	t1 = time.clock()
 	COMPARISON_DISTANCE = 0.005
 	# my_list is a list of lists
 	# Each nested list has form ['city_name', count, latitude, longitude]
@@ -98,6 +93,4 @@ def _combine_overlapping_cities(my_list):
 				my_list[j] = None
 	# Remove null entries	
 	my_list = [elem for elem in my_list if elem is not None]
-	t2 = time.clock()
-	print(t2 - t1)
 	return my_list
