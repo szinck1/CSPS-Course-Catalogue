@@ -1,25 +1,24 @@
 ### CURRENT SPRINT ###
 # finish optimizing db
 	# unnecessary columns in tables?
-	# re-index
+	# combine both fiscal years
 # make OOP
 # add FR
 # add API
 # add cookie for lang
 	# legal issues?
-# new colour scheme from ODSC
+# make search front and center
+	# search by provider, topic, business type, etc.
 # lazy_gettext for bilingual urls?
 
 
 
 ### BACKLOG ###
-# make OOP
-# add search by DG, provider
+# add prep & admin
 # add regional accessibility to geodata
 # link / scrape course descriptions from GCcampus' catalogue / course list
-# add prep & admin
 # add datatables i.e. scroll instead of top 5
-# export to PDF
+# export to PDF, including one pager for prep & admin
 # add lifecycle info
 # add dept usage
 # get way to push csv from steve

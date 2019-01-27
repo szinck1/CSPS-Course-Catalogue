@@ -123,11 +123,12 @@ def course_result():
 @auth.login_required
 def memoize_all():
 	t1 = time.time()
+	memo_dict = {}
 	course_codes = general_queries.all_course_codes(THIS_YEAR)
 	for code in course_codes:
-		print(code)
 		vals = memoize_func.get_vals(code)
 		memo_dict[code] = vals
+		print(code)
 	t2 = time.time()
 	# Save memo_dict to binary file
 	with open('memo.pickle', 'wb') as f:

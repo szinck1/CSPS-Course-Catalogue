@@ -18,25 +18,25 @@ def get_db(local):
 	"""Connect to db and store connection in g for
 	life of request.
 	"""
-	if 'db2' not in g:
+	if 'db' not in g:
 		if local:
-			g.db2 = mysql.connector.connect(host='localhost',
-											user='admin',
-											password='Newton11',
-											database='csps_dashboards')
+			g.db = mysql.connector.connect(host='localhost',
+										   user='admin',
+										   password='Newton11',
+										   database='csps_dashboards')
 		else:
-			g.db2 = mysql.connector.connect(host=os.environ.get('DB_HOST'),
-											user=os.environ.get('DB_USER'),
-											password=os.environ.get('DB_PASSWORD'),
-											database=os.environ.get('DB_DATABASE_NAME'))
-	return g.db2
+			g.db = mysql.connector.connect(host=os.environ.get('DB_HOST'),
+										   user=os.environ.get('DB_USER'),
+										   password=os.environ.get('DB_PASSWORD'),
+										   database=os.environ.get('DB_DATABASE_NAME'))
+	return g.db
 
 
 def close_db(e=None):
 	"""Remove connection to db from g and close."""
-	db2 = g.pop('db2', None)
-	if db2 is not None:
-		db2.close()
+	db = g.pop('db', None)
+	if db is not None:
+		db.close()
 
 
 def init_app(app):

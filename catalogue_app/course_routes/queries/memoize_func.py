@@ -7,20 +7,23 @@ THIS_YEAR = Config.THIS_YEAR
 
 
 def get_vals(course_code, lang='en'):
+	# Instantiate classes
+	locations = offering_queries.OfferingLocations(THIS_YEAR, course_code).load()
+	ratings = rating_queries.Ratings(course_code, lang).load()
+	comments = comment_queries.Comments(course_code).load()
+	
 	pass_dict = {
 		#Global
 		'course_code': course_code,
 		'course_title': general_queries.course_title(lang, THIS_YEAR, course_code),
-		'online_course': general_queries.online_course(THIS_YEAR, course_code),
 		# General
-		'course_description': general_queries.course_description(lang, course_code),
-		'course_info': general_queries.course_info(lang, course_code),
+		'course_info': general_queries.course_info(course_code),
 		# Dashboard - offerings
 		'overall_numbers_LY': offering_queries.overall_numbers(LAST_YEAR, course_code),
 		'overall_numbers_TY': offering_queries.overall_numbers(THIS_YEAR, course_code),
-		'offerings_per_region': offering_queries.offerings_per_region(THIS_YEAR, course_code),
-		'province_drilldown': offering_queries.province_drilldown(THIS_YEAR, course_code),
-		'city_drilldown': offering_queries.city_drilldown(THIS_YEAR, course_code),
+		'region_drilldown': locations.region_drilldown(),
+		'province_drilldown': locations.province_drilldown(),
+		'city_drilldown': locations.city_drilldown(),
 		'offerings_per_lang_LY': offering_queries.offerings_per_lang(LAST_YEAR, course_code),
 		'offerings_per_lang_TY': offering_queries.offerings_per_lang(THIS_YEAR, course_code),
 		'offerings_cancelled_global_LY': offering_queries.offerings_cancelled_global(LAST_YEAR),
@@ -43,17 +46,17 @@ def get_vals(course_code, lang='en'):
 		'offering_city_counts': map_queries.offering_city_counts(THIS_YEAR, course_code),
 		'learner_city_counts': map_queries.learner_city_counts(THIS_YEAR, course_code),
 		# Ratings
-		'all_ratings': rating_queries.all_ratings(course_code, 'en'),
+		'all_ratings': ratings.all_ratings(),
 		# Comments
-		'general_comments': comment_queries.fetch_comments(course_code, 'Comment - General'),
-		'technical_comments': comment_queries.fetch_comments(course_code, 'Comment - Technical'),
-		'language_comments': comment_queries.fetch_comments(course_code, 'Comment - OL'),
-		'performance_comments': comment_queries.fetch_comments(course_code, 'Comment - Performance'),
+		'general_comments': comments.general,
+		'technical_comments': comments.technical,
+		'language_comments': comments.language,
+		'performance_comments': comments.performance,
 		# Categorical and yes/no questions
-		'reason_to_participate': comment_queries.fetch_categorical(course_code, 'Reason to Participate'),
-		'technical_issues': comment_queries.fetch_categorical(course_code, 'Technical Issues'),
-		'languages_available': comment_queries.fetch_categorical(course_code, 'OL Available '),
-		'tools_used': comment_queries.fetch_categorical(course_code, 'GCcampus Tools Used'),
-		'prepared_by': comment_queries.fetch_categorical(course_code, 'Prep')
+		'reason_to_participate': comments.reason,
+		'technical_issues': comments.technical_bool,
+		'languages_available': comments.language_bool,
+		'tools_used': comments.gccampus_bool,
+		'prepared_by': comments.preparation
 	}
 	return pass_dict
