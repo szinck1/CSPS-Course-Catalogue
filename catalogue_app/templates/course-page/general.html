@@ -1,6 +1,10 @@
 <h1>{{ pass_dict.course_title }}</h1>
 
-<p class="text-justify">{{ pass_dict.course_info.pop('Course Description', 'Apologies, this course is currently catalogued without a description.') | safe }}</p>
+<p class="text-justify">
+	<!-- Use dict.pop so that remaining elements can be rendered in for loop below -->
+	{% set course_description = pass_dict.course_info.pop('Course Description') %}
+	{{ course_description if course_description else _('Apologies, this course is currently catalogued without a description.') | safe }}
+</p>
 
 <!-- Display main properties with glyphicons -->
 <table id="glyph-table">
@@ -9,26 +13,37 @@
 			<td>
 				<span class="glyphicon glyphicon-education"></span>
 				<p>Provider</p>
-				<!-- Use dict.pop so that remaining elements can be rendered with for loop -->
-				<p class="glyph-info">{{ pass_dict.course_info.pop('Provider', '&lt;awaiting mapping&gt;') }}</p>
+				<p class="glyph-info">
+					{% set provider = pass_dict.course_info.pop('Provider') %}
+					{{ provider if provider else _('&lt;awaiting mapping&gt;') }}
+				</p>
 			</td>
 			<td>
 				<span class="glyphicon glyphicon-time"></span>
 				<p>Duration</p>
-				{% set duration = pass_dict.course_info.pop('Duration', 0) %}
-				<p class="glyph-info">{{ duration }} {{ 'hours' if duration != 1 else 'hour' }}</p>
+				{% set duration = pass_dict.course_info.pop('Duration') %}
+				{% set duration = duration if duration else 0 %}
+				<p class="glyph-info">
+					{{ duration }} {{ _('hours') if duration != 1 else _('hour') }}
+				</p>
 			</td>
 		</tr>
 		<tr>
 			<td>
 				<span class="glyphicon glyphicon-pencil"></span>
 				<p>Business Line</p>
-				<p class="glyph-info">{{ pass_dict.course_info.pop('Business Line', '&lt;awaiting mapping&gt;') }}</p>
+				<p class="glyph-info">
+					{% set business_line = pass_dict.course_info.pop('Business Line') %}
+					{{ business_line if business_line else _('&lt;awaiting mapping&gt;') }}
+				</p>
 			</td>
 			<td>
 				<span class="glyphicon glyphicon-eye-open"></span>
 				<p>Displayed on GCcampus</p>
-				<p class="glyph-info">{{ pass_dict.course_info.pop('Displayed on GCcampus', '&lt;awaiting mapping&gt;') }}</p>
+				<p class="glyph-info">
+					{% set gccampus = pass_dict.course_info.pop('Displayed on GCcampus') %}
+					{{ gccampus if gccampus else _('&lt;awaiting mapping&gt;') }}
+				</p>
 			</td>
 		</tr>
 	</tbody>
