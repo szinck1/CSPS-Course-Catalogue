@@ -42,6 +42,11 @@ class Comments:
 	
 	
 	def _load_comment(self, question):
+		# Return False if course has received no feedback
+		# Explicitely checking 'if df is False' rather than 'if not df' as
+		# DataFrames do not have a truth value
+		if self.comment_data is False:
+			return False
 		data_filtered = self.comment_data.loc[self.comment_data['short_question'] == question, :]
 		results_processed = []
 		for row in data_filtered.itertuples(index=False):
@@ -59,6 +64,11 @@ class Comments:
 	
 	
 	def _load_categorical(self, question):
+		# Return False if course has received no feedback
+		# Explicitely checking 'if df is False' rather than 'if not df' as
+		# DataFrames do not have a truth value
+		if self.categorical_data is False:
+			return False
 		data_filtered = self.categorical_data.loc[self.categorical_data['short_question'] == question, :]
 		results_processed = []
 		for row in data_filtered.itertuples(index=False):

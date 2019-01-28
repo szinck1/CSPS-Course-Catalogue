@@ -28,6 +28,11 @@ class Ratings:
 	
 	
 	def all_ratings(self):
+		# Return False if course has received no feedback
+		# Explicitely checking 'if df is False' rather than 'if not df' as
+		# DataFrames do not have a truth value
+		if self.data is False:
+			return False
 		# Get list of questions for which the course has answers
 		questions = self.data.loc[:, ['short_question', 'long_question']].drop_duplicates(inplace=False)
 		# Process into form required by Highcharts
