@@ -8,6 +8,7 @@
 # make search front and center
 	# search by provider, topic, business type, etc.
 # lazy_gettext for bilingual urls?
+# fix splash page
 
 
 
