@@ -2,11 +2,20 @@
 
 <!-- Dropdown to select offering-map or learner-map -->
 <div class="map-filter">
-	<p>Filter: </p>
-	<select id="filter-maps" onchange="filterMaps()">
-		<option value="offering-map">Offering Locations</option>
-		<option value="learner-map">Learner Locations</option>
-	</select>
+	<!-- If an online course, disable div offering-map and add tooltip with explanation -->
+	{% if pass_dict.course_info['Business Type'] == 'Online' %}
+		<p>Filter: </p>
+		<select id="filter-maps" onchange="filterMaps()">
+			<option value="learner-map">Learner Locations</option>
+		</select>
+		<img id="online-map-disabled-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" />
+	{% else %}
+		<p>Filter: </p>
+		<select id="filter-maps" onchange="filterMaps()">
+			<option value="offering-map">Offering Locations</option>
+			<option value="learner-map">Learner Locations</option>
+		</select>
+	{% endif %}
 </div>
 
 <!-- Map headings -->
@@ -54,9 +63,15 @@
 
 <script async>
 	// Add tooltip contents
+	$('#online-map-disabled-tooltip').tooltip({
+		placement: 'right',
+		title: "<h5>Tip:</h5><p>The Offering Locations section is disabled for online courses as they have no physical location.</p>",
+		animation: true,
+		html: true
+	});
 	$('#offering-tooltip').tooltip({
 		placement: 'right',
-		title: "<h5>Tip:</h5><p>The map shows offerings with status 'Open' or 'Delivered'. Note that online courses have no physical location to display.</p>",
+		title: "<h5>Tip:</h5><p>The map shows offerings with status 'Open' or 'Delivered'.</p>",
 		animation: true,
 		html: true
 	});
@@ -66,6 +81,15 @@
 		animation: true,
 		html: true
 	});
+	
+	// Unsual structure to fix IE11 jQuery bug: hide with JS, not with CSS
+	$('#offering-map').hide();
+	$('#learner-map').hide();
+	{% if pass_dict.course_info['Business Type'] == 'Online' %}
+		$('#learner-map').show();
+	{% else %}
+		$('#offering-map').show();
+	{% endif %}
 	
 	// Enable dropdown to show / hide
 	function filterMaps() {

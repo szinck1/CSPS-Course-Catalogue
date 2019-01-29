@@ -30,71 +30,77 @@
 
 {% for comment_name in comment_names %}
 	<section id="{{ comment_name }}" class="tab-content {{ 'active' if loop.index == 1 else 'hide' }}">
-		
-		<!-- Dropdown to filter by star -->
-		<div class="star-filter">
-			<p>{{ _('Stars: ') }}</p>
-			<select id="filter-stars-{{ comment_name }}" onchange="filterComments()">
-				<!-- Dropdown values filled dynamically by jQuery below -->
-				<option id="filter-stars-all-{{ comment_name }}" value="bob-comment">All</option>
-				<option id="filter-stars-one-{{ comment_name }}" value="star-1">One</option>
-				<option id="filter-stars-two-{{ comment_name }}" value="star-2">Two</option>
-				<option id="filter-stars-three-{{ comment_name }}" value="star-3">Three</option>
-				<option id="filter-stars-four-{{ comment_name }}" value="star-4">Four</option>
-				<option id="filter-stars-five-{{ comment_name }}" value="star-5">Five</option>
-			</select>
-		</div>
-		
-		<!-- Only general_comments and technical_comments have multiple years of data -->
-		{% if comment_name in ['general_comments', 'technical_comments'] %}
-			<!-- Dropdown to filter by period -->
-			<div class="year-filter">
-				<p>{{ _('Fiscal Year: ') }}</p>
-				<select id="filter-period-{{ comment_name }}" onchange="filterComments()">
+		<!-- Only render the rest of the section if feedback exists -->
+		{% if pass_dict[comment_name] %}
+			
+			<!-- Dropdown to filter by star -->
+			<div class="star-filter">
+				<p>{{ _('Stars: ') }}</p>
+				<select id="filter-stars-{{ comment_name }}" onchange="filterComments()">
 					<!-- Dropdown values filled dynamically by jQuery below -->
-					<option id="filter-period-all-{{ comment_name }}" value="bob-comment">All</option>
-					<option id="filter-2015-16-{{ comment_name }}" value="FY2015-16">2015-16</option>
-					<option id="filter-2016-17-{{ comment_name }}" value="FY2016-17">2016-17</option>
-					<option id="filter-2017-18-{{ comment_name }}" value="FY2017-18">2017-18</option>
-					<option id="filter-2018-19-{{ comment_name }}" value="FY2018-19">2018-19</option>
+					<option id="filter-stars-all-{{ comment_name }}" value="bob-comment">All</option>
+					<option id="filter-stars-one-{{ comment_name }}" value="star-1">One</option>
+					<option id="filter-stars-two-{{ comment_name }}" value="star-2">Two</option>
+					<option id="filter-stars-three-{{ comment_name }}" value="star-3">Three</option>
+					<option id="filter-stars-four-{{ comment_name }}" value="star-4">Four</option>
+					<option id="filter-stars-five-{{ comment_name }}" value="star-5">Five</option>
 				</select>
 			</div>
-		{% endif %}
-		
-		{% for tup in pass_dict[comment_name] %}
-			<div class="bob-comment star-{{ tup[1] }} FY{{ tup[4] }}">
-				<div class="media">
-					<!-- User avatar -->
-					<a class="thumbnail pull-left">
-						<img src="{{ url_for('static', filename='stars/avatar2.png') }}" alt="Avatar" />
-					</a>
-					<div class="media-body">
-						<!-- User classification and offering city -->
-						<h4>{{ tup[2] }}, <em>{{ tup[3] }}</em></h4>
-						<!-- Display user overall satisfaction with stars -->
-						<h5>
-							Overall Satisfaction: 
-							{% if tup[1] == 5 %}
-								<img src="{{ url_for('static', filename='stars/five.png') }}" alt="Five stars" />
-							{% elif tup[1] == 4 %}
-								<img src="{{ url_for('static', filename='stars/four.png') }}" alt="Four stars" />
-							{% elif tup[1] == 3 %}
-								<img src="{{ url_for('static', filename='stars/three.png') }}" alt="Three stars" />
-							{% elif tup[1] == 2 %}
-								<img src="{{ url_for('static', filename='stars/two.png') }}" alt="Two stars" />
-							{% elif tup[1] == 1 %}
-								<img src="{{ url_for('static', filename='stars/one.png') }}" alt="One star" />
-							{% endif %}
-							<span class="comment-date">{{ tup[5] }} {{ tup[4] }}</span>
-						</h5>
-						<!-- User comment -->
-						<p>{{ tup[0] }}</p>
+			
+			<!-- Only general_comments and technical_comments have multiple years of data -->
+			{% if comment_name in ['general_comments', 'technical_comments'] %}
+				<!-- Dropdown to filter by period -->
+				<div class="year-filter">
+					<p>{{ _('Fiscal Year: ') }}</p>
+					<select id="filter-period-{{ comment_name }}" onchange="filterComments()">
+						<!-- Dropdown values filled dynamically by jQuery below -->
+						<option id="filter-period-all-{{ comment_name }}" value="bob-comment">All</option>
+						<option id="filter-2015-16-{{ comment_name }}" value="FY2015-16">2015-16</option>
+						<option id="filter-2016-17-{{ comment_name }}" value="FY2016-17">2016-17</option>
+						<option id="filter-2017-18-{{ comment_name }}" value="FY2017-18">2017-18</option>
+						<option id="filter-2018-19-{{ comment_name }}" value="FY2018-19">2018-19</option>
+					</select>
+				</div>
+			{% endif %}
+			
+			{% for tup in pass_dict[comment_name] %}
+				<div class="bob-comment star-{{ tup[1] }} FY{{ tup[4] }}">
+					<div class="media">
+						<!-- User avatar -->
+						<a class="thumbnail pull-left">
+							<img src="{{ url_for('static', filename='stars/avatar2.png') }}" alt="Avatar" />
+						</a>
+						<div class="media-body">
+							<!-- User classification and offering city -->
+							<h4>{{ tup[2] }}, <em>{{ tup[3] }}</em></h4>
+							<!-- Display user overall satisfaction with stars -->
+							<h5>
+								Overall Satisfaction: 
+								{% if tup[1] == 5 %}
+									<img src="{{ url_for('static', filename='stars/five.png') }}" alt="Five stars" />
+								{% elif tup[1] == 4 %}
+									<img src="{{ url_for('static', filename='stars/four.png') }}" alt="Four stars" />
+								{% elif tup[1] == 3 %}
+									<img src="{{ url_for('static', filename='stars/three.png') }}" alt="Three stars" />
+								{% elif tup[1] == 2 %}
+									<img src="{{ url_for('static', filename='stars/two.png') }}" alt="Two stars" />
+								{% elif tup[1] == 1 %}
+									<img src="{{ url_for('static', filename='stars/one.png') }}" alt="One star" />
+								{% endif %}
+								<span class="comment-date">{{ tup[5] }} {{ tup[4] }}</span>
+							</h5>
+							<!-- User comment -->
+							<p>{{ tup[0] }}</p>
+						</div>
 					</div>
 				</div>
-			</div>
-		{% endfor %}
+			{% endfor %}
+		{% else %}
+			<h4>{{ _('Apologies, this course has yet to receive any feedback of this type.') }}</h4>
+		{% endif %}
 	</section>
 {% endfor %}
+
 
 <!-- For now, instructor_comments are disabled for privacy -->
 <section id="instructor_comments" class="tab-content hide">
@@ -103,18 +109,24 @@
 
 <!-- Other -->
 <section id="other" class="tab-content hide">
-	<!-- Highcharts: Pie charts for categorical and yes/no questions -->
-	<div class="row">
-		<div id="reason-to-participate" class="col-xs-12"></div>
-	</div>
-	<div class="row">
-		<div id="technical-issues" class="col-xs-12 col-md-6"></div>
-		<div id="languages-available" class="col-xs-12 col-md-6"></div>
-	</div>
-	<div class="row">
-		<div id="tools-used" class="col-xs-12 col-md-6"></div>
-		<div id="prepared-by" class="col-xs-12 col-md-6"></div>
-	</div>
+	<!-- Display categorical comments if any, else error message -->
+	{% if any ([pass_dict.reason_to_participate, pass_dict.technical_issues,
+				pass_dict.languages_available, pass_dict.tools_used, pass_dict.prepared_by]) %}
+		<!-- Highcharts: Pie charts for categorical and yes/no questions -->
+		<div class="row">
+			<div id="reason-to-participate" class="col-xs-12"></div>
+		</div>
+		<div class="row">
+			<div id="technical-issues" class="col-xs-12 col-md-6"></div>
+			<div id="languages-available" class="col-xs-12 col-md-6"></div>
+		</div>
+		<div class="row">
+			<div id="tools-used" class="col-xs-12 col-md-6"></div>
+			<div id="prepared-by" class="col-xs-12 col-md-6"></div>
+		</div>
+	{% else %}
+		<h4>{{ _('Apologies, this course has yet to receive any feedback of this type.') }}</h4>
+	{% endif %}
 </section>
 
 <script async>
@@ -127,6 +139,7 @@
 	});
 	
 	// Populate filter dropdown
+	// Function currently not in use
 	function populateDropdown() {
 		{% for comment_name in comment_names %}
 			// Get counts
@@ -200,9 +213,13 @@
 		});
 	}
 	
-	createPieChart('reason-to-participate', 'Reason to Participate', {{ pass_dict.reason_to_participate | safe }});
-	createPieChart('technical-issues', 'Did You Experience Technical Issues?', {{ pass_dict.technical_issues | safe }});
-	createPieChart('languages-available', 'The Course Was Available in the Official Language of My Choice', {{ pass_dict.languages_available | safe }});
-	createPieChart('tools-used', 'Did the Course Make Use of GCcampus Tools?', {{ pass_dict.tools_used | safe }});
-	createPieChart('prepared-by', 'Method of Preparing for the Course', {{ pass_dict.prepared_by | safe }});
+	// Only attempt to create pie charts if data exists
+	{% if any ([pass_dict.reason_to_participate, pass_dict.technical_issues,
+				pass_dict.languages_available, pass_dict.tools_used, pass_dict.prepared_by]) %}
+		createPieChart('reason-to-participate', 'Reason to Participate', {{ pass_dict.reason_to_participate | safe }});
+		createPieChart('technical-issues', 'Did You Experience Technical Issues?', {{ pass_dict.technical_issues | safe }});
+		createPieChart('languages-available', 'The Course Was Available in the Official Language of My Choice', {{ pass_dict.languages_available | safe }});
+		createPieChart('tools-used', 'Did the Course Make Use of GCcampus Tools?', {{ pass_dict.tools_used | safe }});
+		createPieChart('prepared-by', 'Method of Preparing for the Course', {{ pass_dict.prepared_by | safe }});
+	{% endif %}
 </script>

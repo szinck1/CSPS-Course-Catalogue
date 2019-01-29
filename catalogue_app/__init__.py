@@ -26,7 +26,8 @@ def create_app(config_class=Config):
 	app = Flask(__name__)
 	app.config.from_object(config_class)
 	
-	# Add Python's internal func 'zip' to Jinja2
+	# Add Python's internal funcs 'any' and 'zip' to Jinja2
+	app.jinja_env.globals.update(any=any) 
 	app.jinja_env.filters['zip'] = zip
 	
 	# Register database
