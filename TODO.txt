@@ -9,6 +9,8 @@
 	# search by provider, topic, business type, etc.
 # lazy_gettext for bilingual urls?
 # fix splash page
+# cache SQL queries, not course codes
+	# single function for all queries, which can then be called by memoize_all and API
 
 
 
