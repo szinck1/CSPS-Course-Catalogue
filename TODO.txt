@@ -8,8 +8,8 @@
 # make search front and center
 	# search by provider, topic, business type, etc.
 # lazy_gettext for bilingual urls?
-# fix splash page
 # cache SQL queries, not course codes
+	# will enable caching selection form and others
 	# single function for all queries, which can then be called by memoize_all and API
 
 
@@ -17,6 +17,7 @@
 ### BACKLOG ###
 # send all queries to db simultanously for single round-trip?
 # bilingual URLs
+# preview if paste link in gmail, gcmessage, etc.
 # add prep & admin
 # add regional accessibility to geodata
 # link / scrape course descriptions from GCcampus' catalogue / course list
