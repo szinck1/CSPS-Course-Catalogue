@@ -1,12 +1,10 @@
 ### CURRENT SPRINT ###
-# finish optimizing db
-	# unnecessary columns in tables?
-	# combine both fiscal years
-# make OOP
 # add FR
-# add API
 # add cookie for lang
-	# legal issues?
+	# beware user can still pass junk
+	# legal?
+# make OOP
+# add API
 # make search front and center
 	# search by provider, topic, business type, etc.
 # lazy_gettext for bilingual urls?
@@ -14,6 +12,8 @@
 
 
 ### BACKLOG ###
+# send all queries to db simultanously for single round-trip?
+# bilingual URLs
 # add prep & admin
 # add regional accessibility to geodata
 # link / scrape course descriptions from GCcampus' catalogue / course list
