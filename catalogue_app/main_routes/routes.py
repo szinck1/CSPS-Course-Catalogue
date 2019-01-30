@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, make_response, render_template, redirect, request, url_for
 from catalogue_app import auth
 
 main = Blueprint('main', __name__)
@@ -10,9 +10,9 @@ def splash():
 	return render_template('splash.html')
 
 
-@main.route('/index')
+@main.route('/home')
 @auth.login_required
-def index():
+def home():
 	return render_template('index.html')
 
 
@@ -20,3 +20,22 @@ def index():
 @auth.login_required
 def about():
 	return render_template('about.html')
+
+
+@main.route('/setlang')
+@auth.login_required
+def setlang():
+	"""Allow pages to set cookie 'lang' via query string."""
+	# Redirect pages back to themselves except for splash
+	if request.referrer.endswith('/'):
+		resp = make_response(redirect(url_for('main.home')))
+	else:
+		resp = make_response(redirect(request.referrer))
+	# Only allow 'en' and 'fr' to be passed to app
+	if 'lang' in request.args:
+		if request.args['lang'] == 'fr':
+			resp.set_cookie('lang', 'fr')
+		# If 'en' or junk is passed, default to 'en'
+		else:
+			resp.set_cookie('lang', 'en')
+	return resp

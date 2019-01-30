@@ -43,6 +43,14 @@ def create_app(config_class=Config):
 		return None
 	babel.init_app(app)
 	
+	
+	# Set language
+	@babel.localeselector
+	def get_locale():
+		lang_cookie = request.cookies.get('lang', None)
+		# Only allow 'en' and 'fr' to be passed to app
+		return 'fr' if lang_cookie == 'fr' else 'en'
+	
 	# Register blueprints
 	from catalogue_app.course_routes.routes import course
 	from catalogue_app.main_routes.routes import main
@@ -50,18 +58,5 @@ def create_app(config_class=Config):
 	app.register_blueprint(course)
 	app.register_blueprint(main)
 	app.register_blueprint(api)
-	
-	
-	# Set language
-	@babel.localeselector
-	def get_locale():
-		# Use if statements to avoid directly passing user input to code
-		if 'lang' in request.args:
-			if request.args['lang'] == 'fr':
-				session['lang'] = 'fr'
-			# If 'en'/junk/nothing is passed, default to en
-			else:
-				session['lang'] = 'en'
-		return session.get('lang', 'en')
 	
 	return app
