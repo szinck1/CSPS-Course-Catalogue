@@ -41,6 +41,7 @@ def course_selection():
 @course.route('/course-result')
 @auth.login_required
 def course_result():
+	### VALIDATION ###
 	# Get arguments from query string; if incomplete, return to selection page
 	if 'course_code' not in request.args:
 		return redirect(url_for('course.course_selection'))
@@ -48,17 +49,16 @@ def course_result():
 	course_code = request.args['course_code']
 	# Only allow 'en' and 'fr' to be passed to app
 	lang = 'fr' if request.cookies.get('lang', None) == 'fr' else 'en'
-	
 	# Security check: If course_code doesn't exist, render not_found.html
 	course_title = general_queries.course_title(lang, THIS_YEAR, course_code)
 	if not course_title:
 		return render_template('not-found.html')
 	
+	### QUERYING ###
 	# Instantiate classes
 	locations = offering_queries.OfferingLocations(THIS_YEAR, course_code).load()
-	ratings = rating_queries.Ratings(course_code, lang).load()
+	ratings = rating_queries.Ratings(lang, course_code).load()
 	comments = comment_queries.Comments(course_code).load()
-	
 	pass_dict = {
 		#Global
 		'course_code': course_code,
