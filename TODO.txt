@@ -1,5 +1,6 @@
 ### CURRENT SPRINT ###
 # add FR
+	# spellcheck all of messages.po
 # make OOP
 # add API
 # make search front and center
