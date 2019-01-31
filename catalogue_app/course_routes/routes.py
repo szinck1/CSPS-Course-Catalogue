@@ -26,7 +26,6 @@ def context_processor():
 @course.route('/course-selection', methods=['GET', 'POST'])
 @auth.login_required
 def course_selection():
-	# FIX: Don't query possible course codes if POST
 	# Only allow 'en' and 'fr' to be passed to app
 	lang = 'fr' if request.cookies.get('lang', None) == 'fr' else 'en'
 	form = course_form(lang)
