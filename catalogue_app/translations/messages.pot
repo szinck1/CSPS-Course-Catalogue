@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-01-31 17:02-0500\n"
+"POT-Creation-Date: 2019-01-31 18:20-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -171,9 +171,9 @@ msgstr ""
 #: templates/course-page/dashboard-offerings.html:25
 #: templates/course-page/dashboard-offerings.html:30
 #: templates/course-page/dashboard-offerings.html:48
-#: templates/course-page/general.html:61 templates/course-page/geodata.html:11
-#: templates/course-page/geodata.html:24 templates/course-page/geodata.html:28
-#: templates/course-page/ratings.html:3 templates/course-page/ratings.html:14
+#: templates/course-page/geodata.html:11 templates/course-page/geodata.html:24
+#: templates/course-page/geodata.html:28 templates/course-page/ratings.html:3
+#: templates/course-page/ratings.html:14
 msgid "Tooltip"
 msgstr ""
 
@@ -384,6 +384,26 @@ msgstr ""
 msgid ""
 "<h5>Tip:</h5><p>The map shows learners whose registration status is "
 "'Confirmed'.</p>"
+msgstr ""
+
+#: templates/course-page/main.html:19
+msgid "General"
+msgstr ""
+
+#: templates/course-page/main.html:20
+msgid "Dashboard"
+msgstr ""
+
+#: templates/course-page/main.html:21
+msgid "Maps"
+msgstr ""
+
+#: templates/course-page/main.html:22
+msgid "Ratings"
+msgstr ""
+
+#: templates/course-page/main.html:23
+msgid "Comments"
 msgstr ""
 
 #: templates/course-page/ratings.html:24

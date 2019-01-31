@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  0.2\n"
 "Report-Msgid-Bugs-To: sam.louden@canada.ca\n"
-"POT-Creation-Date: 2019-01-31 17:02-0500\n"
+"POT-Creation-Date: 2019-01-31 18:20-0500\n"
 "PO-Revision-Date: 2019-01-06 13:06-0500\n"
 "Last-Translator: SAM LOUDEN sam.louden@canada.ca\n"
 "Language: fr\n"
@@ -193,9 +193,9 @@ msgstr "Veuillez essayer à nouveau."
 #: templates/course-page/dashboard-offerings.html:25
 #: templates/course-page/dashboard-offerings.html:30
 #: templates/course-page/dashboard-offerings.html:48
-#: templates/course-page/general.html:61 templates/course-page/geodata.html:11
-#: templates/course-page/geodata.html:24 templates/course-page/geodata.html:28
-#: templates/course-page/ratings.html:3 templates/course-page/ratings.html:14
+#: templates/course-page/geodata.html:11 templates/course-page/geodata.html:24
+#: templates/course-page/geodata.html:28 templates/course-page/ratings.html:3
+#: templates/course-page/ratings.html:14
 msgid "Tooltip"
 msgstr "Infobulle"
 
@@ -417,6 +417,26 @@ msgid ""
 msgstr ""
 "<h5>Indice :</h5><p>Les emplacements des apprenants ayant un inscription "
 "avec le statut de 'Confirmée' sont placés sur la carte.</p>"
+
+#: templates/course-page/main.html:19
+msgid "General"
+msgstr "Général"
+
+#: templates/course-page/main.html:20
+msgid "Dashboard"
+msgstr "Tableau de bord"
+
+#: templates/course-page/main.html:21
+msgid "Maps"
+msgstr "Cartes"
+
+#: templates/course-page/main.html:22
+msgid "Ratings"
+msgstr "Évaluations"
+
+#: templates/course-page/main.html:23
+msgid "Comments"
+msgstr "Commentaires"
 
 #: templates/course-page/ratings.html:24
 msgid "February"
