@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  0.2\n"
 "Report-Msgid-Bugs-To: sam.louden@canada.ca\n"
-"POT-Creation-Date: 2019-01-31 13:15-0500\n"
+"POT-Creation-Date: 2019-01-31 15:32-0500\n"
 "PO-Revision-Date: 2019-01-06 13:06-0500\n"
 "Last-Translator: SAM LOUDEN sam.louden@canada.ca\n"
 "Language: fr\n"
@@ -309,6 +309,54 @@ msgstr "heures"
 #: templates/course-page/general.html:27
 msgid "hour"
 msgstr "heure"
+
+#: templates/course-page/geodata.html:7 templates/course-page/geodata.html:13
+msgid "Filter: "
+msgstr "Filtre : "
+
+#: templates/course-page/geodata.html:9 templates/course-page/geodata.html:16
+msgid "Learner Locations"
+msgstr "Emplacements des apprenants"
+
+#: templates/course-page/geodata.html:15
+msgid "Offering Locations"
+msgstr "Emplacements des offres"
+
+#: templates/course-page/geodata.html:23
+msgid "Locations of open and delivered offerings around the globe."
+msgstr "Emplacements des offres ouvertes et livrées à travers le monde."
+
+#: templates/course-page/geodata.html:27
+msgid "Locations of learners around the globe."
+msgstr "Emplacements des apprenants à travers le monde."
+
+#: templates/course-page/geodata.html:38
+msgid "Legend"
+msgstr "Légende"
+
+#: templates/course-page/geodata.html:68
+msgid ""
+"<h5>Tip:</h5><p>The 'Offering Locations' section is disabled for online "
+"courses as they have no physical location.</p>"
+msgstr ""
+"<h5>Indice :</h5><p>La section 'Emplacements des offres' est desactivée "
+"pour les cours en ligne car ils n'ont pas d'emplacement physique.</p>"
+
+#: templates/course-page/geodata.html:74
+msgid ""
+"<h5>Tip:</h5><p>The map shows offerings with status 'Open' or "
+"'Delivered'.</p>"
+msgstr ""
+"<h5>Indice :</h5><p>Les emplacements des offres ayant le statut de "
+"'Ouverte' ou 'Livrée' sont placés sur la carte.</p>"
+
+#: templates/course-page/geodata.html:80
+msgid ""
+"<h5>Tip:</h5><p>The map shows learners whose registration status is "
+"'Confirmed'.</p>"
+msgstr ""
+"<h5>Indice :</h5><p>Les emplacements des apprenants ayant un inscription "
+"avec le statut de 'Confirmée' sont placés sur la carte.</p>"
 
 #: templates/course-page/ratings.html:3 templates/course-page/ratings.html:14
 msgid "Tooltip"
