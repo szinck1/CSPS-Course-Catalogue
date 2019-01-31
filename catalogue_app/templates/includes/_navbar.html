@@ -21,7 +21,7 @@
 				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				{% set lang = request.cookies.get('lang', 'en') %}
+				{% set lang = 'fr' if request.cookies.get('lang', None) == 'fr' else 'en' %}
 				{% if lang == 'en' %}
 					<li class="li-border-right"><a href="{{ url_for('main.setlang', lang='fr') }}">{{ _('Français') }}</a></li>
 				{% else %}
