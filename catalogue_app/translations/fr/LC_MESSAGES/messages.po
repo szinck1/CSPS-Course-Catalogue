@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  0.2\n"
 "Report-Msgid-Bugs-To: sam.louden@canada.ca\n"
-"POT-Creation-Date: 2019-01-31 16:45-0500\n"
+"POT-Creation-Date: 2019-01-31 17:02-0500\n"
 "PO-Revision-Date: 2019-01-06 13:06-0500\n"
 "Last-Translator: SAM LOUDEN sam.louden@canada.ca\n"
 "Language: fr\n"
@@ -518,3 +518,4 @@ msgstr "Recherche par ministère"
 #: templates/includes/_navbar.html:26 templates/includes/_navbar.html:28
 msgid "Français"
 msgstr "English"
+
