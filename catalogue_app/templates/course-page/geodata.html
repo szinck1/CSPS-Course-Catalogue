@@ -8,7 +8,7 @@
 		<select id="filter-maps" onchange="filterMaps()">
 			<option value="learner-map">{{ _('Learner Locations') }}</option>
 		</select>
-		<img id="online-map-disabled-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" />
+		<img id="online-map-disabled-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="{{ _('Tooltip') }}" />
 	{% else %}
 		<p>{{ _('Filter: ') }}</p>
 		<select id="filter-maps" onchange="filterMaps()">
@@ -21,11 +21,11 @@
 <!-- Map headings -->
 <h4 class="offering-map">
 	{{ _('Locations of open and delivered offerings around the globe.') }}
-	<img id="offering-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" />
+	<img id="offering-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="{{ _('Tooltip') }}" />
 </h4>
 <h4 class="learner-map">
 	{{ _('Locations of learners around the globe.') }}
-	<img id="learner-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" />
+	<img id="learner-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="{{ _('Tooltip') }}" />
 </h4>
 
 <!-- Maps -->
@@ -39,19 +39,19 @@
 	</div>
 		<div id="legend-contents">
 			<div>
-				<img class="legend-marker" src="{{ url_for('static', filename='markers/red-dot.png') }}" alt="red-dot" />
+				<img class="legend-marker" src="{{ url_for('static', filename='markers/red-dot.png') }}" alt="{{ _('Red Marker') }}" />
 				<p>1-4</p>
 			</div>
 			<div>
-				<img class="legend-marker" src="{{ url_for('static', filename='markers/orange-dot.png') }}" alt="orange-dot" />
+				<img class="legend-marker" src="{{ url_for('static', filename='markers/orange-dot.png') }}" alt="{{ _('Orange Marker') }}" />
 				<p>5-9</p>
 			</div>
 			<div>
-				<img class="legend-marker" src="{{ url_for('static', filename='markers/green-dot.png') }}" alt="green-dot" />
+				<img class="legend-marker" src="{{ url_for('static', filename='markers/green-dot.png') }}" alt="{{ _('Green Marker') }}" />
 				<p>10-19</p>
 			</div>
 			<div>
-				<img class="legend-marker" src="{{ url_for('static', filename='markers/blue-dot.png') }}" alt="blue-dot" />
+				<img class="legend-marker" src="{{ url_for('static', filename='markers/blue-dot.png') }}" alt="{{ _('Blue Marker') }}" />
 				<p>20+</p>
 			</div>
 		</div>

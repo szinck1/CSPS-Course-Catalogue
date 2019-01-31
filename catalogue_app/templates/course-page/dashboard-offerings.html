@@ -22,12 +22,12 @@
 					{% if tup1[1] > 0 %}
 						<td class="text-center" style="color: red; font-weight: bold;">
 							{{ tup1[1] }}
-							<img id="open-offerings-tooltip" class="table-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" />
+							<img id="open-offerings-tooltip" class="table-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="{{ _('Tooltip') }}" />
 						</td>
 					{% else %}
 						<td class="text-center">
 							{{ tup1[1] }}
-							<img id="open-offerings-tooltip" class="table-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" />
+							<img id="open-offerings-tooltip" class="table-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="{{ _('Tooltip') }}" />
 						</td>
 					{% endif %}
 				{% else %}
@@ -45,7 +45,7 @@
 	<!-- Offerings per Region -->
 	<h4 class= "dashboard-chart-title">
 		Offerings per Region
-		<img id="regions-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" />
+		<img id="regions-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="{{ _('Tooltip') }}" />
 	</h4>
 	<div id="offerings-per-region" class="col-xs-12"></div>
 </div>

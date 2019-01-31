@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-01-31 15:32-0500\n"
+"POT-Creation-Date: 2019-01-31 16:45-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -145,8 +145,16 @@ msgid ""
 "href=\"mailto:sam.louden@canada.ca\">Sam Louden</a>."
 msgstr ""
 
+#: templates/layout.html:28 templates/layout.html:30
+msgid "CSPS Logo"
+msgstr ""
+
 #: templates/layout.html:48
 msgid "Top of page"
+msgstr ""
+
+#: templates/layout.html:51
+msgid "GoC Logo"
 msgstr ""
 
 #: templates/not-found.html:6
@@ -157,12 +165,48 @@ msgstr ""
 msgid "Please try again."
 msgstr ""
 
+#: templates/course-page/comments.html:17
+#: templates/course-page/dashboard-learners.html:5
+#: templates/course-page/dashboard-main.html:11
+#: templates/course-page/dashboard-offerings.html:25
+#: templates/course-page/dashboard-offerings.html:30
+#: templates/course-page/dashboard-offerings.html:48
+#: templates/course-page/general.html:61 templates/course-page/geodata.html:11
+#: templates/course-page/geodata.html:24 templates/course-page/geodata.html:28
+#: templates/course-page/ratings.html:3 templates/course-page/ratings.html:14
+msgid "Tooltip"
+msgstr ""
+
 #: templates/course-page/comments.html:38
 msgid "Stars: "
 msgstr ""
 
 #: templates/course-page/comments.html:54
 msgid "Fiscal Year: "
+msgstr ""
+
+#: templates/course-page/comments.html:71
+msgid "Avatar"
+msgstr ""
+
+#: templates/course-page/comments.html:80
+msgid "Five Stars"
+msgstr ""
+
+#: templates/course-page/comments.html:82
+msgid "Four Stars"
+msgstr ""
+
+#: templates/course-page/comments.html:84
+msgid "Three Stars"
+msgstr ""
+
+#: templates/course-page/comments.html:86
+msgid "Two Stars"
+msgstr ""
+
+#: templates/course-page/comments.html:88
+msgid "One Star"
 msgstr ""
 
 #: templates/course-page/comments.html:99
@@ -308,6 +352,22 @@ msgstr ""
 msgid "Legend"
 msgstr ""
 
+#: templates/course-page/geodata.html:42
+msgid "Red Marker"
+msgstr ""
+
+#: templates/course-page/geodata.html:46
+msgid "Orange Marker"
+msgstr ""
+
+#: templates/course-page/geodata.html:50
+msgid "Green Marker"
+msgstr ""
+
+#: templates/course-page/geodata.html:54
+msgid "Blue Marker"
+msgstr ""
+
 #: templates/course-page/geodata.html:68
 msgid ""
 "<h5>Tip:</h5><p>The 'Offering Locations' section is disabled for online "
@@ -324,10 +384,6 @@ msgstr ""
 msgid ""
 "<h5>Tip:</h5><p>The map shows learners whose registration status is "
 "'Confirmed'.</p>"
-msgstr ""
-
-#: templates/course-page/ratings.html:3 templates/course-page/ratings.html:14
-msgid "Tooltip"
 msgstr ""
 
 #: templates/course-page/ratings.html:24

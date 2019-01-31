@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  0.2\n"
 "Report-Msgid-Bugs-To: sam.louden@canada.ca\n"
-"POT-Creation-Date: 2019-01-31 15:32-0500\n"
+"POT-Creation-Date: 2019-01-31 16:45-0500\n"
 "PO-Revision-Date: 2019-01-06 13:06-0500\n"
 "Last-Translator: SAM LOUDEN sam.louden@canada.ca\n"
 "Language: fr\n"
@@ -167,9 +167,17 @@ msgstr ""
 "Si vous rencontrez de bugs, veuillez contacter <a "
 "href=\"mailto:sam.louden@canada.ca\">Sam Louden</a>."
 
+#: templates/layout.html:28 templates/layout.html:30
+msgid "CSPS Logo"
+msgstr "Logo de l'EFPC"
+
 #: templates/layout.html:48
 msgid "Top of page"
 msgstr "Haut de la page"
+
+#: templates/layout.html:51
+msgid "GoC Logo"
+msgstr "Logo du GC"
 
 #: templates/not-found.html:6
 msgid "Course Not Found"
@@ -179,6 +187,18 @@ msgstr "Cours introuvable"
 msgid "Please try again."
 msgstr "Veuillez essayer à nouveau."
 
+#: templates/course-page/comments.html:17
+#: templates/course-page/dashboard-learners.html:5
+#: templates/course-page/dashboard-main.html:11
+#: templates/course-page/dashboard-offerings.html:25
+#: templates/course-page/dashboard-offerings.html:30
+#: templates/course-page/dashboard-offerings.html:48
+#: templates/course-page/general.html:61 templates/course-page/geodata.html:11
+#: templates/course-page/geodata.html:24 templates/course-page/geodata.html:28
+#: templates/course-page/ratings.html:3 templates/course-page/ratings.html:14
+msgid "Tooltip"
+msgstr "Infobulle"
+
 #: templates/course-page/comments.html:38
 msgid "Stars: "
 msgstr "Étoiles : "
@@ -186,6 +206,30 @@ msgstr "Étoiles : "
 #: templates/course-page/comments.html:54
 msgid "Fiscal Year: "
 msgstr "Année fiscale : "
+
+#: templates/course-page/comments.html:71
+msgid "Avatar"
+msgstr "Avatar"
+
+#: templates/course-page/comments.html:80
+msgid "Five Stars"
+msgstr "Cinq étoiles"
+
+#: templates/course-page/comments.html:82
+msgid "Four Stars"
+msgstr "Quatre étoiles"
+
+#: templates/course-page/comments.html:84
+msgid "Three Stars"
+msgstr "Trois étoiles"
+
+#: templates/course-page/comments.html:86
+msgid "Two Stars"
+msgstr "Deux étoiles"
+
+#: templates/course-page/comments.html:88
+msgid "One Star"
+msgstr "Une étoile"
 
 #: templates/course-page/comments.html:99
 #: templates/course-page/comments.html:128
@@ -334,6 +378,22 @@ msgstr "Emplacements des apprenants à travers le monde."
 msgid "Legend"
 msgstr "Légende"
 
+#: templates/course-page/geodata.html:42
+msgid "Red Marker"
+msgstr "Icône rouge"
+
+#: templates/course-page/geodata.html:46
+msgid "Orange Marker"
+msgstr "Icône orange"
+
+#: templates/course-page/geodata.html:50
+msgid "Green Marker"
+msgstr "Icône verte"
+
+#: templates/course-page/geodata.html:54
+msgid "Blue Marker"
+msgstr "Icône bleue"
+
 #: templates/course-page/geodata.html:68
 msgid ""
 "<h5>Tip:</h5><p>The 'Offering Locations' section is disabled for online "
@@ -357,10 +417,6 @@ msgid ""
 msgstr ""
 "<h5>Indice :</h5><p>Les emplacements des apprenants ayant un inscription "
 "avec le statut de 'Confirmée' sont placés sur la carte.</p>"
-
-#: templates/course-page/ratings.html:3 templates/course-page/ratings.html:14
-msgid "Tooltip"
-msgstr "Infobulle"
 
 #: templates/course-page/ratings.html:24
 msgid "February"
