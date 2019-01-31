@@ -1,22 +1,14 @@
 ### CURRENT SPRINT ###
 # add FR
-# add cookie for lang
-	# beware user can still pass junk
-	# legal?
 # make OOP
 # add API
 # make search front and center
 	# search by provider, topic, business type, etc.
-# lazy_gettext for bilingual urls?
-# cache SQL queries, not course codes
-	# will enable caching selection form and others
-	# single function for all queries, which can then be called by memoize_all and API
-
 
 
 ### BACKLOG ###
 # send all queries to db simultanously for single round-trip?
-# bilingual URLs
+# bilingual URLs via lazy_gettext?
 # preview if paste link in gmail, gcmessage, etc.
 # add prep & admin
 # add regional accessibility to geodata
