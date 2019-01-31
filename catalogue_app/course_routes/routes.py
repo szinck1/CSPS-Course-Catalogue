@@ -27,7 +27,8 @@ def context_processor():
 @auth.login_required
 def course_selection():
 	# FIX: Don't query possible course codes if POST
-	lang = request.cookies.get('lang', 'en')
+	# Only allow 'en' and 'fr' to be passed to app
+	lang = 'fr' if request.cookies.get('lang', None) == 'fr' else 'en'
 	form = course_form(lang)
 	form = form(request.form)
 	
@@ -46,7 +47,8 @@ def course_result():
 		return redirect(url_for('course.course_selection'))
 	# Argument is automatically escaped in Jinja2 (HTML templates) and MySQL queries
 	course_code = request.args['course_code']
-	lang = request.cookies.get('lang', 'en')
+	# Only allow 'en' and 'fr' to be passed to app
+	lang = 'fr' if request.cookies.get('lang', None) == 'fr' else 'en'
 	
 	# Security check: If course_code doesn't exist, render not_found.html
 	course_title = general_queries.course_title(lang, THIS_YEAR, course_code)

@@ -47,9 +47,9 @@ def create_app(config_class=Config):
 	# Set language
 	@babel.localeselector
 	def get_locale():
-		lang_cookie = request.cookies.get('lang', None)
 		# Only allow 'en' and 'fr' to be passed to app
-		return 'fr' if lang_cookie == 'fr' else 'en'
+		# Only allow 'en' and 'fr' to be passed to app
+		return 'fr' if request.cookies.get('lang', None) == 'fr' else 'en'
 	
 	# Register blueprints
 	from catalogue_app.course_routes.routes import course
