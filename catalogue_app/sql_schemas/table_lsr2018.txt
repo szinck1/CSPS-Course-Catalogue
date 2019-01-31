@@ -40,6 +40,7 @@ IGNORE 1 LINES;
 
 # Indexes for selection page
 CREATE INDEX idx_cc_cten ON lsr2018_19(course_code, course_title_en);
+CREATE INDEX idx_cc_ctfr ON lsr2018_19(course_code, course_title_fr);
 CREATE INDEX idx_cten_cc ON lsr2018_19(course_title_en, course_code);
 
 # Index for open, delivered, cancelled offerings
