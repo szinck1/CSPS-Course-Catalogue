@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-01-31 11:49-0500\n"
+"POT-Creation-Date: 2019-01-31 13:15-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.6.0\n"
 
-#: course_routes/routes.py:38
+#: course_routes/routes.py:37
 msgid "Selection"
 msgstr ""
 
-#: course_routes/routes.py:38
+#: course_routes/routes.py:37
 msgid "Go"
 msgstr ""
 
@@ -167,7 +167,7 @@ msgstr ""
 
 #: templates/course-page/comments.html:99
 #: templates/course-page/comments.html:128
-#: templates/course-page/ratings.html:46
+#: templates/course-page/ratings.html:48
 msgid "Apologies, this course has yet to receive any feedback of this type."
 msgstr ""
 
@@ -288,7 +288,75 @@ msgstr ""
 msgid "Tooltip"
 msgstr ""
 
-#: templates/course-page/ratings.html:53
+#: templates/course-page/ratings.html:24
+msgid "February"
+msgstr ""
+
+#: templates/course-page/ratings.html:24
+msgid "March"
+msgstr ""
+
+#: templates/course-page/ratings.html:24
+msgid "April"
+msgstr ""
+
+#: templates/course-page/ratings.html:25
+msgid "May"
+msgstr ""
+
+#: templates/course-page/ratings.html:25
+msgid "June"
+msgstr ""
+
+#: templates/course-page/ratings.html:25
+msgid "July"
+msgstr ""
+
+#: templates/course-page/ratings.html:25
+msgid "August"
+msgstr ""
+
+#: templates/course-page/ratings.html:26
+msgid "September"
+msgstr ""
+
+#: templates/course-page/ratings.html:26
+msgid "October"
+msgstr ""
+
+#: templates/course-page/ratings.html:26
+msgid "November"
+msgstr ""
+
+#: templates/course-page/ratings.html:26
+msgid "December"
+msgstr ""
+
+#: templates/course-page/ratings.html:27
+msgid "January"
+msgstr ""
+
+#: templates/course-page/ratings.html:28
+msgid "Average Response (Out of Five)"
+msgstr ""
+
+#: templates/course-page/ratings.html:30
+msgid "Last 12 Months"
+msgstr ""
+
+#: templates/course-page/ratings.html:33
+msgid "Monthly Average: "
+msgstr ""
+
+#: templates/course-page/ratings.html:34
+msgid "Number of Responses: "
+msgstr ""
+
+#: templates/course-page/ratings.html:41
+msgid "Full Question:"
+msgstr ""
+
+#: templates/course-page/ratings.html:55
 msgid ""
 "<h5>Tip:</h5><p>Ratings on instructor performance are currently disabled "
 "due to privacy restrictions.</p>"
