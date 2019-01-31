@@ -1,26 +1,21 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link href="{{ url_for('static', filename='FIPs/favicon.ico') }}" rel="icon" type="image/x-icon" />
-		<title>{{ _('CSPS Course Catalogue') }}</title>
-		<meta name="description" content="CSPS Course Catalogue - Catalogue de cours de l'EFPC" />
-		<meta name="keywords" content="Canada School of Public Service, CSPS, data, dashboard, dashboards, department, departmental, course, python, flask, highcharts,
-									   École de la fonction publique du Canada, EFPC, données, tableau de bord, tableaux de bord, ministère, ministériel, cours" />
+		{% include 'includes/_head.html' %}
+		
+		<!-- Google Analytics -->
+		
 		<!-- jQuery -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<!-- Bootstrap -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 		<!-- Custom CSS -->
-		<link href= "{{ url_for('static', filename='style.css') }}" rel="stylesheet" />
+		<link rel="stylesheet" href= "{{ url_for('static', filename='style.css') }}" type="text/css" />
 		
 		{% block head %}
 			<!-- Extended by other templates needing scripts -->
 		{% endblock head %}
-		
 	</head>
 	<body>
 		<header>
@@ -28,7 +23,7 @@
 				<div class="row">
 					<div class="col-xs-8 col-sm-9 col-md-6 pull-left">
 						<a href="https://www.csps-efpc.gc.ca">
-							{% set lang = session.get('lang', 'en') %}
+							{% set lang = request.cookies.get('lang', 'en') %}
 							{% if lang == 'en' %}
 								<img class="goc-fip img-responsive" src="{{ url_for('static', filename='FIPs/csps_en.png') }}" alt="CSPS Logo" />
 							{% else %}

@@ -104,7 +104,7 @@
 
 <!-- For now, instructor_comments are disabled for privacy -->
 <section id="instructor_comments" class="tab-content hide">
-	<p>Comments on instructor performance are currently disabled due to privacy restrictions.</p>
+	<p>{{ _('Comments on instructor performance are currently disabled due to privacy restrictions.') }}</p>
 </section>
 
 <!-- Other -->
@@ -133,7 +133,7 @@
 	// Add tooltip contents
 	$('#performance-tooltip').tooltip({
 		placement: 'right',
-		title: '<h5>Tip:</h5><p>Learners explain why they feel the training won\'t improve their job performance.</p>',
+		title: "<h5>Tip:</h5><p>{{ _('Learners explain why they feel the training won\'t improve their job performance.') }}</p>",
 		animation: true,
 		html: true
 	});

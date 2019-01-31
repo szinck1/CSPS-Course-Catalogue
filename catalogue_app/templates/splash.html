@@ -1,76 +1,29 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en" dir="ltr">
+<html>
 	<head>
-		<meta charset="utf-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="description" content="CSPS Course Catalogue - Catalogue de cours de l'EFPC" />
-		<meta name="keywords" content="Canada School of Public Service, CSPS, data, dashboard, dashboards, department, departmental, course, python, flask, highcharts,
-									   École de la fonction publique du Canada, EFPC, données, tableau de bord, tableaux de bord, ministère, ministériel, cours" />
-		<title>{{ _('CSPS Course Catalogue') }}</title>
-		<link href="{{ url_for('static', filename='FIPs/favicon.ico') }}" rel="icon" type="image/x-icon" />
-		<link rel="stylesheet" href="https://gccollab.ca/cache/1544929760/default/css/elgg" /> 
-		<link rel="stylesheet" href="https://gccollab.ca/mod/wet4/views/default/css/awesome/font-awesome.min.css" type="text/css" />
+		{% include 'includes/_head.html' %}
+		<link rel="stylesheet" href="https://www.csps-efpc.gc.ca/css/wet-boew.min.css" />
+		<link rel="stylesheet" href="https://www.csps-efpc.gc.ca/css/theme-sp-pe.min.css" />
+		<noscript><link rel="stylesheet" href="https://www.csps-efpc.gc.ca/css/noscript.min.css" /></noscript>
 	</head>
-	
-	<body vocab='https://schema.org/' typeof='WebPage'>
-		<div class="splash">
-			<!-- Background image -->
-			<!-- Is some of the text in 'style' attr supposed to be classes?? -->
-			<div id="bg" style="background: url({{ url_for('static', filename='splash.jpg') }}) no-repeat center center fixed; background-size: cover;"></div>
-			
-			<main role="main">
-				<div class="sp-hb">
-					<div class="sp-bx col-xs-12">
-						<h1 property="name" class="wb-inv">Welcome to GCcollab</h1>
-						<div class="row">
-							<div class="col-xs-11 col-md-8">
-								<img tabindex="-1" role="img" src="{{ url_for('static', filename='FIPs/csps_en.png') }}" width="283" aria-label="Canada School of Public Service - École de la fonction publique du Canada"></img>
-							</div>
-						</div>
-						<div class="row">
-							<section class="col-xs-6 text-right">
-								<h2 class="wb-inv">GCcollab English</h2>
-								<p><a href="#" onclick="form_submit('en')" class="btn btn-primary">English</a></p>
-							</section>
-							<section class="col-xs-6" lang="fr">
-								<h2 class="wb-inv">GCcollab Français</h2>
-								<p><a href="#" onclick="form_submit('fr')" class="btn btn-primary">Français</a></p>
-							</section>
-						</div>
-					</div>
-					
-					<div class="sp-bx-bt col-xs-12" style='display:none'>
-						<div class="row">
-							<div class="col-xs-7 col-md-8">
-								<a href="https://gccollab.ca/terms" onclick="form_submit('en')" class="sp-lk">Terms & Conditions of Use</a>
-								<span class="glyphicon glyphicon-asterisk"></span>
-								<a href="/termes" onclick="form_submit('fr')" class="sp-lk" lang="fr">Conditions d'utilisation</a>
-							</div>
-							<div class="col-xs-5 col-md-4 text-right mrgn-bttm-md">
-								<object type="image/svg+xml" tabindex="-1" role="img" data="https://gccollab.ca//mod/gccollab_theme/graphics/wmms-blk.svg" width="127" aria-label="Symbol of the Government of Canada / Symbole du Gouvernement du Canada"></object>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="splash_identifier wb-inv"><span class="bold-gc">GC</span>collab</div>
-			</main>
-		</div>
-		
-		<script type="text/javascript">
-			function form_submit(lang) {
-				// set_cookie("lang", lang);
-				// console.log(lang)
-				parent.location.href = "/index";
-			}
-			
-			// function set_cookie(name, value) {
-			// 	var today = new Date();
-			// 	today.setTime(today.getTime());
-			// 	expires = 1000 * 60 * 60 * 24;
-			// 	var expires_date = new Date( today.getTime() + (expires) );
-			// 	document.cookie = name + "=" + escape(value) + ";path=/" + ";expires=" + expires_date.toGMTString() + ";";
-			// }
-		</script>
+	<body>
+		<header role="banner">
+			<div id="wb-bnr" class="container">
+				<object id="gcwu-sig" type="image/svg+xml" tabindex="-1" role="img" data="https://www.csps-efpc.gc.ca/assets/sig-alt-en.svg" aria-label="Government of Canada"></object>
+			</div>
+		</header>
+		<main role="main" property="mainContentOfPage" class="container">
+			<div class="col-md-12">
+				<h1>Welcome / Bienvenue</span></h1>
+				<section class="col-md-6">
+					<h2>CSPS<br />Course Catalogue</h2>
+					<a class="btn btn-lg btn-primary btn-block" href="{{ url_for('main.setlang', lang='en') }}">English</a>
+				</section>
+				<section class="col-md-6">
+					<h2>Catalogue de cours<br />de l'EFPC</h2>
+					<a class="btn btn-lg btn-primary btn-block" href="{{ url_for('main.setlang', lang='fr') }}">Français</a>
+				</section>
+			</div>
+		</main>
 	</body>
 </html>
