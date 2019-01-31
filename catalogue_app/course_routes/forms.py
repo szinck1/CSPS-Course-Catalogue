@@ -7,7 +7,7 @@ from catalogue_app.db import query_mysql
 # Search by course code
 def course_form(lang):
 	field_name = 'course_title_{0}'.format(lang)
-	table_name = 'lsr{}'.format(Config.THIS_YEAR)
+	table_name = 'lsr{0}'.format(Config.THIS_YEAR)
 	query = """
 			SELECT DISTINCT course_code, {0}
 			FROM {1}
