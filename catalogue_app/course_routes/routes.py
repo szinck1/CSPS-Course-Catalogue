@@ -64,7 +64,7 @@ def course_result():
 		'course_code': course_code,
 		'course_title': course_title,
 		# General
-		'course_info': general_queries.course_info(course_code),
+		'course_info': general_queries.course_info(lang, course_code),
 		# Dashboard - offerings
 		'overall_numbers_LY': offering_queries.overall_numbers(LAST_YEAR, course_code),
 		'overall_numbers_TY': offering_queries.overall_numbers(THIS_YEAR, course_code),
