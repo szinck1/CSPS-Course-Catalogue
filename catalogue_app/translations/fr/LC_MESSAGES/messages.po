@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  0.2\n"
 "Report-Msgid-Bugs-To: sam.louden@canada.ca\n"
-"POT-Creation-Date: 2019-01-31 18:20-0500\n"
+"POT-Creation-Date: 2019-02-01 12:48-0500\n"
 "PO-Revision-Date: 2019-01-06 13:06-0500\n"
 "Last-Translator: SAM LOUDEN sam.louden@canada.ca\n"
 "Language: fr\n"
@@ -341,10 +341,18 @@ msgstr "Absences moyennes par offre"
 msgid "Apologies, this course is currently catalogued without a description."
 msgstr "Désolé, ce cours est présentement catalogué sans description."
 
+#: templates/course-page/general.html:15
+msgid "Provider"
+msgstr "Fournisseur"
+
 #: templates/course-page/general.html:18 templates/course-page/general.html:37
-#: templates/course-page/general.html:45
+#: templates/course-page/general.html:45 templates/course-page/general.html:86
 msgid "&lt;awaiting mapping&gt;"
 msgstr "&lt;en attente de catégorisation&gt;"
+
+#: templates/course-page/general.html:23
+msgid "Duration"
+msgstr "Durée"
 
 #: templates/course-page/general.html:27
 msgid "hours"
@@ -353,6 +361,64 @@ msgstr "heures"
 #: templates/course-page/general.html:27
 msgid "hour"
 msgstr "heure"
+
+#: templates/course-page/general.html:34
+msgid "Business Line"
+msgstr "Ligne d'affaires"
+
+#: templates/course-page/general.html:42
+msgid "Displayed on GCcampus"
+msgstr "Affiché sur GCcampus"
+
+#: templates/course-page/general.html:58
+msgid "Additional Info"
+msgstr "Infos additionelles"
+
+#: templates/course-page/general.html:64
+msgid "Field"
+msgstr "Champ"
+
+#: templates/course-page/general.html:65
+msgid "Contents"
+msgstr "Contenu"
+
+#: templates/course-page/general.html:71
+msgid "Business Type"
+msgstr "Type de livraison"
+
+#: templates/course-page/general.html:72
+msgid "Communities"
+msgstr "Communautés"
+
+#: templates/course-page/general.html:73
+msgid "Director"
+msgstr "Directeur"
+
+#: templates/course-page/general.html:74
+msgid "Main Topic"
+msgstr "Sujet principal"
+
+#: templates/course-page/general.html:75
+msgid "Point of Contact"
+msgstr "Point de contact"
+
+#: templates/course-page/general.html:76
+msgid "Program Manager"
+msgstr "Gestionnaire de programme"
+
+#: templates/course-page/general.html:77
+msgid "Project Lead"
+msgstr "Chef de projet"
+
+#: templates/course-page/general.html:78
+msgid "Required Training"
+msgstr "Formation requise"
+
+#: templates/course-page/general.html:97
+msgid "<h5>Tip:</h5><p>This information is tracked by Curriculum Management.</p>"
+msgstr ""
+"<h5>Indice :</h5><p>Ces infos sont maintenues par Gestion du "
+"curriculum.</p>"
 
 #: templates/course-page/geodata.html:7 templates/course-page/geodata.html:13
 msgid "Filter: "

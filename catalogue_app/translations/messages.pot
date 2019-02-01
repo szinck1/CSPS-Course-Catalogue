@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-01-31 18:20-0500\n"
+"POT-Creation-Date: 2019-02-01 12:48-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -315,9 +315,17 @@ msgstr ""
 msgid "Apologies, this course is currently catalogued without a description."
 msgstr ""
 
+#: templates/course-page/general.html:15
+msgid "Provider"
+msgstr ""
+
 #: templates/course-page/general.html:18 templates/course-page/general.html:37
-#: templates/course-page/general.html:45
+#: templates/course-page/general.html:45 templates/course-page/general.html:86
 msgid "&lt;awaiting mapping&gt;"
+msgstr ""
+
+#: templates/course-page/general.html:23
+msgid "Duration"
 msgstr ""
 
 #: templates/course-page/general.html:27
@@ -326,6 +334,62 @@ msgstr ""
 
 #: templates/course-page/general.html:27
 msgid "hour"
+msgstr ""
+
+#: templates/course-page/general.html:34
+msgid "Business Line"
+msgstr ""
+
+#: templates/course-page/general.html:42
+msgid "Displayed on GCcampus"
+msgstr ""
+
+#: templates/course-page/general.html:58
+msgid "Additional Info"
+msgstr ""
+
+#: templates/course-page/general.html:64
+msgid "Field"
+msgstr ""
+
+#: templates/course-page/general.html:65
+msgid "Contents"
+msgstr ""
+
+#: templates/course-page/general.html:71
+msgid "Business Type"
+msgstr ""
+
+#: templates/course-page/general.html:72
+msgid "Communities"
+msgstr ""
+
+#: templates/course-page/general.html:73
+msgid "Director"
+msgstr ""
+
+#: templates/course-page/general.html:74
+msgid "Main Topic"
+msgstr ""
+
+#: templates/course-page/general.html:75
+msgid "Point of Contact"
+msgstr ""
+
+#: templates/course-page/general.html:76
+msgid "Program Manager"
+msgstr ""
+
+#: templates/course-page/general.html:77
+msgid "Project Lead"
+msgstr ""
+
+#: templates/course-page/general.html:78
+msgid "Required Training"
+msgstr ""
+
+#: templates/course-page/general.html:97
+msgid "<h5>Tip:</h5><p>This information is tracked by Curriculum Management.</p>"
 msgstr ""
 
 #: templates/course-page/geodata.html:7 templates/course-page/geodata.html:13
