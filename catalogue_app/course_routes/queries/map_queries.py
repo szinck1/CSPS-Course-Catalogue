@@ -69,29 +69,3 @@ def _combine_overlapping_cities_hashed(my_list):
 	# Return merge_dict's values in list
 	mars = [value for value in merge_dict.values()]
 	return mars
-
-
-def _combine_overlapping_cities(my_list):
-	"""If two cities' markers overlap, combine them into a single entry."""
-	COMPARISON_DISTANCE = 0.005
-	# my_list is a list of lists
-	# Each nested list has form ['city_name', count, latitude, longitude]
-	# Nested for loops to compare each element with all elements ahead of it
-	for i in range(len(my_list) - 1):
-		current_element = my_list[i]
-		if current_element is None:
-			continue
-		for j in range(i + 1, len(my_list)):
-			comparison_element = my_list[j]
-			if comparison_element is None:
-				continue
-			# Check if cities overlap
-			if (abs(current_element[2] - comparison_element[2]) < COMPARISON_DISTANCE) and \
-				(abs(current_element[3] - comparison_element[3]) < COMPARISON_DISTANCE):
-				# Take count away from comparison_element and set it to None
-				# print(f'Merging {my_list[j][0]} into {my_list[i][0]}')
-				my_list[i][1] += my_list[j][1]
-				my_list[j] = None
-	# Remove null entries	
-	my_list = [elem for elem in my_list if elem is not None]
-	return my_list
