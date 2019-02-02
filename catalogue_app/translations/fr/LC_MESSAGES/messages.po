@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  0.2\n"
 "Report-Msgid-Bugs-To: sam.louden@canada.ca\n"
-"POT-Creation-Date: 2019-02-02 00:55-0500\n"
+"POT-Creation-Date: 2019-02-02 01:51-0500\n"
 "PO-Revision-Date: 2019-01-06 13:06-0500\n"
 "Last-Translator: SAM LOUDEN sam.louden@canada.ca\n"
 "Language: fr\n"
@@ -388,11 +388,37 @@ msgstr ""
 
 #: templates/course-page/comments.html:136
 msgid ""
-"Learners explain why they feel the training won't improve their job "
-"performance."
+"<h5>Tip:</h5><p>Learners explain why they feel the training won't improve"
+" their job performance.</p>"
+msgstr "<h5>Indice :</h5><p>Les apprenants expliquent pourquoi ils ne croient pas que la formation va améliorer leur rendement au travail.</p>"
+
+#: templates/course-page/comments.html:190
+msgid "<strong>Number of Responses:</strong> 0"
+msgstr "<strong>Numéro de réponses :</strong> 0"
+
+#: templates/course-page/comments.html:192
+msgid "<strong>Number of Responses:</strong> "
+msgstr "<strong>Numéro de réponses :</strong>"
+
+#: templates/course-page/comments.html:219
+msgid "Reason to Participate"
 msgstr ""
-"Les apprenants expliquent pourquoi ils ne croient pas que la formation va"
-" améliorer leur rendement au travail."
+
+#: templates/course-page/comments.html:220
+msgid "Did You Experience Technical Issues?"
+msgstr ""
+
+#: templates/course-page/comments.html:221
+msgid "The Course Was Available in the Official Language of My Choice"
+msgstr ""
+
+#: templates/course-page/comments.html:222
+msgid "Did the Course Make Use of GCcampus Tools?"
+msgstr ""
+
+#: templates/course-page/comments.html:223
+msgid "Method of Preparing for the Course"
+msgstr ""
 
 #: templates/course-page/dashboard-learners.html:4
 msgid "Registrations per Month"
@@ -724,4 +750,3 @@ msgstr "Recherche par ministère"
 #: templates/includes/_navbar.html:26 templates/includes/_navbar.html:28
 msgid "Français"
 msgstr "English"
-

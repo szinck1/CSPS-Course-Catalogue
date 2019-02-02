@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-02-02 00:55-0500\n"
+"POT-Creation-Date: 2019-02-02 01:51-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -286,7 +286,7 @@ msgid "Tooltip"
 msgstr ""
 
 #: templates/course-page/comments.html:20
-msgid "Other"
+msgid "Categorical"
 msgstr ""
 
 #: templates/course-page/comments.html:38
@@ -364,8 +364,36 @@ msgstr ""
 
 #: templates/course-page/comments.html:136
 msgid ""
-"Learners explain why they feel the training won't improve their job "
-"performance."
+"<h5>Tip:</h5><p>Learners explain why they feel the training won't improve"
+" their job performance.</p>"
+msgstr ""
+
+#: templates/course-page/comments.html:190
+msgid "<strong>Number of Responses:</strong> 0"
+msgstr ""
+
+#: templates/course-page/comments.html:192
+msgid "<strong>Number of Responses:</strong> "
+msgstr ""
+
+#: templates/course-page/comments.html:219
+msgid "Reason to Participate"
+msgstr ""
+
+#: templates/course-page/comments.html:220
+msgid "Did You Experience Technical Issues?"
+msgstr ""
+
+#: templates/course-page/comments.html:221
+msgid "The Course Was Available in the Official Language of My Choice"
+msgstr ""
+
+#: templates/course-page/comments.html:222
+msgid "Did the Course Make Use of GCcampus Tools?"
+msgstr ""
+
+#: templates/course-page/comments.html:223
+msgid "Method of Preparing for the Course"
 msgstr ""
 
 #: templates/course-page/dashboard-learners.html:4

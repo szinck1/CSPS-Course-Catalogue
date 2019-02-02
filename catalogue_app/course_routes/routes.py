@@ -58,7 +58,7 @@ def course_result():
 	# Instantiate classes
 	locations = offering_queries.OfferingLocations(lang, THIS_YEAR, course_code).load()
 	ratings = rating_queries.Ratings(lang, course_code).load()
-	comments = comment_queries.Comments(course_code).load()
+	comments = comment_queries.Comments(lang, course_code).load()
 	pass_dict = {
 		#Global
 		'course_code': course_code,

@@ -4,7 +4,8 @@ from catalogue_app.db import query_mysql
 
 # Should probably store results_processed as attribute
 class Comments:
-	def __init__(self, course_code):
+	def __init__(self, lang, course_code):
+		self.lang = lang
 		self.course_code = course_code
 		self.comment_data = None
 		self.categorical_data = None
@@ -53,10 +54,13 @@ class Comments:
 			# Unpack the tuple as some fields require customization
 			text_answer = row[1]
 			stars = int(row[2])
+			# Account for 'Unknown' being 'Inconnu' in FR
 			learner_classif = row[3].replace(' - Unknown', '')
+			learner_classif = learner_classif.replace('Unknown', 'Inconnu') if self.lang == 'fr' else learner_classif
 			offering_city = row[4].title().replace('(Ncr)', '(NCR)').replace("'S", "'s")
 			fiscal_year = row[5].replace('-20', '-')
-			quarter = row[6]
+			# Account for e.g. 'Q2' being 'T2' in FR
+			quarter = row[6].replace('Q', 'T') if self.lang == 'fr' else row[6]
 			# Reassemble and append
 			tup = (text_answer, stars, learner_classif, offering_city, fiscal_year, quarter)
 			results_processed.append(tup)

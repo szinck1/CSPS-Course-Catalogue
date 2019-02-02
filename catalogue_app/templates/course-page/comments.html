@@ -133,7 +133,7 @@
 	// Add tooltip contents
 	$('#performance-tooltip').tooltip({
 		placement: 'right',
-		title: "<h5>Tip:</h5><p>{{ _('Learners explain why they feel the training won\'t improve their job performance.') }}</p>",
+		title: "{{ _('<h5>Tip:</h5><p>Learners explain why they feel the training won\'t improve their job performance.</p>') }}",
 		animation: true,
 		html: true
 	});
@@ -187,9 +187,9 @@
 				formatter: function() {
 					var sliceName = this.key;
 					if (sliceName == 'No response') {
-						return '<strong>Number of Responses:</strong> 0';
+						return "{{ _('<strong>Number of Responses:</strong> 0') }}";
 					} else {
-						return '<strong>Number of Responses:</strong> ' + this.y;
+						return "{{ _('<strong>Number of Responses:</strong> ') }}" + this.y;
 					}
 				}
 			},
@@ -216,10 +216,10 @@
 	// Only attempt to create pie charts if data exists
 	{% if any ([pass_dict.reason_to_participate, pass_dict.technical_issues,
 				pass_dict.languages_available, pass_dict.tools_used, pass_dict.prepared_by]) %}
-		createPieChart('reason-to-participate', 'Reason to Participate', {{ pass_dict.reason_to_participate | safe }});
-		createPieChart('technical-issues', 'Did You Experience Technical Issues?', {{ pass_dict.technical_issues | safe }});
-		createPieChart('languages-available', 'The Course Was Available in the Official Language of My Choice', {{ pass_dict.languages_available | safe }});
-		createPieChart('tools-used', 'Did the Course Make Use of GCcampus Tools?', {{ pass_dict.tools_used | safe }});
-		createPieChart('prepared-by', 'Method of Preparing for the Course', {{ pass_dict.prepared_by | safe }});
+		createPieChart('reason-to-participate', "{{ _('Reason to Participate') }}", {{ pass_dict.reason_to_participate | safe }});
+		createPieChart('technical-issues', "{{ _('Did You Experience Technical Issues?') }}", {{ pass_dict.technical_issues | safe }});
+		createPieChart('languages-available', "{{ _('The Course Was Available in the Official Language of My Choice') }}", {{ pass_dict.languages_available | safe }});
+		createPieChart('tools-used', "{{ _('Did the Course Make Use of GCcampus Tools?') }}", {{ pass_dict.tools_used | safe }});
+		createPieChart('prepared-by', "{{ _('Method of Preparing for the Course') }}", {{ pass_dict.prepared_by | safe }});
 	{% endif %}
 </script>
