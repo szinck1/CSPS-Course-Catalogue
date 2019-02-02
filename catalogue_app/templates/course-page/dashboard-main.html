@@ -4,16 +4,16 @@
 <div class="dash-filter">
 	<!-- If an online course, disable div offering-dash and add tooltip with explanation -->
 	{% if pass_dict.course_info['Business Type'] == 'Online' %}
-		<p>Filter: </p>
+		<p>{{ _('Filter: ') }}</p>
 		<select id="filter-dash" onchange="filterDashboards()">
-			<option value="learner-dash">Learner Data</option>
+			<option value="learner-dash">{{ _('Learner Data') }}</option>
 		</select>
 		<img id="online-dashboard-disabled-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="{{ _('Tooltip') }}" />
 	{% else %}
-		<p>Filter: </p>
+		<p>{{ _('Filter: ') }}</p>
 		<select id="filter-dash" onchange="filterDashboards()">
-			<option value="offering-dash">Offering Data</option>
-			<option value="learner-dash">Learner Data</option>
+			<option value="offering-dash">{{ _('Offering Data') }}</option>
+			<option value="learner-dash">{{ _('Learner Data') }}</option>
 		</select>
 	{% endif %}
 </div>
@@ -30,7 +30,7 @@
 	// Add tooltip contents
 	$('#online-dashboard-disabled-tooltip').tooltip({
 		placement: 'right',
-		title: "<h5>Tip:</h5><p>The Offering Data section is disabled for online courses as they have no physical location. Try an instructor-led course like D101 to see more.</p>",
+		title: "{{ _('<h5>Tip:</h5><p>The Offering Data section is disabled for online courses as they have no physical location. Try an instructor-led course like D101 to see more.</p>') }}",
 		animation: true,
 		html: true
 	});

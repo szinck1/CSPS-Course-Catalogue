@@ -44,7 +44,7 @@
 <div class="row dashboard-chart">
 	<!-- Offerings per Region -->
 	<h4 class= "dashboard-chart-title">
-		Offerings per Region
+		{{ _('Offerings per Region') }}
 		<img id="regions-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="{{ _('Tooltip') }}" />
 	</h4>
 	<div id="offerings-per-region" class="col-xs-12"></div>
@@ -70,13 +70,13 @@
 	// Add tooltips
 	$('#open-offerings-tooltip').tooltip({
 		placement: 'right',
-		title: '<h5>Tip:</h5><p>Past offerings must be closed before Level 1 surveys are sent.</p>',
+		title: "{{ _('<h5>Tip:</h5><p>Past offerings must be closed before Level 1 surveys are sent.</p>') }}",
 		animation: true,
 		html: true
 	});
 	$('#regions-tooltip').tooltip({
 		placement: 'right',
-		title: '<h5>Tip:</h5><p>This chart is interactive and shows offerings by Region, Province, and City.</p>',
+		title: "{{ _('<h5>Tip:</h5><p>This chart is interactive and shows offerings by Region, Province, and City.</p>') }}",
 		animation: true,
 		html: true
 	});
