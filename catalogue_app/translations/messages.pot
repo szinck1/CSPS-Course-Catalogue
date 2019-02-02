@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-02-01 22:34-0500\n"
+"POT-Creation-Date: 2019-02-02 00:46-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,6 +23,66 @@ msgstr ""
 
 #: course_routes/routes.py:37
 msgid "Go"
+msgstr ""
+
+#: course_routes/queries/learner_queries.py:20
+#: templates/course-page/ratings.html:24
+msgid "April"
+msgstr ""
+
+#: course_routes/queries/learner_queries.py:21
+#: templates/course-page/ratings.html:25
+msgid "May"
+msgstr ""
+
+#: course_routes/queries/learner_queries.py:22
+#: templates/course-page/ratings.html:25
+msgid "June"
+msgstr ""
+
+#: course_routes/queries/learner_queries.py:23
+#: templates/course-page/ratings.html:25
+msgid "July"
+msgstr ""
+
+#: course_routes/queries/learner_queries.py:24
+#: templates/course-page/ratings.html:25
+msgid "August"
+msgstr ""
+
+#: course_routes/queries/learner_queries.py:25
+#: templates/course-page/ratings.html:26
+msgid "September"
+msgstr ""
+
+#: course_routes/queries/learner_queries.py:26
+#: templates/course-page/ratings.html:26
+msgid "October"
+msgstr ""
+
+#: course_routes/queries/learner_queries.py:27
+#: templates/course-page/ratings.html:26
+msgid "November"
+msgstr ""
+
+#: course_routes/queries/learner_queries.py:28
+#: templates/course-page/ratings.html:26
+msgid "December"
+msgstr ""
+
+#: course_routes/queries/learner_queries.py:29
+#: templates/course-page/ratings.html:27
+msgid "January"
+msgstr ""
+
+#: course_routes/queries/learner_queries.py:30
+#: templates/course-page/ratings.html:24
+msgid "February"
+msgstr ""
+
+#: course_routes/queries/learner_queries.py:31
+#: templates/course-page/ratings.html:24
+msgid "March"
 msgstr ""
 
 #: course_routes/queries/offering_queries.py:32
@@ -52,31 +112,31 @@ msgstr ""
 msgid "No-Shows"
 msgstr ""
 
-#: course_routes/queries/offering_queries.py:90
+#: course_routes/queries/offering_queries.py:89
 msgid "Atlantic"
 msgstr ""
 
-#: course_routes/queries/offering_queries.py:91
+#: course_routes/queries/offering_queries.py:90
 msgid "NCR"
 msgstr ""
 
-#: course_routes/queries/offering_queries.py:92
+#: course_routes/queries/offering_queries.py:91
 msgid "Ontario Region"
 msgstr ""
 
-#: course_routes/queries/offering_queries.py:93
+#: course_routes/queries/offering_queries.py:92
 msgid "Pacific"
 msgstr ""
 
-#: course_routes/queries/offering_queries.py:94
+#: course_routes/queries/offering_queries.py:93
 msgid "Prairie"
 msgstr ""
 
-#: course_routes/queries/offering_queries.py:95
+#: course_routes/queries/offering_queries.py:94
 msgid "Québec Region"
 msgstr ""
 
-#: course_routes/queries/offering_queries.py:96
+#: course_routes/queries/offering_queries.py:95
 msgid "Outside Canada"
 msgstr ""
 
@@ -255,6 +315,10 @@ msgid ""
 "performance."
 msgstr ""
 
+#: templates/course-page/dashboard-learners.html:4
+msgid "Registrations per Month"
+msgstr ""
+
 #: templates/course-page/dashboard-learners.html:16
 msgid "Top 5 Departments"
 msgstr ""
@@ -276,12 +340,50 @@ msgstr ""
 msgid "Learners"
 msgstr ""
 
+#: templates/course-page/dashboard-main.html:7
+#: templates/course-page/dashboard-main.html:13
+#: templates/course-page/geodata.html:7 templates/course-page/geodata.html:13
+msgid "Filter: "
+msgstr ""
+
+#: templates/course-page/dashboard-main.html:9
+#: templates/course-page/dashboard-main.html:16
+msgid "Learner Data"
+msgstr ""
+
+#: templates/course-page/dashboard-main.html:15
+msgid "Offering Data"
+msgstr ""
+
+#: templates/course-page/dashboard-main.html:33
+msgid ""
+"<h5>Tip:</h5><p>The Offering Data section is disabled for online courses "
+"as they have no physical location. Try an instructor-led course like D101"
+" to see more.</p>"
+msgstr ""
+
 #: templates/course-page/dashboard-offerings.html:5
 msgid "Overall Numbers"
 msgstr ""
 
 #: templates/course-page/dashboard-offerings.html:8
 msgid "Fiscal Year"
+msgstr ""
+
+#: templates/course-page/dashboard-offerings.html:47
+msgid "Offerings per Region"
+msgstr ""
+
+#: templates/course-page/dashboard-offerings.html:73
+msgid ""
+"<h5>Tip:</h5><p>Past offerings must be closed before Level 1 surveys are "
+"sent.</p>"
+msgstr ""
+
+#: templates/course-page/dashboard-offerings.html:79
+msgid ""
+"<h5>Tip:</h5><p>This chart is interactive and shows offerings by Region, "
+"Province, and City.</p>"
 msgstr ""
 
 #: templates/course-page/dashboard-offerings.html:114
@@ -400,10 +502,6 @@ msgstr ""
 msgid "<h5>Tip:</h5><p>This information is tracked by Curriculum Management.</p>"
 msgstr ""
 
-#: templates/course-page/geodata.html:7 templates/course-page/geodata.html:13
-msgid "Filter: "
-msgstr ""
-
 #: templates/course-page/geodata.html:9 templates/course-page/geodata.html:16
 msgid "Learner Locations"
 msgstr ""
@@ -476,54 +574,6 @@ msgstr ""
 
 #: templates/course-page/main.html:23
 msgid "Comments"
-msgstr ""
-
-#: templates/course-page/ratings.html:24
-msgid "February"
-msgstr ""
-
-#: templates/course-page/ratings.html:24
-msgid "March"
-msgstr ""
-
-#: templates/course-page/ratings.html:24
-msgid "April"
-msgstr ""
-
-#: templates/course-page/ratings.html:25
-msgid "May"
-msgstr ""
-
-#: templates/course-page/ratings.html:25
-msgid "June"
-msgstr ""
-
-#: templates/course-page/ratings.html:25
-msgid "July"
-msgstr ""
-
-#: templates/course-page/ratings.html:25
-msgid "August"
-msgstr ""
-
-#: templates/course-page/ratings.html:26
-msgid "September"
-msgstr ""
-
-#: templates/course-page/ratings.html:26
-msgid "October"
-msgstr ""
-
-#: templates/course-page/ratings.html:26
-msgid "November"
-msgstr ""
-
-#: templates/course-page/ratings.html:26
-msgid "December"
-msgstr ""
-
-#: templates/course-page/ratings.html:27
-msgid "January"
 msgstr ""
 
 #: templates/course-page/ratings.html:28
