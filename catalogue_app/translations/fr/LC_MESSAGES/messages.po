@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  0.2\n"
 "Report-Msgid-Bugs-To: sam.louden@canada.ca\n"
-"POT-Creation-Date: 2019-02-01 12:48-0500\n"
+"POT-Creation-Date: 2019-02-01 22:34-0500\n"
 "PO-Revision-Date: 2019-01-06 13:06-0500\n"
 "Last-Translator: SAM LOUDEN sam.louden@canada.ca\n"
 "Language: fr\n"
@@ -53,6 +53,34 @@ msgstr "Inscriptions"
 #: course_routes/queries/offering_queries.py:55
 msgid "No-Shows"
 msgstr "Absences"
+
+#: course_routes/queries/offering_queries.py:90
+msgid "Atlantic"
+msgstr "Atlantique"
+
+#: course_routes/queries/offering_queries.py:91
+msgid "NCR"
+msgstr "RCN"
+
+#: course_routes/queries/offering_queries.py:92
+msgid "Ontario Region"
+msgstr "Région d'Ontario"
+
+#: course_routes/queries/offering_queries.py:93
+msgid "Pacific"
+msgstr "Pacifique"
+
+#: course_routes/queries/offering_queries.py:94
+msgid "Prairie"
+msgstr "Prairie"
+
+#: course_routes/queries/offering_queries.py:95
+msgid "Québec Region"
+msgstr "Région du Québec"
+
+#: course_routes/queries/offering_queries.py:96
+msgid "Outside Canada"
+msgstr "Hors du Canada"
 
 #: templates/about.html:6 templates/includes/_navbar.html:14
 msgid "About"
@@ -266,6 +294,14 @@ msgstr "Nom"
 msgid "Top 5 Classifications"
 msgstr "Top 5 des classifications"
 
+#: templates/course-page/dashboard-learners.html:71
+msgid "<h5>Tip:</h5><p>Learners whose registration status is 'Confirmed'.</p>"
+msgstr "<h5>Indice :</h5><p>Les apprenants ayant un inscription avec le statut de 'Confirmée'.</p>"
+
+#: templates/course-page/dashboard-learners.html:85
+msgid "Learners"
+msgstr "Apprenants"
+
 #: templates/course-page/dashboard-offerings.html:5
 msgid "Overall Numbers"
 msgstr "Chiffres globaux"
@@ -274,66 +310,38 @@ msgstr "Chiffres globaux"
 msgid "Fiscal Year"
 msgstr "Année fiscale"
 
-#: templates/course-page/dashboard-offerings.html:97
-msgid "Atlantic"
-msgstr "Atlantique"
-
-#: templates/course-page/dashboard-offerings.html:97
-msgid "NCR"
-msgstr "RCN"
-
-#: templates/course-page/dashboard-offerings.html:97
-msgid "Ontario Region"
-msgstr "Région d'Ontario"
-
-#: templates/course-page/dashboard-offerings.html:97
-msgid "Pacific"
-msgstr "Pacifique"
-
-#: templates/course-page/dashboard-offerings.html:98
-msgid "Prairie"
-msgstr "Prairie"
-
-#: templates/course-page/dashboard-offerings.html:98
-msgid "Québec Region"
-msgstr "Region du Québec"
-
-#: templates/course-page/dashboard-offerings.html:98
-msgid "Outside Canada"
-msgstr "Hors du Canada"
-
-#: templates/course-page/dashboard-offerings.html:121
+#: templates/course-page/dashboard-offerings.html:114
 msgid "Open & Delivered Offerings per Language"
 msgstr "Offres ouvertes & livrées par langue"
 
-#: templates/course-page/dashboard-offerings.html:127
+#: templates/course-page/dashboard-offerings.html:120
 msgid "English"
 msgstr "Anglais"
 
-#: templates/course-page/dashboard-offerings.html:128
+#: templates/course-page/dashboard-offerings.html:121
 msgid "French"
 msgstr "Français"
 
-#: templates/course-page/dashboard-offerings.html:129
+#: templates/course-page/dashboard-offerings.html:122
 msgid "Bilingual"
 msgstr "Bilingue"
 
-#: templates/course-page/dashboard-offerings.html:135
+#: templates/course-page/dashboard-offerings.html:128
 #, python-format
 msgid "%% of Offerings Cancelled"
 msgstr "%% d'offres annulées"
 
-#: templates/course-page/dashboard-offerings.html:147
-#: templates/course-page/dashboard-offerings.html:159
-#: templates/course-page/dashboard-offerings.html:170
+#: templates/course-page/dashboard-offerings.html:140
+#: templates/course-page/dashboard-offerings.html:152
+#: templates/course-page/dashboard-offerings.html:163
 msgid "Average All"
 msgstr "Moyenne globale"
 
-#: templates/course-page/dashboard-offerings.html:154
+#: templates/course-page/dashboard-offerings.html:147
 msgid "Average Class Size"
 msgstr "Effectif de classe moyen"
 
-#: templates/course-page/dashboard-offerings.html:165
+#: templates/course-page/dashboard-offerings.html:158
 msgid "Average No-Shows per Offering"
 msgstr "Absences moyennes par offre"
 

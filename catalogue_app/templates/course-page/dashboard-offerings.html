@@ -92,25 +92,18 @@
 		series: [{
 			name: 'Offerings',
 			colorByPoint: true,
-			data: [
-				// Explicitely name regions to ensure all are shown
-				{% set regions = [_('Atlantic'), _('NCR'), _('Ontario Region'), _('Pacific'),
-								  _('Prairie'), _('Québec Region'), _('Outside Canada')] %}
-				{% for region in regions %}
-					{name: '{{ region }}', drilldown: '{{ region }}', y: {{ pass_dict.region_drilldown.get(region, 0) }}},
-				{% endfor %}
-			]
+			data: {{ pass_dict.region_drilldown | safe }}
 		}],
 		drilldown: {
 			series: [
 				// Province drilldowns
 				{% for region, provinces in pass_dict.province_drilldown.items() %}
-					{name: '{{ region | safe }}', id: '{{ region | safe }}', data: {{ provinces | safe }}},
+					{name: "{{ region | safe }}", id: "{{ region | safe }}", data: {{ provinces | safe }}},
 				{% endfor %}
 				
 				// City drilldowns
 				{% for province, cities in pass_dict.city_drilldown.items() %}
-					{name: '{{ province | safe }}', id: '{{ province | safe }}', data: {{ cities | safe }}},
+					{name: "{{ province | safe }}", id: "{{ province | safe }}", data: {{ cities | safe }}},
 				{% endfor %}
 			]
 		}
