@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-02-02 00:46-0500\n"
+"POT-Creation-Date: 2019-02-02 00:55-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -253,6 +253,26 @@ msgstr ""
 msgid "Please try again."
 msgstr ""
 
+#: templates/course-page/comments.html:5
+msgid "Overall"
+msgstr ""
+
+#: templates/course-page/comments.html:8
+msgid "Technical"
+msgstr ""
+
+#: templates/course-page/comments.html:10
+msgid "Instructor"
+msgstr ""
+
+#: templates/course-page/comments.html:12
+msgid "Language"
+msgstr ""
+
+#: templates/course-page/comments.html:16
+msgid "Performance"
+msgstr ""
+
 #: templates/course-page/comments.html:17
 #: templates/course-page/dashboard-learners.html:5
 #: templates/course-page/dashboard-main.html:11
@@ -265,8 +285,37 @@ msgstr ""
 msgid "Tooltip"
 msgstr ""
 
+#: templates/course-page/comments.html:20
+msgid "Other"
+msgstr ""
+
 #: templates/course-page/comments.html:38
 msgid "Stars: "
+msgstr ""
+
+#: templates/course-page/comments.html:41
+#: templates/course-page/comments.html:57
+msgid "All"
+msgstr ""
+
+#: templates/course-page/comments.html:42
+msgid "One"
+msgstr ""
+
+#: templates/course-page/comments.html:43
+msgid "Two"
+msgstr ""
+
+#: templates/course-page/comments.html:44
+msgid "Three"
+msgstr ""
+
+#: templates/course-page/comments.html:45
+msgid "Four"
+msgstr ""
+
+#: templates/course-page/comments.html:46
+msgid "Five"
 msgstr ""
 
 #: templates/course-page/comments.html:54
@@ -275,6 +324,10 @@ msgstr ""
 
 #: templates/course-page/comments.html:71
 msgid "Avatar"
+msgstr ""
+
+#: templates/course-page/comments.html:78
+msgid "Overall Satisfaction: "
 msgstr ""
 
 #: templates/course-page/comments.html:80

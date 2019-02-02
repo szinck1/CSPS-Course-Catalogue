@@ -2,22 +2,22 @@
 
 <!-- Subtabs -->
 <ul class="nav nav-tabs nav-justified sub-tabs">
-	<li class="active"><a href="#general_comments">Overall</a></li>
+	<li class="active"><a href="#general_comments">{{ _('Overall') }}</a></li>
 	<!-- Show Technical comments for Online courses; Instructor comments for Instructor-Led -->
 	{% if pass_dict.course_info['Business Type'] == 'Online' %}
-		<li><a href="#technical_comments">Technical</a></li>
+		<li><a href="#technical_comments">{{ _('Technical') }}</a></li>
 	{% else %}
-		<li><a href="#instructor_comments">Instructor</a></li>
+		<li><a href="#instructor_comments">{{ _('Instructor') }}</a></li>
 	{% endif %}
-	<li><a href="#language_comments">Language</a></li>
+	<li><a href="#language_comments">{{ _('Language') }}</a></li>
 	<!-- Add tooltip explaining Performance comments -->
 	<li>
 		<a href="#performance_comments">
-			Performance
+			{{ _('Performance') }}
 			<img id="performance-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="{{ _('Tooltip') }}" />
 		</a>
 	</li>
-	<li><a href="#other">Other</a></li>
+	<li><a href="#other">{{ _('Categorical') }}</a></li>
 </ul>
 
 <!-- Subtabs' contents -->
@@ -38,12 +38,12 @@
 				<p>{{ _('Stars: ') }}</p>
 				<select id="filter-stars-{{ comment_name }}" onchange="filterComments()">
 					<!-- Dropdown values filled dynamically by jQuery below -->
-					<option id="filter-stars-all-{{ comment_name }}" value="bob-comment">All</option>
-					<option id="filter-stars-one-{{ comment_name }}" value="star-1">One</option>
-					<option id="filter-stars-two-{{ comment_name }}" value="star-2">Two</option>
-					<option id="filter-stars-three-{{ comment_name }}" value="star-3">Three</option>
-					<option id="filter-stars-four-{{ comment_name }}" value="star-4">Four</option>
-					<option id="filter-stars-five-{{ comment_name }}" value="star-5">Five</option>
+					<option id="filter-stars-all-{{ comment_name }}" value="bob-comment">{{ _('All') }}</option>
+					<option id="filter-stars-one-{{ comment_name }}" value="star-1">{{ _('One') }}</option>
+					<option id="filter-stars-two-{{ comment_name }}" value="star-2">{{ _('Two') }}</option>
+					<option id="filter-stars-three-{{ comment_name }}" value="star-3">{{ _('Three') }}</option>
+					<option id="filter-stars-four-{{ comment_name }}" value="star-4">{{ _('Four') }}</option>
+					<option id="filter-stars-five-{{ comment_name }}" value="star-5">{{ _('Five') }}</option>
 				</select>
 			</div>
 			
@@ -54,7 +54,7 @@
 					<p>{{ _('Fiscal Year: ') }}</p>
 					<select id="filter-period-{{ comment_name }}" onchange="filterComments()">
 						<!-- Dropdown values filled dynamically by jQuery below -->
-						<option id="filter-period-all-{{ comment_name }}" value="bob-comment">All</option>
+						<option id="filter-period-all-{{ comment_name }}" value="bob-comment">{{ _('All') }}</option>
 						<option id="filter-2015-16-{{ comment_name }}" value="FY2015-16">2015-16</option>
 						<option id="filter-2016-17-{{ comment_name }}" value="FY2016-17">2016-17</option>
 						<option id="filter-2017-18-{{ comment_name }}" value="FY2017-18">2017-18</option>
@@ -75,7 +75,7 @@
 							<h4>{{ tup[2] }}, <em>{{ tup[3] }}</em></h4>
 							<!-- Display user overall satisfaction with stars -->
 							<h5>
-								Overall Satisfaction: 
+								{{ _('Overall Satisfaction: ') }}
 								{% if tup[1] == 5 %}
 									<img src="{{ url_for('static', filename='stars/five.png') }}" alt="{{ _('Five Stars') }}" />
 								{% elif tup[1] == 4 %}
@@ -107,7 +107,7 @@
 	<p>{{ _('Comments on instructor performance are currently disabled due to privacy restrictions.') }}</p>
 </section>
 
-<!-- Other -->
+<!-- Categorical Questions -->
 <section id="other" class="tab-content hide">
 	<!-- Display categorical comments if any, else error message -->
 	{% if any ([pass_dict.reason_to_participate, pass_dict.technical_issues,

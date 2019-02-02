@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  0.2\n"
 "Report-Msgid-Bugs-To: sam.louden@canada.ca\n"
-"POT-Creation-Date: 2019-02-02 00:46-0500\n"
+"POT-Creation-Date: 2019-02-02 00:55-0500\n"
 "PO-Revision-Date: 2019-01-06 13:06-0500\n"
 "Last-Translator: SAM LOUDEN sam.louden@canada.ca\n"
 "Language: fr\n"
@@ -275,6 +275,26 @@ msgstr "Cours introuvable"
 msgid "Please try again."
 msgstr "Veuillez essayer à nouveau."
 
+#: templates/course-page/comments.html:5
+msgid "Overall"
+msgstr "Global"
+
+#: templates/course-page/comments.html:8
+msgid "Technical"
+msgstr "Technique"
+
+#: templates/course-page/comments.html:10
+msgid "Instructor"
+msgstr "Instructeur"
+
+#: templates/course-page/comments.html:12
+msgid "Language"
+msgstr "Langue"
+
+#: templates/course-page/comments.html:16
+msgid "Performance"
+msgstr "Performance"
+
 #: templates/course-page/comments.html:17
 #: templates/course-page/dashboard-learners.html:5
 #: templates/course-page/dashboard-main.html:11
@@ -287,9 +307,38 @@ msgstr "Veuillez essayer à nouveau."
 msgid "Tooltip"
 msgstr "Infobulle"
 
+#: templates/course-page/comments.html:20
+msgid "Categorical"
+msgstr "Catégorique"
+
 #: templates/course-page/comments.html:38
 msgid "Stars: "
 msgstr "Étoiles : "
+
+#: templates/course-page/comments.html:41
+#: templates/course-page/comments.html:57
+msgid "All"
+msgstr "Toutes"
+
+#: templates/course-page/comments.html:42
+msgid "One"
+msgstr "Une"
+
+#: templates/course-page/comments.html:43
+msgid "Two"
+msgstr "Deux"
+
+#: templates/course-page/comments.html:44
+msgid "Three"
+msgstr "Trois"
+
+#: templates/course-page/comments.html:45
+msgid "Four"
+msgstr "Quatre"
+
+#: templates/course-page/comments.html:46
+msgid "Five"
+msgstr "Cinq"
 
 #: templates/course-page/comments.html:54
 msgid "Fiscal Year: "
@@ -298,6 +347,10 @@ msgstr "Année fiscale : "
 #: templates/course-page/comments.html:71
 msgid "Avatar"
 msgstr "Avatar"
+
+#: templates/course-page/comments.html:78
+msgid "Overall Satisfaction: "
+msgstr "Satisfaction globale : "
 
 #: templates/course-page/comments.html:80
 msgid "Five Stars"
