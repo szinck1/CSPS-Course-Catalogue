@@ -82,7 +82,7 @@
 			<tr>
 				<td>{{ pair[0] }}</td>
 				<td class="text-right">
-					{% set value = pass_dict.course_info.pop(pair[1]) %}
+					{% set value = pass_dict.course_info[pair[1]] %}
 					{{ value if value else _('&lt;awaiting mapping&gt;') }}
 				</td>
 			</tr>
