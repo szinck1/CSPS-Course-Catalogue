@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  0.2\n"
 "Report-Msgid-Bugs-To: sam.louden@canada.ca\n"
-"POT-Creation-Date: 2019-02-02 01:51-0500\n"
+"POT-Creation-Date: 2019-02-04 12:10-0500\n"
 "PO-Revision-Date: 2019-01-06 13:06-0500\n"
 "Last-Translator: SAM LOUDEN sam.louden@canada.ca\n"
 "Language: fr\n"
@@ -279,6 +279,13 @@ msgstr "Veuillez essayer à nouveau."
 msgid "Overall"
 msgstr "Global"
 
+#: templates/course-page/comments.html:7 templates/course-page/comments.html:25
+#: templates/course-page/dashboard-main.html:6
+#: templates/course-page/dashboard-main.html:41
+#: templates/course-page/geodata.html:6 templates/course-page/geodata.html:88
+msgid "Online"
+msgstr "En ligne"
+
 #: templates/course-page/comments.html:8
 msgid "Technical"
 msgstr "Technique"
@@ -390,7 +397,9 @@ msgstr ""
 msgid ""
 "<h5>Tip:</h5><p>Learners explain why they feel the training won't improve"
 " their job performance.</p>"
-msgstr "<h5>Indice :</h5><p>Les apprenants expliquent pourquoi ils ne croient pas que la formation va améliorer leur rendement au travail.</p>"
+msgstr ""
+"<h5>Indice :</h5><p>Les apprenants expliquent pourquoi ils ne croient pas"
+" que la formation va améliorer leur rendement au travail.</p>"
 
 #: templates/course-page/comments.html:190
 msgid "<strong>Number of Responses:</strong> 0"
@@ -440,7 +449,7 @@ msgstr "Top 5 des classifications"
 #: templates/course-page/dashboard-learners.html:71
 msgid "<h5>Tip:</h5><p>Learners whose registration status is 'Confirmed'.</p>"
 msgstr ""
-"<h5>Indice :</h5><p>Les apprenants ayant un inscription avec le statut de"
+"<h5>Indice :</h5><p>Les apprenants ayant une inscription avec le statut de"
 " 'Confirmée'.</p>"
 
 #: templates/course-page/dashboard-learners.html:85
@@ -468,7 +477,7 @@ msgid ""
 "as they have no physical location. Try an instructor-led course like D101"
 " to see more.</p>"
 msgstr ""
-"<h5>Indice :</h5><p>La section « Offres » est desactivée pour les cours "
+"<h5>Indice :</h5><p>La section « Offres » est désactivée pour les cours "
 "en ligne car ils n'ont pas d'emplacement physique. Veuillez essayer un "
 "cours livré en salle de classe comme le D101 pour en voir plus."
 
@@ -489,7 +498,7 @@ msgid ""
 "<h5>Tip:</h5><p>Past offerings must be closed before Level 1 surveys are "
 "sent.</p>"
 msgstr ""
-"<h5>Indice :</h5><p>Les offres ayant déjà eu lieu doivent êtres fermées "
+"<h5>Indice :</h5><p>Les offres ayant déjà eu lieu doivent être fermées "
 "afin d'assurer l'envoi des sondages de niveau 1.</p>"
 
 #: templates/course-page/dashboard-offerings.html:79
@@ -570,7 +579,7 @@ msgstr "Affiché sur GCcampus"
 
 #: templates/course-page/general.html:58
 msgid "Additional Info"
-msgstr "Infos additionelles"
+msgstr "Infos additionnelles"
 
 #: templates/course-page/general.html:64
 msgid "Field"
@@ -659,7 +668,7 @@ msgid ""
 "<h5>Tip:</h5><p>The 'Offering Locations' section is disabled for online "
 "courses as they have no physical location.</p>"
 msgstr ""
-"<h5>Indice :</h5><p>La section 'Emplacements des offres' est desactivée "
+"<h5>Indice :</h5><p>La section 'Emplacements des offres' est désactivée "
 "pour les cours en ligne car ils n'ont pas d'emplacement physique.</p>"
 
 #: templates/course-page/geodata.html:74
@@ -675,7 +684,7 @@ msgid ""
 "<h5>Tip:</h5><p>The map shows learners whose registration status is "
 "'Confirmed'.</p>"
 msgstr ""
-"<h5>Indice :</h5><p>Les emplacements des apprenants ayant un inscription "
+"<h5>Indice :</h5><p>Les emplacements des apprenants ayant une inscription "
 "avec le statut de 'Confirmée' sont placés sur la carte.</p>"
 
 #: templates/course-page/main.html:19
@@ -750,3 +759,4 @@ msgstr "Recherche par ministère"
 #: templates/includes/_navbar.html:26 templates/includes/_navbar.html:28
 msgid "Français"
 msgstr "English"
+

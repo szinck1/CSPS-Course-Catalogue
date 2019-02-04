@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-02-02 01:51-0500\n"
+"POT-Creation-Date: 2019-02-04 12:10-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -255,6 +255,13 @@ msgstr ""
 
 #: templates/course-page/comments.html:5
 msgid "Overall"
+msgstr ""
+
+#: templates/course-page/comments.html:7 templates/course-page/comments.html:25
+#: templates/course-page/dashboard-main.html:6
+#: templates/course-page/dashboard-main.html:41
+#: templates/course-page/geodata.html:6 templates/course-page/geodata.html:88
+msgid "Online"
 msgstr ""
 
 #: templates/course-page/comments.html:8
