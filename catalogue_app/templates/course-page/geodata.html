@@ -3,7 +3,7 @@
 <!-- Dropdown to select offering-map or learner-map -->
 <div class="map-filter">
 	<!-- If an online course, disable div offering-map and add tooltip with explanation -->
-	{% if pass_dict.course_info['Business Type'] == 'Online' %}
+	{% if pass_dict.course_info['Business Type'] == _('Online') %}
 		<p>{{ _('Filter: ') }}</p>
 		<select id="filter-maps" onchange="filterMaps()">
 			<option value="learner-map">{{ _('Learner Locations') }}</option>
@@ -85,7 +85,7 @@
 	// Unsual structure to fix IE11 jQuery bug: hide with JS, not with CSS
 	$('#offering-map').hide();
 	$('#learner-map').hide();
-	{% if pass_dict.course_info['Business Type'] == 'Online' %}
+	{% if pass_dict.course_info['Business Type'] == _('Online') %}
 		$('#learner-map').show();
 	{% else %}
 		$('#offering-map').show();

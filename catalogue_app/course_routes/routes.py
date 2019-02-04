@@ -30,7 +30,6 @@ def course_selection():
 	lang = 'fr' if request.cookies.get('lang', None) == 'fr' else 'en'
 	form = course_form(lang)
 	form = form(request.form)
-	
 	if request.method == 'POST' and form.validate():
 		course_code = form.course_selection.data
 		return redirect(url_for('course.course_result', course_code=course_code))

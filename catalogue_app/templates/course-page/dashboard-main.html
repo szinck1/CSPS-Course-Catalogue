@@ -3,7 +3,7 @@
 <!-- Dropdown to select offering-dash or learner-dash -->
 <div class="dash-filter">
 	<!-- If an online course, disable div offering-dash and add tooltip with explanation -->
-	{% if pass_dict.course_info['Business Type'] == 'Online' %}
+	{% if pass_dict.course_info['Business Type'] == _('Online') %}
 		<p>{{ _('Filter: ') }}</p>
 		<select id="filter-dash" onchange="filterDashboards()">
 			<option value="learner-dash">{{ _('Learner Data') }}</option>
@@ -38,7 +38,7 @@
 	// Unsual structure to fix IE11 jQuery bug: hide with JS, not with CSS
 	$('#offering-dash').hide();
 	$('#learner-dash').hide();
-	{% if pass_dict.course_info['Business Type'] == 'Online' %}
+	{% if pass_dict.course_info['Business Type'] == _('Online') %}
 		$('#learner-dash').show();
 	{% else %}
 		$('#offering-dash').show();
