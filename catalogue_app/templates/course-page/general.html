@@ -1,10 +1,16 @@
 <h1>{{ pass_dict.course_title }}</h1>
 
-<p class="text-justify">
-	<!-- Use dict.pop so that remaining elements can be rendered in for loop below -->
-	{% set course_description = pass_dict.course_info.pop('Course Description') %}
-	{{ course_description if course_description else _('Apologies, this course is currently catalogued without a description.') | safe }}
-</p>
+<!-- Use dict.pop so that remaining elements can be rendered in for loop below -->
+{% set course_description = pass_dict.course_info.pop('Course Description') %}
+{% if course_description %}
+	<div id="course-description">
+		{{ course_description | safe }}
+	</div>
+{% else %}
+	<p class="text-justify">
+		{{ _('Apologies, this course is currently catalogued without a description.') }}
+	</p>
+{% endif %}
 
 <!-- Display main properties with glyphicons -->
 <table id="glyph-table">
