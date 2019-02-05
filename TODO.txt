@@ -1,19 +1,36 @@
 ### CURRENT SPRINT ###
-# add FR
+# ask Derek what's going on with packages
+	# have Bob's support to use comments
+# once packages ready, finish Comments FR
+	# No response categorical
+	# Some cities need trans, add city_fr column
+# make note, don't use data, waiting on updates from IT, data from Jan 21
+# push new version, tell regions!
+
+
+
+### NEXT SPRINT ###
 # make OOP
-# add API
+	# combine offering per region query with map query?
+		# if so, beware FR e.g. 'KINGSTON, JAMAICA'
+		# same issue for Comments tab
 # make search front and center
 	# search by provider, topic, business type, etc.
+# link / scrape course descriptions from GCcampus
+# add datatables i.e. scroll instead of top 5
+# add pagination for huge comment sections
+# ensure no processing taking place in templates
+# beware hardcoding
+# launch!
+
 
 
 ### BACKLOG ###
+# add API
 # send all queries to db simultanously for single round-trip?
-# bilingual URLs via lazy_gettext?
 # preview if paste link in gmail, gcmessage, etc.
 # add prep & admin
 # add regional accessibility to geodata
-# link / scrape course descriptions from GCcampus' catalogue / course list
-# add datatables i.e. scroll instead of top 5
 # export to PDF, including one pager for prep & admin
 # add lifecycle info
 # add dept usage

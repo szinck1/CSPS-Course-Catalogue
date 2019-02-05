@@ -1,21 +1,35 @@
+from flask_babel import gettext
 from catalogue_app.db import query_mysql
 
 
-def regs_per_month(fiscal_year, course_code):
+def regs_per_month(lang, fiscal_year, course_code):
+	field_name = 'month_{0}'.format(lang)
 	table_name = 'lsr{0}'.format(fiscal_year)
 	query = """
-		SELECT month, COUNT(reg_id)
-		FROM {0}
+		SELECT {0}, COUNT(reg_id)
+		FROM {1}
 		WHERE course_code = %s AND reg_status = 'Confirmed'
-		GROUP BY month;
-	""".format(table_name)
+		GROUP BY {0};
+	""".format(field_name, table_name)
 	results = query_mysql(query, (course_code,))
 	results = dict(results)
-	
 	# Process results into format required by Highcharts
 	results_processed = []
-	months = ['April', 'May', 'June', 'July', 'August', 'September', 'October',
-			  'November', 'December', 'January', 'February', 'March']
+	# Ensure every month is returned, even if count 0
+	months = [
+		gettext('April'),
+		gettext('May'),
+		gettext('June'),
+		gettext('July'),
+		gettext('August'),
+		gettext('September'),
+		gettext('October'),
+		gettext('November'),
+		gettext('December'),
+		gettext('January'),
+		gettext('February'),
+		gettext('March')
+	]
 	for month in months:
 		count = results.get(month, 0)
 		results_processed.append({'name': month, 'y': count})

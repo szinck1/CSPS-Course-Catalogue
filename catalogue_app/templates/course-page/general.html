@@ -12,7 +12,7 @@
 		<tr>
 			<td>
 				<span class="glyphicon glyphicon-education"></span>
-				<p>Provider</p>
+				<p>{{ _('Provider') }}</p>
 				<p class="glyph-info">
 					{% set provider = pass_dict.course_info.pop('Provider') %}
 					{{ provider if provider else _('&lt;awaiting mapping&gt;') }}
@@ -20,7 +20,7 @@
 			</td>
 			<td>
 				<span class="glyphicon glyphicon-time"></span>
-				<p>Duration</p>
+				<p>{{ _('Duration') }}</p>
 				{% set duration = pass_dict.course_info.pop('Duration') %}
 				{% set duration = duration if duration else 0 %}
 				<p class="glyph-info">
@@ -31,7 +31,7 @@
 		<tr>
 			<td>
 				<span class="glyphicon glyphicon-pencil"></span>
-				<p>Business Line</p>
+				<p>{{ _('Business Line') }}</p>
 				<p class="glyph-info">
 					{% set business_line = pass_dict.course_info.pop('Business Line') %}
 					{{ business_line if business_line else _('&lt;awaiting mapping&gt;') }}
@@ -39,7 +39,7 @@
 			</td>
 			<td>
 				<span class="glyphicon glyphicon-eye-open"></span>
-				<p>Displayed on GCcampus</p>
+				<p>{{ _('Displayed on GCcampus') }}</p>
 				<p class="glyph-info">
 					{% set gccampus = pass_dict.course_info.pop('Displayed on GCcampus') %}
 					{{ gccampus if gccampus else _('&lt;awaiting mapping&gt;') }}
@@ -50,28 +50,41 @@
 </table>
 
 <!-- Additional Info -->
-<!-- Remvove course code from dict as no need to display -->
-{% set _ = pass_dict.course_info.pop('Course Code', none) %}
 <table class="table table-hover">
 	<thead>
 		<tr>
 			<td class="text-center" colspan="2">
 				<h4>
-					<strong>Additional Info</strong>
+					<strong>{{ _('Additional Info') }}</strong>
 					<img id="additional-info-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" />
 				</h4>
 			</td>
 		</tr>
 		<tr>
-			<td><strong>Field</strong></td>
-			<td class="text-right"><strong>Contents</strong></td>
+			<td><strong>{{ _('Field') }}</strong></td>
+			<td class="text-right"><strong>{{ _('Contents') }}</strong></td>
 		</tr>
 	</thead>
 	<tbody>
-		{% for key, value in pass_dict.course_info.items() %}
+		<!-- Pairs of translated value for display and name of dictionary key -->
+		{% set additional_info = [
+			[_('Business Type'), 'Business Type'],
+			[_('Communities'), 'Communities'],
+			[_('Director'), 'Director'],
+			[_('Main Topic'), 'Main Topic'],
+			[_('Point of Contact'), 'Point of Contact'],
+			[_('Program Manager'), 'Program Manager'],
+			[_('Project Lead'), 'Project Lead'],
+			[_('Required Training'), 'Required Training']
+		] %}
+		
+		{% for pair in additional_info %}
 			<tr>
-				<td>{{ key }}</td>
-				<td class="text-right">{{ value }}</td>
+				<td>{{ pair[0] }}</td>
+				<td class="text-right">
+					{% set value = pass_dict.course_info[pair[1]] %}
+					{{ value if value else _('&lt;awaiting mapping&gt;') }}
+				</td>
 			</tr>
 		{% endfor %}
 	</tbody>
@@ -81,7 +94,7 @@
 	// Add tooltip
 	$('#additional-info-tooltip').tooltip({
 		placement: 'right',
-		title: '<h5>Tip:</h5><p>This information is tracked by Curriculum Management.</p>',
+		title: "{{ _('<h5>Tip:</h5><p>This information is tracked by Curriculum Management.</p>') }}",
 		animation: true,
 		html: true
 	});

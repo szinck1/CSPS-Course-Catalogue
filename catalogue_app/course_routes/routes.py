@@ -26,12 +26,10 @@ def context_processor():
 @course.route('/course-selection', methods=['GET', 'POST'])
 @auth.login_required
 def course_selection():
-	# FIX: Don't query possible course codes if POST
 	# Only allow 'en' and 'fr' to be passed to app
 	lang = 'fr' if request.cookies.get('lang', None) == 'fr' else 'en'
 	form = course_form(lang)
 	form = form(request.form)
-	
 	if request.method == 'POST' and form.validate():
 		course_code = form.course_selection.data
 		return redirect(url_for('course.course_result', course_code=course_code))
@@ -42,6 +40,7 @@ def course_selection():
 @course.route('/course-result')
 @auth.login_required
 def course_result():
+	### VALIDATION ###
 	# Get arguments from query string; if incomplete, return to selection page
 	if 'course_code' not in request.args:
 		return redirect(url_for('course.course_selection'))
@@ -49,23 +48,22 @@ def course_result():
 	course_code = request.args['course_code']
 	# Only allow 'en' and 'fr' to be passed to app
 	lang = 'fr' if request.cookies.get('lang', None) == 'fr' else 'en'
-	
 	# Security check: If course_code doesn't exist, render not_found.html
 	course_title = general_queries.course_title(lang, THIS_YEAR, course_code)
 	if not course_title:
 		return render_template('not-found.html')
 	
+	### QUERYING ###
 	# Instantiate classes
-	locations = offering_queries.OfferingLocations(THIS_YEAR, course_code).load()
-	ratings = rating_queries.Ratings(course_code, lang).load()
-	comments = comment_queries.Comments(course_code).load()
-	
+	locations = offering_queries.OfferingLocations(lang, THIS_YEAR, course_code).load()
+	ratings = rating_queries.Ratings(lang, course_code).load()
+	comments = comment_queries.Comments(lang, course_code).load()
 	pass_dict = {
 		#Global
 		'course_code': course_code,
 		'course_title': course_title,
 		# General
-		'course_info': general_queries.course_info(course_code),
+		'course_info': general_queries.course_info(lang, course_code),
 		# Dashboard - offerings
 		'overall_numbers_LY': offering_queries.overall_numbers(LAST_YEAR, course_code),
 		'overall_numbers_TY': offering_queries.overall_numbers(THIS_YEAR, course_code),
@@ -87,7 +85,7 @@ def course_result():
 		'avg_no_shows_LY': round(offering_queries.avg_no_shows(LAST_YEAR, course_code), 1),
 		'avg_no_shows_TY': round(offering_queries.avg_no_shows(THIS_YEAR, course_code), 1),
 		# Dashboard - learners
-		'regs_per_month': learner_queries.regs_per_month(THIS_YEAR, course_code),
+		'regs_per_month': learner_queries.regs_per_month(lang, THIS_YEAR, course_code),
 		'top_5_depts': learner_queries.top_5_depts(lang, THIS_YEAR, course_code),
 		'top_5_classifs': learner_queries.top_5_classifs(THIS_YEAR, course_code),
 		# Maps

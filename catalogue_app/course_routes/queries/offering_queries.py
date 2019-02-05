@@ -26,7 +26,7 @@ def _offering_status_counts(fiscal_year, course_code):
 	table_name = 'lsr{0}'.format(fiscal_year)
 	query = "SELECT offering_status, COUNT(DISTINCT offering_id) FROM {0} WHERE course_code = %s GROUP BY offering_status;".format(table_name)
 	results = query_mysql(query, (course_code,))
-	# Ensure all possible statuses returned (if count of 0, ignored by GROUP BY)
+	# Ensure all possible statuses returned
 	results = dict(results)
 	statuses = {
 		gettext('Open Offerings'): 'Open - Normal',
@@ -56,22 +56,24 @@ def _offering_additional_counts(fiscal_year, course_code):
 	return results
 
 
-# Should probably store results_processed as attribute
 class OfferingLocations:
-	def __init__(self, fiscal_year, course_code):
+	def __init__(self, lang, fiscal_year, course_code):
+		self.lang = lang
 		self.fiscal_year = fiscal_year
 		self.course_code = course_code
 		self.data = None
 	
 	
 	def load(self):
+		field_name_1 = 'offering_region_{0}'.format(self.lang)
+		field_name_2 = 'offering_province_{0}'.format(self.lang)
 		table_name = 'lsr{0}'.format(self.fiscal_year)
 		query = """
-			SELECT offering_region, offering_province, offering_city, COUNT(DISTINCT offering_id)
-			FROM {0}
+			SELECT {0}, {1}, offering_city, COUNT(DISTINCT offering_id)
+			FROM {2}
 			WHERE course_code = %s AND offering_status IN ('Open - Normal', 'Delivered - Normal')
-			GROUP BY offering_region, offering_province, offering_city;
-		""".format(table_name)
+			GROUP BY {0}, {1}, offering_city;
+		""".format(field_name_1, field_name_2, table_name)
 		results = query_mysql(query, (self.course_code,))
 		results = pd.DataFrame(results, columns=['offering_region', 'offering_province', 'offering_city', 'count'])
 		self.data = results
@@ -81,7 +83,18 @@ class OfferingLocations:
 	
 	def region_drilldown(self):
 		results = self.data.groupby('offering_region', as_index=False).sum()
-		results_processed = dict(results.values.tolist())
+		results = dict(results.values.tolist())
+		# Explicitly declare list of regions as want to show all, even if count 0
+		regions = [
+			gettext('Atlantic'),
+			gettext('NCR'),
+			gettext('Ontario Region'),
+			gettext('Pacific'),
+			gettext('Prairie'),
+			gettext('Québec Region'),
+			gettext('Outside Canada')
+		]
+		results_processed = [{'name': region, 'drilldown': region, 'y': results.get(region, 0)} for region in regions]
 		return results_processed
 	
 	

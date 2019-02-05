@@ -5,9 +5,9 @@ from catalogue_app.db import query_mysql
 
 # Should probably store results_processed as attribute
 class Ratings:
-	def __init__(self, course_code, lang):
-		self.course_code = course_code
+	def __init__(self, lang, course_code):
 		self.lang = lang
+		self.course_code = course_code
 		self.data = None
 	
 	
@@ -17,7 +17,8 @@ class Ratings:
 		query = """
 			SELECT {0}, {1}, month, numerical_answer, count
 			FROM ratings
-			WHERE course_code = %s;
+			WHERE course_code = %s
+			ORDER BY {0};
 		""".format(field_name_1, field_name_2)
 		results = query_mysql(query, (self.course_code,))
 		results = pd.DataFrame(results, columns=['short_question', 'long_question', 'month', 'average', 'count'])

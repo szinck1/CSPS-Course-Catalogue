@@ -1,8 +1,8 @@
 <!-- Registrations per Month -->
 <div class="row dashboard-chart">
 	<h4 class= "dashboard-chart-title">
-		Attendance per Month
-		<img id="regs-per-month-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" />
+		{{ _('Registrations per Month') }}
+		<img id="regs-per-month-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="{{ _('Tooltip') }}" />
 	</h4>
 	<div id="regs-per-month" class="col-xs-12"></div>
 </div>
@@ -55,39 +55,6 @@
 	</div>
 </div>
 
-<!--
-<div class="row dashboard-chart">
-	<div class="col-xs-6">
-		<table id="example" class="display table-responsive" style="width:100%">
-			<thead>
-				<tr>
-					<th>Name</th>
-					<th>Registrations</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>Mars</td>
-					<td>1</td>
-				</tr>
-				<tr>
-					<td>Ares</td>
-					<td>2</td>
-				</tr>
-				<tr>
-					<td>Lardo</td>
-					<td>3</td>
-				</tr>
-				<tr>
-					<td>Dumas</td>
-					<td>4</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-</div>
--->
-
 <script async>
 	// Add functionality to DataTables
 	//$('#example').DataTable({
@@ -101,12 +68,12 @@
 	// Add tooltips
 	$('#regs-per-month-tooltip').tooltip({
 		placement: 'right',
-		title: "<h5>Tip:</h5><p>Learners whose registration has status 'Confirmed' in fiscal year {{ THIS_YEAR }}.</p>",
+		title: "{{ _('<h5>Tip:</h5><p>Learners whose registration status is \'Confirmed\'.</p>') }}",
 		animation: true,
 		html: true
 	});
 	
-	// Offerings per Language
+	// Registrations per month
 	$('#regs-per-month').highcharts({
 		chart: {type: 'column'},
 		title: {text: ''},
@@ -115,7 +82,7 @@
 		legend: {enabled: false},
 		credits: {text: ''},
 		series: [{
-			name: 'Learners',
+			name: "{{ _('Learners') }}",
 			colorByPoint: false,
 			data: {{ pass_dict.regs_per_month | safe }}
 		}]

@@ -3,29 +3,29 @@
 <!-- Dropdown to select offering-map or learner-map -->
 <div class="map-filter">
 	<!-- If an online course, disable div offering-map and add tooltip with explanation -->
-	{% if pass_dict.course_info['Business Type'] == 'Online' %}
-		<p>Filter: </p>
+	{% if pass_dict.course_info['Business Type'] == _('Online') %}
+		<p>{{ _('Filter: ') }}</p>
 		<select id="filter-maps" onchange="filterMaps()">
-			<option value="learner-map">Learner Locations</option>
+			<option value="learner-map">{{ _('Learner Locations') }}</option>
 		</select>
-		<img id="online-map-disabled-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" />
+		<img id="online-map-disabled-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="{{ _('Tooltip') }}" />
 	{% else %}
-		<p>Filter: </p>
+		<p>{{ _('Filter: ') }}</p>
 		<select id="filter-maps" onchange="filterMaps()">
-			<option value="offering-map">Offering Locations</option>
-			<option value="learner-map">Learner Locations</option>
+			<option value="offering-map">{{ _('Offering Locations') }}</option>
+			<option value="learner-map">{{ _('Learner Locations') }}</option>
 		</select>
 	{% endif %}
 </div>
 
 <!-- Map headings -->
 <h4 class="offering-map">
-	Locations of open and delivered offerings around the globe.
-	<img id="offering-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" />
+	{{ _('Locations of open and delivered offerings around the globe.') }}
+	<img id="offering-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="{{ _('Tooltip') }}" />
 </h4>
 <h4 class="learner-map">
-	Locations of learners around the globe.
-	<img id="learner-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" />
+	{{ _('Locations of learners around the globe.') }}
+	<img id="learner-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="{{ _('Tooltip') }}" />
 </h4>
 
 <!-- Maps -->
@@ -35,23 +35,23 @@
 <!-- Legend -->
 <div id="legend" class="hidden-xs">
 	<div id="legend-title">
-		<h4>Legend</h4>
+		<h4>{{ _('Legend') }}</h4>
 	</div>
 		<div id="legend-contents">
 			<div>
-				<img class="legend-marker" src="{{ url_for('static', filename='markers/red-dot.png') }}" alt="red-dot" />
+				<img class="legend-marker" src="{{ url_for('static', filename='markers/red-dot.png') }}" alt="{{ _('Red Marker') }}" />
 				<p>1-4</p>
 			</div>
 			<div>
-				<img class="legend-marker" src="{{ url_for('static', filename='markers/orange-dot.png') }}" alt="orange-dot" />
+				<img class="legend-marker" src="{{ url_for('static', filename='markers/orange-dot.png') }}" alt="{{ _('Orange Marker') }}" />
 				<p>5-9</p>
 			</div>
 			<div>
-				<img class="legend-marker" src="{{ url_for('static', filename='markers/green-dot.png') }}" alt="green-dot" />
+				<img class="legend-marker" src="{{ url_for('static', filename='markers/green-dot.png') }}" alt="{{ _('Green Marker') }}" />
 				<p>10-19</p>
 			</div>
 			<div>
-				<img class="legend-marker" src="{{ url_for('static', filename='markers/blue-dot.png') }}" alt="blue-dot" />
+				<img class="legend-marker" src="{{ url_for('static', filename='markers/blue-dot.png') }}" alt="{{ _('Blue Marker') }}" />
 				<p>20+</p>
 			</div>
 		</div>
@@ -65,19 +65,19 @@
 	// Add tooltip contents
 	$('#online-map-disabled-tooltip').tooltip({
 		placement: 'right',
-		title: "<h5>Tip:</h5><p>The Offering Locations section is disabled for online courses as they have no physical location.</p>",
+		title: "{{ _('<h5>Tip:</h5><p>The \'Offering Locations\' section is disabled for online courses as they have no physical location.</p>') }}",
 		animation: true,
 		html: true
 	});
 	$('#offering-tooltip').tooltip({
 		placement: 'right',
-		title: "<h5>Tip:</h5><p>The map shows offerings with status 'Open' or 'Delivered'.</p>",
+		title: "{{ _('<h5>Tip:</h5><p>The map shows offerings with status \'Open\' or \'Delivered\'.</p>') }}",
 		animation: true,
 		html: true
 	});
 	$('#learner-tooltip').tooltip({
 		placement: 'right',
-		title: "<h5>Tip:</h5><p>The map shows learners whose registration status is 'Confirmed'.</p>",
+		title: "{{ _('<h5>Tip:</h5><p>The map shows learners whose registration status is \'Confirmed\'.</p>') }}",
 		animation: true,
 		html: true
 	});
@@ -85,7 +85,7 @@
 	// Unsual structure to fix IE11 jQuery bug: hide with JS, not with CSS
 	$('#offering-map').hide();
 	$('#learner-map').hide();
-	{% if pass_dict.course_info['Business Type'] == 'Online' %}
+	{% if pass_dict.course_info['Business Type'] == _('Online') %}
 		$('#learner-map').show();
 	{% else %}
 		$('#offering-map').show();
@@ -121,7 +121,13 @@
 			icon: 'http://maps.google.com/mapfiles/ms/icons/' + color + '-dot.png'
 		});
 		// Add tooltip
-		var contentString = city_name + ': ' + String(count);
+		// Add space before colon + translate city name for NCR if lang == 'fr'
+		{% set lang = 'fr' if request.cookies.get('lang', None) == 'fr' else 'en' %}
+		{% if lang == 'fr' %}
+			var contentString = city_name.replace('NATIONAL CAPITAL REGION (NCR)', 'RÉGION DE LA CAPITALE NATIONALE (RCN)') + ' : ' + String(count);
+		{% else %}
+			var contentString = city_name + ': ' + String(count);
+		{% endif %}
 		var infoWindow = new google.maps.InfoWindow({
 			content: contentString
 		});
@@ -147,7 +153,7 @@
 		}
 	}
 	
-	<!-- Assemble everything into single function to pass to Google Maps API -->
+	// Assemble everything into single function to pass to Google Maps API
 	function initMaps() {
 		initMap('offering-map', {{ pass_dict.offering_city_counts | safe }});
 		initMap('learner-map', {{ pass_dict.learner_city_counts | safe }});
@@ -155,4 +161,8 @@
 </script>
 
 <!-- Load script from Google and pass API key -->
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA99GCtwUy6QcS3YmzDtelxy8LpwumaCtA&callback=initMaps"></script>
+{% if lang == 'fr' %}
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA99GCtwUy6QcS3YmzDtelxy8LpwumaCtA&callback=initMaps&language=fr"></script>
+{% else %}
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA99GCtwUy6QcS3YmzDtelxy8LpwumaCtA&callback=initMaps"></script>
+{% endif %}

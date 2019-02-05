@@ -23,11 +23,11 @@
 				<div class="row">
 					<div class="col-xs-8 col-sm-9 col-md-6 pull-left">
 						<a href="https://www.csps-efpc.gc.ca">
-							{% set lang = request.cookies.get('lang', 'en') %}
+							{% set lang = 'fr' if request.cookies.get('lang', None) == 'fr' else 'en' %}
 							{% if lang == 'en' %}
-								<img class="goc-fip img-responsive" src="{{ url_for('static', filename='FIPs/csps_en.png') }}" alt="CSPS Logo" />
+								<img class="goc-fip img-responsive" src="{{ url_for('static', filename='FIPs/csps_en.png') }}" alt="{{ _('CSPS Logo') }}" />
 							{% else %}
-								<img class="goc-fip img-responsive" src="{{ url_for('static', filename='FIPs/csps_fr.png') }}" alt="CSPS Logo" />
+								<img class="goc-fip img-responsive" src="{{ url_for('static', filename='FIPs/csps_fr.png') }}" alt="{{ _('CSPS Logo') }}" />
 							{% endif %}
 						</a>
 					</div>
@@ -48,7 +48,7 @@
 						<a href="#top">{{ _('Top of page') }}</a>
 					</div>
 					<div class="col-xs-6 col-md-2 pull-right" style="text-align: right;">
-						<img class="img-responsive goc-fip" src="{{ url_for('static', filename='FIPs/canada.png') }}" alt="GOC Logo" />
+						<img class="img-responsive goc-fip" src="{{ url_for('static', filename='FIPs/canada.png') }}" alt="{{ _('GoC Logo') }}" />
 					</div>
 				</div>
 			</div>

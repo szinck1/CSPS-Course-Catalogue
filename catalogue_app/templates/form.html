@@ -37,16 +37,16 @@
 	</div>
 	
 	<script async>
-		<!-- Upon clicking 'Go', hide form and display loader -->
-		$("#my-button").on("click", function() {
-			$("#selection-form").hide();
-			$("#loader").show();
+		// Upon clicking 'Go', hide form and display loader
+		$("#my-button").on('click', function() {
+			$('#selection-form').hide();
+			$('#loader').show();
 		});
 		
-		<!-- Enable autocomplete functionality in dropdown -->
+		// Enable autocomplete functionality in dropdown
 		$('.chosen').chosen({
-			no_results_text: "{{ _('No results match') }}",
-			<!-- Set to true to enable partial matches e.g. 'hon' in 'Python'
+			no_results_text: "{{ _('No results') }}",
+			// Set to true to enable partial matches e.g. 'hon' in 'Python'
 			search_contains: true
 		});
 	</script>

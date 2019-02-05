@@ -22,12 +22,12 @@
 					{% if tup1[1] > 0 %}
 						<td class="text-center" style="color: red; font-weight: bold;">
 							{{ tup1[1] }}
-							<img id="open-offerings-tooltip" class="table-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" />
+							<img id="open-offerings-tooltip" class="table-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="{{ _('Tooltip') }}" />
 						</td>
 					{% else %}
 						<td class="text-center">
 							{{ tup1[1] }}
-							<img id="open-offerings-tooltip" class="table-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" />
+							<img id="open-offerings-tooltip" class="table-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="{{ _('Tooltip') }}" />
 						</td>
 					{% endif %}
 				{% else %}
@@ -44,8 +44,8 @@
 <div class="row dashboard-chart">
 	<!-- Offerings per Region -->
 	<h4 class= "dashboard-chart-title">
-		Offerings per Region
-		<img id="regions-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="Tooltip" />
+		{{ _('Offerings per Region') }}
+		<img id="regions-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="{{ _('Tooltip') }}" />
 	</h4>
 	<div id="offerings-per-region" class="col-xs-12"></div>
 </div>
@@ -70,13 +70,13 @@
 	// Add tooltips
 	$('#open-offerings-tooltip').tooltip({
 		placement: 'right',
-		title: '<h5>Tip:</h5><p>Past offerings must be closed before Level 1 surveys are sent.</p>',
+		title: "{{ _('<h5>Tip:</h5><p>Past offerings must be closed before Level 1 surveys are sent.</p>') }}",
 		animation: true,
 		html: true
 	});
 	$('#regions-tooltip').tooltip({
 		placement: 'right',
-		title: '<h5>Tip:</h5><p>This chart is interactive and shows offerings by Region, Province, and City.</p>',
+		title: "{{ _('<h5>Tip:</h5><p>This chart is interactive and shows offerings by Region, Province, and City.</p>') }}",
 		animation: true,
 		html: true
 	});
@@ -92,25 +92,18 @@
 		series: [{
 			name: 'Offerings',
 			colorByPoint: true,
-			data: [
-				// Explicitely name regions to ensure all are shown
-				{% set regions = [_('Atlantic'), _('NCR'), _('Ontario Region'), _('Pacific'),
-								  _('Prairie'), _('Québec Region'), _('Outside Canada')] %}
-				{% for region in regions %}
-					{name: '{{ region }}', drilldown: '{{ region }}', y: {{ pass_dict.region_drilldown.get(region, 0) }}},
-				{% endfor %}
-			]
+			data: {{ pass_dict.region_drilldown | safe }}
 		}],
 		drilldown: {
 			series: [
 				// Province drilldowns
 				{% for region, provinces in pass_dict.province_drilldown.items() %}
-					{name: '{{ region | safe }}', id: '{{ region | safe }}', data: {{ provinces | safe }}},
+					{name: "{{ region | safe }}", id: "{{ region | safe }}", data: {{ provinces | safe }}},
 				{% endfor %}
 				
 				// City drilldowns
 				{% for province, cities in pass_dict.city_drilldown.items() %}
-					{name: '{{ province | safe }}', id: '{{ province | safe }}', data: {{ cities | safe }}},
+					{name: "{{ province | safe }}", id: "{{ province | safe }}", data: {{ cities | safe }}},
 				{% endfor %}
 			]
 		}

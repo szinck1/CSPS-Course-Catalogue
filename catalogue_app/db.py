@@ -13,11 +13,9 @@ def query_mysql(query, args=None, dict_=False):
 	# Check if query already cached in memo_dict
 	query_pkey = _query_pkey(query, args)
 	if query_pkey in memo_dict:
-		print('Using memoized values for: {0}'.format(query_pkey))
 		# Return a deepcopy to avoid mutating and affecting future queries
 		return copy.deepcopy(memo_dict[query_pkey])
 	else:
-		print('Running query for the first time.')
 		cnx = get_db(local=Config.LOCAL_DB)
 		cursor = cnx.cursor(dictionary=dict_)
 		cursor.execute(query, args)
