@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  0.2\n"
 "Report-Msgid-Bugs-To: sam.louden@canada.ca\n"
-"POT-Creation-Date: 2019-02-06 12:05-0500\n"
+"POT-Creation-Date: 2019-02-06 12:09-0500\n"
 "PO-Revision-Date: 2019-01-06 13:06-0500\n"
 "Last-Translator: SAM LOUDEN sam.louden@canada.ca\n"
 "Language: fr\n"
@@ -26,6 +26,10 @@ msgstr "Sélection"
 #: course_routes/routes.py:36
 msgid "Go"
 msgstr "Aller"
+
+#: course_routes/queries/comment_queries.py:87
+msgid "No response"
+msgstr "Aucune réponse"
 
 #: course_routes/queries/learner_queries.py:20
 #: templates/course-page/ratings.html:24
