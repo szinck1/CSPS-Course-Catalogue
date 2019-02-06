@@ -1,4 +1,5 @@
 import pandas as pd
+from flask_babel import gettext
 from catalogue_app.db import query_mysql
 
 
@@ -57,8 +58,9 @@ class Comments:
 			# Account for 'Unknown' being 'Inconnu' in FR
 			learner_classif = row[3].replace(' - Unknown', '')
 			learner_classif = learner_classif.replace('Unknown', 'Inconnu') if self.lang == 'fr' else learner_classif
-			# Account for inconsistencies with str.title()
-			offering_city = row[4].title().replace('(Ncr)', '(NCR)').replace('(Rcn)', '(RCN)').replace("'S", "'s")
+			# Account for English vs French title formatting
+			offering_city = self._format_title(row[4])
+			# Use standard fiscal year format e.g. '2018-19' instead of '2018-2019'
 			fiscal_year = row[5].replace('-20', '-')
 			# Account for e.g. 'Q2' being 'T2' in FR
 			quarter = row[6].replace('Q', 'T') if self.lang == 'fr' else row[6]
@@ -83,7 +85,7 @@ class Comments:
 			# Reassemble and append
 			dict_ = {'name': answer, 'y': count}
 			results_processed.append(dict_)
-		return results_processed if results_processed else [{'name': 'No response', 'y': 1}]
+		return results_processed if results_processed else [{'name': gettext('No response'), 'y': 1}]
 	
 	
 	def _load_all_comments(self):
@@ -122,3 +124,15 @@ class Comments:
 		results = pd.DataFrame(results, columns=['short_question', 'text_answer', 'count'])
 		# Return False if course has received no feedback
 		self.categorical_data = False if results.empty else results
+	
+	
+	def _format_title(self, my_string):
+		# Only first letter in a French title should be uppercase
+		if self.lang == 'fr':
+			s = my_string.title()
+			s = s.replace('Région De La Capitale Nationale (Rcn)', 'Région de la capitale nationale (RCN)').replace("'S", "'s")
+			return s
+		else:
+			s = my_string.title()
+			s = s.replace('(Ncr)', '(NCR)').replace("'S", "'s")
+			return s
