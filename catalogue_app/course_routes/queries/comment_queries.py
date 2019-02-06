@@ -57,7 +57,8 @@ class Comments:
 			# Account for 'Unknown' being 'Inconnu' in FR
 			learner_classif = row[3].replace(' - Unknown', '')
 			learner_classif = learner_classif.replace('Unknown', 'Inconnu') if self.lang == 'fr' else learner_classif
-			offering_city = row[4].title().replace('(Ncr)', '(NCR)').replace("'S", "'s")
+			# Account for inconsistencies with str.title()
+			offering_city = row[4].title().replace('(Ncr)', '(NCR)').replace('(Rcn)', '(RCN)').replace("'S", "'s")
 			fiscal_year = row[5].replace('-20', '-')
 			# Account for e.g. 'Q2' being 'T2' in FR
 			quarter = row[6].replace('Q', 'T') if self.lang == 'fr' else row[6]
@@ -86,15 +87,16 @@ class Comments:
 	
 	
 	def _load_all_comments(self):
+		field_name = 'offering_city_{0}'.format(self.lang)
 		query = """
-			SELECT short_question, text_answer, stars, learner_classif, offering_city, fiscal_year, quarter
+			SELECT short_question, text_answer, stars, learner_classif, {0}, fiscal_year, quarter
 			FROM comments
 			WHERE
 				course_code = %s
 				AND
 				short_question IN ('Comment - General', 'Comment - Technical', 'Comment - OL', 'Comment - Performance')
 			ORDER BY RAND();
-		"""
+		""".format(field_name)
 		results = query_mysql(query, (self.course_code,))
 		results = pd.DataFrame(results, columns=['short_question', 'text_answer', 'stars', 'learner_classif',
 												 'offering_city', 'fiscal_year', 'quarter'])
@@ -105,16 +107,17 @@ class Comments:
 	
 	
 	def _load_all_categorical(self):
+		field_name = 'text_answer_fr' if self.lang == 'fr' else 'text_answer'
 		query = """
-			SELECT short_question, text_answer, COUNT(text_answer)
+			SELECT short_question, {0}, COUNT({0})
 			FROM comments
 			WHERE
 				course_code = %s
 				AND
 				short_question IN ('Reason to Participate', 'Technical Issues', 'OL Available', 'GCcampus Tools Used', 'Prep')
-			GROUP BY short_question, text_answer
+			GROUP BY short_question, {0}
 			ORDER BY 1 ASC;
-		"""
+		""".format(field_name)
 		results = query_mysql(query, (self.course_code,))
 		results = pd.DataFrame(results, columns=['short_question', 'text_answer', 'count'])
 		# Return False if course has received no feedback
