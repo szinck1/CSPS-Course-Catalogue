@@ -121,7 +121,7 @@
 			icon: 'http://maps.google.com/mapfiles/ms/icons/' + color + '-dot.png'
 		});
 		// Add tooltip
-		// Add space before colon + translate city name for NCR if lang == 'fr'
+		// Add space before colon if lang == 'fr'
 		{% set lang = 'fr' if request.cookies.get('lang', None) == 'fr' else 'en' %}
 		{% if lang == 'fr' %}
 			var contentString = city_name.replace('NATIONAL CAPITAL REGION (NCR)', 'RÉGION DE LA CAPITALE NATIONALE (RCN)') + ' : ' + String(count);

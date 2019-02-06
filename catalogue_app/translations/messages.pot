@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-02-04 12:10-0500\n"
+"POT-Creation-Date: 2019-02-06 12:09-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,12 +17,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.6.0\n"
 
-#: course_routes/routes.py:37
+#: course_routes/routes.py:36
 msgid "Selection"
 msgstr ""
 
-#: course_routes/routes.py:37
+#: course_routes/routes.py:36
 msgid "Go"
+msgstr ""
+
+#: course_routes/queries/comment_queries.py:87
+msgid "No response"
 msgstr ""
 
 #: course_routes/queries/learner_queries.py:20
@@ -509,84 +513,84 @@ msgstr ""
 msgid "Average No-Shows per Offering"
 msgstr ""
 
-#: templates/course-page/general.html:6
+#: templates/course-page/general.html:11
 msgid "Apologies, this course is currently catalogued without a description."
 msgstr ""
 
-#: templates/course-page/general.html:15
+#: templates/course-page/general.html:21
 msgid "Provider"
 msgstr ""
 
-#: templates/course-page/general.html:18 templates/course-page/general.html:37
-#: templates/course-page/general.html:45 templates/course-page/general.html:86
+#: templates/course-page/general.html:24 templates/course-page/general.html:43
+#: templates/course-page/general.html:51 templates/course-page/general.html:92
 msgid "&lt;awaiting mapping&gt;"
 msgstr ""
 
-#: templates/course-page/general.html:23
+#: templates/course-page/general.html:29
 msgid "Duration"
 msgstr ""
 
-#: templates/course-page/general.html:27
+#: templates/course-page/general.html:33
 msgid "hours"
 msgstr ""
 
-#: templates/course-page/general.html:27
+#: templates/course-page/general.html:33
 msgid "hour"
 msgstr ""
 
-#: templates/course-page/general.html:34
+#: templates/course-page/general.html:40
 msgid "Business Line"
 msgstr ""
 
-#: templates/course-page/general.html:42
+#: templates/course-page/general.html:48
 msgid "Displayed on GCcampus"
 msgstr ""
 
-#: templates/course-page/general.html:58
+#: templates/course-page/general.html:64
 msgid "Additional Info"
 msgstr ""
 
-#: templates/course-page/general.html:64
+#: templates/course-page/general.html:70
 msgid "Field"
 msgstr ""
 
-#: templates/course-page/general.html:65
+#: templates/course-page/general.html:71
 msgid "Contents"
 msgstr ""
 
-#: templates/course-page/general.html:71
+#: templates/course-page/general.html:77
 msgid "Business Type"
 msgstr ""
 
-#: templates/course-page/general.html:72
+#: templates/course-page/general.html:78
 msgid "Communities"
 msgstr ""
 
-#: templates/course-page/general.html:73
+#: templates/course-page/general.html:79
 msgid "Director"
 msgstr ""
 
-#: templates/course-page/general.html:74
+#: templates/course-page/general.html:80
 msgid "Main Topic"
 msgstr ""
 
-#: templates/course-page/general.html:75
+#: templates/course-page/general.html:81
 msgid "Point of Contact"
 msgstr ""
 
-#: templates/course-page/general.html:76
+#: templates/course-page/general.html:82
 msgid "Program Manager"
 msgstr ""
 
-#: templates/course-page/general.html:77
+#: templates/course-page/general.html:83
 msgid "Project Lead"
 msgstr ""
 
-#: templates/course-page/general.html:78
+#: templates/course-page/general.html:84
 msgid "Required Training"
 msgstr ""
 
-#: templates/course-page/general.html:97
+#: templates/course-page/general.html:103
 msgid "<h5>Tip:</h5><p>This information is tracked by Curriculum Management.</p>"
 msgstr ""
 

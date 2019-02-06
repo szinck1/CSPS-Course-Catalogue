@@ -4,9 +4,11 @@ CREATE TABLE comments(
 	fiscal_year VARCHAR(9),
 	quarter VARCHAR(5),
 	learner_classif VARCHAR(80),
-	offering_city VARCHAR(60),
+	offering_city_en VARCHAR(60),
+	offering_city_fr VARCHAR(60),
 	short_question VARCHAR(60),
 	text_answer TEXT,
+	text_answer_fr VARCHAR(90),
 	stars TINYINT
 );
 
