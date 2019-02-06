@@ -6,18 +6,18 @@ LAST_YEAR = Config.LAST_YEAR
 THIS_YEAR = Config.THIS_YEAR
 
 
-def get_vals(course_code, lang='en'):
+def get_vals(lang, course_code):
 	# Instantiate classes
-	locations = offering_queries.OfferingLocations(THIS_YEAR, course_code).load()
-	ratings = rating_queries.Ratings(course_code, lang).load()
-	comments = comment_queries.Comments(course_code).load()
+	locations = offering_queries.OfferingLocations(lang, THIS_YEAR, course_code).load()
+	ratings = rating_queries.Ratings(lang, course_code).load()
+	comments = comment_queries.Comments(lang, course_code).load()
 	
 	pass_dict = {
 		#Global
 		'course_code': course_code,
 		'course_title': general_queries.course_title(lang, THIS_YEAR, course_code),
 		# General
-		'course_info': general_queries.course_info(course_code),
+		'course_info': general_queries.course_info(lang, course_code),
 		# Dashboard - offerings
 		'overall_numbers_LY': offering_queries.overall_numbers(LAST_YEAR, course_code),
 		'overall_numbers_TY': offering_queries.overall_numbers(THIS_YEAR, course_code),
@@ -39,7 +39,7 @@ def get_vals(course_code, lang='en'):
 		'avg_no_shows_LY': round(offering_queries.avg_no_shows(LAST_YEAR, course_code), 1),
 		'avg_no_shows_TY': round(offering_queries.avg_no_shows(THIS_YEAR, course_code), 1),
 		# Dashboard - learners
-		'regs_per_month': learner_queries.regs_per_month(THIS_YEAR, course_code),
+		'regs_per_month': learner_queries.regs_per_month(lang, THIS_YEAR, course_code),
 		'top_5_depts': learner_queries.top_5_depts(lang, THIS_YEAR, course_code),
 		'top_5_classifs': learner_queries.top_5_classifs(THIS_YEAR, course_code),
 		# Maps
@@ -59,4 +59,4 @@ def get_vals(course_code, lang='en'):
 		'tools_used': comments.gccampus_bool,
 		'prepared_by': comments.preparation
 	}
-	return pass_dict
+	return True

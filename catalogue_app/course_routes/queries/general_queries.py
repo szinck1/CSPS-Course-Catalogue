@@ -3,7 +3,6 @@ from catalogue_app.course_routes.utils import as_string
 
 
 def all_course_codes(fiscal_year):
-	"""Should be gone after refactoring memoize_all."""
 	table_name = 'lsr{}'.format(fiscal_year)
 	query = """
 		SELECT DISTINCT course_code
