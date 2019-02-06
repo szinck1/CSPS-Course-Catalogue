@@ -118,7 +118,7 @@ def memoize_all():
 	codes = general_queries.all_course_codes(THIS_YEAR)
 	for lang in langs:
 		for code in codes:
-			memoize_func.get_vals(lang=lang, course_code=code)
+			_ = memoize_func.get_vals(lang=lang, course_code=code)
 			print(code)
 	t2 = time.time()
 	# Import the memo_dict that has been generated in module 'db.py' by
