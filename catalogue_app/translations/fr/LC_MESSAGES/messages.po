@@ -256,7 +256,7 @@ msgid ""
 "If you encounter any bugs, please contact <a "
 "href=\"mailto:sam.louden@canada.ca\">Sam Louden</a>."
 msgstr ""
-"Si vous rencontrez de bugs, veuillez contacter <a "
+"Si vous rencontrez des bogues, veuillez contacter <a "
 "href=\"mailto:sam.louden@canada.ca\">Sam Louden</a>."
 
 #: templates/layout.html:28 templates/layout.html:30
