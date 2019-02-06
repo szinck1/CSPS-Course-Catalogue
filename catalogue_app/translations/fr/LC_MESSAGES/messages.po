@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  0.2\n"
 "Report-Msgid-Bugs-To: sam.louden@canada.ca\n"
-"POT-Creation-Date: 2019-02-04 12:10-0500\n"
+"POT-Creation-Date: 2019-02-06 12:05-0500\n"
 "PO-Revision-Date: 2019-01-06 13:06-0500\n"
 "Last-Translator: SAM LOUDEN sam.louden@canada.ca\n"
 "Language: fr\n"
@@ -19,11 +19,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.6.0\n"
 
-#: course_routes/routes.py:37
+#: course_routes/routes.py:36
 msgid "Selection"
 msgstr "Sélection"
 
-#: course_routes/routes.py:37
+#: course_routes/routes.py:36
 msgid "Go"
 msgstr "Aller"
 
@@ -411,23 +411,23 @@ msgstr "<strong>Numéro de réponses :</strong>"
 
 #: templates/course-page/comments.html:219
 msgid "Reason to Participate"
-msgstr ""
+msgstr "Raison principale pour prendre part"
 
 #: templates/course-page/comments.html:220
 msgid "Did You Experience Technical Issues?"
-msgstr ""
+msgstr "Avez-vous éprouvé des difficultés techniques?"
 
 #: templates/course-page/comments.html:221
 msgid "The Course Was Available in the Official Language of My Choice"
-msgstr ""
+msgstr "Le cours était offert dans la langue officielle de mon choix."
 
 #: templates/course-page/comments.html:222
 msgid "Did the Course Make Use of GCcampus Tools?"
-msgstr ""
+msgstr "Utilisation d'outils supplémentaires provenant de GCcampus?"
 
 #: templates/course-page/comments.html:223
 msgid "Method of Preparing for the Course"
-msgstr ""
+msgstr "Méthode de préparation au cours"
 
 #: templates/course-page/dashboard-learners.html:4
 msgid "Registrations per Month"
@@ -449,8 +449,8 @@ msgstr "Top 5 des classifications"
 #: templates/course-page/dashboard-learners.html:71
 msgid "<h5>Tip:</h5><p>Learners whose registration status is 'Confirmed'.</p>"
 msgstr ""
-"<h5>Indice :</h5><p>Les apprenants ayant une inscription avec le statut de"
-" 'Confirmée'.</p>"
+"<h5>Indice :</h5><p>Les apprenants ayant une inscription avec le statut "
+"de 'Confirmée'.</p>"
 
 #: templates/course-page/dashboard-learners.html:85
 msgid "Learners"
@@ -544,84 +544,84 @@ msgstr "Effectif de classe moyen"
 msgid "Average No-Shows per Offering"
 msgstr "Absences moyennes par offre"
 
-#: templates/course-page/general.html:6
+#: templates/course-page/general.html:11
 msgid "Apologies, this course is currently catalogued without a description."
 msgstr "Désolé, ce cours est présentement catalogué sans description."
 
-#: templates/course-page/general.html:15
+#: templates/course-page/general.html:21
 msgid "Provider"
 msgstr "Fournisseur"
 
-#: templates/course-page/general.html:18 templates/course-page/general.html:37
-#: templates/course-page/general.html:45 templates/course-page/general.html:86
+#: templates/course-page/general.html:24 templates/course-page/general.html:43
+#: templates/course-page/general.html:51 templates/course-page/general.html:92
 msgid "&lt;awaiting mapping&gt;"
 msgstr "&lt;en attente de catégorisation&gt;"
 
-#: templates/course-page/general.html:23
+#: templates/course-page/general.html:29
 msgid "Duration"
 msgstr "Durée"
 
-#: templates/course-page/general.html:27
+#: templates/course-page/general.html:33
 msgid "hours"
 msgstr "heures"
 
-#: templates/course-page/general.html:27
+#: templates/course-page/general.html:33
 msgid "hour"
 msgstr "heure"
 
-#: templates/course-page/general.html:34
+#: templates/course-page/general.html:40
 msgid "Business Line"
 msgstr "Ligne d'affaires"
 
-#: templates/course-page/general.html:42
+#: templates/course-page/general.html:48
 msgid "Displayed on GCcampus"
 msgstr "Affiché sur GCcampus"
 
-#: templates/course-page/general.html:58
+#: templates/course-page/general.html:64
 msgid "Additional Info"
 msgstr "Infos additionnelles"
 
-#: templates/course-page/general.html:64
+#: templates/course-page/general.html:70
 msgid "Field"
 msgstr "Champ"
 
-#: templates/course-page/general.html:65
+#: templates/course-page/general.html:71
 msgid "Contents"
 msgstr "Contenu"
 
-#: templates/course-page/general.html:71
+#: templates/course-page/general.html:77
 msgid "Business Type"
 msgstr "Type de livraison"
 
-#: templates/course-page/general.html:72
+#: templates/course-page/general.html:78
 msgid "Communities"
 msgstr "Communautés"
 
-#: templates/course-page/general.html:73
+#: templates/course-page/general.html:79
 msgid "Director"
 msgstr "Directeur"
 
-#: templates/course-page/general.html:74
+#: templates/course-page/general.html:80
 msgid "Main Topic"
 msgstr "Sujet principal"
 
-#: templates/course-page/general.html:75
+#: templates/course-page/general.html:81
 msgid "Point of Contact"
 msgstr "Point de contact"
 
-#: templates/course-page/general.html:76
+#: templates/course-page/general.html:82
 msgid "Program Manager"
 msgstr "Gestionnaire de programme"
 
-#: templates/course-page/general.html:77
+#: templates/course-page/general.html:83
 msgid "Project Lead"
 msgstr "Chef de projet"
 
-#: templates/course-page/general.html:78
+#: templates/course-page/general.html:84
 msgid "Required Training"
 msgstr "Formation requise"
 
-#: templates/course-page/general.html:97
+#: templates/course-page/general.html:103
 msgid "<h5>Tip:</h5><p>This information is tracked by Curriculum Management.</p>"
 msgstr ""
 "<h5>Indice :</h5><p>Ces infos sont maintenues par Gestion du "
@@ -684,8 +684,8 @@ msgid ""
 "<h5>Tip:</h5><p>The map shows learners whose registration status is "
 "'Confirmed'.</p>"
 msgstr ""
-"<h5>Indice :</h5><p>Les emplacements des apprenants ayant une inscription "
-"avec le statut de 'Confirmée' sont placés sur la carte.</p>"
+"<h5>Indice :</h5><p>Les emplacements des apprenants ayant une inscription"
+" avec le statut de 'Confirmée' sont placés sur la carte.</p>"
 
 #: templates/course-page/main.html:19
 msgid "General"
