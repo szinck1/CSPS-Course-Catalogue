@@ -124,7 +124,7 @@
 		// Add space before colon if lang == 'fr'
 		{% set lang = 'fr' if request.cookies.get('lang', None) == 'fr' else 'en' %}
 		{% if lang == 'fr' %}
-			var contentString = city_name + ' : ' + String(count);
+			var contentString = city_name.replace('NATIONAL CAPITAL REGION (NCR)', 'RÉGION DE LA CAPITALE NATIONALE (RCN)') + ' : ' + String(count);
 		{% else %}
 			var contentString = city_name + ': ' + String(count);
 		{% endif %}
