@@ -58,6 +58,7 @@ def course_result():
 	locations = offering_queries.OfferingLocations(lang, THIS_YEAR, course_code).load()
 	ratings = rating_queries.Ratings(lang, course_code).load()
 	comments = comment_queries.Comments(lang, course_code).load()
+	
 	pass_dict = {
 		#Global
 		'course_code': course_code,
@@ -108,19 +109,22 @@ def course_result():
 	return render_template('/course-page/main.html', pass_dict=pass_dict)
 
 
-# Temporary solution: Run queries for all course codes, store in dict, export to pickle
+# Temporary solution: Run all course codes to populate DB's memo_dict and export to pickle
 @course.route('/memoize-all')
 @auth.login_required
 def memoize_all():
 	t1 = time.time()
-	memo_dict = {}
-	course_codes = general_queries.all_course_codes(THIS_YEAR)
-	for code in course_codes:
-		vals = memoize_func.get_vals(code)
-		memo_dict[code] = vals
-		print(code)
+	langs = ['en', 'fr']
+	codes = general_queries.all_course_codes(THIS_YEAR)
+	for lang in langs:
+		for code in codes:
+			_ = memoize_func.get_vals(lang=lang, course_code=code)
+			print(code)
 	t2 = time.time()
-	# Save memo_dict to binary file
+	# Import the memo_dict that has been generated in module 'db.py' by
+	# the above for loops and export to pickle for future use
+	print('Pickling')
+	from catalogue_app import memo_dict
 	with open('memo.pickle', 'wb') as f:
 		pickle.dump(memo_dict, f, protocol=pickle.HIGHEST_PROTOCOL)
 	return '<h1>Done!</h1><p>Time elapsed: {0}</p><p>Another great day in DIS.</p>'.format(t2 - t1)
