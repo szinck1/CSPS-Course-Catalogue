@@ -1,4 +1,6 @@
 ### CURRENT SPRINT ###
+# add pagination for huge comment sections
+# new memoize_all
 # make note, don't use data, waiting on updates from IT, data from Jan 21
 # push new version, tell everyone
 
@@ -7,13 +9,11 @@
 ### NEXT SPRINT ###
 # make OOP
 	# combine offering per region query with map query?
-		# if so, beware FR e.g. 'KINGSTON, JAMAICA'
-		# same issue for Comments tab
+		# if so, beware FR (NCR; Online; and Kingston, Jamaica)
 # make search front and center
 	# search by provider, topic, business type, etc.
 	# new colour scheme
 # add datatables i.e. scroll instead of top 5
-# add pagination for huge comment sections
 # ensure no processing taking place in templates
 # beware hardcoding
 # upgrade server
