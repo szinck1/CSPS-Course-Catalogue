@@ -36,6 +36,9 @@ def course_info(lang, course_code):
 	
 	query = "SELECT {0} FROM product_info WHERE course_code = %s LIMIT 1;".format(str(fields).replace('[', '').replace(']', '').replace("'", ''))
 	results = query_mysql(query, (course_code,), dict_=True)
+	# Account for new courses that have registrations but have yet to be catalogued
+	if not results:
+		return {}
 	# Format keys for displaying on page
 	results_processed = {_clean_key(key): val for (key, val) in results[0].items()}
 	return results_processed
