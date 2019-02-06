@@ -49,8 +49,8 @@ class Ratings:
 	
 	@staticmethod
 	def _get_monthly_values(df):
-		months = ['February', 'March', 'April', 'May', 'June', 'July', 'August', 'September',
-				  'October', 'November', 'December', 'January']
+		months = ['March', 'April', 'May', 'June', 'July', 'August', 'September',
+				  'October', 'November', 'December', 'January', 'February']
 		monthly_values = []
 		for month in months:
 			df_month = df.loc[df['month'] == month, :]
