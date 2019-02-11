@@ -1,5 +1,4 @@
 import pandas as pd
-from flask_babel import gettext
 from catalogue_app.db import query_mysql
 
 

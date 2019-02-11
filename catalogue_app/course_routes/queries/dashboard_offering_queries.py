@@ -1,8 +1,7 @@
-from collections import defaultdict
 import pandas as pd
 from flask_babel import gettext
 from catalogue_app.db import query_mysql
-from catalogue_app.course_routes.utils import as_string, as_float, as_int, as_percent
+from catalogue_app.course_routes.utils import as_float, as_int, as_percent
 
 # Note: String interpolation used for 'lang' and 'fiscal_year' because:
 # a) They exist only as server-side variables, aren't user inputs
