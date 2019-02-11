@@ -56,6 +56,7 @@ def course_result():
 	### QUERYING ###
 	# Instantiate classes
 	locations = offering_queries.OfferingLocations(lang, THIS_YEAR, course_code).load()
+	map = map_queries.Map(THIS_YEAR, course_code).load()
 	ratings = rating_queries.Ratings(lang, course_code).load()
 	comments = comment_queries.Comments(lang, course_code).load()
 	
@@ -90,8 +91,8 @@ def course_result():
 		'top_5_depts': learner_queries.top_5_depts(lang, THIS_YEAR, course_code),
 		'top_5_classifs': learner_queries.top_5_classifs(THIS_YEAR, course_code),
 		# Maps
-		'offering_city_counts': map_queries.offering_city_counts(THIS_YEAR, course_code),
-		'learner_city_counts': map_queries.learner_city_counts(THIS_YEAR, course_code),
+		'offering_city_counts': map.offerings,
+		'learner_city_counts': map.learners,
 		# Ratings
 		'all_ratings': ratings.all_ratings(),
 		# Comments
