@@ -57,6 +57,7 @@ def course_result():
 	
 	
 	# Instantiate classes
+	info = general_queries.Info(lang, course_code).load()
 	locations = dashboard_offering_queries.OfferingLocations(lang, THIS_YEAR, course_code).load()
 	map = map_queries.Map(THIS_YEAR, course_code).load()
 	ratings = rating_queries.Ratings(lang, course_code).load()
@@ -67,7 +68,7 @@ def course_result():
 		'course_code': course_code,
 		'course_title': course_title,
 		# General
-		'course_info': general_queries.course_info(lang, course_code),
+		'course_info': info.course_info,
 		# Dashboard - offerings
 		'overall_numbers_LY': dashboard_offering_queries.overall_numbers(LAST_YEAR, course_code),
 		'overall_numbers_TY': dashboard_offering_queries.overall_numbers(THIS_YEAR, course_code),
