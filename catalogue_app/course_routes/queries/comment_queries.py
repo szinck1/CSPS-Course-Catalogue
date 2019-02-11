@@ -134,7 +134,7 @@ class Comments:
 	
 	
 	def _format_title(self, my_string):
-		"""Correct English and French edge cases in formatting city names."""
+		"""Correct English and French formatting edge cases."""
 		if self.lang == 'fr':
 			s = my_string.title()
 			s = s.replace('Région De La Capitale Nationale (Rcn)', 'Région de la capitale nationale (RCN)').replace("'S", "'s")
