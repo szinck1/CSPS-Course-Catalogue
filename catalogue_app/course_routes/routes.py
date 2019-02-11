@@ -1,7 +1,4 @@
-import copy
-import pickle
-import time
-from flask import Blueprint, redirect, render_template, request, session, url_for
+from flask import Blueprint, redirect, render_template, request, url_for
 from flask_babel import gettext
 from catalogue_app import auth
 from catalogue_app.config import Config
@@ -30,7 +27,7 @@ def context_processor():
 def course_selection():
 	# Only allow 'en' and 'fr' to be passed to app
 	lang = 'fr' if request.cookies.get('lang', None) == 'fr' else 'en'
-	form = course_form(lang)
+	form = course_form(lang, THIS_YEAR)
 	form = form(request.form)
 	if request.method == 'POST' and form.validate():
 		course_code = form.course_selection.data
