@@ -59,6 +59,7 @@ def course_result():
 	# Instantiate classes
 	info = general_queries.Info(lang, course_code).load()
 	locations = dashboard_offering_queries.OfferingLocations(lang, THIS_YEAR, course_code).load()
+	learners = dashboard_learner_queries.Learners(lang, THIS_YEAR, course_code).load()
 	map = map_queries.Map(THIS_YEAR, course_code).load()
 	ratings = rating_queries.Ratings(lang, course_code).load()
 	comments = comment_queries.Comments(lang, course_code).load()
@@ -90,9 +91,9 @@ def course_result():
 		'avg_no_shows_LY': round(dashboard_offering_queries.avg_no_shows(LAST_YEAR, course_code), 1),
 		'avg_no_shows_TY': round(dashboard_offering_queries.avg_no_shows(THIS_YEAR, course_code), 1),
 		# Dashboard - learners
-		'regs_per_month': dashboard_learner_queries.regs_per_month(lang, THIS_YEAR, course_code),
-		'top_5_depts': dashboard_learner_queries.top_5_depts(lang, THIS_YEAR, course_code),
-		'top_5_classifs': dashboard_learner_queries.top_5_classifs(THIS_YEAR, course_code),
+		'regs_per_month': learners.regs_per_month,
+		'top_5_depts': learners.top_depts,
+		'top_5_classifs': learners.top_classifs,
 		# Maps
 		'offering_city_counts': map.offerings,
 		'learner_city_counts': map.learners,
