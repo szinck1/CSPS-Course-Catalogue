@@ -3,19 +3,19 @@ from flask_babel import gettext
 from catalogue_app.db import query_mysql
 
 
-# Should probably store results_processed as attribute
 class Comments:
 	def __init__(self, lang, course_code):
 		self.lang = lang
 		self.course_code = course_code
+		# Raw data returned by queries
 		self.comment_data = None
 		self.categorical_data = None
-		# Comments
+		# Processed data for Comments tab
 		self.general = None
 		self.technical = None
 		self.language = None
 		self.performance = None
-		# Categorical and true/false questions
+		# Processed data for Categorical tab
 		self.reason = None
 		self.technical_bool = None
 		self.language_bool = None
@@ -24,6 +24,7 @@ class Comments:
 	
 	
 	def load(self):
+		"""Run all queries and process all raw data."""
 		# Query all comments and categorical questions
 		self._load_all_comments()
 		self._load_all_categorical()
@@ -44,7 +45,9 @@ class Comments:
 	
 	
 	def _load_comment(self, question):
-		# Return False if course has received no feedback
+		"""Extract and process results for an individual comment question from
+		the raw data. Returns False if course has received no feedback of that type.
+		"""
 		# Explicitely checking 'if df is False' rather than 'if not df' as
 		# DataFrames do not have a truth value
 		if self.comment_data is False:
@@ -52,7 +55,7 @@ class Comments:
 		data_filtered = self.comment_data.loc[self.comment_data['short_question'] == question, :]
 		results_processed = []
 		for row in data_filtered.itertuples(index=False):
-			# Unpack the tuple as some fields require customization
+			# Unpack tuple as some fields require customization
 			text_answer = row[1]
 			stars = int(row[2])
 			# Account for 'Unknown' being 'Inconnu' in FR
@@ -71,7 +74,9 @@ class Comments:
 	
 	
 	def _load_categorical(self, question):
-		# Return False if course has received no feedback
+		"""Extract and process results for a categorical question from the raw
+		data. Returns False if course has received no feedback of that type.
+		"""
 		# Explicitely checking 'if df is False' rather than 'if not df' as
 		# DataFrames do not have a truth value
 		if self.categorical_data is False:
@@ -79,7 +84,7 @@ class Comments:
 		data_filtered = self.categorical_data.loc[self.categorical_data['short_question'] == question, :]
 		results_processed = []
 		for row in data_filtered.itertuples(index=False):
-			# Unpack the tuple as some fields require customization
+			# Unpack tuple as some fields require customization
 			answer = row[1]
 			count = row[2]
 			# Reassemble and append
@@ -89,6 +94,7 @@ class Comments:
 	
 	
 	def _load_all_comments(self):
+		"""Query the DB and extract all comment data for a given course code."""
 		field_name = 'offering_city_{0}'.format(self.lang)
 		query = """
 			SELECT short_question, text_answer, stars, learner_classif, {0}, fiscal_year, quarter
@@ -109,6 +115,7 @@ class Comments:
 	
 	
 	def _load_all_categorical(self):
+		"""Query the DB and extract all categorical question data for a given course code."""
 		field_name = 'text_answer_fr' if self.lang == 'fr' else 'text_answer'
 		query = """
 			SELECT short_question, {0}, COUNT({0})
@@ -127,7 +134,7 @@ class Comments:
 	
 	
 	def _format_title(self, my_string):
-		# Only first letter in a French title should be uppercase
+		"""Correct English and French edge cases in formatting city names."""
 		if self.lang == 'fr':
 			s = my_string.title()
 			s = s.replace('Région De La Capitale Nationale (Rcn)', 'Région de la capitale nationale (RCN)').replace("'S", "'s")
