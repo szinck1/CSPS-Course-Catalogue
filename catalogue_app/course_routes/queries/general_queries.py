@@ -2,26 +2,6 @@ from catalogue_app.db import query_mysql
 from catalogue_app.course_routes.utils import as_string
 
 
-def all_course_codes(fiscal_year):
-	table_name = 'lsr{}'.format(fiscal_year)
-	query = """
-		SELECT DISTINCT course_code
-		FROM {0}
-		ORDER BY 1 ASC;
-	""".format(table_name)
-	results = query_mysql(query)
-	results = [tup[0] for tup in results]
-	return results
-
-
-def course_title(lang, fiscal_year, course_code):
-	field_name = 'course_title_{0}'.format(lang)
-	table_name = 'lsr{0}'.format(fiscal_year)
-	query = "SELECT {0} FROM {1} WHERE course_code = %s LIMIT 1;".format(field_name, table_name)
-	course_title = query_mysql(query, (course_code,))
-	return as_string(course_title, error_msg=False)
-
-
 def course_info(lang, course_code):
 	if lang == 'fr':
 		fields = ['course_description_fr', 'business_type_fr', 'provider_fr',

@@ -5,6 +5,7 @@ from flask import Blueprint, redirect, render_template, request, session, url_fo
 from flask_babel import gettext
 from catalogue_app import auth
 from catalogue_app.config import Config
+from catalogue_app.course_routes import utils
 from catalogue_app.course_routes.forms import course_form
 from catalogue_app.course_routes.queries import (
 	comment_queries, dashboard_learner_queries, dashboard_offering_queries,
@@ -45,16 +46,19 @@ def course_result():
 	# Get arguments from query string; if incomplete, return to selection page
 	if 'course_code' not in request.args:
 		return redirect(url_for('course.course_selection'))
-	# Argument is automatically escaped in Jinja2 (HTML templates) and MySQL queries
+	# Argument is automatically escaped in Jinja2 and MySQL
 	course_code = request.args['course_code']
 	# Only allow 'en' and 'fr' to be passed to app
 	lang = 'fr' if request.cookies.get('lang', None) == 'fr' else 'en'
 	# Security check: If course_code doesn't exist, render not_found.html
-	course_title = general_queries.course_title(lang, THIS_YEAR, course_code)
+	course_title = utils.validate_course_code(lang, THIS_YEAR, course_code)
 	if not course_title:
 		return render_template('not-found.html')
 	
-	### QUERYING ###
+	
+	
+	
+	
 	# Instantiate classes
 	locations = dashboard_offering_queries.OfferingLocations(lang, THIS_YEAR, course_code).load()
 	map = map_queries.Map(THIS_YEAR, course_code).load()
@@ -109,27 +113,6 @@ def course_result():
 		'prepared_by': comments.preparation
 	}
 	return render_template('/course-page/main.html', pass_dict=pass_dict)
-
-
-# # Temporary solution: Run all course codes to populate DB's memo_dict and export to pickle
-# @course.route('/memoize-all')
-# @auth.login_required
-# def memoize_all():
-	# t1 = time.time()
-	# langs = ['en', 'fr']
-	# codes = general_queries.all_course_codes(THIS_YEAR)
-	# for lang in langs:
-		# for code in codes:
-			# _ = memoize_func.get_vals(lang=lang, course_code=code)
-			# print(code)
-	# t2 = time.time()
-	# # Import the memo_dict that has been generated in module 'db.py' by
-	# # the above for loops and export to pickle for future use
-	# print('Pickling')
-	# from catalogue_app import memo_dict
-	# with open('memo.pickle', 'wb') as f:
-		# pickle.dump(memo_dict, f, protocol=pickle.HIGHEST_PROTOCOL)
-	# return '<h1>Done!</h1><p>Time elapsed: {0}</p><p>Another great day in DIS.</p>'.format(t2 - t1)
 
 
 # Coming soon
