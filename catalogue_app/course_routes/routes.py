@@ -7,7 +7,8 @@ from catalogue_app import auth
 from catalogue_app.config import Config
 from catalogue_app.course_routes.forms import course_form
 from catalogue_app.course_routes.queries import (
-	comment_queries, general_queries, learner_queries, map_queries, memoize_func, offering_queries, rating_queries
+	comment_queries, dashboard_learner_queries, dashboard_offering_queries,
+	general_queries, map_queries, rating_queries
 )
 
 # Instantiate blueprint
@@ -55,7 +56,7 @@ def course_result():
 	
 	### QUERYING ###
 	# Instantiate classes
-	locations = offering_queries.OfferingLocations(lang, THIS_YEAR, course_code).load()
+	locations = dashboard_offering_queries.OfferingLocations(lang, THIS_YEAR, course_code).load()
 	map = map_queries.Map(THIS_YEAR, course_code).load()
 	ratings = rating_queries.Ratings(lang, course_code).load()
 	comments = comment_queries.Comments(lang, course_code).load()
@@ -67,29 +68,29 @@ def course_result():
 		# General
 		'course_info': general_queries.course_info(lang, course_code),
 		# Dashboard - offerings
-		'overall_numbers_LY': offering_queries.overall_numbers(LAST_YEAR, course_code),
-		'overall_numbers_TY': offering_queries.overall_numbers(THIS_YEAR, course_code),
+		'overall_numbers_LY': dashboard_offering_queries.overall_numbers(LAST_YEAR, course_code),
+		'overall_numbers_TY': dashboard_offering_queries.overall_numbers(THIS_YEAR, course_code),
 		'region_drilldown': locations.region_drilldown(),
 		'province_drilldown': locations.province_drilldown(),
 		'city_drilldown': locations.city_drilldown(),
-		'offerings_per_lang_LY': offering_queries.offerings_per_lang(LAST_YEAR, course_code),
-		'offerings_per_lang_TY': offering_queries.offerings_per_lang(THIS_YEAR, course_code),
-		'offerings_cancelled_global_LY': offering_queries.offerings_cancelled_global(LAST_YEAR),
-		'offerings_cancelled_global_TY': offering_queries.offerings_cancelled_global(THIS_YEAR),
-		'offerings_cancelled_LY': offering_queries.offerings_cancelled(LAST_YEAR, course_code),
-		'offerings_cancelled_TY': offering_queries.offerings_cancelled(THIS_YEAR, course_code),
-		'avg_class_size_global_LY': offering_queries.avg_class_size_global(LAST_YEAR),
-		'avg_class_size_global_TY': offering_queries.avg_class_size_global(THIS_YEAR),
-		'avg_class_size_LY': offering_queries.avg_class_size(LAST_YEAR, course_code),
-		'avg_class_size_TY': offering_queries.avg_class_size(THIS_YEAR, course_code),
-		'avg_no_shows_global_LY': round(offering_queries.avg_no_shows_global(LAST_YEAR), 1),
-		'avg_no_shows_global_TY': round(offering_queries.avg_no_shows_global(THIS_YEAR), 1),
-		'avg_no_shows_LY': round(offering_queries.avg_no_shows(LAST_YEAR, course_code), 1),
-		'avg_no_shows_TY': round(offering_queries.avg_no_shows(THIS_YEAR, course_code), 1),
+		'offerings_per_lang_LY': dashboard_offering_queries.offerings_per_lang(LAST_YEAR, course_code),
+		'offerings_per_lang_TY': dashboard_offering_queries.offerings_per_lang(THIS_YEAR, course_code),
+		'offerings_cancelled_global_LY': dashboard_offering_queries.offerings_cancelled_global(LAST_YEAR),
+		'offerings_cancelled_global_TY': dashboard_offering_queries.offerings_cancelled_global(THIS_YEAR),
+		'offerings_cancelled_LY': dashboard_offering_queries.offerings_cancelled(LAST_YEAR, course_code),
+		'offerings_cancelled_TY': dashboard_offering_queries.offerings_cancelled(THIS_YEAR, course_code),
+		'avg_class_size_global_LY': dashboard_offering_queries.avg_class_size_global(LAST_YEAR),
+		'avg_class_size_global_TY': dashboard_offering_queries.avg_class_size_global(THIS_YEAR),
+		'avg_class_size_LY': dashboard_offering_queries.avg_class_size(LAST_YEAR, course_code),
+		'avg_class_size_TY': dashboard_offering_queries.avg_class_size(THIS_YEAR, course_code),
+		'avg_no_shows_global_LY': round(dashboard_offering_queries.avg_no_shows_global(LAST_YEAR), 1),
+		'avg_no_shows_global_TY': round(dashboard_offering_queries.avg_no_shows_global(THIS_YEAR), 1),
+		'avg_no_shows_LY': round(dashboard_offering_queries.avg_no_shows(LAST_YEAR, course_code), 1),
+		'avg_no_shows_TY': round(dashboard_offering_queries.avg_no_shows(THIS_YEAR, course_code), 1),
 		# Dashboard - learners
-		'regs_per_month': learner_queries.regs_per_month(lang, THIS_YEAR, course_code),
-		'top_5_depts': learner_queries.top_5_depts(lang, THIS_YEAR, course_code),
-		'top_5_classifs': learner_queries.top_5_classifs(THIS_YEAR, course_code),
+		'regs_per_month': dashboard_learner_queries.regs_per_month(lang, THIS_YEAR, course_code),
+		'top_5_depts': dashboard_learner_queries.top_5_depts(lang, THIS_YEAR, course_code),
+		'top_5_classifs': dashboard_learner_queries.top_5_classifs(THIS_YEAR, course_code),
 		# Maps
 		'offering_city_counts': map.offerings,
 		'learner_city_counts': map.learners,
@@ -110,25 +111,25 @@ def course_result():
 	return render_template('/course-page/main.html', pass_dict=pass_dict)
 
 
-# Temporary solution: Run all course codes to populate DB's memo_dict and export to pickle
-@course.route('/memoize-all')
-@auth.login_required
-def memoize_all():
-	t1 = time.time()
-	langs = ['en', 'fr']
-	codes = general_queries.all_course_codes(THIS_YEAR)
-	for lang in langs:
-		for code in codes:
-			_ = memoize_func.get_vals(lang=lang, course_code=code)
-			print(code)
-	t2 = time.time()
-	# Import the memo_dict that has been generated in module 'db.py' by
-	# the above for loops and export to pickle for future use
-	print('Pickling')
-	from catalogue_app import memo_dict
-	with open('memo.pickle', 'wb') as f:
-		pickle.dump(memo_dict, f, protocol=pickle.HIGHEST_PROTOCOL)
-	return '<h1>Done!</h1><p>Time elapsed: {0}</p><p>Another great day in DIS.</p>'.format(t2 - t1)
+# # Temporary solution: Run all course codes to populate DB's memo_dict and export to pickle
+# @course.route('/memoize-all')
+# @auth.login_required
+# def memoize_all():
+	# t1 = time.time()
+	# langs = ['en', 'fr']
+	# codes = general_queries.all_course_codes(THIS_YEAR)
+	# for lang in langs:
+		# for code in codes:
+			# _ = memoize_func.get_vals(lang=lang, course_code=code)
+			# print(code)
+	# t2 = time.time()
+	# # Import the memo_dict that has been generated in module 'db.py' by
+	# # the above for loops and export to pickle for future use
+	# print('Pickling')
+	# from catalogue_app import memo_dict
+	# with open('memo.pickle', 'wb') as f:
+		# pickle.dump(memo_dict, f, protocol=pickle.HIGHEST_PROTOCOL)
+	# return '<h1>Done!</h1><p>Time elapsed: {0}</p><p>Another great day in DIS.</p>'.format(t2 - t1)
 
 
 # Coming soon
