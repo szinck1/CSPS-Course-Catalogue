@@ -95,7 +95,7 @@ def course_result():
 		'offering_city_counts': map.offerings,
 		'learner_city_counts': map.learners,
 		# Ratings
-		'all_ratings': ratings.all_ratings(),
+		'all_ratings': ratings.all_ratings,
 		# Comments
 		'general_comments': comments.general,
 		'technical_comments': comments.technical,
