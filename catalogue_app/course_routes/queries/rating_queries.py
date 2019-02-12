@@ -3,6 +3,7 @@ from catalogue_app.db import query_mysql
 
 
 class Ratings:
+	"""Data for the Ratings tab."""
 	def __init__(self, lang, course_code):
 		self.lang = lang
 		self.course_code = course_code

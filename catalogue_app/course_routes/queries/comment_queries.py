@@ -4,6 +4,7 @@ from catalogue_app.db import query_mysql
 
 
 class Comments:
+	"""Data for the Comments tab."""
 	def __init__(self, lang, course_code):
 		self.lang = lang
 		self.course_code = course_code

@@ -2,6 +2,7 @@ from catalogue_app.db import query_mysql
 
 
 class Map:
+	"""Data for the Maps tab."""
 	def __init__(self, fiscal_year, course_code):
 		self.fiscal_year = fiscal_year
 		self.course_code = course_code
