@@ -39,7 +39,7 @@ def course_selection():
 @course.route('/course-result')
 @auth.login_required
 def course_result():
-	### VALIDATION ###
+	### VALIDATE USER INPUTS ###
 	# Get arguments from query string; if incomplete, return to selection page
 	if 'course_code' not in request.args:
 		return redirect(url_for('course.course_selection'))
@@ -47,18 +47,14 @@ def course_result():
 	course_code = request.args['course_code']
 	# Only allow 'en' and 'fr' to be passed to app
 	lang = 'fr' if request.cookies.get('lang', None) == 'fr' else 'en'
-	# Security check: If course_code doesn't exist, render not_found.html
+	# Security check: if course_code doesn't exist, render not_found.html
 	course_title = utils.validate_course_code(lang, THIS_YEAR, course_code)
 	if not course_title:
 		return render_template('not-found.html')
 	
-	
-	
-	
-	
 	# Instantiate classes
-	info = general_queries.Info(lang, course_code).load()
-	locations = dashboard_offering_queries.OfferingLocations(lang, THIS_YEAR, course_code).load()
+	info = general_queries.General(lang, course_code).load()
+	offering_locations = dashboard_offering_queries.OfferingLocations(lang, THIS_YEAR, course_code).load()
 	learners = dashboard_learner_queries.Learners(lang, THIS_YEAR, course_code).load()
 	map = map_queries.Map(THIS_YEAR, course_code).load()
 	ratings = rating_queries.Ratings(lang, course_code).load()
@@ -73,9 +69,9 @@ def course_result():
 		# Dashboard - offerings
 		'overall_numbers_LY': dashboard_offering_queries.overall_numbers(LAST_YEAR, course_code),
 		'overall_numbers_TY': dashboard_offering_queries.overall_numbers(THIS_YEAR, course_code),
-		'region_drilldown': locations.region_drilldown(),
-		'province_drilldown': locations.province_drilldown(),
-		'city_drilldown': locations.city_drilldown(),
+		'region_drilldown': offering_locations.regions,
+		'province_drilldown': offering_locations.provinces,
+		'city_drilldown': offering_locations.cities,
 		'offerings_per_lang_LY': dashboard_offering_queries.offerings_per_lang(LAST_YEAR, course_code),
 		'offerings_per_lang_TY': dashboard_offering_queries.offerings_per_lang(THIS_YEAR, course_code),
 		'offerings_cancelled_global_LY': dashboard_offering_queries.offerings_cancelled_global(LAST_YEAR),
