@@ -1,18 +1,18 @@
 import re
-from catalogue_app.config import Config
 from wtforms import Form, SelectField
 from catalogue_app.db import query_mysql
 
 
-# Search by course code
-def course_form(lang):
+def course_form(lang, fiscal_year):
+	"""Query list of all course codes and their titles as seen
+	in the LSR. Pass to WTForms to make a dropdown menu."""
 	field_name = 'course_title_{0}'.format(lang)
-	table_name = 'lsr{0}'.format(Config.THIS_YEAR)
+	table_name = 'lsr{0}'.format(fiscal_year)
 	query = """
-			SELECT DISTINCT course_code, {0}
-			FROM {1}
-			ORDER BY 1 ASC;
-			""".format(field_name, table_name)
+		SELECT DISTINCT course_code, {0}
+		FROM {1}
+		ORDER BY 1 ASC;
+	""".format(field_name, table_name)
 	results = query_mysql(query)
 	
 	# SelectField takes list of tuples (pass_value, display_value)
@@ -27,6 +27,7 @@ def course_form(lang):
 
 
 # Internal func to remove course codes from titles
-regex = re.compile(pattern=r'[(\[]{1}[a-zA-Z]{1}\d{3}[)\]]{1}')
+regex = re.compile(pattern=r'[(\[]{0,1}[a-zA-Z]{1}\d{3}[)\]]{0,1}')
 def _clean_title(course_title):
+	"""Remove course codes from titles."""
 	return regex.sub('', course_title).strip()

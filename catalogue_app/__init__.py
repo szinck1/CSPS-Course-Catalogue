@@ -1,5 +1,5 @@
 import pickle
-from flask import Flask, request, session
+from flask import Flask, request
 from flask_httpauth import HTTPBasicAuth
 from flask_babel import Babel
 from catalogue_app.config import Config

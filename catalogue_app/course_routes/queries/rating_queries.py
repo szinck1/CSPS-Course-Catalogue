@@ -1,17 +1,26 @@
 import pandas as pd
-from flask_babel import gettext
 from catalogue_app.db import query_mysql
 
 
-# Should probably store results_processed as attribute
 class Ratings:
+	"""Data for the Ratings tab."""
 	def __init__(self, lang, course_code):
 		self.lang = lang
 		self.course_code = course_code
 		self.data = None
+		self.all_ratings = None
 	
 	
 	def load(self):
+		"""Run all queries and process all raw data."""
+		self._load_ratings()
+		self._process_ratings()
+		# Return self to allow method chaining
+		return self
+	
+	
+	def _load_ratings(self):
+		"""Query the DB and extract all ratings data for a given course code."""
 		field_name_1 = 'short_question_{0}'.format(self.lang)
 		field_name_2 = 'long_question_{0}'.format(self.lang)
 		query = """
@@ -24,12 +33,12 @@ class Ratings:
 		results = pd.DataFrame(results, columns=['short_question', 'long_question', 'month', 'average', 'count'])
 		# Return False if course has received no feedback
 		self.data = False if results.empty else results
-		# Return self to allow method chaining
-		return self
 	
 	
-	def all_ratings(self):
-		# Return False if course has received no feedback
+	def _process_ratings(self):
+		"""Extract and process results for all possible ratings from the raw data.
+		Returns False if course has received no feedback of that type.
+		"""
 		# Explicitely checking 'if df is False' rather than 'if not df' as
 		# DataFrames do not have a truth value
 		if self.data is False:
@@ -44,11 +53,14 @@ class Ratings:
 			data_filtered = self.data.loc[self.data['short_question'] == short_question, ['month', 'average', 'count']]
 			monthly_values = self._get_monthly_values(data_filtered)
 			results_processed.append((short_question, long_question, monthly_values))
-		return results_processed
+		self.all_ratings = results_processed
 	
 	
 	@staticmethod
 	def _get_monthly_values(df):
+		"""Accepts a Panda's DataFrame with columns ['month', 'average', and 'count'].
+		Returns	a list of dicts ensuring all possible months have values. Months
+		not listed in DataFrame assigned average and count of 0."""
 		months = ['March', 'April', 'May', 'June', 'July', 'August', 'September',
 				  'October', 'November', 'December', 'January', 'February']
 		monthly_values = []

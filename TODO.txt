@@ -2,25 +2,21 @@
 # add pagination for huge comment sections
 	# sort by most recent first
 	# enabling caching in MySQL to avoid use of memo_dict
-# make note, don't use data, waiting on updates from IT, data from Jan 21
-# push new version
-
-
-
-### NEXT SPRINT ###
-# make OOP
-	# combine offering per region query with map query?
-		# if so, beware FR (NCR; Online; and Kingston, Jamaica)
+# ensure MVC
+	# ensure no processing taking place in templates
+	# beware hardcoding
 # make search front and center
 	# search by provider, topic, business type, etc.
 	# new colour scheme
 # add datatables i.e. scroll instead of top 5
-# ensure no processing taking place in templates
-# beware hardcoding
 # upgrade server
 # add prep & admin
 # unique learners (month, overall, region, etc.)
+	# sections in dashboard tab: offerings, learners, OL, unique learners, etc.
 # validate methodology and #s
+# include info: latest etl, newest features and data of addition
+	# warning if using for official reporting, could contact our
+	# colleagues Taylor or Ranjith
 # app service settings check from Steve?
 # launch!
 
@@ -28,17 +24,21 @@
 
 ### BACKLOG ###
 # add API
+# add danger list of e.g. 5 worst courses by delta regs, ratings, sentiment on comments
+# add clustering (e.g. latent dirichlet) to check top 5 issues mentioned
+# add sentiment analysis? ideas:
+	# love for course across different depts, different classifications
+	# add a section to see worst performing / troubled courses
 # preview if paste link in gmail, gcmessage, etc.
 # add regional accessibility to geodata
 # export to PDF, including one pager for prep & admin
 # add lifecycle info
 # add dept usage
 	# note explaining current vs billing
-# add GA data from Lesek
+	# download their own csv!
 # link to offerings on gccampus
 # dropdown to divide dashboard into sections e.g. registrations, OL accessibility (learner lang vs offering lang)
 # focus group w/ users, brainstorm for new KPIs for curriculum review process
 # unit testing
-# connect directly to DWH
 # let Camille edit directly
 # add guest speakers repository

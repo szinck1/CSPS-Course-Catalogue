@@ -47,21 +47,18 @@
 				</select>
 			</div>
 			
-			<!-- Only general_comments and technical_comments have multiple years of data -->
-			{% if comment_name in ['general_comments', 'technical_comments'] %}
-				<!-- Dropdown to filter by period -->
-				<div class="year-filter">
-					<p>{{ _('Fiscal Year: ') }}</p>
-					<select id="filter-period-{{ comment_name }}" onchange="filterComments()">
-						<!-- Dropdown values filled dynamically by jQuery below -->
-						<option id="filter-period-all-{{ comment_name }}" value="bob-comment">{{ _('All') }}</option>
-						<option id="filter-2015-16-{{ comment_name }}" value="FY2015-16">2015-16</option>
-						<option id="filter-2016-17-{{ comment_name }}" value="FY2016-17">2016-17</option>
-						<option id="filter-2017-18-{{ comment_name }}" value="FY2017-18">2017-18</option>
-						<option id="filter-2018-19-{{ comment_name }}" value="FY2018-19">2018-19</option>
-					</select>
-				</div>
-			{% endif %}
+			<!-- Dropdown to filter by fiscal year -->
+			<div class="year-filter">
+				<p>{{ _('Fiscal Year: ') }}</p>
+				<select id="filter-fiscal-{{ comment_name }}" onchange="filterComments()">
+					<!-- Dropdown values filled dynamically by jQuery below -->
+					<option id="filter-fiscal-all-{{ comment_name }}" value="bob-comment">{{ _('All') }}</option>
+					<option id="filter-2015-16-{{ comment_name }}" value="FY2015-16">2015-16</option>
+					<option id="filter-2016-17-{{ comment_name }}" value="FY2016-17">2016-17</option>
+					<option id="filter-2017-18-{{ comment_name }}" value="FY2017-18">2017-18</option>
+					<option id="filter-2018-19-{{ comment_name }}" value="FY2018-19">2018-19</option>
+				</select>
+			</div>
 			
 			{% for tup in pass_dict[comment_name] %}
 				<div class="bob-comment star-{{ tup[1] }} FY{{ tup[4] }}">
@@ -132,14 +129,14 @@
 <script async>
 	// Add tooltip contents
 	$('#performance-tooltip').tooltip({
-		placement: 'right',
+		placement: 'below',
 		title: "{{ _('<h5>Tip:</h5><p>Learners explain why they feel the training won\'t improve their job performance.</p>') }}",
 		animation: true,
 		html: true
 	});
 	
-	// Populate filter dropdown
 	// Function currently not in use
+	// Add counts to dropdown values
 	function populateDropdown() {
 		{% for comment_name in comment_names %}
 			// Get counts
@@ -151,7 +148,7 @@
 			// Count number of divs instead of sum as very rarely a user submits comments without stars
 			var totalComments = $('#{{ comment_name }} .bob-comment').length;
 			
-			// Add counts to dropdown
+			// Update dropdown values
 			$('#filter-stars-all-{{ comment_name }}').text("All - " + totalComments);
 			$('#filter-stars-one-{{ comment_name }}').text('One - ' + oneStar + ' - ' + Math.round((oneStar / totalComments) * 100) + '%');
 			$('#filter-stars-two-{{ comment_name }}').text('Two - ' + twoStar + ' - ' + Math.round((twoStar / totalComments) * 100) + '%');
@@ -161,7 +158,7 @@
 		{% endfor %}
 	}
 	
-	// Enable star and period dropdowns to show / hide
+	// Enable star and fiscal year dropdowns to show / hide
 	function filterComments() {
 		// Get current tab
 		var currentCommentTabId= $('.sub-tabs li.active a:first').attr('href');
@@ -174,8 +171,8 @@
 		if (dropdowns.length == 1) {
 			$(currentCommentTabId + ' .bob-comment' + '.' + starDropdown).show();
 		} else {
-			var periodDropdown = dropdowns[1].value;
-			$(currentCommentTabId + ' .bob-comment' + '.' + starDropdown + '.' + periodDropdown).show();
+			var fiscalYearDropdown = dropdowns[1].value;
+			$(currentCommentTabId + ' .bob-comment' + '.' + starDropdown + '.' + fiscalYearDropdown).show();
 		}
 	}
 	

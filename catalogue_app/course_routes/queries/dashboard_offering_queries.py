@@ -1,70 +1,35 @@
-from collections import defaultdict
 import pandas as pd
 from flask_babel import gettext
 from catalogue_app.db import query_mysql
-from catalogue_app.course_routes.utils import as_string, as_float, as_int, as_percent
-
-# Note: String interpolation used for 'lang' and 'fiscal_year' because:
-# a) They exist only as server-side variables, aren't user inputs
-# b) From MySQL docs at	http://mysql-python.sourceforge.net/MySQLdb.html
-# "Parameter placeholders can only be used to insert column values."
-# "They can not be used for other parts of SQL, such as table names, etc."
-
-
-def overall_numbers(fiscal_year, course_code):
-	"""Run queries for the 'Overall Numbers' section of the 'Dashboard' tab."""
-	results = []
-	component_1 = _offering_status_counts(fiscal_year, course_code)
-	component_2 = _offering_additional_counts(fiscal_year, course_code)
-	results.extend(component_1)
-	results.extend(component_2)
-	return results
-
-
-def _offering_status_counts(fiscal_year, course_code):
-	"""Query number of offerings by status for a given fiscal year."""
-	table_name = 'lsr{0}'.format(fiscal_year)
-	query = "SELECT offering_status, COUNT(DISTINCT offering_id) FROM {0} WHERE course_code = %s GROUP BY offering_status;".format(table_name)
-	results = query_mysql(query, (course_code,))
-	# Ensure all possible statuses returned
-	results = dict(results)
-	statuses = {
-		gettext('Open Offerings'): 'Open - Normal',
-		gettext('Delivered Offerings'): 'Delivered - Normal',
-		gettext('Cancelled Offerings'): 'Cancelled - Normal'
-	}
-	results_processed = [(key, results.get(val, 0)) for (key, val) in statuses.items()]
-	return results_processed
-
-
-def _offering_additional_counts(fiscal_year, course_code):
-	"""Additional information diplayed with _offering_status_counts."""
-	table_name = 'lsr{0}'.format(fiscal_year)
-	
-	query_client_reqs = "SELECT COUNT(DISTINCT offering_id) FROM {0} WHERE course_code = %s AND client != '' AND offering_status IN ('Open - Normal', 'Delivered - Normal');".format(table_name)
-	client_reqs = query_mysql(query_client_reqs, (course_code,))
-	
-	query_regs = "SELECT COUNT(reg_id) FROM {0} WHERE course_code = %s AND reg_status = 'Confirmed';".format(table_name)
-	regs = query_mysql(query_regs, (course_code,))
-	
-	query_no_shows = "SELECT SUM(no_show) FROM {0} WHERE course_code = %s;".format(table_name)
-	no_shows = query_mysql(query_no_shows, (course_code,))
-	
-	results = [(gettext('Client Requests'), as_int(client_reqs)),
-			   (gettext('Registrations'), as_int(regs)),
-			   (gettext('No-Shows'), as_int(no_shows))]
-	return results
+from catalogue_app.course_routes.utils import as_float, as_int, as_percent
 
 
 class OfferingLocations:
+	"""Data for the Offerings per Region -> Province -> City chart."""
 	def __init__(self, lang, fiscal_year, course_code):
 		self.lang = lang
 		self.fiscal_year = fiscal_year
 		self.course_code = course_code
 		self.data = None
+		self.regions = None
+		self.provinces = None
+		self.cities = None
 	
 	
 	def load(self):
+		"""Run all queries and process all raw data."""
+		self._load_all_locations()
+		self._region_drilldown()
+		self._province_drilldown()
+		self._city_drilldown()
+		# Return self to allow method chaining
+		return self
+	
+	
+	def _load_all_locations(self):
+		"""Query the DB and extract all offering location data for a given
+		course code.
+		"""
 		field_name_1 = 'offering_region_{0}'.format(self.lang)
 		field_name_2 = 'offering_province_{0}'.format(self.lang)
 		table_name = 'lsr{0}'.format(self.fiscal_year)
@@ -77,11 +42,11 @@ class OfferingLocations:
 		results = query_mysql(query, (self.course_code,))
 		results = pd.DataFrame(results, columns=['offering_region', 'offering_province', 'offering_city', 'count'])
 		self.data = results
-		# Return self to allow method chaining
-		return self
 	
 	
-	def region_drilldown(self):
+	def _region_drilldown(self):
+		"""Calculate number of offerings per region; include regions with 0
+		offerings."""
 		results = self.data.groupby('offering_region', as_index=False).sum()
 		results = dict(results.values.tolist())
 		# Explicitly declare list of regions as want to show all, even if count 0
@@ -95,10 +60,11 @@ class OfferingLocations:
 			gettext('Outside Canada')
 		]
 		results_processed = [{'name': region, 'drilldown': region, 'y': results.get(region, 0)} for region in regions]
-		return results_processed
+		self.regions = results_processed
 	
 	
-	def province_drilldown(self):
+	def _province_drilldown(self):
+		"""Calculate number of offerings per province; link provinces to regions."""
 		# Get list of regions in which the course has offerings
 		regions = self.data.loc[:, 'offering_region'].unique()
 		# Counts by province
@@ -109,10 +75,11 @@ class OfferingLocations:
 			province_counts = counts.loc[counts['offering_region'] == region, ['offering_province', 'count']].values.tolist()
 			province_counts_processed = self._process_counts(province_counts)
 			results_processed[region] = province_counts_processed
-		return results_processed
+		self.provinces = results_processed
 	
 	
-	def city_drilldown(self):
+	def _city_drilldown(self):
+		"""Calculate number of offerings per city; link cities to provinces."""
 		# Get list of provinces in which the course has offerings
 		provinces = self.data.loc[:, 'offering_province'].unique()
 		# Counts by city
@@ -122,7 +89,7 @@ class OfferingLocations:
 		for province in provinces:
 			city_counts = counts.loc[counts['offering_province'] == province, ['offering_city', 'count']].values.tolist()
 			results_processed[province] = city_counts
-		return results_processed
+		self.cities = results_processed
 	
 	
 	@staticmethod
@@ -132,6 +99,76 @@ class OfferingLocations:
 		"""
 		results_processed = [{'name': list_[0], 'drilldown': list_[0], 'y': list_[1]} for list_ in my_list]
 		return results_processed
+
+
+class OverallNumbers:
+	"""Data for a given fiscal year of the Overall Numbers table."""
+	def __init__(self, fiscal_year, course_code):
+		self.fiscal_year = fiscal_year
+		self.course_code = course_code
+		# Store results in single list so can be iterated through
+		# in templates by single for loop. Keeps code lean.
+		self.counts = []
+	
+	
+	def load(self):
+		"""Run all queries and process all raw data."""
+		self._offering_status_counts()
+		self._offering_additional_counts()
+		# Return self to allow method chaining
+		return self
+	
+	
+	def _offering_status_counts(self):
+		"""Query number of offerings by status for a given fiscal year."""
+		table_name = 'lsr{0}'.format(self.fiscal_year)
+		query = """
+			SELECT offering_status, COUNT(DISTINCT offering_id)
+			FROM {0}
+			WHERE course_code = %s
+			GROUP BY offering_status;
+		""".format(table_name)
+		results = query_mysql(query, (self.course_code,))
+		# Ensure all possible statuses returned
+		results = dict(results)
+		statuses = {
+			gettext('Open Offerings'): 'Open - Normal',
+			gettext('Delivered Offerings'): 'Delivered - Normal',
+			gettext('Cancelled Offerings'): 'Cancelled - Normal'
+		}
+		results_processed = [(key, results.get(val, 0)) for (key, val) in statuses.items()]
+		self.counts.extend(results_processed)
+	
+	
+	def _offering_additional_counts(self):
+		"""Additional offering counts used by School analysts."""
+		table_name = 'lsr{0}'.format(self.fiscal_year)
+		
+		query_client_reqs = """
+			SELECT COUNT(DISTINCT offering_id)
+			FROM {0}
+			WHERE course_code = %s AND client != '' AND offering_status IN ('Open - Normal', 'Delivered - Normal');
+		""".format(table_name)
+		client_reqs = query_mysql(query_client_reqs, (self.course_code,))
+		
+		query_regs = """
+			SELECT COUNT(reg_id)
+			FROM {0}
+			WHERE course_code = %s AND reg_status = 'Confirmed';
+		""".format(table_name)
+		regs = query_mysql(query_regs, (self.course_code,))
+		
+		query_no_shows = """
+			SELECT SUM(no_show)
+			FROM {0}
+			WHERE course_code = %s;
+		""".format(table_name)
+		no_shows = query_mysql(query_no_shows, (self.course_code,))
+		
+		results = [(gettext('Client Requests'), as_int(client_reqs)),
+				   (gettext('Registrations'), as_int(regs)),
+				   (gettext('No-Shows'), as_int(no_shows))]
+		self.counts.extend(results)
 
 
 def offerings_per_lang(fiscal_year, course_code):

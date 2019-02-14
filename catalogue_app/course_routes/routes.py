@@ -1,13 +1,12 @@
-import copy
-import pickle
-import time
-from flask import Blueprint, redirect, render_template, request, session, url_for
+from flask import Blueprint, redirect, render_template, request, url_for
 from flask_babel import gettext
 from catalogue_app import auth
 from catalogue_app.config import Config
+from catalogue_app.course_routes import utils
 from catalogue_app.course_routes.forms import course_form
 from catalogue_app.course_routes.queries import (
-	comment_queries, general_queries, learner_queries, map_queries, memoize_func, offering_queries, rating_queries
+	comment_queries, dashboard_learner_queries, dashboard_offering_queries,
+	general_queries, map_queries, rating_queries
 )
 
 # Instantiate blueprint
@@ -28,7 +27,7 @@ def context_processor():
 def course_selection():
 	# Only allow 'en' and 'fr' to be passed to app
 	lang = 'fr' if request.cookies.get('lang', None) == 'fr' else 'en'
-	form = course_form(lang)
+	form = course_form(lang, THIS_YEAR)
 	form = form(request.form)
 	if request.method == 'POST' and form.validate():
 		course_code = form.course_selection.data
@@ -40,22 +39,26 @@ def course_selection():
 @course.route('/course-result')
 @auth.login_required
 def course_result():
-	### VALIDATION ###
+	### VALIDATE USER INPUTS ###
 	# Get arguments from query string; if incomplete, return to selection page
 	if 'course_code' not in request.args:
 		return redirect(url_for('course.course_selection'))
-	# Argument is automatically escaped in Jinja2 (HTML templates) and MySQL queries
+	# Argument is automatically escaped in Jinja2 and MySQL
 	course_code = request.args['course_code']
 	# Only allow 'en' and 'fr' to be passed to app
 	lang = 'fr' if request.cookies.get('lang', None) == 'fr' else 'en'
-	# Security check: If course_code doesn't exist, render not_found.html
-	course_title = general_queries.course_title(lang, THIS_YEAR, course_code)
+	# Security check: if course_code doesn't exist, render not_found.html
+	course_title = utils.validate_course_code(lang, THIS_YEAR, course_code)
 	if not course_title:
 		return render_template('not-found.html')
 	
-	### QUERYING ###
 	# Instantiate classes
-	locations = offering_queries.OfferingLocations(lang, THIS_YEAR, course_code).load()
+	course_info = general_queries.CourseInfo(lang, course_code).load()
+	overall_numbers_LY = dashboard_offering_queries.OverallNumbers(LAST_YEAR, course_code).load()
+	overall_numbers_TY = dashboard_offering_queries.OverallNumbers(THIS_YEAR, course_code).load()
+	offering_locations = dashboard_offering_queries.OfferingLocations(lang, THIS_YEAR, course_code).load()
+	learners = dashboard_learner_queries.Learners(lang, THIS_YEAR, course_code).load()
+	map = map_queries.Map(THIS_YEAR, course_code).load()
 	ratings = rating_queries.Ratings(lang, course_code).load()
 	comments = comment_queries.Comments(lang, course_code).load()
 	
@@ -64,36 +67,36 @@ def course_result():
 		'course_code': course_code,
 		'course_title': course_title,
 		# General
-		'course_info': general_queries.course_info(lang, course_code),
+		'course_info': course_info.course_info,
 		# Dashboard - offerings
-		'overall_numbers_LY': offering_queries.overall_numbers(LAST_YEAR, course_code),
-		'overall_numbers_TY': offering_queries.overall_numbers(THIS_YEAR, course_code),
-		'region_drilldown': locations.region_drilldown(),
-		'province_drilldown': locations.province_drilldown(),
-		'city_drilldown': locations.city_drilldown(),
-		'offerings_per_lang_LY': offering_queries.offerings_per_lang(LAST_YEAR, course_code),
-		'offerings_per_lang_TY': offering_queries.offerings_per_lang(THIS_YEAR, course_code),
-		'offerings_cancelled_global_LY': offering_queries.offerings_cancelled_global(LAST_YEAR),
-		'offerings_cancelled_global_TY': offering_queries.offerings_cancelled_global(THIS_YEAR),
-		'offerings_cancelled_LY': offering_queries.offerings_cancelled(LAST_YEAR, course_code),
-		'offerings_cancelled_TY': offering_queries.offerings_cancelled(THIS_YEAR, course_code),
-		'avg_class_size_global_LY': offering_queries.avg_class_size_global(LAST_YEAR),
-		'avg_class_size_global_TY': offering_queries.avg_class_size_global(THIS_YEAR),
-		'avg_class_size_LY': offering_queries.avg_class_size(LAST_YEAR, course_code),
-		'avg_class_size_TY': offering_queries.avg_class_size(THIS_YEAR, course_code),
-		'avg_no_shows_global_LY': round(offering_queries.avg_no_shows_global(LAST_YEAR), 1),
-		'avg_no_shows_global_TY': round(offering_queries.avg_no_shows_global(THIS_YEAR), 1),
-		'avg_no_shows_LY': round(offering_queries.avg_no_shows(LAST_YEAR, course_code), 1),
-		'avg_no_shows_TY': round(offering_queries.avg_no_shows(THIS_YEAR, course_code), 1),
+		'overall_numbers_LY': overall_numbers_LY.counts,
+		'overall_numbers_TY': overall_numbers_TY.counts,
+		'region_drilldown': offering_locations.regions,
+		'province_drilldown': offering_locations.provinces,
+		'city_drilldown': offering_locations.cities,
+		'offerings_per_lang_LY': dashboard_offering_queries.offerings_per_lang(LAST_YEAR, course_code),
+		'offerings_per_lang_TY': dashboard_offering_queries.offerings_per_lang(THIS_YEAR, course_code),
+		'offerings_cancelled_global_LY': dashboard_offering_queries.offerings_cancelled_global(LAST_YEAR),
+		'offerings_cancelled_global_TY': dashboard_offering_queries.offerings_cancelled_global(THIS_YEAR),
+		'offerings_cancelled_LY': dashboard_offering_queries.offerings_cancelled(LAST_YEAR, course_code),
+		'offerings_cancelled_TY': dashboard_offering_queries.offerings_cancelled(THIS_YEAR, course_code),
+		'avg_class_size_global_LY': dashboard_offering_queries.avg_class_size_global(LAST_YEAR),
+		'avg_class_size_global_TY': dashboard_offering_queries.avg_class_size_global(THIS_YEAR),
+		'avg_class_size_LY': dashboard_offering_queries.avg_class_size(LAST_YEAR, course_code),
+		'avg_class_size_TY': dashboard_offering_queries.avg_class_size(THIS_YEAR, course_code),
+		'avg_no_shows_global_LY': round(dashboard_offering_queries.avg_no_shows_global(LAST_YEAR), 1),
+		'avg_no_shows_global_TY': round(dashboard_offering_queries.avg_no_shows_global(THIS_YEAR), 1),
+		'avg_no_shows_LY': round(dashboard_offering_queries.avg_no_shows(LAST_YEAR, course_code), 1),
+		'avg_no_shows_TY': round(dashboard_offering_queries.avg_no_shows(THIS_YEAR, course_code), 1),
 		# Dashboard - learners
-		'regs_per_month': learner_queries.regs_per_month(lang, THIS_YEAR, course_code),
-		'top_5_depts': learner_queries.top_5_depts(lang, THIS_YEAR, course_code),
-		'top_5_classifs': learner_queries.top_5_classifs(THIS_YEAR, course_code),
+		'regs_per_month': learners.regs_per_month,
+		'top_5_depts': learners.top_depts,
+		'top_5_classifs': learners.top_classifs,
 		# Maps
-		'offering_city_counts': map_queries.offering_city_counts(THIS_YEAR, course_code),
-		'learner_city_counts': map_queries.learner_city_counts(THIS_YEAR, course_code),
+		'offering_city_counts': map.offerings,
+		'learner_city_counts': map.learners,
 		# Ratings
-		'all_ratings': ratings.all_ratings(),
+		'all_ratings': ratings.all_ratings,
 		# Comments
 		'general_comments': comments.general,
 		'technical_comments': comments.technical,
@@ -107,27 +110,6 @@ def course_result():
 		'prepared_by': comments.preparation
 	}
 	return render_template('/course-page/main.html', pass_dict=pass_dict)
-
-
-# Temporary solution: Run all course codes to populate DB's memo_dict and export to pickle
-@course.route('/memoize-all')
-@auth.login_required
-def memoize_all():
-	t1 = time.time()
-	langs = ['en', 'fr']
-	codes = general_queries.all_course_codes(THIS_YEAR)
-	for lang in langs:
-		for code in codes:
-			_ = memoize_func.get_vals(lang=lang, course_code=code)
-			print(code)
-	t2 = time.time()
-	# Import the memo_dict that has been generated in module 'db.py' by
-	# the above for loops and export to pickle for future use
-	print('Pickling')
-	from catalogue_app import memo_dict
-	with open('memo.pickle', 'wb') as f:
-		pickle.dump(memo_dict, f, protocol=pickle.HIGHEST_PROTOCOL)
-	return '<h1>Done!</h1><p>Time elapsed: {0}</p><p>Another great day in DIS.</p>'.format(t2 - t1)
 
 
 # Coming soon
