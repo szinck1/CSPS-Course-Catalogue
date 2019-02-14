@@ -4,8 +4,7 @@
 	# enabling caching in MySQL to avoid use of memo_dict
 # make OOP
 	# make stored procedure for etl
-	# combine offering per region query with map query?
-		# if so, beware FR (NCR; Online; and Kingston, Jamaica)
+	# if so, beware FR (NCR; Online; and Kingston, Jamaica)
 # ensure MVC
 	# ensure no processing taking place in templates
 	# beware hardcoding
@@ -17,6 +16,9 @@
 # add prep & admin
 # unique learners (month, overall, region, etc.)
 # validate methodology and #s
+# include info: latest etl, newest features and data of addition
+	# warning if using for official reporting, could contact our
+	# colleagues Taylor or Ranjith
 # app service settings check from Steve?
 # launch!
 
@@ -35,6 +37,7 @@
 # add lifecycle info
 # add dept usage
 	# note explaining current vs billing
+	# download their own csv!
 # link to offerings on gccampus
 # dropdown to divide dashboard into sections e.g. registrations, OL accessibility (learner lang vs offering lang)
 # focus group w/ users, brainstorm for new KPIs for curriculum review process
