@@ -1,7 +1,7 @@
 from catalogue_app.db import query_mysql
 
 
-class General:
+class CourseInfo:
 	"""Data for the General tab."""
 	def __init__(self, lang, course_code):
 		self.lang = lang
