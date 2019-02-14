@@ -106,6 +106,8 @@ class OverallNumbers:
 	def __init__(self, fiscal_year, course_code):
 		self.fiscal_year = fiscal_year
 		self.course_code = course_code
+		# Store results in single list so can be iterated through
+		# in templates by single for loop. Keeps code lean.
 		self.counts = []
 	
 	
@@ -167,14 +169,6 @@ class OverallNumbers:
 				   (gettext('Registrations'), as_int(regs)),
 				   (gettext('No-Shows'), as_int(no_shows))]
 		self.counts.extend(results)
-
-
-
-
-
-
-
-
 
 
 def offerings_per_lang(fiscal_year, course_code):

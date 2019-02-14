@@ -3,6 +3,7 @@ from catalogue_app.db import query_mysql
 
 
 class Learners:
+	"""Data for the Learners section of the Dashboard tab."""
 	def __init__(self, lang, fiscal_year, course_code):
 		self.lang = lang
 		self.fiscal_year = fiscal_year
