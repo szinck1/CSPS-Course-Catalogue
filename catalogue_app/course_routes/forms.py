@@ -11,6 +11,7 @@ def course_form(lang, fiscal_year):
 	query = """
 		SELECT DISTINCT course_code, {0}
 		FROM {1}
+		WHERE course_code != 'A230'
 		ORDER BY 1 ASC;
 	""".format(field_name, table_name)
 	results = query_mysql(query)
