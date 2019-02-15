@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-02-06 12:09-0500\n"
+"POT-Creation-Date: 2019-02-14 19:50-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,131 +17,131 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.6.0\n"
 
-#: course_routes/routes.py:36
+#: course_routes/routes.py:35
 msgid "Selection"
 msgstr ""
 
-#: course_routes/routes.py:36
+#: course_routes/routes.py:35
 msgid "Go"
 msgstr ""
 
-#: course_routes/queries/comment_queries.py:87
+#: course_routes/queries/comment_queries.py:94
 msgid "No response"
 msgstr ""
 
-#: course_routes/queries/learner_queries.py:20
+#: course_routes/queries/dashboard_learner_queries.py:43
 #: templates/course-page/ratings.html:24
 msgid "April"
 msgstr ""
 
-#: course_routes/queries/learner_queries.py:21
-#: templates/course-page/ratings.html:25
+#: course_routes/queries/dashboard_learner_queries.py:44
+#: templates/course-page/ratings.html:24
 msgid "May"
 msgstr ""
 
-#: course_routes/queries/learner_queries.py:22
+#: course_routes/queries/dashboard_learner_queries.py:45
 #: templates/course-page/ratings.html:25
 msgid "June"
 msgstr ""
 
-#: course_routes/queries/learner_queries.py:23
+#: course_routes/queries/dashboard_learner_queries.py:46
 #: templates/course-page/ratings.html:25
 msgid "July"
 msgstr ""
 
-#: course_routes/queries/learner_queries.py:24
+#: course_routes/queries/dashboard_learner_queries.py:47
 #: templates/course-page/ratings.html:25
 msgid "August"
 msgstr ""
 
-#: course_routes/queries/learner_queries.py:25
+#: course_routes/queries/dashboard_learner_queries.py:48
 #: templates/course-page/ratings.html:26
 msgid "September"
 msgstr ""
 
-#: course_routes/queries/learner_queries.py:26
+#: course_routes/queries/dashboard_learner_queries.py:49
 #: templates/course-page/ratings.html:26
 msgid "October"
 msgstr ""
 
-#: course_routes/queries/learner_queries.py:27
+#: course_routes/queries/dashboard_learner_queries.py:50
 #: templates/course-page/ratings.html:26
 msgid "November"
 msgstr ""
 
-#: course_routes/queries/learner_queries.py:28
-#: templates/course-page/ratings.html:26
+#: course_routes/queries/dashboard_learner_queries.py:51
+#: templates/course-page/ratings.html:27
 msgid "December"
 msgstr ""
 
-#: course_routes/queries/learner_queries.py:29
+#: course_routes/queries/dashboard_learner_queries.py:52
 #: templates/course-page/ratings.html:27
 msgid "January"
 msgstr ""
 
-#: course_routes/queries/learner_queries.py:30
-#: templates/course-page/ratings.html:24
+#: course_routes/queries/dashboard_learner_queries.py:53
+#: templates/course-page/ratings.html:27
 msgid "February"
 msgstr ""
 
-#: course_routes/queries/learner_queries.py:31
+#: course_routes/queries/dashboard_learner_queries.py:54
 #: templates/course-page/ratings.html:24
 msgid "March"
 msgstr ""
 
-#: course_routes/queries/offering_queries.py:32
+#: course_routes/queries/dashboard_offering_queries.py:54
+msgid "Atlantic"
+msgstr ""
+
+#: course_routes/queries/dashboard_offering_queries.py:55
+msgid "NCR"
+msgstr ""
+
+#: course_routes/queries/dashboard_offering_queries.py:56
+msgid "Ontario Region"
+msgstr ""
+
+#: course_routes/queries/dashboard_offering_queries.py:57
+msgid "Pacific"
+msgstr ""
+
+#: course_routes/queries/dashboard_offering_queries.py:58
+msgid "Prairie"
+msgstr ""
+
+#: course_routes/queries/dashboard_offering_queries.py:59
+msgid "Québec Region"
+msgstr ""
+
+#: course_routes/queries/dashboard_offering_queries.py:60
+msgid "Outside Canada"
+msgstr ""
+
+#: course_routes/queries/dashboard_offering_queries.py:135
 #: templates/course-page/dashboard-offerings.html:20
 msgid "Open Offerings"
 msgstr ""
 
-#: course_routes/queries/offering_queries.py:33
+#: course_routes/queries/dashboard_offering_queries.py:136
 msgid "Delivered Offerings"
 msgstr ""
 
-#: course_routes/queries/offering_queries.py:34
+#: course_routes/queries/dashboard_offering_queries.py:137
 msgid "Cancelled Offerings"
 msgstr ""
 
-#: course_routes/queries/offering_queries.py:53
+#: course_routes/queries/dashboard_offering_queries.py:168
 msgid "Client Requests"
 msgstr ""
 
-#: course_routes/queries/offering_queries.py:54
+#: course_routes/queries/dashboard_offering_queries.py:169
 #: templates/course-page/dashboard-learners.html:20
 #: templates/course-page/dashboard-learners.html:43
 msgid "Registrations"
 msgstr ""
 
-#: course_routes/queries/offering_queries.py:55
+#: course_routes/queries/dashboard_offering_queries.py:170
 msgid "No-Shows"
-msgstr ""
-
-#: course_routes/queries/offering_queries.py:89
-msgid "Atlantic"
-msgstr ""
-
-#: course_routes/queries/offering_queries.py:90
-msgid "NCR"
-msgstr ""
-
-#: course_routes/queries/offering_queries.py:91
-msgid "Ontario Region"
-msgstr ""
-
-#: course_routes/queries/offering_queries.py:92
-msgid "Pacific"
-msgstr ""
-
-#: course_routes/queries/offering_queries.py:93
-msgid "Prairie"
-msgstr ""
-
-#: course_routes/queries/offering_queries.py:94
-msgid "Québec Region"
-msgstr ""
-
-#: course_routes/queries/offering_queries.py:95
-msgid "Outside Canada"
 msgstr ""
 
 #: templates/about.html:6 templates/includes/_navbar.html:14
@@ -205,12 +205,16 @@ msgid "Note: Test Version"
 msgstr ""
 
 #: templates/index.html:12
+msgid "Weekly data update performed: February 14, 2019"
+msgstr ""
+
+#: templates/index.html:15
 msgid ""
 "This platform brings all the School’s data into one place and makes it "
 "accessible to everyone (no programming skills required)."
 msgstr ""
 
-#: templates/index.html:15
+#: templates/index.html:18
 msgid ""
 "From here you can easily explore data that will enable you to keep track "
 "of your learning products and make the necessary adjustments to maintain "
@@ -219,11 +223,11 @@ msgid ""
 "story to the executive management team."
 msgstr ""
 
-#: templates/index.html:18
+#: templates/index.html:21
 msgid "Our ability to achieve greater agility depends on you."
 msgstr ""
 
-#: templates/index.html:20
+#: templates/index.html:23
 msgid ""
 "Tell us what you want and need in this platform. Together, with your "
 "feedback, we can develop a catalogue that will evolve to better meet your"
@@ -231,21 +235,21 @@ msgid ""
 "href=\"mailto:sam.louden@canada.ca\">here</a>.)"
 msgstr ""
 
-#: templates/index.html:24
+#: templates/index.html:27
 msgid ""
 "If you encounter any bugs, please contact <a "
 "href=\"mailto:sam.louden@canada.ca\">Sam Louden</a>."
 msgstr ""
 
-#: templates/layout.html:28 templates/layout.html:30
+#: templates/layout.html:33 templates/layout.html:35
 msgid "CSPS Logo"
 msgstr ""
 
-#: templates/layout.html:48
+#: templates/layout.html:53
 msgid "Top of page"
 msgstr ""
 
-#: templates/layout.html:51
+#: templates/layout.html:56
 msgid "GoC Logo"
 msgstr ""
 
@@ -305,7 +309,7 @@ msgid "Stars: "
 msgstr ""
 
 #: templates/course-page/comments.html:41
-#: templates/course-page/comments.html:57
+#: templates/course-page/comments.html:55
 msgid "All"
 msgstr ""
 
@@ -329,81 +333,81 @@ msgstr ""
 msgid "Five"
 msgstr ""
 
-#: templates/course-page/comments.html:54
+#: templates/course-page/comments.html:52
 msgid "Fiscal Year: "
 msgstr ""
 
-#: templates/course-page/comments.html:71
+#: templates/course-page/comments.html:68
 msgid "Avatar"
 msgstr ""
 
-#: templates/course-page/comments.html:78
+#: templates/course-page/comments.html:75
 msgid "Overall Satisfaction: "
 msgstr ""
 
-#: templates/course-page/comments.html:80
+#: templates/course-page/comments.html:77
 msgid "Five Stars"
 msgstr ""
 
-#: templates/course-page/comments.html:82
+#: templates/course-page/comments.html:79
 msgid "Four Stars"
 msgstr ""
 
-#: templates/course-page/comments.html:84
+#: templates/course-page/comments.html:81
 msgid "Three Stars"
 msgstr ""
 
-#: templates/course-page/comments.html:86
+#: templates/course-page/comments.html:83
 msgid "Two Stars"
 msgstr ""
 
-#: templates/course-page/comments.html:88
+#: templates/course-page/comments.html:85
 msgid "One Star"
 msgstr ""
 
-#: templates/course-page/comments.html:99
-#: templates/course-page/comments.html:128
+#: templates/course-page/comments.html:96
+#: templates/course-page/comments.html:125
 #: templates/course-page/ratings.html:48
 msgid "Apologies, this course has yet to receive any feedback of this type."
 msgstr ""
 
-#: templates/course-page/comments.html:107
+#: templates/course-page/comments.html:104
 msgid ""
 "Comments on instructor performance are currently disabled due to privacy "
 "restrictions."
 msgstr ""
 
-#: templates/course-page/comments.html:136
+#: templates/course-page/comments.html:133
 msgid ""
 "<h5>Tip:</h5><p>Learners explain why they feel the training won't improve"
 " their job performance.</p>"
 msgstr ""
 
-#: templates/course-page/comments.html:190
+#: templates/course-page/comments.html:187
 msgid "<strong>Number of Responses:</strong> 0"
 msgstr ""
 
-#: templates/course-page/comments.html:192
+#: templates/course-page/comments.html:189
 msgid "<strong>Number of Responses:</strong> "
 msgstr ""
 
-#: templates/course-page/comments.html:219
+#: templates/course-page/comments.html:216
 msgid "Reason to Participate"
 msgstr ""
 
-#: templates/course-page/comments.html:220
+#: templates/course-page/comments.html:217
 msgid "Did You Experience Technical Issues?"
 msgstr ""
 
-#: templates/course-page/comments.html:221
+#: templates/course-page/comments.html:218
 msgid "The Course Was Available in the Official Language of My Choice"
 msgstr ""
 
-#: templates/course-page/comments.html:222
+#: templates/course-page/comments.html:219
 msgid "Did the Course Make Use of GCcampus Tools?"
 msgstr ""
 
-#: templates/course-page/comments.html:223
+#: templates/course-page/comments.html:220
 msgid "Method of Preparing for the Course"
 msgstr ""
 
@@ -521,76 +525,76 @@ msgstr ""
 msgid "Provider"
 msgstr ""
 
-#: templates/course-page/general.html:24 templates/course-page/general.html:43
-#: templates/course-page/general.html:51 templates/course-page/general.html:92
+#: templates/course-page/general.html:23 templates/course-page/general.html:40
+#: templates/course-page/general.html:47 templates/course-page/general.html:87
 msgid "&lt;awaiting mapping&gt;"
 msgstr ""
 
-#: templates/course-page/general.html:29
+#: templates/course-page/general.html:28
 msgid "Duration"
 msgstr ""
 
-#: templates/course-page/general.html:33
+#: templates/course-page/general.html:31
 msgid "hours"
 msgstr ""
 
-#: templates/course-page/general.html:33
+#: templates/course-page/general.html:31
 msgid "hour"
 msgstr ""
 
-#: templates/course-page/general.html:40
+#: templates/course-page/general.html:38
 msgid "Business Line"
 msgstr ""
 
-#: templates/course-page/general.html:48
+#: templates/course-page/general.html:45
 msgid "Displayed on GCcampus"
 msgstr ""
 
-#: templates/course-page/general.html:64
+#: templates/course-page/general.html:60
 msgid "Additional Info"
 msgstr ""
 
-#: templates/course-page/general.html:70
+#: templates/course-page/general.html:66
 msgid "Field"
 msgstr ""
 
-#: templates/course-page/general.html:71
+#: templates/course-page/general.html:67
 msgid "Contents"
 msgstr ""
 
-#: templates/course-page/general.html:77
+#: templates/course-page/general.html:73
 msgid "Business Type"
 msgstr ""
 
-#: templates/course-page/general.html:78
+#: templates/course-page/general.html:74
 msgid "Communities"
 msgstr ""
 
-#: templates/course-page/general.html:79
+#: templates/course-page/general.html:75
 msgid "Director"
 msgstr ""
 
-#: templates/course-page/general.html:80
+#: templates/course-page/general.html:76
 msgid "Main Topic"
 msgstr ""
 
-#: templates/course-page/general.html:81
+#: templates/course-page/general.html:77
 msgid "Point of Contact"
 msgstr ""
 
-#: templates/course-page/general.html:82
+#: templates/course-page/general.html:78
 msgid "Program Manager"
 msgstr ""
 
-#: templates/course-page/general.html:83
+#: templates/course-page/general.html:79
 msgid "Project Lead"
 msgstr ""
 
-#: templates/course-page/general.html:84
+#: templates/course-page/general.html:80
 msgid "Required Training"
 msgstr ""
 
-#: templates/course-page/general.html:103
+#: templates/course-page/general.html:98
 msgid "<h5>Tip:</h5><p>This information is tracked by Curriculum Management.</p>"
 msgstr ""
 
