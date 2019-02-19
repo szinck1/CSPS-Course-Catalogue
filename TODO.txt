@@ -1,10 +1,6 @@
 ### CURRENT SPRINT ###
 # add pagination for huge comment sections
 	# sort by most recent first
-	# enabling caching in MySQL to avoid use of memo_dict
-# ensure MVC
-	# ensure no processing taking place in templates
-	# beware hardcoding
 # make search front and center
 	# search by provider, topic, business type, etc.
 	# new colour scheme
@@ -25,6 +21,7 @@
 ### BACKLOG ###
 # add API
 # add danger list of e.g. 5 worst courses by delta regs, ratings, sentiment on comments
+# gameification: you've visited 23% of course pages
 # add clustering (e.g. latent dirichlet) to check top 5 issues mentioned
 # add sentiment analysis? ideas:
 	# love for course across different depts, different classifications

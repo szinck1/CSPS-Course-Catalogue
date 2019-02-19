@@ -5,11 +5,7 @@ from flask_babel import Babel
 from catalogue_app.config import Config
 
 # Declare dictionary as app variable for memoization
-if Config.LOAD_FROM_PICKLE:
-	with open('memo.pickle', 'rb') as f:
-		memo_dict = pickle.load(f)
-else:
-	memo_dict = {}
+memo_dict = {}
 
 # Instantiate login
 auth = HTTPBasicAuth()
