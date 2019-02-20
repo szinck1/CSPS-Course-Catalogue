@@ -90,7 +90,7 @@ table {
 /* Dropdown hover */
 .dropdown-toggle:active,
 .open .dropdown-toggle {
-	background: #243850 !important;
+	background: #066169 !important;
 	color: #fff !important;
 }
 /***** End navbar *****/
@@ -127,7 +127,7 @@ table {
 .btn.btn-primary:focus,
 .btn.btn-primary:active,
 .btn.btn-primary.active {
-	background-color: #243850;
+	background-color: #0aa4b1;
 	color: #fff;
 }
 /***** End selection form *****/
@@ -232,7 +232,7 @@ table {
 /* Table hover */
 .table-hover tbody tr:hover th,
 .table-hover tbody tr:hover td {
-	background-color: #5fba7d;
+	background-color: #ffcc33;
 }
 /***** End general *****/
 
