@@ -3,15 +3,16 @@
 <nav class="navbar navbar-default">
 	<div class="container">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="https://www.canada.ca/fr.html">
-				<img src="{{ url_for('static', filename='FIPs/canada_white.svg') }}" height="20px" alt="{{ _('GC Logo') }}" />
-			</a>
-			
-			<!--
+			{% if lang == 'fr' %}
 				<a class="navbar-brand" href="https://www.canada.ca/fr.html">
-					<img src="{{ url_for('static', filename='FIPs/canada_white.svg') }}" alt="{{ _('GC Logo') }}" />
+					<img class="gc-fip" src="{{ url_for('static', filename='FIPs/canada_white.svg') }}" alt="{{ _('GC Logo') }}" />
 				</a>
-			-->
+			{% else %}
+				<a class="navbar-brand" href="https://www.canada.ca/en.html">
+					<img class="gc-fip" src="{{ url_for('static', filename='FIPs/canada_white.svg') }}" alt="{{ _('GC Logo') }}" />
+				</a>
+			{% endif %}
+			<!-- Button to display contents of .navbar-collapse on mobile -->
 			<button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu-items">
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
