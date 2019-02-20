@@ -84,16 +84,23 @@ table {
 	color: #fff;
 	font-size: 1.5rem;
 }
+/* Transition links on hover */
+/* Don't show transition on mobile as navbar will be collapsed */
+@media (min-width: 768px) {
+	#second-nav a::after {
+		content: '';
+		display: block;
+		background-color: #ffcc33;
+		height: 4px;
+		width: 0%;
+		margin-top: 6px;
+		transition: width 450ms ease-in-out;
+	}
+	#second-nav a:hover::after {
+		width: 100%;
+	}
+}
 /***** End navbar *****/
-
-
-
-
-
-
-
-
-
 
 
 
