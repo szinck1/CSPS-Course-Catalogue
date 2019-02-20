@@ -21,12 +21,8 @@
 			</button>
 		</div>
 		<!-- English / Français button -->
-		<ul class="nav navbar-nav navbar-right">
-			{% if lang == 'fr' %}
-				<li><a href="{{ url_for('main.setlang', lang='en') }}">{{ _('Français') }}</a></li>
-			{% else %}
-				<li><a href="{{ url_for('main.setlang', lang='fr') }}">{{ _('Français') }}</a></li>
-			{% endif %}
+		<ul class="nav navbar-nav navbar-right" id="lang-button">
+			<li><a href="{{ url_for('main.setlang', lang='en' if lang == 'fr' else 'fr') }}">{{ _('Français') }}</a></li>
 		</ul>
 	</div>
 </nav>
