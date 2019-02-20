@@ -261,10 +261,18 @@ table {
 .learner-map {
 	display: none;
 }
-#offering-map, #learner-map {
+#offering-map,
+#learner-map {
 	float: left;
 	height: 80vh;
-	width: 92%;
+	width: 100%;
+}
+/* Leave space for legend if screen large enough to display alongside map */
+@media (min-width: 992px) {
+	#offering-map,
+	#learner-map {
+		width: 92%;
+	}
 }
 .map-filter {
 	text-align: right;
