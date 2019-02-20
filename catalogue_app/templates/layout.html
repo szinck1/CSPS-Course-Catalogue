@@ -24,21 +24,6 @@
 	</head>
 	<body>
 		<header>
-			<div class="container">
-				<div class="row">
-					<div class="col-xs-8 col-sm-9 col-md-6 pull-left">
-						<a href="https://www.csps-efpc.gc.ca">
-							{% set lang = 'fr' if request.cookies.get('lang', None) == 'fr' else 'en' %}
-							{% if lang == 'en' %}
-								<img class="goc-fip img-responsive" src="{{ url_for('static', filename='FIPs/csps_en.png') }}" alt="{{ _('CSPS Logo') }}" />
-							{% else %}
-								<img class="goc-fip img-responsive" src="{{ url_for('static', filename='FIPs/csps_fr.png') }}" alt="{{ _('CSPS Logo') }}" />
-							{% endif %}
-						</a>
-					</div>
-				</div>
-			</div>
-			
 			{% include 'includes/_navbar.html' %}
 		</header>
 		
