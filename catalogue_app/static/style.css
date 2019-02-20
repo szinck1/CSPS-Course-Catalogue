@@ -10,13 +10,13 @@ body {
 	margin-bottom: 60px;
 }
 h1 {
-	color: green;
+	color: #066169;
 	margin: 20px 0;
 }
 .jumbotron h1 {
 	text-align: left;
 	font-size: 3.3em;
-	color: green;
+	color: #066169;
 }
 a {
 	color: #335075;
@@ -68,19 +68,11 @@ table {
 /***** Navbar *****/
 /* Logo and main sections */
 .navbar-default {
-	background-color: #335075;
+	background-color: #000;
 }
 .navbar-default .navbar-brand,
 .navbar-default .navbar-nav li a {
 	color: #fff;
-}
-/* Different classes to avoid doubly thick borders in center elements */
-.li-border-left {
-	border-left: 1px solid #fff;
-}
-.li-border-right {
-	border-left: 1px solid #fff;
-	border-right: 1px solid #fff;
 }
 /* Logo and main sections hover */
 .navbar-default .navbar-brand:focus,
@@ -117,7 +109,7 @@ table {
 #home-page h3,
 #about-page h3 {
 	margin: 1.5em 0;
-	color: green;
+	color: #066169;
 	text-align: left;
 }
 /***** End home and about *****/
@@ -235,7 +227,7 @@ table {
 }
 .glyph-info {
 	font-size: 1em !important;
-	color: green;
+	color: #066169;
 }
 /* Table hover */
 .table-hover tbody tr:hover th,
