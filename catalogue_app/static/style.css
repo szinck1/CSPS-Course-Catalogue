@@ -39,14 +39,6 @@ table {
 
 
 
-/***** Header *****/
-.gc-fip {
-	height: 20px;
-}
-/***** End header *****/
-
-
-
 /***** Footer *****/
 .goc-footer {
 	border-top: 4px solid #066169;
@@ -66,35 +58,42 @@ table {
 
 
 
-/***** Navbar *****/
-/* Logo and main sections */
+/***** Navbars *****/
+/* Both */
 .navbar-default {
+	border: none;
+	border-radius: 0;
+	margin: 0;
+}
+/* First navbar */
+#first-nav {
 	background-color: #000;
 }
-.navbar-default .navbar-brand,
-.navbar-default .navbar-nav li a {
+#first-nav a {
 	color: #fff;
 }
-/* Logo and main sections hover */
-.navbar-default .navbar-brand:focus,
-.navbar-default .navbar-brand:hover,
-.navbar-default .navbar-nav li a:focus,
-.navbar-default .navbar-nav li a:hover {
-    background-color: #243850;
-    color: #fff;
+#first-nav img {
+	height: 20px;
 }
-/* Dropdown */
-.navbar-default .dropdown-menu li a {
-	background-color: #fff;
-	color: #333
+/* Second navbar */
+#second-nav {
+	background-color: #232323;
+	padding: 30px 10px 10px 10px;
 }
-/* Dropdown hover */
-.dropdown-toggle:active,
-.open .dropdown-toggle {
-	background: #066169 !important;
-	color: #fff !important;
+#second-nav a {
+	color: #fff;
+	font-size: 1.5rem;
 }
 /***** End navbar *****/
+
+
+
+
+
+
+
+
+
 
 
 
