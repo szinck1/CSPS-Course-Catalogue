@@ -2,6 +2,8 @@
 html {
 	position: relative;
 	min-height: 100%;
+	/* Explicitly declare so can be referenced by rem units */
+	font-size: 16px;
 }
 body {
 	font-family: Helvetica, Arial, sans-serif;
@@ -15,7 +17,7 @@ h1 {
 }
 .jumbotron h1 {
 	text-align: left;
-	font-size: 3.3em;
+	font-size: 3.3rem;
 	color: #066169;
 }
 a {
@@ -104,11 +106,11 @@ table {
 }
 #home-page p,
 #about-page p {
-	margin: 1.5em 0;
+	margin: 1.5rem 0;
 }
 #home-page h3,
 #about-page h3 {
-	margin: 1.5em 0;
+	margin: 1.5rem 0;
 	color: #066169;
 	text-align: left;
 }
@@ -219,14 +221,14 @@ table {
 	width: 50%;
 }
 #glyph-table td span {
-	font-size: 3.6em;
+	font-size: 3.6rem;
 }
 #glyph-table td p {
-	font-size: 1.2em;
+	font-size: 1.2rem;
 	font-weight: bold;
 }
 .glyph-info {
-	font-size: 1em !important;
+	font-size: 1rem !important;
 	color: #066169;
 }
 /* Table hover */
