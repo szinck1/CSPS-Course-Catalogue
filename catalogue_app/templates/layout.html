@@ -25,6 +25,18 @@
 	<body>
 		<header>
 			{% include 'includes/_navbar.html' %}
+			<div id="banner">
+				<div class="container">
+					<!-- Digital Academy logo -->
+					<div class="col-xs-12 col-sm-3">
+						<img src="{{ url_for('static', filename='FIPs/cds_logo.svg') }}" alt="{{ _('CDS Logo') }}" />
+					</div>
+					<!-- Intro text -->
+					<div class="col-xs-12 col-sm-8">
+						<h1>Attention: This catalogue is thicc.</h1>
+					</div>
+				</div>
+			</div>
 		</header>
 		
 		{% block body %}

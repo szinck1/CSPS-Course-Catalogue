@@ -73,17 +73,26 @@ table {
 	color: #fff;
 }
 #first-nav img {
-	height: 20px;
+	height: 1.25rem;
 }
 /* Second navbar */
 #second-nav {
 	background-color: #232323;
-	padding: 30px 10px 10px 10px;
+	padding: 2rem 0.6rem 0.6rem 0.6rem;
 }
 #second-nav a {
 	color: #fff;
 	font-size: 1.5rem;
 }
+/* Banner */
+#banner {
+	background-color: #232323;
+}
+#banner h1 {
+	color: #fff;
+}
+
+
 /* Transition links on hover */
 /* Don't show transition on mobile as navbar will be collapsed */
 @media (min-width: 768px) {
