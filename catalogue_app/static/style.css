@@ -100,6 +100,18 @@ table {
 		width: 100%;
 	}
 }
+/* Hide first-nav's English / Français button on mobile */
+@media (max-width: 767px) {
+	#first-nav #lang-button-desktop {
+		display: none;
+	}
+}
+/* Hide second-nav's English / Français button on desktop */
+@media (min-width: 768px) {
+	#second-nav #lang-button-mobile {
+		display: none;
+	}
+}
 /***** End navbar *****/
 
 
