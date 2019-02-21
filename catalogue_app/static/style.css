@@ -54,9 +54,9 @@ footer {
 }
 footer .container {
 	border-top: 4px solid #066169;
+	padding-top: 0.5rem;
 }
 footer img {
-	margin-top: 0.5rem;
 	display: inline !important;
 }
 /***** End footer *****/
