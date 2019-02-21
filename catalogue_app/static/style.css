@@ -86,13 +86,27 @@ table {
 }
 /* Banner */
 #banner {
+	display: grid;
+	align-items: center;
+	text-align: center;
 	background-color: #232323;
+	padding-bottom: 2rem;
+	min-height: 16rem;
 }
 #banner h1 {
+	font-size: 3rem;
 	color: #fff;
+	font-weight: 100;
 }
-
-
+#banner img {
+	width: 10rem;
+}
+/* Center logo on mobile */
+@media (max-width: 767px) {
+	#banner .img-responsive {
+		margin: 0 auto;
+	}
+}
 /* Transition links on hover */
 /* Don't show transition on mobile as navbar will be collapsed */
 @media (min-width: 768px) {
@@ -121,7 +135,7 @@ table {
 		display: none;
 	}
 }
-/***** End navbar *****/
+/***** End navbars *****/
 
 
 
