@@ -20,6 +20,11 @@ h1 {
 	font-size: 3.3rem;
 	color: #066169;
 }
+@media (max-width: 767px) {
+	.jumbotron h1 {
+		text-align: center;
+	}
+}
 a {
 	color: #066169;
 }
