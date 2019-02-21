@@ -21,7 +21,7 @@ def context_processor():
 	return {'LAST_YEAR': LAST_YEAR.replace('_', '-'), 'THIS_YEAR': THIS_YEAR.replace('_', '-')}
 
 
-# Home page with course search
+# Home page with search bar
 @course.route('/home', methods=['GET', 'POST'])
 @auth.login_required
 def home():
@@ -32,7 +32,7 @@ def home():
 	if request.method == 'POST' and form.validate():
 		course_code = form.course_selection.data
 		return redirect(url_for('course.course_result', course_code=course_code))
-	return render_template('index.html', form=form, title=gettext("Selection"), button_val=gettext("Go"))
+	return render_template('index.html', form=form, title=gettext("Search"), button_val=gettext("Go"))
 
 
 # Catalogue's entry for a given course: the meat & potatoes of the app
