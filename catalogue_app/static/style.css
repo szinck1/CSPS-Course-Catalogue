@@ -9,7 +9,7 @@ body {
 	font-family: Helvetica, sans-serif;
 	font-size: 16px;
 	/* Same as height of footer */
-	margin-bottom: 60px;
+	margin-bottom: 3.75rem;
 }
 h1 {
 	color: #066169;
@@ -45,19 +45,19 @@ table {
 
 
 /***** Footer *****/
-.goc-footer {
-	border-top: 4px solid #066169;
-	line-height: 30px;
-}
-.footer {
+footer {
 	position: absolute;
 	bottom: 0;
 	width: 100%;
 	/* Same as height of body's margin-bottom */
-	height: 60px;
+	height: 3.75rem;
 }
-.footer .goc-fip {
-	display: inline;
+footer .container {
+	border-top: 4px solid #066169;
+}
+footer img {
+	margin-top: 0.5rem;
+	display: inline !important;
 }
 /***** End footer *****/
 
