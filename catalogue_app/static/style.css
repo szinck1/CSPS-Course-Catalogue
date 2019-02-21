@@ -140,19 +140,21 @@ table {
 
 
 /***** Home and about *****/
-#home-page,
-#about-page {
-	text-align: justify;
-}
-#home-page p,
-#about-page p {
-	margin: 1.5rem 0;
-}
 #home-page h3,
 #about-page h3 {
+	line-height: 1.4;
 	margin: 1.5rem 0;
 	color: #066169;
 	text-align: left;
+}
+#home-page p,
+#about-page p {
+	line-height: 1.4;
+	margin: 1.5rem 0;
+}
+#home-page li,
+#about-page li {
+	margin: 0.5rem 0;
 }
 /***** End home and about *****/
 
