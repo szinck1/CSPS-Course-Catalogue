@@ -146,7 +146,9 @@ table {
 
 /***** Home and about *****/
 #home-page h3,
-#about-page h3 {
+#about-page h3,
+#home-page h4,
+#about-page h4 {
 	line-height: 2rem;
 	margin: 1.5rem 0;
 	color: #066169;
@@ -160,6 +162,12 @@ table {
 #home-page li,
 #about-page li {
 	min-height: 2rem;
+}
+/* Sentence indicating last update, put date on new line on mobile */
+@media (max-width: 767px) {
+	#last-updated {
+		display: block;
+	}
 }
 /***** End home and about *****/
 
