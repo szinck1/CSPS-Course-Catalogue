@@ -21,10 +21,10 @@ def context_processor():
 	return {'LAST_YEAR': LAST_YEAR.replace('_', '-'), 'THIS_YEAR': THIS_YEAR.replace('_', '-')}
 
 
-# Course selection
-@course.route('/course-selection', methods=['GET', 'POST'])
+# Home page with course search
+@course.route('/home', methods=['GET', 'POST'])
 @auth.login_required
-def course_selection():
+def home():
 	# Only allow 'en' and 'fr' to be passed to app
 	lang = 'fr' if request.cookies.get('lang', None) == 'fr' else 'en'
 	form = course_form(lang, THIS_YEAR)
@@ -32,7 +32,7 @@ def course_selection():
 	if request.method == 'POST' and form.validate():
 		course_code = form.course_selection.data
 		return redirect(url_for('course.course_result', course_code=course_code))
-	return render_template('form.html', form=form, title=gettext("Selection"), button_val=gettext("Go"))
+	return render_template('index.html', form=form, title=gettext("Selection"), button_val=gettext("Go"))
 
 
 # Catalogue's entry for a given course: the meat & potatoes of the app
@@ -42,7 +42,7 @@ def course_result():
 	### VALIDATE USER INPUTS ###
 	# Get arguments from query string; if incomplete, return to selection page
 	if 'course_code' not in request.args:
-		return redirect(url_for('course.course_selection'))
+		return redirect(url_for('course.home'))
 	# Argument is automatically escaped in Jinja2 and MySQL
 	course_code = request.args['course_code']
 	# Only allow 'en' and 'fr' to be passed to app

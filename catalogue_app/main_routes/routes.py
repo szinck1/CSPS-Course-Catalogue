@@ -10,12 +10,6 @@ def splash():
 	return render_template('splash.html')
 
 
-@main.route('/home')
-@auth.login_required
-def home():
-	return render_template('index.html')
-
-
 @main.route('/about')
 @auth.login_required
 def about():
@@ -28,7 +22,7 @@ def setlang():
 	"""Allow pages to set cookie 'lang' via query string."""
 	# Redirect pages back to themselves except for splash
 	if request.referrer.endswith('/'):
-		resp = make_response(redirect(url_for('main.home')))
+		resp = make_response(redirect(url_for('course.home')))
 	else:
 		resp = make_response(redirect(request.referrer))
 	# Only allow 'en' and 'fr' to be passed to app
