@@ -1,9 +1,8 @@
-{% set lang = 'fr' if request.cookies.get('lang', None) == 'fr' else 'en' %}
-
 <nav class="navbar navbar-default" id="first-nav">
 	<div class="container">
 		<div class="navbar-header">
 			<!-- FIP -->
+			{% set lang = 'fr' if request.cookies.get('lang', None) == 'fr' else 'en' %}
 			{% if lang == 'fr' %}
 				<a class="navbar-brand" href="https://www.canada.ca/fr.html">
 					<img src="{{ url_for('static', filename='FIPs/canada_white_fr.png') }}" alt="{{ _('GC Logo') }}" />
