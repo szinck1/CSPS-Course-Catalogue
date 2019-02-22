@@ -408,6 +408,7 @@ with position: relative, in this case #selection-and-loader */
 }
 /* Avatar */
 .thumbnail.pull-left {
+	width: 7rem;
 	padding: 0 !important;
 	margin-right: 0.5rem !important;
 }
