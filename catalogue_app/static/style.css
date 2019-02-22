@@ -149,21 +149,17 @@ footer img {
 
 
 /***** Home and about *****/
-#home-page h3,
 #about-page h3,
-#home-page h4,
 #about-page h4 {
 	line-height: 2rem;
 	margin: 1.5rem 0;
 	color: #066169;
 	text-align: left;
 }
-#home-page p,
 #about-page p {
 	line-height: 2rem;
 	margin: 1.5rem 0;
 }
-#home-page li,
 #about-page li {
 	min-height: 2rem;
 }
@@ -178,6 +174,12 @@ footer img {
 
 
 /***** Selection form *****/
+/* Text */
+#selection-form h3 {
+	line-height: 2rem;
+	color: #066169;
+	text-align: left;
+}
 /* Button */
 .btn.btn-primary {
 	background-color: #066169;
