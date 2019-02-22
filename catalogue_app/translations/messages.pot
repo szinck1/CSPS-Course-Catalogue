@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-02-14 19:50-0500\n"
+"POT-Creation-Date: 2019-02-22 14:54-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,14 +16,6 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.6.0\n"
-
-#: course_routes/routes.py:35
-msgid "Selection"
-msgstr ""
-
-#: course_routes/routes.py:35
-msgid "Go"
-msgstr ""
 
 #: course_routes/queries/comment_queries.py:94
 msgid "No response"
@@ -144,44 +136,46 @@ msgstr ""
 msgid "No-Shows"
 msgstr ""
 
-#: templates/about.html:6 templates/includes/_navbar.html:14
-msgid "About"
-msgstr ""
-
-#: templates/about.html:9
+#: templates/about.html:5
 msgid ""
-"This platform represents an important step in creating an agile and "
-"digitally-connected organization."
+"This app is the result of a collaborative effort between all three "
+"branches of the School."
 msgstr ""
 
-#: templates/about.html:10
-msgid ""
-"This application is the result of a collaborative effort between all "
-"three branches at the School."
-msgstr ""
-
-#: templates/about.html:11
+#: templates/about.html:6
 msgid "Acknowledgments:"
 msgstr ""
 
-#: templates/about.html:14
+#: templates/about.html:8
 msgid "Curriculum Management"
 msgstr ""
 
-#: templates/about.html:15
+#: templates/about.html:9
 msgid "Digital Academy"
 msgstr ""
 
-#: templates/about.html:16
+#: templates/about.html:10
 msgid "Learning Evaluation Unit"
 msgstr ""
 
-#: templates/about.html:17
+#: templates/about.html:11
 msgid "Application Management"
 msgstr ""
 
-#: templates/about.html:18
+#: templates/about.html:12
 msgid "Learning Solutions"
+msgstr ""
+
+#: templates/about.html:15
+msgid ""
+"If you encounter any bugs or would like features added, please contact <a"
+" href=\"mailto:sam.louden@canada.ca\">Sam Louden</a>."
+msgstr ""
+
+#: templates/about.html:18
+msgid ""
+"Weekly data update performed: <span id=\"last-updated\">February 14, "
+"2019</span>"
 msgstr ""
 
 #: templates/api.html:6
@@ -192,64 +186,39 @@ msgstr ""
 msgid "Coming Soon"
 msgstr ""
 
-#: templates/form.html:48
+#: templates/index.html:16
+msgid "Choose any course to see all of its data."
+msgstr ""
+
+#: templates/index.html:24
+msgid "Go"
+msgstr ""
+
+#: templates/index.html:25
+msgid "Make My Day"
+msgstr ""
+
+#: templates/index.html:62
 msgid "No results"
 msgstr ""
 
-#: templates/index.html:6
-msgid "Welcome to the CSPS Course Catalogue"
+#: templates/layout.html:32
+msgid "DA Logo"
 msgstr ""
 
-#: templates/index.html:9
+#: templates/includes/_head.html:5 templates/layout.html:36
+msgid "CSPS Course Catalogue"
+msgstr ""
+
+#: templates/layout.html:37
 msgid "Note: Test Version"
 msgstr ""
 
-#: templates/index.html:12
-msgid "Weekly data update performed: February 14, 2019"
-msgstr ""
-
-#: templates/index.html:15
-msgid ""
-"This platform brings all the School’s data into one place and makes it "
-"accessible to everyone (no programming skills required)."
-msgstr ""
-
-#: templates/index.html:18
-msgid ""
-"From here you can easily explore data that will enable you to keep track "
-"of your learning products and make the necessary adjustments to maintain "
-"peak performance. If you are preparing a business case, this platform "
-"will give you access to a wealth of information that can help tell your "
-"story to the executive management team."
-msgstr ""
-
-#: templates/index.html:21
-msgid "Our ability to achieve greater agility depends on you."
-msgstr ""
-
-#: templates/index.html:23
-msgid ""
-"Tell us what you want and need in this platform. Together, with your "
-"feedback, we can develop a catalogue that will evolve to better meet your"
-" needs. (Send your feedback <a "
-"href=\"mailto:sam.louden@canada.ca\">here</a>.)"
-msgstr ""
-
-#: templates/index.html:27
-msgid ""
-"If you encounter any bugs, please contact <a "
-"href=\"mailto:sam.louden@canada.ca\">Sam Louden</a>."
-msgstr ""
-
-#: templates/layout.html:33 templates/layout.html:35
-msgid "CSPS Logo"
-msgstr ""
-
-#: templates/layout.html:53
+#: templates/layout.html:51
 msgid "Top of page"
 msgstr ""
 
-#: templates/layout.html:56
+#: templates/layout.html:54
 msgid "GoC Logo"
 msgstr ""
 
@@ -698,27 +667,23 @@ msgid ""
 "due to privacy restrictions.</p>"
 msgstr ""
 
-#: templates/includes/_head.html:5 templates/includes/_navbar.html:4
-msgid "CSPS Course Catalogue"
+#: templates/includes/_navbar.html:9 templates/includes/_navbar.html:13
+msgid "GC Logo"
 msgstr ""
 
-#: templates/includes/_navbar.html:13
+#: templates/includes/_navbar.html:25 templates/includes/_navbar.html:38
+msgid "Français"
+msgstr ""
+
+#: templates/includes/_navbar.html:34
 msgid "Home"
 msgstr ""
 
-#: templates/includes/_navbar.html:16
-msgid "Catalogue"
+#: templates/includes/_navbar.html:35
+msgid "About"
 msgstr ""
 
-#: templates/includes/_navbar.html:18
-msgid "Search by Course"
-msgstr ""
-
-#: templates/includes/_navbar.html:19
-msgid "Search by Department"
-msgstr ""
-
-#: templates/includes/_navbar.html:26 templates/includes/_navbar.html:28
-msgid "Français"
+#: templates/includes/_navbar.html:36
+msgid "Departments"
 msgstr ""
 
