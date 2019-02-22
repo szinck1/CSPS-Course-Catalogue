@@ -1,5 +1,4 @@
 from flask import Blueprint, redirect, render_template, request, url_for
-from flask_babel import gettext
 from catalogue_app import auth
 from catalogue_app.config import Config
 from catalogue_app.course_routes import utils
@@ -32,7 +31,7 @@ def home():
 	if request.method == 'POST' and form.validate():
 		course_code = form.course_selection.data
 		return redirect(url_for('course.course_result', course_code=course_code))
-	return render_template('index.html', form=form, title=gettext("Search"), button_val=gettext("Go"))
+	return render_template('index.html', form=form)
 
 
 # Catalogue's entry for a given course: the meat & potatoes of the app
