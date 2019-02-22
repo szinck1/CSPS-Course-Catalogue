@@ -1,19 +1,20 @@
 ### CURRENT SPRINT ###
 # add pagination for huge comment sections
 	# sort by most recent first
-# make search front and center
-	# search by provider, topic, business type, etc.
-	# new colour scheme
+# search by provider, topic, business type, etc.
 # add datatables i.e. scroll instead of top 5
 # upgrade server
 # add prep & admin
 # unique learners (month, overall, region, etc.)
 	# sections in dashboard tab: offerings, learners, OL, unique learners, etc.
 # validate methodology and #s
-# include info: latest etl, newest features and data of addition
+# include info: new features list
 	# warning if using for official reporting, could contact our
 	# colleagues Taylor or Ranjith
 # app service settings check from Steve?
+# remove dead columns from DB
+# add page not found
+# add clustering (e.g. latent dirichlet) to check top 5 issues mentioned
 # launch!
 
 
@@ -22,7 +23,6 @@
 # add API
 # add danger list of e.g. 5 worst courses by delta regs, ratings, sentiment on comments
 # gameification: you've visited 23% of course pages
-# add clustering (e.g. latent dirichlet) to check top 5 issues mentioned
 # add sentiment analysis? ideas:
 	# love for course across different depts, different classifications
 	# add a section to see worst performing / troubled courses
@@ -39,3 +39,5 @@
 # unit testing
 # let Camille edit directly
 # add guest speakers repository
+# add SQLAlchemy to do DBMS agnostic
+# decouple front and back, redo front with react

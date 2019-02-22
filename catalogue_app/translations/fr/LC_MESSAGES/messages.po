@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  0.2\n"
 "Report-Msgid-Bugs-To: sam.louden@canada.ca\n"
-"POT-Creation-Date: 2019-02-14 19:50-0500\n"
+"POT-Creation-Date: 2019-02-22 15:44-0500\n"
 "PO-Revision-Date: 2019-01-06 13:06-0500\n"
 "Last-Translator: SAM LOUDEN sam.louden@canada.ca\n"
 "Language: fr\n"
@@ -18,14 +18,6 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.6.0\n"
-
-#: course_routes/routes.py:35
-msgid "Selection"
-msgstr "Sélection"
-
-#: course_routes/routes.py:35
-msgid "Go"
-msgstr "Aller"
 
 #: course_routes/queries/comment_queries.py:94
 msgid "No response"
@@ -146,49 +138,54 @@ msgstr "Inscriptions"
 msgid "No-Shows"
 msgstr "Absences"
 
-#: templates/about.html:6 templates/includes/_navbar.html:14
-msgid "About"
-msgstr "À propos"
-
-#: templates/about.html:9
+#: templates/about.html:5
 msgid ""
-"This platform represents an important step in creating an agile and "
-"digitally-connected organization."
-msgstr ""
-"Cette plate-forme représente une étape importante dans la création d’une "
-"organisation agile et connectée."
-
-#: templates/about.html:10
-msgid ""
-"This application is the result of a collaborative effort between all "
-"three branches at the School."
+"This app is the result of a collaborative effort between all three "
+"branches of the School."
 msgstr ""
 "Cette application est le résultat d'un effort de collaboration entre les "
 "trois branches de l'École."
 
-#: templates/about.html:11
+#: templates/about.html:6
 msgid "Acknowledgments:"
 msgstr "Remerciements :"
 
-#: templates/about.html:14
+#: templates/about.html:8
 msgid "Curriculum Management"
 msgstr "Gestion du curriculum"
 
-#: templates/about.html:15
+#: templates/about.html:9
 msgid "Digital Academy"
 msgstr "Académie du numérique"
 
-#: templates/about.html:16
+#: templates/about.html:10
 msgid "Learning Evaluation Unit"
 msgstr "Évaluation de l'apprentissage"
 
-#: templates/about.html:17
+#: templates/about.html:11
 msgid "Application Management"
 msgstr "Gestion des applications"
 
-#: templates/about.html:18
+#: templates/about.html:12
 msgid "Learning Solutions"
 msgstr "Solutions d'apprentissage"
+
+#: templates/about.html:15
+msgid ""
+"If you encounter any bugs or would like features added, please contact <a"
+" href=\"mailto:sam.louden@canada.ca\">Sam Louden</a>."
+msgstr ""
+"Si vous rencontrez des bogues ou avez une suggestion pour une nouvelle "
+"fonctionnalité, veuillez contacter <a "
+"href=\"mailto:sam.louden@canada.ca\">Sam Louden</a>."
+
+#: templates/about.html:18
+msgid ""
+"Weekly data update performed: <span id=\"last-updated\">February 14, "
+"2019</span>"
+msgstr ""
+"Date de la dernière mise à jour hebdomadaire : <span id=\"last-"
+"updated\">14 février 2019</span>"
 
 #: templates/api.html:6
 msgid "CSPS Course Catalogue API"
@@ -198,80 +195,39 @@ msgstr "API du Catalogue de cours de l'EFPC"
 msgid "Coming Soon"
 msgstr "Bientôt disponible"
 
-#: templates/form.html:48
+#: templates/index.html:16
+msgid "Choose any course to see all of its data."
+msgstr "Choisissez n'importe quel cours pour voir toutes ses données."
+
+#: templates/index.html:24
+msgid "Go"
+msgstr "Aller"
+
+#: templates/index.html:25
+msgid "Make My Day"
+msgstr "Fais-moi plaisir"
+
+#: templates/index.html:62
 msgid "No results"
 msgstr "Aucun résultat"
 
-#: templates/index.html:6
-msgid "Welcome to the CSPS Course Catalogue"
-msgstr "Bienvenue au Catalogue de cours de l'EFPC"
+#: templates/layout.html:32
+msgid "DA Logo"
+msgstr "Logo de l'AN"
 
-#: templates/index.html:9
+#: templates/includes/_head.html:5 templates/layout.html:36
+msgid "CSPS Course Catalogue"
+msgstr "Catalogue de cours de l'EFPC"
+
+#: templates/layout.html:37
 msgid "Note: Test Version"
 msgstr "Notez : Ce site est en cours de développement."
 
-#: templates/index.html:12
-msgid "Weekly data update performed: February 14, 2019"
-msgstr "Date de la dernière mise à jour hebdomadaire : 14 février 2019"
-
-#: templates/index.html:15
-msgid ""
-"This platform brings all the School’s data into one place and makes it "
-"accessible to everyone (no programming skills required)."
-msgstr ""
-"Cette plate-forme rassemble toutes les données de l’École dans un même "
-"endroit et les rend accessibles à tous (aucune connaissance en "
-"programmation n’est requise)."
-
-#: templates/index.html:18
-msgid ""
-"From here you can easily explore data that will enable you to keep track "
-"of your learning products and make the necessary adjustments to maintain "
-"peak performance. If you are preparing a business case, this platform "
-"will give you access to a wealth of information that can help tell your "
-"story to the executive management team."
-msgstr ""
-"À partir d’ici, vous pourrez facilement explorer des données qui vous "
-"permettront de suivre vos produits d’apprentissage et d’apporter les "
-"ajustements nécessaires pour maintenir des performances optimales. Si "
-"vous préparez une analyse de rentabilisation, cette plate-forme vous "
-"donne accès à une mine d'information pouvant vous aider à raconter votre "
-"historique à l'équipe de direction."
-
-#: templates/index.html:21
-msgid "Our ability to achieve greater agility depends on you."
-msgstr "Notre capacité à atteindre une plus grande agilité dépend de vous."
-
-#: templates/index.html:23
-msgid ""
-"Tell us what you want and need in this platform. Together, with your "
-"feedback, we can develop a catalogue that will evolve to better meet your"
-" needs. (Send your feedback <a "
-"href=\"mailto:sam.louden@canada.ca\">here</a>.)"
-msgstr ""
-"Dites-nous ce que vous désirez et ce dont vous avez besoin de voir dans "
-"cette plate-forme. Ensemble, avec vos commentaires, nous pourrons "
-"développer un catalogue qui évoluera pour mieux répondre à vos besoins. "
-"(Envoyez vos commentaires <a "
-"href=\"mailto:sam.louden@canada.ca\">ici</a>.)"
-
-#: templates/index.html:27
-msgid ""
-"If you encounter any bugs, please contact <a "
-"href=\"mailto:sam.louden@canada.ca\">Sam Louden</a>."
-msgstr ""
-"Si vous rencontrez des bogues, veuillez contacter <a "
-"href=\"mailto:sam.louden@canada.ca\">Sam Louden</a>."
-
-#: templates/layout.html:33 templates/layout.html:35
-msgid "CSPS Logo"
-msgstr "Logo de l'EFPC"
-
-#: templates/layout.html:53
+#: templates/layout.html:51
 msgid "Top of page"
 msgstr "Haut de la page"
 
-#: templates/layout.html:56
+#: templates/layout.html:54
 msgid "GoC Logo"
 msgstr "Logo du GC"
 
@@ -744,27 +700,22 @@ msgstr ""
 "instructeurs sont présentement désactivées à cause des restrictions de "
 "confidentialité.</p>"
 
-#: templates/includes/_head.html:5 templates/includes/_navbar.html:4
-msgid "CSPS Course Catalogue"
-msgstr "Catalogue de cours de l'EFPC"
+#: templates/includes/_navbar.html:9 templates/includes/_navbar.html:13
+msgid "GC Logo"
+msgstr "Logo du GC"
 
-#: templates/includes/_navbar.html:13
-msgid "Home"
-msgstr "Accueil"
-
-#: templates/includes/_navbar.html:16
-msgid "Catalogue"
-msgstr "Catalogue"
-
-#: templates/includes/_navbar.html:18
-msgid "Search by Course"
-msgstr "Recherche par cours"
-
-#: templates/includes/_navbar.html:19
-msgid "Search by Department"
-msgstr "Recherche par ministère"
-
-#: templates/includes/_navbar.html:26 templates/includes/_navbar.html:28
+#: templates/includes/_navbar.html:25 templates/includes/_navbar.html:38
 msgid "Français"
 msgstr "English"
 
+#: templates/includes/_navbar.html:34
+msgid "Home"
+msgstr "Accueil"
+
+#: templates/includes/_navbar.html:35
+msgid "About"
+msgstr "À propos"
+
+#: templates/includes/_navbar.html:36
+msgid "Departments"
+msgstr "Ministères"

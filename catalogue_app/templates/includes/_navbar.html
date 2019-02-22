@@ -1,32 +1,40 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" id="first-nav">
 	<div class="container">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="{{ url_for('main.home') }}">{{ _('CSPS Course Catalogue') }}</a>
+			<!-- FIP -->
+			{% set lang = 'fr' if request.cookies.get('lang', None) == 'fr' else 'en' %}
+			{% if lang == 'fr' %}
+				<a class="navbar-brand" href="https://www.canada.ca/fr.html">
+					<img src="{{ url_for('static', filename='FIPs/canada_white_fr.png') }}" alt="{{ _('GC Logo') }}" />
+				</a>
+			{% else %}
+				<a class="navbar-brand" href="https://www.canada.ca/en.html">
+					<img src="{{ url_for('static', filename='FIPs/canada_white_en.svg') }}" alt="{{ _('GC Logo') }}" />
+				</a>
+			{% endif %}
+			<!-- Button to display contents of .navbar-collapse on mobile -->
 			<button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu-items">
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
 		</div>
+		<!-- English / Français button -->
+		<ul class="nav navbar-nav navbar-right" id="lang-button-desktop">
+			<li><a href="{{ url_for('main.setlang', lang='en' if lang == 'fr' else 'fr') }}">{{ _('Français') }}</a></li>
+		</ul>
+	</div>
+</nav>
+
+<nav class="navbar navbar-default" id="second-nav">
+	<div class="container">
 		<div class="collapse navbar-collapse" id="menu-items">
-			<ul class="nav navbar-nav">
-				<li class="li-border-left"><a href="{{ url_for('main.home') }}">{{ _('Home') }}</a></li>
-				<li class="li-border-left"><a href="{{ url_for('main.about') }}">{{ _('About') }}</a></li>
-				<li class="dropdown li-border-right">
-					<a href="" class="dropdown-toggle" data-toggle="dropdown">{{ _('Catalogue') }}<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="{{ url_for('course.course_selection') }}">{{ _('Search by Course') }}</a></li>
-						<li><a href="{{ url_for('course.departmental') }}">{{ _('Search by Department') }}</a></li>
-					</ul>
-				</li>
-			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				{% set lang = 'fr' if request.cookies.get('lang', None) == 'fr' else 'en' %}
-				{% if lang == 'en' %}
-					<li class="li-border-right"><a href="{{ url_for('main.setlang', lang='fr') }}">{{ _('Français') }}</a></li>
-				{% else %}
-					<li class="li-border-right"><a href="{{ url_for('main.setlang', lang='en') }}">{{ _('Français') }}</a></li>
-				{% endif %}
+				<li><a href="{{ url_for('course.home') }}">{{ _('Home') }}</a></li>
+				<li><a href="{{ url_for('main.about') }}">{{ _('About') }}</a></li>
+				<li><a href="{{ url_for('course.departmental') }}">{{ _('Departments') }}</a></li>
+				<li><hr /></li>
+				<li id="lang-button-mobile"><a href="{{ url_for('main.setlang', lang='en' if lang == 'fr' else 'fr') }}">{{ _('Français') }}</a></li>
 			</ul>
 		</div>
 	</div>

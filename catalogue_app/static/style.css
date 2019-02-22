@@ -2,24 +2,31 @@
 html {
 	position: relative;
 	min-height: 100%;
+	/* Explicitly declare so can be referenced by rem units */
+	font-size: 16px;
 }
 body {
-	font-family: Helvetica, Arial, sans-serif;
+	font-family: Helvetica, sans-serif;
 	font-size: 16px;
 	/* Same as height of footer */
-	margin-bottom: 60px;
+	margin-bottom: 3.75rem;
 }
 h1 {
-	color: green;
+	color: #066169;
 	margin: 20px 0;
 }
 .jumbotron h1 {
 	text-align: left;
-	font-size: 3.3em;
-	color: green;
+	font-size: 3.3rem;
+	color: #066169;
+}
+@media (max-width: 767px) {
+	.jumbotron h1 {
+		text-align: center;
+	}
 }
 a {
-	color: #335075;
+	color: #066169;
 }
 table {
 	margin: 20px 0;
@@ -37,116 +44,202 @@ table {
 
 
 
-/***** Header *****/
-.goc-fip {
-	max-height: 40px;
-	margin: 10px 10px 5px 10px;
-}
-/***** End header *****/
-
-
-
 /***** Footer *****/
-.goc-footer {
-	border-top: 4px solid #335075;
-	line-height: 30px;
-}
-.footer {
+footer {
 	position: absolute;
 	bottom: 0;
 	width: 100%;
 	/* Same as height of body's margin-bottom */
-	height: 60px;
+	height: 3.75rem;
 }
-.footer .goc-fip {
-	display: inline;
+footer .container {
+	border-top: 4px solid #066169;
+	padding-top: 0.5rem;
+}
+footer img {
+	display: inline !important;
 }
 /***** End footer *****/
 
 
 
-/***** Navbar *****/
-/* Logo and main sections */
+/***** Navbars *****/
+/* Both */
 .navbar-default {
-	background-color: #335075;
+	border: none;
+	border-radius: 0;
+	margin: 0;
 }
-.navbar-default .navbar-brand,
-.navbar-default .navbar-nav li a {
+/* First navbar */
+#first-nav {
+	background-color: #000;
+}
+#first-nav a {
 	color: #fff;
 }
-/* Different classes to avoid doubly thick borders in center elements */
-.li-border-left {
-	border-left: 1px solid #fff;
+#first-nav img {
+	height: 1.25rem;
 }
-.li-border-right {
-	border-left: 1px solid #fff;
-	border-right: 1px solid #fff;
+/* Second navbar */
+#second-nav {
+	background-color: #232323;
+	padding: 2rem 0.6rem 0.6rem 0.6rem;
 }
-/* Logo and main sections hover */
-.navbar-default .navbar-brand:focus,
-.navbar-default .navbar-brand:hover,
-.navbar-default .navbar-nav li a:focus,
-.navbar-default .navbar-nav li a:hover {
-    background-color: #243850;
-    color: #fff;
+#second-nav a {
+	color: #fff;
+	font-size: 1.5rem;
 }
-/* Dropdown */
-.navbar-default .dropdown-menu li a {
-	background-color: #fff;
-	color: #333
+/* Banner */
+#banner {
+	display: grid;
+	align-items: center;
+	text-align: center;
+	background-color: #232323;
+	padding-bottom: 2rem;
+	min-height: 16rem;
 }
-/* Dropdown hover */
-.dropdown-toggle:active,
-.open .dropdown-toggle {
-	background: #243850 !important;
-	color: #fff !important;
+#banner h1 {
+	font-size: 3rem;
+	color: #fff;
+	font-weight: 100;
 }
-/***** End navbar *****/
+#banner h4 {
+	color: #fff;
+	font-weight: 100;
+}
+#banner img {
+	width: 10rem;
+}
+/* Center logo on mobile */
+@media (max-width: 767px) {
+	#banner .img-responsive {
+		margin: 0 auto;
+	}
+}
+/* Transition links on hover */
+/* Don't show transition on mobile as navbar will be collapsed */
+@media (min-width: 768px) {
+	#second-nav a::after {
+		content: '';
+		display: block;
+		background-color: #ffcc33;
+		height: 4px;
+		width: 0%;
+		margin-top: 6px;
+		transition: width 450ms ease-in-out;
+	}
+	#second-nav a:hover::after {
+		width: 100%;
+	}
+}
+/* Hide first-nav's English / Français button on mobile */
+@media (max-width: 767px) {
+	#first-nav #lang-button-desktop {
+		display: none;
+	}
+}
+/* Hide second-nav's English / Français button on desktop */
+@media (min-width: 768px) {
+	#second-nav #lang-button-mobile {
+		display: none;
+	}
+}
+/***** End navbars *****/
 
 
 
 /***** Home and about *****/
-#home-page,
-#about-page {
-	text-align: justify;
-}
-#home-page p,
-#about-page p {
-	margin: 1.5em 0;
-}
-#home-page h3,
-#about-page h3 {
-	margin: 1.5em 0;
-	color: green;
+#about-page h3,
+#about-page h4 {
+	line-height: 2rem;
+	margin: 1.5rem 0;
+	color: #066169;
 	text-align: left;
+}
+#about-page p {
+	line-height: 2rem;
+	margin: 1.5rem 0;
+}
+#about-page li {
+	min-height: 2rem;
+}
+/* Sentence indicating last update, put date on new line on mobile */
+@media (max-width: 767px) {
+	#last-updated {
+		display: block;
+	}
 }
 /***** End home and about *****/
 
 
 
 /***** Selection form *****/
-/* Button */
+/* Consistent vertical gap between text, search bar, and buttons */
+#selection-form h3 {
+	margin-bottom: 0
+}
+#selection-form p {
+	margin-top: 0
+}
+#selection-form dd {
+	margin: 1rem 0;
+}
+/* Text */
+#selection-form h3 {
+	line-height: 2rem;
+	color: #066169;
+	text-align: left;
+}
+/* Buttons */
 .btn.btn-primary {
-	background-color: #335075;
+	background-color: #066169;
 	color: #fff;
+	padding: 0.5rem 1rem;
+	min-width: 8rem;
+}
+#go-button {
+	margin-right: 2rem;
 }
 /* Button hover */
-.btn.btn-primary:hover,
-.btn.btn-primary:focus,
-.btn.btn-primary:active,
-.btn.btn-primary.active {
-	background-color: #243850;
+.btn.btn-primary:hover {
+	background-color: #0aa4b1;
 	color: #fff;
+}
+/* Center text, search bar, and buttons on mobile */
+@media (max-width: 767px) {
+	#selection-form h3,
+	#selection-form form {
+		text-align: center;
+	}
+	/* Continue to left-align dropdown for readability */
+	.chosen-results {
+		text-align: left;
+	}
+	/*  */
+	#button-para {
+		text-align: center;
+	}
+	#go-button {
+		margin-right: 0.8rem;
+	}
 }
 /***** End selection form *****/
 
 
 
 /***** Loader *****/
-#loader {
+/* Area in which to center loader */
+#selection-and-loader {
+	position: relative;
+	min-height: 11rem;
+}
+/* Loader requires an outer div to properly hide when not in use */
+#outer-loader {
 	display: none;
 }
-.loading {
+/* position: absolute to center in next element up DOM 
+with position: relative, in this case #selection-and-loader */
+#loader {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -158,7 +251,7 @@ table {
 .obj {
 	width: 6px;
 	height: 40px;
-	background: #335075;
+	background: #066169;
 	margin: 0 3px;
 	/* Rounded corners */
 	border-radius: 10px;
@@ -202,10 +295,10 @@ table {
 
 /***** Report's tabs *****/
 .main-tabs .active a {
-	color: #335075 !important;
+	color: #066169 !important;
 }
 .sub-tabs .active a {
-	color: #335075 !important;
+	color: #066169 !important;
 }
 /***** End report's tabs *****/
 
@@ -227,20 +320,20 @@ table {
 	width: 50%;
 }
 #glyph-table td span {
-	font-size: 3.6em;
+	font-size: 3.6rem;
 }
 #glyph-table td p {
-	font-size: 1.2em;
+	font-size: 1.2rem;
 	font-weight: bold;
 }
 .glyph-info {
-	font-size: 1em !important;
-	color: green;
+	font-size: 1rem !important;
+	color: #066169;
 }
 /* Table hover */
 .table-hover tbody tr:hover th,
 .table-hover tbody tr:hover td {
-	background-color: #5fba7d;
+	background-color: #ffcc33;
 }
 /***** End general *****/
 
@@ -269,10 +362,18 @@ table {
 .learner-map {
 	display: none;
 }
-#offering-map, #learner-map {
+#offering-map,
+#learner-map {
 	float: left;
 	height: 80vh;
-	width: 92%;
+	width: 100%;
+}
+/* Leave space for legend if screen large enough to display alongside map */
+@media (min-width: 992px) {
+	#offering-map,
+	#learner-map {
+		width: 92%;
+	}
 }
 .map-filter {
 	text-align: right;
@@ -326,12 +427,12 @@ table {
 }
 /* Filter */
 .bob-comment {
-	margin-bottom: 20px;
+	margin-bottom: 1.25rem;
 }
 .star-filter,
 .year-filter {
 	text-align: right;
-	margin: 10px 0;
+	margin: 0.5rem 0;
 }
 .star-filter p,
 .year-filter p {
@@ -339,14 +440,15 @@ table {
 }
 /* Avatar */
 .thumbnail.pull-left {
+	width: 7rem;
 	padding: 0 !important;
-	margin-right: 10px !important;
+	margin-right: 0.5rem !important;
 }
 /* Avatar hover */
 .thumbnail:hover {
-	border-color: #335075 !important;
+	border-color: #066169 !important;
 }
 #instructor_comments p {
-	margin: 20px 0;
+	margin: 1.25rem 0;
 }
 /***** End comments *****/
