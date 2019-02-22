@@ -196,10 +196,18 @@ footer img {
 
 
 /***** Loader *****/
-#loader {
+/* Area in which to center loader */
+#selection-and-loader {
+	position: relative;
+	min-height: 11rem;
+}
+/* Loader requires an outer div to properly hide when not in use */
+#outer-loader {
 	display: none;
 }
-.loading {
+/* position: absolute to center in next element up DOM 
+with position: relative, in this case #selection-and-loader */
+#loader {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -387,12 +395,12 @@ footer img {
 }
 /* Filter */
 .bob-comment {
-	margin-bottom: 20px;
+	margin-bottom: 1.25rem;
 }
 .star-filter,
 .year-filter {
 	text-align: right;
-	margin: 10px 0;
+	margin: 0.5rem 0;
 }
 .star-filter p,
 .year-filter p {
@@ -401,13 +409,13 @@ footer img {
 /* Avatar */
 .thumbnail.pull-left {
 	padding: 0 !important;
-	margin-right: 10px !important;
+	margin-right: 0.5rem !important;
 }
 /* Avatar hover */
 .thumbnail:hover {
 	border-color: #066169 !important;
 }
 #instructor_comments p {
-	margin: 20px 0;
+	margin: 1.25rem 0;
 }
 /***** End comments *****/

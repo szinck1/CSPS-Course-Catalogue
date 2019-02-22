@@ -10,37 +10,39 @@
 {% block body %}
 	{% from "includes/_formhelpers.html" import render_field %}
 	
-	<!-- Loader -->
-	<div class="container" id="loader">
-		<div class="loading">
-			<div class="obj"></div>
-			<div class="obj"></div>
-			<div class="obj"></div>
-			<div class="obj"></div>
-			<div class="obj"></div>
-			<div class="obj"></div>
-			<div class="obj"></div>
-			<div class="obj"></div>
+	<div id="selection-and-loader" class="container">
+		<!-- Selection form -->
+		<div id="selection-form">
+			<h1>{{ title }}</h1>
+			<form method="POST" action="">
+				{% for field in form %}
+					<div class="form-group">
+						{{ render_field(field, class="form-control chosen") }}
+					</div>
+				{% endfor %}
+				<p><input type="submit" value="{{ button_val }}" class="btn btn-primary" id="my-button" /></p>
+			</form>
 		</div>
-	</div>
-	
-	<div class="container" id="selection-form">
-		<h1>{{ title }}</h1>
-		<form method="POST" action="">
-			{% for field in form %}
-				<div class="form-group">
-					{{ render_field(field, class="form-control chosen") }}
-				</div>
-			{% endfor %}
-			<p><input type="submit" value="{{ button_val }}" class="btn btn-primary" id="my-button" /></p>
-		</form>
+		<!-- Loader -->
+		<div id="outer-loader">
+			<div id="loader">
+				<div class="obj"></div>
+				<div class="obj"></div>
+				<div class="obj"></div>
+				<div class="obj"></div>
+				<div class="obj"></div>
+				<div class="obj"></div>
+				<div class="obj"></div>
+				<div class="obj"></div>
+			</div>
+		</div>
 	</div>
 	
 	<script async>
 		// Upon clicking 'Go', hide form and display loader
 		$("#my-button").on('click', function() {
 			$('#selection-form').hide();
-			$('#loader').show();
+			$('#outer-loader').show();
 		});
 		
 		// Enable autocomplete functionality in dropdown
