@@ -7,6 +7,7 @@ html {
 }
 body {
 	font-family: Helvetica, sans-serif;
+	color: #333;
 	font-size: 1rem;
 	/* Same as height of footer */
 	margin-bottom: 3.75rem;
@@ -28,6 +29,12 @@ h1 {
 		text-align: center;
 	}
 }
+li {
+	min-height: 1.5rem;
+}
+p {
+	line-height: 1.5rem;
+}
 table {
 	margin: 1.25rem 0;
 }
@@ -44,6 +51,11 @@ table {
 /* Hover over table rows */
 .table-hover tbody tr:hover {
 	background-color: #ffcc33;
+}
+/* Bootstrap tooltips */
+.tooltip-inner {
+	color: #fff;
+	background-color: #232323;
 }
 /* Custom colour when user highlights text */
 ::selection {
