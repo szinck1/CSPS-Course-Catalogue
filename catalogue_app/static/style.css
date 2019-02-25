@@ -7,13 +7,16 @@ html {
 }
 body {
 	font-family: Helvetica, sans-serif;
-	font-size: 16px;
+	font-size: 1rem;
 	/* Same as height of footer */
 	margin-bottom: 3.75rem;
 }
+a {
+	color: #066169;
+}
 h1 {
 	color: #066169;
-	margin: 20px 0;
+	margin: 1.25rem 0;
 }
 .jumbotron h1 {
 	text-align: left;
@@ -25,20 +28,18 @@ h1 {
 		text-align: center;
 	}
 }
-a {
-	color: #066169;
-}
 table {
-	margin: 20px 0;
+	margin: 1.25rem 0;
 }
 .table-tooltip {
-	width: 20px;
+	width: 1.25rem;
+	margin-left: 1.25rem;
+	/* Remove from flow so won't affect centered text */
 	position: absolute;
-	margin-left: 20px;
 }
 .inline-tooltip {
-	width: 20px;
-	margin-left: 5px;
+	width: 1.25rem;
+	margin-left: 0.3rem;
 }
 /* Custom colour when user highlights text */
 ::selection {
@@ -57,7 +58,7 @@ footer {
 	height: 3.75rem;
 }
 footer .container {
-	border-top: 4px solid #066169;
+	border-top: 0.25rem solid #066169;
 	padding-top: 0.5rem;
 }
 footer img {
