@@ -1,20 +1,19 @@
 ### CURRENT SPRINT ###
-# add pagination for huge comment sections
-	# sort by most recent first
 # search by provider, topic, business type, etc.
 # add datatables i.e. scroll instead of top 5
-# upgrade server
-# add prep & admin
 # unique learners (month, overall, region, etc.)
 	# sections in dashboard tab: offerings, learners, OL, unique learners, etc.
-# validate methodology and #s
-# include info: new features list
-	# warning if using for official reporting, could contact our
-	# colleagues Taylor or Ranjith
-# app service settings check from Steve?
 # remove dead columns from DB
-# add page not found
+	# perform ETL
+# export to PDF, including one pager for prep & admin
+	# download course's raw data
+
+# add prep & admin
+# validate methodology and #s
+# app service settings check from Steve?
 # add clustering (e.g. latent dirichlet) to check top 5 issues mentioned
+	# add pagination for huge comment sections
+	# sort by most recent first
 # launch!
 
 
@@ -26,18 +25,15 @@
 # add sentiment analysis? ideas:
 	# love for course across different depts, different classifications
 	# add a section to see worst performing / troubled courses
-# preview if paste link in gmail, gcmessage, etc.
 # add regional accessibility to geodata
-# export to PDF, including one pager for prep & admin
 # add lifecycle info
 # add dept usage
 	# note explaining current vs billing
 	# download their own csv!
 # link to offerings on gccampus
-# dropdown to divide dashboard into sections e.g. registrations, OL accessibility (learner lang vs offering lang)
 # focus group w/ users, brainstorm for new KPIs for curriculum review process
 # unit testing
 # let Camille edit directly
 # add guest speakers repository
-# add SQLAlchemy to do DBMS agnostic
+# add SQLAlchemy to be RDBMS agnostic
 # decouple front and back, redo front with react
