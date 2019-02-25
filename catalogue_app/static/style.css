@@ -348,7 +348,7 @@ with position: relative, in this case #selection-and-loader */
 	display: inline;
 }
 .dashboard-chart {
-	margin-bottom: 20px;
+	margin-bottom: 1.25rem;
 }
 .dashboard-chart-title {
 	text-align: center;
