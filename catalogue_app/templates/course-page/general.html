@@ -3,13 +3,12 @@
 <!-- Use dict.pop so that remaining elements can be rendered in for loop below -->
 {% set course_description = pass_dict.course_info.pop('Course Description', false) %}
 {% if course_description %}
-	<div id="course-description">
+	<!-- div tag rather than para tag as course_description contains its own markup -->
+	<div>
 		{{ course_description | safe }}
 	</div>
 {% else %}
-	<p class="text-justify">
-		{{ _('Apologies, this course is currently catalogued without a description.') }}
-	</p>
+	<p>{{ _('Apologies, this course is currently catalogued without a description.') }}</p>
 {% endif %}
 
 <!-- Display main properties with glyphicons -->
