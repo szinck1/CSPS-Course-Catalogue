@@ -1,5 +1,5 @@
 import pickle
-from flask import Flask, request
+from flask import Flask, render_template, request
 from flask_httpauth import HTTPBasicAuth
 from flask_babel import Babel
 from catalogue_app.config import Config
@@ -15,6 +15,11 @@ users = {
 
 # Instantiate Babel for bilingual text
 babel = Babel()
+
+
+# Create a function for handling 404: Page not found
+def not_found(e):
+	return render_template('not-found.html'), 404
 
 
 # Application factory
@@ -39,6 +44,8 @@ def create_app(config_class=Config):
 		return None
 	babel.init_app(app)
 	
+	# Register error handlers
+	app.register_error_handler(404, not_found)
 	
 	# Set language
 	@babel.localeselector
