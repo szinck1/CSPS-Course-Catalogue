@@ -41,6 +41,10 @@ table {
 	width: 1.25rem;
 	margin-left: 0.3rem;
 }
+/* Hover over table rows */
+.table-hover tbody tr:hover {
+	background-color: #ffcc33;
+}
 /* Custom colour when user highlights text */
 ::selection {
 	background-color: #ffcc33;
@@ -310,10 +314,6 @@ with position: relative, in this case #selection-and-loader */
 
 
 /***** General *****/
-/* Course description */
-.text-justify {
-	margin: 0 10px 10px 10px;
-}
 /* Glyphicons */
 #glyph-table {
 	height: 45vh;
@@ -324,6 +324,7 @@ with position: relative, in this case #selection-and-loader */
 #glyph-table td {
 	width: 50%;
 }
+/* Glyphs placed in span tags */
 #glyph-table td span {
 	font-size: 3.6rem;
 }
@@ -331,14 +332,9 @@ with position: relative, in this case #selection-and-loader */
 	font-size: 1.2rem;
 	font-weight: bold;
 }
-.glyph-info {
-	font-size: 1rem !important;
+#glyph-table .glyph-info {
+	font-size: 1rem;
 	color: #066169;
-}
-/* Table hover */
-.table-hover tbody tr:hover th,
-.table-hover tbody tr:hover td {
-	background-color: #ffcc33;
 }
 /***** End general *****/
 
