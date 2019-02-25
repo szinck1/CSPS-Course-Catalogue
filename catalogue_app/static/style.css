@@ -40,6 +40,10 @@ table {
 	width: 20px;
 	margin-left: 5px;
 }
+/* Custom colour when user highlights text */
+::selection {
+	background-color: #ffcc33;
+}
 /***** End global *****/
 
 
