@@ -54,7 +54,7 @@ footer {
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-	/* Same as height of body's margin-bottom */
+	/* Same as body's margin-bottom */
 	height: 3.75rem;
 }
 footer .container {
@@ -153,7 +153,7 @@ footer img {
 
 
 
-/***** Home and about *****/
+/***** About *****/
 #about-page h3,
 #about-page h4 {
 	line-height: 2rem;
@@ -174,7 +174,7 @@ footer img {
 		display: block;
 	}
 }
-/***** End home and about *****/
+/***** End about *****/
 
 
 
@@ -202,13 +202,13 @@ footer img {
 	padding: 0.5rem 1rem;
 	min-width: 8rem;
 }
-#go-button {
-	margin-right: 2rem;
-}
 /* Button hover */
 .btn.btn-primary:hover {
 	background-color: #0aa4b1;
 	color: #fff;
+}
+#go-button {
+	margin-right: 2rem;
 }
 /* Center text, search bar, and buttons on mobile */
 @media (max-width: 767px) {
@@ -249,17 +249,17 @@ with position: relative, in this case #selection-and-loader */
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	height: 40px;
+	height: 2.8rem;
 	display: flex;
 	align-items: center;
 }
 .obj {
-	width: 6px;
-	height: 40px;
+	width: 0.4rem;
+	height: 2.8rem;
 	background: #066169;
-	margin: 0 3px;
+	margin: 0 0.25rem;
 	/* Rounded corners */
-	border-radius: 10px;
+	border-radius: 0.6rem;
 	animation: loading 0.8s infinite;
 }
 .obj:nth-child(2) {
