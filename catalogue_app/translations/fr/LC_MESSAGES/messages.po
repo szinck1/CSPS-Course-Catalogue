@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  0.2\n"
 "Report-Msgid-Bugs-To: sam.louden@canada.ca\n"
-"POT-Creation-Date: 2019-02-22 15:44-0500\n"
+"POT-Creation-Date: 2019-02-25 18:06-0500\n"
 "PO-Revision-Date: 2019-01-06 13:06-0500\n"
 "Last-Translator: SAM LOUDEN sam.louden@canada.ca\n"
 "Language: fr\n"
@@ -211,33 +211,29 @@ msgstr "Surprends-moi"
 msgid "No results"
 msgstr "Aucun résultat"
 
-#: templates/layout.html:32
+#: templates/layout.html:34 templates/layout.html:36
 msgid "DA Logo"
 msgstr "Logo de l'AN"
 
-#: templates/includes/_head.html:5 templates/layout.html:36
+#: templates/includes/_head.html:5 templates/layout.html:41
 msgid "CSPS Course Catalogue"
 msgstr "Catalogue de cours de l'EFPC"
 
-#: templates/layout.html:37
+#: templates/layout.html:42
 msgid "Note: Test Version"
 msgstr "Notez : Ce site est en cours de développement."
 
-#: templates/layout.html:51
+#: templates/layout.html:56
 msgid "Top of page"
 msgstr "Haut de la page"
 
-#: templates/layout.html:54
+#: templates/layout.html:59
 msgid "GoC Logo"
 msgstr "Logo du GC"
 
 #: templates/not-found.html:6
 msgid "Course Not Found"
 msgstr "Cours introuvable"
-
-#: templates/not-found.html:8
-msgid "Please try again."
-msgstr "Veuillez essayer à nouveau."
 
 #: templates/course-page/comments.html:5
 msgid "Overall"
@@ -272,9 +268,9 @@ msgstr "Performance"
 #: templates/course-page/dashboard-offerings.html:25
 #: templates/course-page/dashboard-offerings.html:30
 #: templates/course-page/dashboard-offerings.html:48
-#: templates/course-page/geodata.html:11 templates/course-page/geodata.html:24
-#: templates/course-page/geodata.html:28 templates/course-page/ratings.html:3
-#: templates/course-page/ratings.html:14
+#: templates/course-page/general.html:46 templates/course-page/geodata.html:11
+#: templates/course-page/geodata.html:24 templates/course-page/geodata.html:28
+#: templates/course-page/ratings.html:3 templates/course-page/ratings.html:14
 msgid "Tooltip"
 msgstr "Infobulle"
 
@@ -423,8 +419,8 @@ msgstr "Apprenants"
 #: templates/course-page/dashboard-main.html:7
 #: templates/course-page/dashboard-main.html:13
 #: templates/course-page/geodata.html:7 templates/course-page/geodata.html:13
-msgid "Filter: "
-msgstr "Filtre : "
+msgid "Section: "
+msgstr "Section : "
 
 #: templates/course-page/dashboard-main.html:9
 #: templates/course-page/dashboard-main.html:16
@@ -512,28 +508,28 @@ msgstr "Absences moyennes par offre"
 msgid "Apologies, this course is currently catalogued without a description."
 msgstr "Désolé, ce cours est présentement catalogué sans description."
 
-#: templates/course-page/general.html:21
+#: templates/course-page/general.html:20
 msgid "Provider"
 msgstr "Fournisseur"
 
-#: templates/course-page/general.html:23 templates/course-page/general.html:40
-#: templates/course-page/general.html:47 templates/course-page/general.html:87
+#: templates/course-page/general.html:22 templates/course-page/general.html:39
+#: templates/course-page/general.html:49 templates/course-page/general.html:89
 msgid "&lt;awaiting mapping&gt;"
 msgstr "&lt;en attente de catégorisation&gt;"
 
-#: templates/course-page/general.html:28
+#: templates/course-page/general.html:27
 msgid "Duration"
 msgstr "Durée"
 
-#: templates/course-page/general.html:31
+#: templates/course-page/general.html:30
 msgid "hours"
 msgstr "heures"
 
-#: templates/course-page/general.html:31
+#: templates/course-page/general.html:30
 msgid "hour"
 msgstr "heure"
 
-#: templates/course-page/general.html:38
+#: templates/course-page/general.html:37
 msgid "Business Line"
 msgstr "Ligne d'affaires"
 
@@ -541,51 +537,59 @@ msgstr "Ligne d'affaires"
 msgid "Displayed on GCcampus"
 msgstr "Affiché sur GCcampus"
 
-#: templates/course-page/general.html:60
+#: templates/course-page/general.html:62
 msgid "Additional Info"
 msgstr "Infos additionnelles"
 
-#: templates/course-page/general.html:66
+#: templates/course-page/general.html:68
 msgid "Field"
 msgstr "Champ"
 
-#: templates/course-page/general.html:67
+#: templates/course-page/general.html:69
 msgid "Contents"
 msgstr "Contenu"
 
-#: templates/course-page/general.html:73
+#: templates/course-page/general.html:75
 msgid "Business Type"
 msgstr "Type de livraison"
 
-#: templates/course-page/general.html:74
+#: templates/course-page/general.html:76
 msgid "Communities"
 msgstr "Communautés"
 
-#: templates/course-page/general.html:75
+#: templates/course-page/general.html:77
 msgid "Director"
 msgstr "Directeur"
 
-#: templates/course-page/general.html:76
+#: templates/course-page/general.html:78
 msgid "Main Topic"
 msgstr "Sujet principal"
 
-#: templates/course-page/general.html:77
+#: templates/course-page/general.html:79
 msgid "Point of Contact"
 msgstr "Point de contact"
 
-#: templates/course-page/general.html:78
+#: templates/course-page/general.html:80
 msgid "Program Manager"
 msgstr "Gestionnaire de programme"
 
-#: templates/course-page/general.html:79
+#: templates/course-page/general.html:81
 msgid "Project Lead"
 msgstr "Chef de projet"
 
-#: templates/course-page/general.html:80
+#: templates/course-page/general.html:82
 msgid "Required Training"
 msgstr "Formation requise"
 
-#: templates/course-page/general.html:98
+#: templates/course-page/general.html:100
+msgid ""
+"<h5>Tip:</h5><p>Some courses (like leadership programs) have restricted "
+"access.</p>"
+msgstr ""
+"<h5>Indice :</h5><p>Certains cours (comme les programmes de leadership) "
+"ont un accès limité.</p>"
+
+#: templates/course-page/general.html:106
 msgid "<h5>Tip:</h5><p>This information is tracked by Curriculum Management.</p>"
 msgstr ""
 "<h5>Indice :</h5><p>Ces infos sont maintenues par Gestion du "
@@ -700,22 +704,23 @@ msgstr ""
 "instructeurs sont présentement désactivées à cause des restrictions de "
 "confidentialité.</p>"
 
-#: templates/includes/_navbar.html:9 templates/includes/_navbar.html:13
+#: templates/includes/_navbar.html:8 templates/includes/_navbar.html:12
 msgid "GC Logo"
 msgstr "Logo du GC"
 
-#: templates/includes/_navbar.html:25 templates/includes/_navbar.html:38
+#: templates/includes/_navbar.html:24 templates/includes/_navbar.html:37
 msgid "Français"
 msgstr "English"
 
-#: templates/includes/_navbar.html:34
+#: templates/includes/_navbar.html:33
 msgid "Home"
 msgstr "Accueil"
 
-#: templates/includes/_navbar.html:35
+#: templates/includes/_navbar.html:34
 msgid "About"
 msgstr "À propos"
 
-#: templates/includes/_navbar.html:36
+#: templates/includes/_navbar.html:35
 msgid "Departments"
 msgstr "Ministères"
+
