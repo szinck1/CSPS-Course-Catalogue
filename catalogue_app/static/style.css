@@ -65,8 +65,9 @@ footer .container {
 	border-top: 0.25rem solid #066169;
 	padding-top: 0.5rem;
 }
-footer img {
-	display: inline !important;
+footer .img-responsive {
+	/* Needed to keep Canada FIP in pinned to bottom-right corner */
+	display: inline;
 }
 /***** End footer *****/
 
@@ -305,9 +306,11 @@ with position: relative, in this case #selection-and-loader */
 /***** Report's tabs *****/
 .main-tabs .active a {
 	color: #066169 !important;
+	font-weight: bold;
 }
 .sub-tabs .active a {
 	color: #066169 !important;
+	font-weight: bold;
 }
 /***** End report's tabs *****/
 
@@ -434,7 +437,7 @@ with position: relative, in this case #selection-and-loader */
 }
 /* Filter */
 .bob-comment {
-	margin-bottom: 1.25rem;
+	margin-bottom: 1.5rem;
 }
 .star-filter,
 .year-filter {
@@ -448,8 +451,8 @@ with position: relative, in this case #selection-and-loader */
 /* Avatar */
 .thumbnail.pull-left {
 	width: 7rem;
-	padding: 0 !important;
-	margin-right: 0.5rem !important;
+	padding: 0;
+	margin-right: 0.5rem;
 }
 /* Avatar hover */
 .thumbnail:hover {
