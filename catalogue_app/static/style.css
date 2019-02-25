@@ -369,18 +369,24 @@ with position: relative, in this case #selection-and-loader */
 	height: 80vh;
 	width: 100%;
 }
-/* Leave space for legend if screen large enough to display alongside map */
-@media (min-width: 992px) {
-	#offering-map,
-	#learner-map {
-		width: 92%;
-	}
-}
 .map-filter {
 	text-align: right;
 }
 .map-filter p {
 	display: inline;
+}
+/* Leave space for legend if screen large enough to display alongside map */
+#legend {
+	display: none;
+}
+@media (min-width: 992px) {
+	#offering-map,
+	#learner-map {
+		width: 92%;
+	}
+	#legend {
+		display: block;
+	}
 }
 #legend {
 	float: left;
@@ -411,7 +417,7 @@ with position: relative, in this case #selection-and-loader */
 
 /***** Ratings *****/
 .ratings-chart {
-	margin-bottom: 20px;
+	margin-bottom: 1.25rem;
 }
 .ratings-chart-title {
 	text-align: center;
