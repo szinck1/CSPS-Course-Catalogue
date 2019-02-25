@@ -7,13 +7,17 @@ html {
 }
 body {
 	font-family: Helvetica, sans-serif;
-	font-size: 16px;
+	color: #333;
+	font-size: 1rem;
 	/* Same as height of footer */
 	margin-bottom: 3.75rem;
 }
+a {
+	color: #066169;
+}
 h1 {
 	color: #066169;
-	margin: 20px 0;
+	margin: 1.25rem 0;
 }
 .jumbotron h1 {
 	text-align: left;
@@ -25,20 +29,37 @@ h1 {
 		text-align: center;
 	}
 }
-a {
-	color: #066169;
+li {
+	min-height: 1.5rem;
+}
+p {
+	line-height: 1.5rem;
 }
 table {
-	margin: 20px 0;
+	margin: 1.25rem 0;
 }
 .table-tooltip {
-	width: 20px;
+	width: 1.25rem;
+	margin-left: 1.25rem;
+	/* Remove from flow so won't affect centered text */
 	position: absolute;
-	margin-left: 20px;
 }
 .inline-tooltip {
-	width: 20px;
-	margin-left: 5px;
+	width: 1.25rem;
+	margin-left: 0.3rem;
+}
+/* Hover over table rows */
+.table-hover tbody tr:hover {
+	background-color: #ffcc33;
+}
+/* Bootstrap tooltips */
+.tooltip-inner {
+	color: #fff;
+	background-color: #232323;
+}
+/* Custom colour when user highlights text */
+::selection {
+	background-color: #ffcc33;
 }
 /***** End global *****/
 
@@ -49,15 +70,16 @@ footer {
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-	/* Same as height of body's margin-bottom */
+	/* Same as body's margin-bottom */
 	height: 3.75rem;
 }
 footer .container {
-	border-top: 4px solid #066169;
+	border-top: 0.25rem solid #066169;
 	padding-top: 0.5rem;
 }
-footer img {
-	display: inline !important;
+footer .img-responsive {
+	/* Needed to keep Canada FIP in pinned to bottom-right corner */
+	display: inline;
 }
 /***** End footer *****/
 
@@ -148,7 +170,7 @@ footer img {
 
 
 
-/***** Home and about *****/
+/***** About *****/
 #about-page h3,
 #about-page h4 {
 	line-height: 2rem;
@@ -169,7 +191,7 @@ footer img {
 		display: block;
 	}
 }
-/***** End home and about *****/
+/***** End about *****/
 
 
 
@@ -197,13 +219,13 @@ footer img {
 	padding: 0.5rem 1rem;
 	min-width: 8rem;
 }
-#go-button {
-	margin-right: 2rem;
-}
 /* Button hover */
 .btn.btn-primary:hover {
 	background-color: #0aa4b1;
 	color: #fff;
+}
+#go-button {
+	margin-right: 2rem;
 }
 /* Center text, search bar, and buttons on mobile */
 @media (max-width: 767px) {
@@ -244,17 +266,17 @@ with position: relative, in this case #selection-and-loader */
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	height: 40px;
+	height: 2.8rem;
 	display: flex;
 	align-items: center;
 }
 .obj {
-	width: 6px;
-	height: 40px;
+	width: 0.4rem;
+	height: 2.8rem;
 	background: #066169;
-	margin: 0 3px;
+	margin: 0 0.25rem;
 	/* Rounded corners */
-	border-radius: 10px;
+	border-radius: 0.6rem;
 	animation: loading 0.8s infinite;
 }
 .obj:nth-child(2) {
@@ -296,19 +318,17 @@ with position: relative, in this case #selection-and-loader */
 /***** Report's tabs *****/
 .main-tabs .active a {
 	color: #066169 !important;
+	font-weight: bold;
 }
 .sub-tabs .active a {
 	color: #066169 !important;
+	font-weight: bold;
 }
 /***** End report's tabs *****/
 
 
 
 /***** General *****/
-/* Course description */
-.text-justify {
-	margin: 0 10px 10px 10px;
-}
 /* Glyphicons */
 #glyph-table {
 	height: 45vh;
@@ -319,21 +339,17 @@ with position: relative, in this case #selection-and-loader */
 #glyph-table td {
 	width: 50%;
 }
+/* Glyphs placed in span tags */
 #glyph-table td span {
 	font-size: 3.6rem;
 }
-#glyph-table td p {
+#glyph-table td > p {
 	font-size: 1.2rem;
 	font-weight: bold;
 }
-.glyph-info {
-	font-size: 1rem !important;
+#glyph-table .glyph-info {
+	font-size: 1rem;
 	color: #066169;
-}
-/* Table hover */
-.table-hover tbody tr:hover th,
-.table-hover tbody tr:hover td {
-	background-color: #ffcc33;
 }
 /***** End general *****/
 
@@ -347,7 +363,7 @@ with position: relative, in this case #selection-and-loader */
 	display: inline;
 }
 .dashboard-chart {
-	margin-bottom: 20px;
+	margin-bottom: 1.25rem;
 }
 .dashboard-chart-title {
 	text-align: center;
@@ -368,18 +384,24 @@ with position: relative, in this case #selection-and-loader */
 	height: 80vh;
 	width: 100%;
 }
-/* Leave space for legend if screen large enough to display alongside map */
-@media (min-width: 992px) {
-	#offering-map,
-	#learner-map {
-		width: 92%;
-	}
-}
 .map-filter {
 	text-align: right;
 }
 .map-filter p {
 	display: inline;
+}
+/* Leave space for legend if screen large enough to display alongside map */
+#legend {
+	display: none;
+}
+@media (min-width: 992px) {
+	#offering-map,
+	#learner-map {
+		width: 92%;
+	}
+	#legend {
+		display: block;
+	}
 }
 #legend {
 	float: left;
@@ -410,7 +432,7 @@ with position: relative, in this case #selection-and-loader */
 
 /***** Ratings *****/
 .ratings-chart {
-	margin-bottom: 20px;
+	margin-bottom: 1.25rem;
 }
 .ratings-chart-title {
 	text-align: center;
@@ -427,7 +449,7 @@ with position: relative, in this case #selection-and-loader */
 }
 /* Filter */
 .bob-comment {
-	margin-bottom: 1.25rem;
+	margin-bottom: 1.5rem;
 }
 .star-filter,
 .year-filter {
@@ -441,8 +463,8 @@ with position: relative, in this case #selection-and-loader */
 /* Avatar */
 .thumbnail.pull-left {
 	width: 7rem;
-	padding: 0 !important;
-	margin-right: 0.5rem !important;
+	padding: 0;
+	margin-right: 0.5rem;
 }
 /* Avatar hover */
 .thumbnail:hover {

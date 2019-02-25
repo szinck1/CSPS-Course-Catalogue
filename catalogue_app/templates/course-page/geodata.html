@@ -4,13 +4,13 @@
 <div class="map-filter">
 	<!-- If an online course, disable div offering-map and add tooltip with explanation -->
 	{% if pass_dict.course_info.get('Business Type', 'Online') == _('Online') %}
-		<p>{{ _('Filter: ') }}</p>
+		<p>{{ _('Section: ') }}</p>
 		<select id="filter-maps" onchange="filterMaps()">
 			<option value="learner-map">{{ _('Learner Locations') }}</option>
 		</select>
 		<img id="online-map-disabled-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="{{ _('Tooltip') }}" />
 	{% else %}
-		<p>{{ _('Filter: ') }}</p>
+		<p>{{ _('Section: ') }}</p>
 		<select id="filter-maps" onchange="filterMaps()">
 			<option value="offering-map">{{ _('Offering Locations') }}</option>
 			<option value="learner-map">{{ _('Learner Locations') }}</option>
@@ -33,7 +33,7 @@
 <div id="learner-map" class="learner-map"></div>
 
 <!-- Legend -->
-<div id="legend" class="hidden-xs hidden-sm">
+<div id="legend">
 	<div id="legend-title">
 		<h4>{{ _('Legend') }}</h4>
 	</div>
@@ -64,19 +64,19 @@
 <script async>
 	// Add tooltip contents
 	$('#online-map-disabled-tooltip').tooltip({
-		placement: 'below',
+		placement: 'bottom',
 		title: "{{ _('<h5>Tip:</h5><p>The \'Offering Locations\' section is disabled for online courses as they have no physical location.</p>') }}",
 		animation: true,
 		html: true
 	});
 	$('#offering-tooltip').tooltip({
-		placement: 'below',
+		placement: 'bottom',
 		title: "{{ _('<h5>Tip:</h5><p>The map shows offerings with status \'Open\' or \'Delivered\'.</p>') }}",
 		animation: true,
 		html: true
 	});
 	$('#learner-tooltip').tooltip({
-		placement: 'below',
+		placement: 'bottom',
 		title: "{{ _('<h5>Tip:</h5><p>The map shows learners whose registration status is \'Confirmed\'.</p>') }}",
 		animation: true,
 		html: true

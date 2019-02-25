@@ -205,7 +205,7 @@ msgstr "Aller"
 
 #: templates/index.html:25
 msgid "Make My Day"
-msgstr "Fais-moi plaisir"
+msgstr "Surprends-moi"
 
 #: templates/index.html:62
 msgid "No results"
