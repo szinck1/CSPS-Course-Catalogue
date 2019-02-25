@@ -4,13 +4,13 @@
 <div class="dash-filter">
 	<!-- If an online course, disable div offering-dash and add tooltip with explanation -->
 	{% if pass_dict.course_info.get('Business Type', 'Online') == _('Online') %}
-		<p>{{ _('Filter: ') }}</p>
+		<p>{{ _('Section: ') }}</p>
 		<select id="filter-dash" onchange="filterDashboards()">
 			<option value="learner-dash">{{ _('Learner Data') }}</option>
 		</select>
 		<img id="online-dashboard-disabled-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="{{ _('Tooltip') }}" />
 	{% else %}
-		<p>{{ _('Filter: ') }}</p>
+		<p>{{ _('Section: ') }}</p>
 		<select id="filter-dash" onchange="filterDashboards()">
 			<option value="offering-dash">{{ _('Offering Data') }}</option>
 			<option value="learner-dash">{{ _('Learner Data') }}</option>

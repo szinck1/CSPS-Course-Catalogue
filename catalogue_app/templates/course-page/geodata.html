@@ -4,13 +4,13 @@
 <div class="map-filter">
 	<!-- If an online course, disable div offering-map and add tooltip with explanation -->
 	{% if pass_dict.course_info.get('Business Type', 'Online') == _('Online') %}
-		<p>{{ _('Filter: ') }}</p>
+		<p>{{ _('Section: ') }}</p>
 		<select id="filter-maps" onchange="filterMaps()">
 			<option value="learner-map">{{ _('Learner Locations') }}</option>
 		</select>
 		<img id="online-map-disabled-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="{{ _('Tooltip') }}" />
 	{% else %}
-		<p>{{ _('Filter: ') }}</p>
+		<p>{{ _('Section: ') }}</p>
 		<select id="filter-maps" onchange="filterMaps()">
 			<option value="offering-map">{{ _('Offering Locations') }}</option>
 			<option value="learner-map">{{ _('Learner Locations') }}</option>
