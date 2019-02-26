@@ -1,5 +1,6 @@
 ### CURRENT SPRINT ###
-# search by provider, topic, business type, etc.
+# search by provider, topic, business type, etc. using NETWORK GRAPH in highcharts
+# add more transitions, animations to be phresh
 # add datatables i.e. scroll instead of top 5
 # unique learners (month, overall, region, etc.)
 	# sections in dashboard tab: offerings, learners, OL, unique learners, etc.
