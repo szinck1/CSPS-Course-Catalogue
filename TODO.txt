@@ -3,8 +3,7 @@
 # add datatables i.e. scroll instead of top 5
 # unique learners (month, overall, region, etc.)
 	# sections in dashboard tab: offerings, learners, OL, unique learners, etc.
-# remove dead columns from DB
-	# perform ETL
+# remove dead columns from DB, perform ETL
 # export to PDF, including one pager for prep & admin
 	# download course's raw data
 
