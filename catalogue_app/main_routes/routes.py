@@ -5,7 +5,6 @@ main = Blueprint('main', __name__)
 
 
 @main.route('/')
-@auth.login_required
 def splash():
 	return render_template('splash.html')
 
