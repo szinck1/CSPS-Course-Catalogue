@@ -109,10 +109,3 @@ def course_result():
 		'prepared_by': comments.preparation
 	}
 	return render_template('/course-page/main.html', pass_dict=pass_dict)
-
-
-# Coming soon
-@course.route('/departmental')
-@auth.login_required
-def departmental():
-	return render_template('departmental.html')

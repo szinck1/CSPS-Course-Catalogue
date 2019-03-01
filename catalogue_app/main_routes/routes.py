@@ -15,6 +15,13 @@ def about():
 	return render_template('about.html')
 
 
+# Coming soon
+@main.route('/departmental')
+@auth.login_required
+def departmental():
+	return render_template('departmental.html')
+
+
 @main.route('/setlang')
 @auth.login_required
 def setlang():
