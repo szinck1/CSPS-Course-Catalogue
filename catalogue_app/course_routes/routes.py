@@ -109,3 +109,10 @@ def course_result():
 		'prepared_by': comments.preparation
 	}
 	return render_template('/course-page/main.html', pass_dict=pass_dict)
+
+
+# Explore
+@course.route('/explore')
+@auth.login_required
+def explore():
+	return render_template('explore/explore.html')
