@@ -1,25 +1,22 @@
 ### CURRENT SPRINT ###
-# search by provider, topic, business type, etc. using NETWORK GRAPH in highcharts
+# search by provider, topic, business type, etc. using Sinan's graph
+# outline prep & admin
 # add more transitions, animations to be phresh
 # add datatables i.e. scroll instead of top 5
 # unique learners (month, overall, region, etc.)
-	# sections in dashboard tab: offerings, learners, OL, unique learners, etc.
 # remove dead columns from DB
 	# perform ETL
-# export to PDF, including one pager for prep & admin
-	# download course's raw data
-
-# add prep & admin
 # validate methodology and #s
 # app service settings check from Steve?
-# add clustering (e.g. latent dirichlet) to check top 5 issues mentioned
-	# add pagination for huge comment sections
-	# sort by most recent first
+# check async + defer sitrep
 # launch!
 
 
 
 ### BACKLOG ###
+# add clustering (e.g. latent dirichlet) to check top 5 issues mentioned
+	# add pagination for huge comment sections
+	# sort by most recent first
 # add API
 # add danger list of e.g. 5 worst courses by delta regs, ratings, sentiment on comments
 # gameification: you've visited 23% of course pages

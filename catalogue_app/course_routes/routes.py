@@ -111,8 +111,8 @@ def course_result():
 	return render_template('/course-page/main.html', pass_dict=pass_dict)
 
 
-# Coming soon
-@course.route('/departmental')
+# Explore
+@course.route('/explore')
 @auth.login_required
-def departmental():
-	return render_template('departmental.html')
+def explore():
+	return render_template('explore/explore.html')
