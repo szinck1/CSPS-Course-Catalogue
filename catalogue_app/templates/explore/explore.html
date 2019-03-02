@@ -1,7 +1,68 @@
 {% extends 'layout.html' %}
 
+{% block head %}
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	
+	<style>
+		@media (max-width: 767px) {
+			.meow {
+				display: none;
+			}
+		}
+	</style>
+{% endblock head %}
+
 {% block body %}
 	<div class="container">
 		<h1>{{ _('Explore') }}</h1>
+		<table id="my-table" class="display">
+			<thead>
+				<tr>
+					<th>{{ _('Course Code') }}</th>
+					<th>{{ _('Course Title') }}</th>
+					<th class="meow">{{ _('Provider') }}</th>
+					<th class="meow">{{ _('Business Line') }}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>A313</td>
+					<td>Fundamentals of Writing for the Web</td>
+					<td class="meow">CSPS</td>
+					<td class="meow">Digital Academy</td>
+				</tr>
+				<tr>
+					<td>Z156</td>
+					<td>Orientation For Crown Corporation Directors</td>
+					<td class="meow">CSPS</td>
+					<td class="meow">GC and Public Sector Skills</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
+	
+	<script>
+		$(document).ready(function() {
+			$('#my-table').DataTable({
+				// Small enough course list that can display all on single page
+				'paging': false,
+				// Enable search bar
+				'searching': true,
+				// Enable sorting columns
+				'ordering': false,
+				// Hide footer showing counts (ugly)
+				'info': false,
+				// Explicitly set labels so can be translated
+				'language': {
+					'search': "{{ _('Search') }}",
+					'zeroRecords': "{{ _('No results') }}"
+				}
+				
+				
+				// Add listener to prevent search on hidden columns as screen size shrinks?
+				
+			});
+		});
+	</script>
 {% endblock body %}
