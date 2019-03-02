@@ -1,14 +1,19 @@
 ### CURRENT SPRINT ###
-# search by provider, topic, business type, etc. using Sinan's graph
+# RESOLVED: simply use jquery datatable for Explore tab
+	# also add to depts and classifications
+	# match no results error + styling with home page
+	# add DG name to product_info and to Explore tab
+# search inside course descriptions from home page
 # outline prep & admin
 # add more transitions, animations to be phresh
-# add datatables i.e. scroll instead of top 5
 # unique learners (month, overall, region, etc.)
 # remove dead columns from DB
 	# perform ETL
+	# before DGC, rescrape descriptions as well
 # validate methodology and #s
 # app service settings check from Steve?
 # check async + defer sitrep
+# bug fix: course code 'x010'
 # launch!
 
 
