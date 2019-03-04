@@ -8,7 +8,7 @@
 {% block body %}
 	<div class="container">
 		<h1>{{ _('Explore') }}</h1>
-		<table id="my-table" class="stripe hover">
+		<table id="my-table" class="hover">
 			<thead>
 				<tr>
 					<th>{{ _('Course Code') }}</th>
@@ -18,24 +18,14 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>A313</td>
-					<td>Fundamentals of Writing for the Web</td>
-					<td class="hidden-xs">CSPS</td>
-					<td class="hidden-xs">Digital Academy</td>
-				</tr>
-				<tr>
-					<td>F156</td>
-					<td>Orientation to the Moon</td>
-					<td class="hidden-xs">CSPS</td>
-					<td class="hidden-xs">Deep Space Skills</td>
-				</tr>
-				<tr>
-					<td>Z156</td>
-					<td>Orientation For Crown Corporation Directors</td>
-					<td class="hidden-xs">CSPS</td>
-					<td class="hidden-xs">GC and Public Sector Skills</td>
-				</tr>
+				{% for course in course_list %}
+					<tr>
+						<td>{{ course[0] }}</td>
+						<td>{{ course[1] }}</td>
+						<td class="hidden-xs">{{ course[2] }}</td>
+						<td class="hidden-xs">{{ course[3] }}</td>
+					</tr>
+				{% endfor %}
 			</tbody>
 		</table>
 	</div>
