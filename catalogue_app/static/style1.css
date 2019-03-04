@@ -196,7 +196,29 @@ footer .img-responsive {
 
 
 /***** Explore *****/
+/* Ensure catalogue's text style not overridden by plugin's CSS */ 
+#my-table_wrapper {
+	font-family: Helvetica, sans-serif;
+	color: #333;
+	font-size: 1rem;
+	margin-bottom: 1.25rem;
+}
+/* Border */
+#my-table {
+	border-bottom: 1px solid #066169;
+}
+table.dataTable thead th {
+	border-bottom: 1px solid #066169;
+}
 
+/* Hover over rows */
+#my-table tr:hover {
+	background-color: #ffcc33;
+}
+/* Search box */
+#my-table_wrapper label input {
+	font-weight: normal;
+}
 /***** End explore *****/
 
 
