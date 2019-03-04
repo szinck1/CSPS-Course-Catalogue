@@ -3,14 +3,6 @@
 {% block head %}
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
 	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-	
-	<style>
-		@media (max-width: 767px) {
-			.meow {
-				display: none;
-			}
-		}
-	</style>
 {% endblock head %}
 
 {% block body %}
@@ -21,36 +13,34 @@
 				<tr>
 					<th>{{ _('Course Code') }}</th>
 					<th>{{ _('Course Title') }}</th>
-					<th class="meow">{{ _('Provider') }}</th>
-					<th class="meow">{{ _('Business Line') }}</th>
+					<th class="hidden-xs">{{ _('Provider') }}</th>
+					<th class="hidden-xs">{{ _('Business Line') }}</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
 					<td>A313</td>
 					<td>Fundamentals of Writing for the Web</td>
-					<td class="meow">CSPS</td>
-					<td class="meow">Digital Academy</td>
+					<td class="hidden-xs">CSPS</td>
+					<td class="hidden-xs">Digital Academy</td>
 				</tr>
 				<tr>
 					<td>F156</td>
 					<td>Orientation to the Moon</td>
-					<td class="meow">CSPS</td>
-					<td class="meow">Deep Space Skills</td>
+					<td class="hidden-xs">CSPS</td>
+					<td class="hidden-xs">Deep Space Skills</td>
 				</tr>
 				<tr>
 					<td>Z156</td>
 					<td>Orientation For Crown Corporation Directors</td>
-					<td class="meow">CSPS</td>
-					<td class="meow">GC and Public Sector Skills</td>
+					<td class="hidden-xs">CSPS</td>
+					<td class="hidden-xs">GC and Public Sector Skills</td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
 	
 	<script>
-		// also set default sorting
-		
 		var options = {
 			// Small enough course list that can display all on single page
 			'paging': false,
@@ -58,6 +48,8 @@
 			'searching': true,
 			// Enable sorting columns
 			'ordering': true,
+			// Set default sort i.e. first column ascending
+			'order': [[0, 'asc']],
 			// Hide footer showing counts as ugly
 			'info': false,
 			// Explicitly set labels so can be translated
