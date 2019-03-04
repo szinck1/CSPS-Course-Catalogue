@@ -204,13 +204,10 @@ footer .img-responsive {
 	margin-bottom: 1.25rem;
 }
 /* Border */
-#my-table {
+#my-table,
+#my-table thead th {
 	border-bottom: 1px solid #066169;
 }
-table.dataTable thead th {
-	border-bottom: 1px solid #066169;
-}
-
 /* Hover over rows */
 #my-table tr:hover {
 	background-color: #ffcc33;
