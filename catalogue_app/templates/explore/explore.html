@@ -33,6 +33,12 @@
 					<td class="meow">Digital Academy</td>
 				</tr>
 				<tr>
+					<td>F156</td>
+					<td>Orientation to the Moon</td>
+					<td class="meow">CSPS</td>
+					<td class="meow">Deep Space Skills</td>
+				</tr>
+				<tr>
 					<td>Z156</td>
 					<td>Orientation For Crown Corporation Directors</td>
 					<td class="meow">CSPS</td>
@@ -43,26 +49,61 @@
 	</div>
 	
 	<script>
-		$(document).ready(function() {
-			$('#my-table').DataTable({
-				// Small enough course list that can display all on single page
-				'paging': false,
-				// Enable search bar
-				'searching': true,
-				// Enable sorting columns
-				'ordering': false,
-				// Hide footer showing counts (ugly)
-				'info': false,
-				// Explicitly set labels so can be translated
-				'language': {
-					'search': "{{ _('Search') }}",
-					'zeroRecords': "{{ _('No results') }}"
+		// also set default sorting
+		
+		var options = {
+			// Small enough course list that can display all on single page
+			'paging': false,
+			// Enable search bar
+			'searching': true,
+			// Enable sorting columns
+			'ordering': true,
+			// Hide footer showing counts as ugly
+			'info': false,
+			// Explicitly set labels so can be translated
+			'language': {
+				'search': "{{ _('Search') }}",
+				'zeroRecords': "{{ _('No results') }}"
+			},
+			// Allow extended columns to be searchable by default
+			// Functionality disabled on mobile due to space constraints
+			'columnDefs': [
+				{
+					'searchable': true,
+					'targets': [2, 3]
 				}
-				
-				
-				// Add listener to prevent search on hidden columns as screen size shrinks?
-				
-			});
+			]
+		};
+		
+		// Initial creation of DataTable
+		var tableDiv = $('#my-table');
+		var table;
+		var screenMobileFlag = (window.innerWidth < 768) ? true : false;
+		var tableMobileFlag = screenMobileFlag;
+		function createTable(mobile) {
+			if (mobile) {
+				options.columnDefs[0].searchable = false;
+				options.columnDefs[0].bSearchable = false;
+			} else {
+				options.columnDefs[0].searchable = true;
+				options.columnDefs[0].bSearchable = true;
+			}
+			table = tableDiv.DataTable(options);
+		}
+		createTable(screenMobileFlag);
+		
+		// Reload DataTable with different options if screen resized across 768px threshold
+		// E.g. change mobile orientation
+		window.addEventListener('resize', function(event) {
+			// Check new screen size
+			screenMobileFlag = (window.innerWidth < 768) ? true : false;
+			// Only reload table if flags are different
+			if (screenMobileFlag !== tableMobileFlag) {
+				table.destroy();
+				createTable(screenMobileFlag);
+				// Resynch flags
+				tableMobileFlag = screenMobileFlag;
+			}
 		});
 	</script>
 {% endblock body %}
