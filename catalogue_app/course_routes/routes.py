@@ -5,7 +5,7 @@ from catalogue_app.course_routes import utils
 from catalogue_app.course_routes.forms import course_form
 from catalogue_app.course_routes.queries import (
 	comment_queries, dashboard_learner_queries, dashboard_offering_queries,
-	general_queries, map_queries, rating_queries
+	explore_queries, general_queries, map_queries, rating_queries
 )
 
 # Instantiate blueprint
@@ -115,4 +115,5 @@ def course_result():
 @course.route('/explore')
 @auth.login_required
 def explore():
-	return render_template('explore/explore.html')
+	course_list = explore_queries.course_list()
+	return render_template('explore/explore.html', course_list=course_list)
