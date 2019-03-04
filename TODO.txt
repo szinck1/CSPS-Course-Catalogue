@@ -1,14 +1,15 @@
 ### CURRENT SPRINT ###
-# RESOLVED: simply use jquery datatable for Explore tab
+# RESOLVED:
+	# style datatable
 	# also add to depts and classifications
-	# match no results error + styling with home page
-	# add DG name to product_info and to Explore tab
 # search inside course descriptions from home page
 # outline prep & admin
+# raw data download button
 # add more transitions, animations to be phresh
-# unique learners (month, overall, region, etc.)
+# unique learners (line on regs per month + totals for both)
 # remove dead columns from DB
 	# perform ETL
+	# add DG name to product_info and to Explore tab
 	# before DGC, rescrape descriptions as well
 # validate methodology and #s
 # app service settings check from Steve?
