@@ -1,36 +1,38 @@
 ### CURRENT SPRINT ###
-# RESOLVED:
-	# style datatable
-	# also add to depts and classifications
-# search inside course descriptions from home page
-# outline prep & admin
 # raw data download button
-# add more transitions, animations to be phresh
-# unique learners (line on regs per month + totals for both)
 # remove dead columns from DB
 	# perform ETL
-	# add DG name to product_info and to Explore tab
-	# before DGC, rescrape descriptions as well
+	# bug fix: course code 'x010'
+	# add DG name to product_info and to Explore page
+	# rescrape descriptions
+# outline prep & admin (after ETL as won't push to production just yet)
+
+
+### BEFORE DGC ###
+# add datatables to depts and classifications
+# unique learners (line on regs per month + totals for both)
+	# would need query too
 # validate methodology and #s
+# search inside course descriptions from home page
 # app service settings check from Steve?
 # check async + defer sitrep
-# bug fix: course code 'x010'
 # launch!
 
 
 
 ### BACKLOG ###
+# copyright
+# explore by director
+	# show flags e.g. regs gone down, copyright expired, no prep and admin
+	# email director the problems for delegation
 # add clustering (e.g. latent dirichlet) to check top 5 issues mentioned
 	# add pagination for huge comment sections
 	# sort by most recent first
 # add API
-# add danger list of e.g. 5 worst courses by delta regs, ratings, sentiment on comments
-# gameification: you've visited 23% of course pages
 # add sentiment analysis? ideas:
 	# love for course across different depts, different classifications
 	# add a section to see worst performing / troubled courses
 # add regional accessibility to geodata
-# add lifecycle info
 # add dept usage
 	# note explaining current vs billing
 	# download their own csv!
