@@ -195,11 +195,98 @@ footer .img-responsive {
 
 
 
+/***** Explore *****/
+#explore-page {
+	padding-bottom: 1.5rem;
+}
+#explore-page h3 {
+	line-height: 2rem;
+	margin: 1.5rem 0;
+	color: #066169;
+	text-align: left;
+}
+#explore-page p {
+	line-height: 2rem;
+	margin: 1.5rem 0;
+}
+#explore-page .btn {
+	display: block;
+	width: 100%;
+	/* Only assign margin-bottom. Using margin-top causes jumping with
+	Bootstrap collapse */
+	margin-bottom: 0.75rem;
+	padding-left: 1rem;
+	line-height: 2.5rem;
+	text-align: left;
+	font-size: 1.1rem;
+	border-radius: 0.5rem;
+	/* Allow text to wrap to next line on narrow screens */
+	white-space: normal;
+}
+#explore-page .btn.btn-primary {
+	background-image: linear-gradient(to right, #066169, #39949c);
+}
+#explore-page table {
+	margin-bottom: 0.75rem;
+	margin-top: 0;
+}
+/* Make provider buttons + table slightly narrower and centered on
+tablet and desktop */
+@media (min-width: 768px) {
+	#explore-page .btn.btn-success,
+	#explore-page table {
+		width: 90%;
+		margin: 0 auto;
+		margin-bottom: 0.75rem;
+		margin-top: 0;
+	}
+}
+
+
+/* Explicitly declare table row height for vertically
+centering ::before and glyphs */
+#explore-page tr {
+	height: 2.5rem;
+}
+/* Use ::before pseudo-element to make entire table row a hyperlink
+as HTML specs prohibit wrapping <tr> in <a> */
+.table-link::before {
+	content: '';
+	display: block;
+	position: absolute;
+	left: 0;
+	width: 100%;
+	/* Same height as <tr> */
+	height: 2.5rem;
+}
+#explore-page tr:hover {
+	background-color: #ffcc33;
+}
+.glyphicon-minus,
+.glyphicon-plus {
+	float: right;
+	vertical-align: middle;
+	/* Same height as <tr> */
+	line-height: 2.5rem;
+}
+.glyphicon-minus {
+	display: none;
+}
+/* When lists expanded, hide plus glyph and show minus glyph */
+button[aria-expanded='false'] > span.glyphicon-plus,
+button[aria-expanded='true'] > span.glyphicon-minus {
+	display: inline;
+}
+button[aria-expanded='false'] > span.glyphicon-minus,
+button[aria-expanded='true'] > span.glyphicon-plus {
+	display: none;
+}
+/***** End explore *****/
+
+
+
 /***** Selection form *****/
 /* Consistent vertical gap between text, search bar, and buttons */
-#selection-form h3 {
-	margin-bottom: 0
-}
 #selection-form p {
 	margin-top: 0
 }
@@ -208,6 +295,8 @@ footer .img-responsive {
 }
 /* Text */
 #selection-form h3 {
+	margin-top: 1.5rem;
+	margin-bottom: 0;
 	line-height: 2rem;
 	color: #066169;
 	text-align: left;
@@ -237,7 +326,6 @@ footer .img-responsive {
 	.chosen-results {
 		text-align: left;
 	}
-	/*  */
 	#button-para {
 		text-align: center;
 	}

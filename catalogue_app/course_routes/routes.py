@@ -5,7 +5,7 @@ from catalogue_app.course_routes import utils
 from catalogue_app.course_routes.forms import course_form
 from catalogue_app.course_routes.queries import (
 	comment_queries, dashboard_learner_queries, dashboard_offering_queries,
-	general_queries, map_queries, rating_queries
+	explore_queries, general_queries, map_queries, rating_queries
 )
 
 # Instantiate blueprint
@@ -115,4 +115,15 @@ def course_result():
 @course.route('/explore')
 @auth.login_required
 def explore():
-	return render_template('explore/explore.html')
+	# Only allow 'en' and 'fr' to be passed to app
+	lang = 'fr' if request.cookies.get('lang', None) == 'fr' else 'en'
+	
+	# Instantiate class
+	course_list = explore_queries.CourseList(lang, THIS_YEAR).load()
+	
+	pass_dict = {
+		'providers': course_list._get_nested_dicts()
+	}
+	
+	
+	return render_template('explore/explore.html', pass_dict=pass_dict)
