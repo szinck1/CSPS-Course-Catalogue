@@ -34,7 +34,7 @@ class CourseList:
 			FROM lsr{1} AS a
 			LEFT OUTER JOIN product_info AS b
 			ON a.course_code = b.course_code
-			ORDER BY 1, 2, 3 ASC;
+			ORDER BY BINARY 1, 2, 3 ASC;
 		""".format(self.lang, self.fiscal_year)
 		results = query_mysql(query)
 		results = pd.DataFrame(results, columns=['provider', 'business_line', 'course_code', 'course_title'])
