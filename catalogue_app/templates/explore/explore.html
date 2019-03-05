@@ -2,6 +2,8 @@
 
 {% block body %}
 	<div id="explore-page" class="container">
+		<h3>{{ _('Explore courses by business line and provider.') }}</h3>
+		<p>{{ _("Note: If you're the owner of an unclaimed course, please contact Curriculum Management.") }}</p>
 		
 		{% for business_line, business_line_dict in pass_dict.providers.items() %}
 			<!-- Set variable to store outer loop's counter -->
@@ -10,37 +12,37 @@
 			<!-- Button for Business Line -->
 			<button class="btn btn-primary" data-toggle="collapse" data-target="#bus-line-{{ outer_loop.index }}">
 				{{ business_line }}
-				<span class="glyphicon glyphicon-plus plus-button"></span>
-				<span class="glyphicon glyphicon-minus minus-button"></span>
+				<span class="glyphicon glyphicon-plus"></span>
+				<span class="glyphicon glyphicon-minus"></span>
 			</button>
 			
 			<div id="bus-line-{{ outer_loop.index }}" class="collapse">
-			{% for provider, provider_dict in business_line_dict.items() %}
-				<!-- Set variable to store outer loop's counter -->
-				{% set inner_loop = loop %}
+				{% for provider, provider_dict in business_line_dict.items() %}
+					<!-- Set variable to store outer loop's counter -->
+					{% set inner_loop = loop %}
+					
+					<!-- Button for Provider -->
+					<button class="btn btn-success" data-toggle="collapse" data-target="#bus-line-{{ outer_loop.index }} #provider-{{ inner_loop.index }}">
+						{{ provider }}
+					</button>
+					
+					<!-- Display course codes and titles in table -->
+					<div id="provider-{{ inner_loop.index }}" class="collapse">
+						<table class="table">
+							<tbody>
+								{% for course in provider_dict %}
+									<tr>
+										<!-- .table-link uses ::before pseudo-element to make entire row clickable -->
+										<td class="col-xs-1"><a class="table-link" href="{{ url_for('course.course_result') + '?course_code=' + course[0] }}"></a></td>
+										<td class="col-xs-1">{{ course[0] }}</td>
+										<td>{{ course[1] }}</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
 				
-				<!-- Button for Provider -->
-				<button class="btn btn-success" data-toggle="collapse" data-target="#bus-line-{{ outer_loop.index }} #provider-{{ inner_loop.index }}">
-					{{ provider }}
-				</button>
-				
-				<!-- Display course codes and titles in table -->
-				<div id="provider-{{ inner_loop.index }}" class="collapse">
-					<table class="table">
-						<tbody>
-							{% for course in provider_dict %}
-								<tr>
-									<!-- .table-link uses ::before pseudo-element to make entire row clickable -->
-									<td class="col-xs-1"><a class="table-link" href="{{ url_for('course.course_result') + '?course_code=' + course[0] }}"></a></td>
-									<td class="col-xs-1">{{ course[0] }}</td>
-									<td>{{ course[1] }}</td>
-								</tr>
-							{% endfor %}
-						</tbody>
-					</table>
-				</div>
-				
-			{% endfor %}
+				{% endfor %}
 			</div>
 			
 		{% endfor %}
