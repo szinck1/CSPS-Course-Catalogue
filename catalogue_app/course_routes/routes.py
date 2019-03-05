@@ -115,5 +115,15 @@ def course_result():
 @course.route('/explore')
 @auth.login_required
 def explore():
-	course_list = explore_queries.course_list()
-	return render_template('explore/explore.html', course_list=course_list)
+	# Only allow 'en' and 'fr' to be passed to app
+	lang = 'fr' if request.cookies.get('lang', None) == 'fr' else 'en'
+	
+	# Instantiate class
+	course_list = explore_queries.CourseList(lang, THIS_YEAR).load()
+	
+	pass_dict = {
+		'providers': course_list._get_nested_dicts()
+	}
+	
+	
+	return render_template('explore/explore.html', pass_dict=pass_dict)
