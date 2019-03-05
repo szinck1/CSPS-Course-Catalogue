@@ -1,6 +1,7 @@
 import pandas as pd
 from flask_babel import gettext
 from catalogue_app.db import query_mysql
+from catalogue_app.course_routes.forms import _clean_title
 
 
 class CourseList:
@@ -64,7 +65,13 @@ class CourseList:
 		business_line_bool = self.data['business_line'] == business_line
 		provider_bool = self.data['provider'] == provider
 		courses = self.data.loc[business_line_bool & provider_bool, ['course_code', 'course_title']].values.tolist()
-		return courses
+		# Remove course codes from titles
+		results_processed = []
+		for course in courses:
+			course_code = course[0]
+			course_title = _clean_title(course[1])
+			results_processed.append([course_code, course_title])
+		return results_processed
 	
 	
 	def _get_nested_dicts(self):
