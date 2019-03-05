@@ -23,10 +23,14 @@
 			<li><a href="#comments">{{ _('Comments') }}</a></li>
 		</ul>
 		
+		<!-- Import custom macro for adding 'Download raw data' button -->
+		{% from "includes/_formhelpers.html" import download_raw %}
+		
 		<!-- Tabs' contents -->
 		<!-- General -->
 		<section id="general" class="tab-content active">
 			{% include 'course-page/general.html' %}
+			{{ download_raw(url_for('downloads.download_blimp')) }}
 		</section>
 		
 		<!-- Dashboard -->
