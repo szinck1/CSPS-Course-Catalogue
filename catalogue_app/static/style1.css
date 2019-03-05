@@ -61,6 +61,14 @@ table {
 ::selection {
 	background-color: #ffcc33;
 }
+/* Button to download each tab's raw data */
+.download-raw {
+	float: right;
+	margin-bottom: 0.2rem;
+}
+.download-raw span {
+	margin-left: 0.5rem;
+}
 /***** End global *****/
 
 
