@@ -70,6 +70,9 @@ class CourseList:
 		for business_line in self.business_lines:
 			business_line_courses = {}
 			for provider in self.providers:
-				business_line_courses[provider] = self._get_courses(business_line, provider)
-			results[business_line] = business_line_courses
+				courses = self._get_courses(business_line, provider)
+				if courses:
+					business_line_courses[provider] = courses
+			if business_line_courses:
+				results[business_line] = business_line_courses
 		return results
