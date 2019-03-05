@@ -6,7 +6,7 @@ from catalogue_app.course_routes.forms import _clean_title
 
 class CourseList:
 	"""Data for the Explore page, purpose of which is to allow users to 
-	search by Provider, Business Line, and DG.
+	search by Business Line and Provider.
 	"""
 	def __init__(self, lang, fiscal_year):
 		self.lang = lang
@@ -28,8 +28,7 @@ class CourseList:
 	def _load_courses(self):
 		"""Query the DB and store results in DataFrame."""
 		# Get course codes from LSR to ensure course has usage and will
-		# therefore have an entry in the catalogue i.e. no dead links in
-		# Explore page
+		# therefore have an entry in the catalogue i.e. no dead links
 		query = """
 			SELECT DISTINCT b.provider_{0}, b.business_line_{0}, a.course_code, a.course_title_{0}
 			FROM lsr{1} AS a
@@ -66,11 +65,7 @@ class CourseList:
 		provider_bool = self.data['provider'] == provider
 		courses = self.data.loc[business_line_bool & provider_bool, ['course_code', 'course_title']].values.tolist()
 		# Remove course codes from titles
-		results_processed = []
-		for course in courses:
-			course_code = course[0]
-			course_title = _clean_title(course[1])
-			results_processed.append([course_code, course_title])
+		results_processed = [[course[0], _clean_title(course[1])] for course in courses]
 		return results_processed
 	
 	
