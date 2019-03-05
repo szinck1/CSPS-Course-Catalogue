@@ -4,7 +4,7 @@ from catalogue_app.db import query_mysql
 
 
 class CourseList:
-	"""Data for the Explore tab, purpose of which is to allow users to 
+	"""Data for the Explore page, purpose of which is to allow users to 
 	search by Provider, Business Line, and DG.
 	"""
 	def __init__(self, lang, fiscal_year):
@@ -26,6 +26,9 @@ class CourseList:
 	
 	def _load_courses(self):
 		"""Query the DB and store results in DataFrame."""
+		# Get course codes from LSR to ensure course has usage and will
+		# therefore have an entry in the catalogue i.e. no dead links in
+		# Explore page
 		query = """
 			SELECT DISTINCT b.provider_{0}, b.business_line_{0}, a.course_code, a.course_title_{0}
 			FROM lsr{1} AS a
