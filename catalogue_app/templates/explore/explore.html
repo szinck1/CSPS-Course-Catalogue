@@ -1,91 +1,26 @@
 {% extends 'layout.html' %}
 
-{% block head %}
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
-	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-{% endblock head %}
-
 {% block body %}
 	<div class="container">
-		<h1>{{ _('Explore') }}</h1>
-		<table id="my-table" class="hover">
-			<thead>
-				<tr>
-					<th>{{ _('Course Code') }}</th>
-					<th>{{ _('Course Title') }}</th>
-					<th class="hidden-xs">{{ _('Provider') }}</th>
-					<th class="hidden-xs">{{ _('Business Line') }}</th>
-				</tr>
-			</thead>
-			<tbody>
-				{% for course in course_list %}
-					<tr>
-						<td>{{ course[0] }}</td>
-						<td>{{ course[1] }}</td>
-						<td class="hidden-xs">{{ course[2] }}</td>
-						<td class="hidden-xs">{{ course[3] }}</td>
-					</tr>
+		
+		{% for business_line, business_line_dict in pass_dict.providers.items() %}
+			<p>{{ business_line }}</p>
+			{% for provider, provider_dict in business_line_dict.items() %}
+				<p style="padding: 0 1rem;">{{ provider }}</p>
+				{% for course in provider_dict %}
+					<p style="padding: 0 3rem;">{{ course }}</p>
 				{% endfor %}
-			</tbody>
-		</table>
+			{% endfor %}
+		{% endfor %}
+		
+		<!--
+		<button class="btn btn-primary" data-toggle="collapse" data-target="#mars">MEOW!</button>
+		<div id="mars" class="collapse">
+			<div class="well">
+				This cat is THICC!
+			</div>
+		</div>
+		-->
+		
 	</div>
-	
-	<script>
-		var options = {
-			// Small enough course list that can display all on single page
-			'paging': false,
-			// Enable search bar
-			'searching': true,
-			// Enable sorting columns
-			'ordering': true,
-			// Set default sort i.e. first column ascending
-			'order': [[0, 'asc']],
-			// Hide footer showing counts as ugly
-			'info': false,
-			// Explicitly set labels so can be translated
-			'language': {
-				'search': "{{ _('Search') }}",
-				'zeroRecords': "{{ _('No results') }}"
-			},
-			// Allow extended columns to be searchable by default
-			// Functionality disabled on mobile due to space constraints
-			'columnDefs': [
-				{
-					'searchable': true,
-					'targets': [2, 3]
-				}
-			]
-		};
-		
-		// Initial creation of DataTable
-		var tableDiv = $('#my-table');
-		var table;
-		var screenMobileFlag = (window.innerWidth < 768) ? true : false;
-		var tableMobileFlag = screenMobileFlag;
-		function createTable(mobile) {
-			if (mobile) {
-				options.columnDefs[0].searchable = false;
-				options.columnDefs[0].bSearchable = false;
-			} else {
-				options.columnDefs[0].searchable = true;
-				options.columnDefs[0].bSearchable = true;
-			}
-			table = tableDiv.DataTable(options);
-		}
-		createTable(screenMobileFlag);
-		
-		// Reload DataTable with different options if screen resized across 768px threshold
-		// E.g. change mobile orientation
-		window.addEventListener('resize', function(event) {
-			// Check new screen size
-			screenMobileFlag = (window.innerWidth < 768) ? true : false;
-			// Only reload table if flags are different
-			if (screenMobileFlag !== tableMobileFlag) {
-				table.destroy();
-				createTable(screenMobileFlag);
-				// Resynch flags
-				tableMobileFlag = screenMobileFlag;
-			}
-		});
-	</script>
 {% endblock body %}
