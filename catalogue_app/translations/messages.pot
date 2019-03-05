@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-03-05 16:05-0500\n"
+"POT-Creation-Date: 2019-03-05 16:45-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -680,8 +680,9 @@ msgstr ""
 
 #: templates/explore/explore.html:6
 msgid ""
-"Note: If you're the owner of an unclaimed course, please contact "
-"Curriculum Management."
+"Note: If you're the owner of an unclaimed course, please contact <a "
+"href=\"mailto:csps.lpb.curriculum.dgpa.efpc@canada.ca\">Curriculum "
+"Management</a>."
 msgstr ""
 
 #: templates/includes/_navbar.html:8 templates/includes/_navbar.html:12
