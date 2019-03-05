@@ -10,6 +10,8 @@
 			<!-- Button for Business Line -->
 			<button class="btn btn-primary" data-toggle="collapse" data-target="#bus-line-{{ outer_loop.index }}">
 				{{ business_line }}
+				<span class="glyphicon glyphicon-plus plus-button"></span>
+				<span class="glyphicon glyphicon-minus minus-button"></span>
 			</button>
 			
 			<div id="bus-line-{{ outer_loop.index }}" class="collapse">
@@ -28,7 +30,9 @@
 						<tbody>
 							{% for course in provider_dict %}
 								<tr>
-									<td>{{ course[0] }}</td>
+									<!-- .table-link uses ::before pseudo-element to make entire row clickable -->
+									<td class="col-xs-1"><a class="table-link" href="{{ url_for('course.course_result') + '?course_code=' + course[0] }}"></a></td>
+									<td class="col-xs-1">{{ course[0] }}</td>
 									<td>{{ course[1] }}</td>
 								</tr>
 							{% endfor %}
@@ -40,23 +44,5 @@
 			</div>
 			
 		{% endfor %}
-		
-		
-		<!--
-			Add yellow on hover
-			Add plus icon as seen in most other collapsed lists
-				- probably use glyph + min-width
-			Add hyperlinks
-				- click anywhere on row
-		-->
-		
-		<!--
-		<div id="mars" class="collapse">
-			<div class="well">
-				This cat is THICC!
-			</div>
-		</div>
-		-->
-		
 	</div>
 {% endblock body %}

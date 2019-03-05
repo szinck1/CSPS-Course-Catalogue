@@ -206,13 +206,62 @@ footer .img-responsive {
 #explore-page .btn {
 	display: block;
 	margin-bottom: 0.75rem;
+	min-width: 30%;
 }
-#explore-page .btn-success {
-	margin-left: 0.75rem;
+#explore-page .glyphicon {
+	margin-left: 0.5rem;
 }
+
+@media (max-width: 767px) {
+	#explore-page .btn {
+		width: 100%;
+	}
+	#explore-page .glyphicon {
+		margin-left: 0;
+	}
+}
+
+
+
 #explore-page table {
 	margin: 0 0 0.75rem 0;
 }
+#explore-page tr {
+	height: 2.5rem;
+}
+#explore-page tr:hover {
+	background-color: #ffcc33;
+}
+
+
+.table-link::before {
+	content: '';
+	display: block;
+	position: absolute;
+	left: 0;
+	width: 100%;
+	height: 2.5rem;
+}
+
+.plus-button,
+.minus-button {
+	float: right;
+}
+
+
+span.glyphicon-minus {
+	display: none;
+}
+button[aria-expanded='false'] > span.glyphicon-plus,
+button[aria-expanded='true'] > span.glyphicon-minus {
+	display: inline;
+}
+button[aria-expanded='false'] > span.glyphicon-minus,
+button[aria-expanded='true'] > span.glyphicon-plus {
+	display: none;
+}
+
+
 
 
 /***** End explore *****/
