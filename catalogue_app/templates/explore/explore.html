@@ -1,20 +1,56 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-	<div class="container">
+	<div id="explore-page" class="container">
 		
 		{% for business_line, business_line_dict in pass_dict.providers.items() %}
-			<p>{{ business_line }}</p>
+			<!-- Set variable to store outer loop's counter -->
+			{% set outer_loop = loop %}
+			
+			<!-- Button for Business Line -->
+			<button class="btn btn-primary" data-toggle="collapse" data-target="#bus-line-{{ outer_loop.index }}">
+				{{ business_line }}
+			</button>
+			
+			<div id="bus-line-{{ outer_loop.index }}" class="collapse">
 			{% for provider, provider_dict in business_line_dict.items() %}
-				<p style="padding: 0 1rem;">{{ provider }}</p>
-				{% for course in provider_dict %}
-					<p style="padding: 0 3rem;">{{ course }}</p>
-				{% endfor %}
+				<!-- Set variable to store outer loop's counter -->
+				{% set inner_loop = loop %}
+				
+				<!-- Button for Provider -->
+				<button class="btn btn-success" data-toggle="collapse" data-target="#bus-line-{{ outer_loop.index }} #provider-{{ inner_loop.index }}">
+					{{ provider }}
+				</button>
+				
+				<!-- Display course codes and titles in table -->
+				<div id="provider-{{ inner_loop.index }}" class="collapse">
+					<table class="table">
+						<tbody>
+							{% for course in provider_dict %}
+								<tr>
+									<td>{{ course[0] }}</td>
+									<td>{{ course[1] }}</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+				
 			{% endfor %}
+			</div>
+			
 		{% endfor %}
 		
+		
 		<!--
-		<button class="btn btn-primary" data-toggle="collapse" data-target="#mars">MEOW!</button>
+			Add yellow on hover
+			Add plus icon as seen in most other collapsed lists
+				- probably use glyph + min-width
+			Add hyperlinks
+				- click anywhere on row
+		-->
+		
+		<!--
 		<div id="mars" class="collapse">
 			<div class="well">
 				This cat is THICC!
