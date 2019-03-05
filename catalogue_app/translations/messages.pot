@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-02-25 18:06-0500\n"
+"POT-Creation-Date: 2019-03-05 16:05-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -136,6 +136,11 @@ msgstr ""
 msgid "No-Shows"
 msgstr ""
 
+#: course_routes/queries/explore_queries.py:47
+#: course_routes/queries/explore_queries.py:55
+msgid "<awaiting mapping>"
+msgstr ""
+
 #: templates/about.html:5
 msgid ""
 "This app is the result of a collaborative effort between all three "
@@ -202,23 +207,23 @@ msgstr ""
 msgid "No results"
 msgstr ""
 
-#: templates/layout.html:34 templates/layout.html:36
+#: templates/layout.html:35 templates/layout.html:37
 msgid "DA Logo"
 msgstr ""
 
-#: templates/includes/_head.html:5 templates/layout.html:41
+#: templates/includes/_head.html:5 templates/layout.html:42
 msgid "CSPS Course Catalogue"
 msgstr ""
 
-#: templates/layout.html:42
+#: templates/layout.html:43
 msgid "Note: Test Version"
 msgstr ""
 
-#: templates/layout.html:56
+#: templates/layout.html:57
 msgid "Top of page"
 msgstr ""
 
-#: templates/layout.html:59
+#: templates/layout.html:60
 msgid "GoC Logo"
 msgstr ""
 
@@ -669,11 +674,21 @@ msgid ""
 "due to privacy restrictions.</p>"
 msgstr ""
 
+#: templates/explore/explore.html:5
+msgid "Explore courses by business line and provider."
+msgstr ""
+
+#: templates/explore/explore.html:6
+msgid ""
+"Note: If you're the owner of an unclaimed course, please contact "
+"Curriculum Management."
+msgstr ""
+
 #: templates/includes/_navbar.html:8 templates/includes/_navbar.html:12
 msgid "GC Logo"
 msgstr ""
 
-#: templates/includes/_navbar.html:24 templates/includes/_navbar.html:37
+#: templates/includes/_navbar.html:24 templates/includes/_navbar.html:38
 msgid "Français"
 msgstr ""
 
@@ -686,6 +701,10 @@ msgid "About"
 msgstr ""
 
 #: templates/includes/_navbar.html:35
+msgid "Explore"
+msgstr ""
+
+#: templates/includes/_navbar.html:36
 msgid "Departments"
 msgstr ""
 
