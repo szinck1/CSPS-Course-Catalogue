@@ -5,7 +5,9 @@
 	# bug fix: course code 'x010'
 	# add DG name to product_info and to Explore page
 	# rescrape descriptions
+	# rename style1.css
 # outline prep & admin (after ETL as won't push to production just yet)
+	# might need to just be an outline due to time
 
 
 ### BEFORE DGC ###
