@@ -29,7 +29,7 @@ def home():
 	form = course_form(lang, THIS_YEAR)
 	form = form(request.form)
 	if request.method == 'POST' and form.validate():
-		course_code = form.course_selection.data
+		course_code = form.course_selection.data.upper()
 		return redirect(url_for('course.course_result', course_code=course_code))
 	return render_template('index.html', form=form)
 
@@ -43,7 +43,7 @@ def course_result():
 	if 'course_code' not in request.args:
 		return redirect(url_for('course.home'))
 	# Argument is automatically escaped in Jinja2 and MySQL
-	course_code = request.args['course_code']
+	course_code = request.args['course_code'].upper()
 	# Only allow 'en' and 'fr' to be passed to app
 	lang = 'fr' if request.cookies.get('lang', None) == 'fr' else 'en'
 	# Security check: if course_code doesn't exist, render not_found.html

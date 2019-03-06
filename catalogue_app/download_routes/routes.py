@@ -15,6 +15,8 @@ downloads = Blueprint('downloads', __name__)
 def download_general():
 	# Get course code from query string and validate
 	course_code = request.args.get('course_code', False)
+	if course_code:
+		course_code = course_code.upper()
 	# Point to query used for this tab
 	query_func = download_queries.general_tab
 	# Set filename
@@ -31,6 +33,8 @@ def download_general():
 def download_dashboard():
 	# Get course code from query string and validate
 	course_code = request.args.get('course_code', False)
+	if course_code:
+		course_code = course_code.upper()
 	# Point to query used for this tab
 	query_func = download_queries.dashboard_tab
 	# Set filename
@@ -40,6 +44,36 @@ def download_dashboard():
 	raw_data = _run_query(validate, query_func, course_code)
 	response = _create_response(raw_data, filename)
 	return response
+
+
+@downloads.route('/download-map')
+@auth.login_required
+def download_map():
+	pass
+
+
+
+@downloads.route('/download-ratings')
+@auth.login_required
+def download_ratings():
+	pass
+
+
+
+@downloads.route('/download-comments')
+@auth.login_required
+def download_comments():
+	pass
+
+
+
+
+
+
+
+
+
+
 
 
 

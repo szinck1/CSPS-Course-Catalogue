@@ -17,7 +17,7 @@ def course_form(lang, fiscal_year):
 	results = query_mysql(query)
 	
 	# SelectField takes list of tuples (pass_value, display_value)
-	choices = [(tup[0], '{0}: {1}'.format(tup[0], _clean_title(tup[1]))) for tup in results]
+	choices = [(tup[0].upper(), '{0}: {1}'.format(tup[0].upper(), _clean_title(tup[1]))) for tup in results]
 	
 	class CourseForm(Form):
 		# Displaying form_name disabled in 'templates/includes/_formhelpers.html', so pass empty string
