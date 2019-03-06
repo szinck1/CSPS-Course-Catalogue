@@ -15,14 +15,12 @@ downloads = Blueprint('downloads', __name__)
 def download_general():
 	# Get course code from query string and validate
 	course_code = request.args.get('course_code', False)
-	if course_code:
-		course_code = course_code.upper()
+	validate, course_code = _validate_course_code(course_code)
 	# Point to query used for this tab
 	query_func = download_queries.general_tab
 	# Set filename
 	filename = gettext('General Tab')
-	# Run query and prepare file
-	validate = _validate_course_code(course_code)
+	# Run query and build file
 	raw_data = _run_query(validate, query_func, course_code)
 	response = _create_response(raw_data, filename)
 	return response
@@ -33,14 +31,12 @@ def download_general():
 def download_dashboard():
 	# Get course code from query string and validate
 	course_code = request.args.get('course_code', False)
-	if course_code:
-		course_code = course_code.upper()
+	validate, course_code = _validate_course_code(course_code)
 	# Point to query used for this tab
 	query_func = download_queries.dashboard_tab
 	# Set filename
 	filename = gettext('Dashboard Tab')
-	# Run query and prepare file
-	validate = _validate_course_code(course_code)
+	# Run query and build file
 	raw_data = _run_query(validate, query_func, course_code)
 	response = _create_response(raw_data, filename)
 	return response
@@ -49,43 +45,56 @@ def download_dashboard():
 @downloads.route('/download-map')
 @auth.login_required
 def download_map():
-	pass
-
+	# Get course code from query string and validate
+	course_code = request.args.get('course_code', False)
+	validate, course_code = _validate_course_code(course_code)
+	# Point to query used for this tab
+	query_func = download_queries.map_tab
+	# Set filename
+	filename = gettext('Map Tab')
+	# Run query and build file
+	raw_data = _run_query(validate, query_func, course_code)
+	response = _create_response(raw_data, filename)
+	return response
 
 
 @downloads.route('/download-ratings')
 @auth.login_required
 def download_ratings():
-	pass
-
+	# Get course code from query string and validate
+	course_code = request.args.get('course_code', False)
+	validate, course_code = _validate_course_code(course_code)
+	# Point to query used for this tab
+	query_func = download_queries.ratings_tab
+	# Set filename
+	filename = gettext('Ratings Tab')
+	# Run query and build file
+	raw_data = _run_query(validate, query_func, course_code)
+	response = _create_response(raw_data, filename)
+	return response
 
 
 @downloads.route('/download-comments')
 @auth.login_required
 def download_comments():
-	pass
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	# Get course code from query string and validate
+	course_code = request.args.get('course_code', False)
+	validate, course_code = _validate_course_code(course_code)
+	# Point to query used for this tab
+	query_func = download_queries.comments_tab
+	# Set filename
+	filename = gettext('Comments Tab')
+	# Run query and build file
+	raw_data = _run_query(validate, query_func, course_code)
+	response = _create_response(raw_data, filename)
+	return response
 
 
 def _validate_course_code(course_code):
 	"""Ensure course code exists prior to proceeding."""
 	# Inputs escaped in MySQL
 	course_title = utils.validate_course_code('en', Config.THIS_YEAR, course_code)
-	return True if course_title else False
+	return (True, course_code) if course_title else (False, False)
 
 
 def _run_query(validate, query_func, course_code):
