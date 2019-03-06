@@ -14,11 +14,12 @@ def download_general():
 	# Query raw data
 	raw_data = download_queries.general_tab('S202')
 	output = make_response(raw_data)
-	# Add headers with filename and type
+	# Add headers with filename and MIME type
 	filename = gettext('General Tab')
 	timestamp = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-	output.headers['Content-Disposition'] = 'attachment; filename={0} {1}.csv'.format(filename, timestamp)
-	output.headers['Content-type'] = 'text/csv'
+	# 'attachment' to ensure downloads rather than opened in browser
+	output.headers['Content-Disposition'] = 'attachment; filename="{0} {1}.csv"'.format(filename, timestamp)
+	output.headers['Content-Type'] = 'text/csv; charset=utf-8'
 	return output
 
 
