@@ -1,4 +1,3 @@
-import pickle
 from flask import Flask, render_template, request
 from flask_httpauth import HTTPBasicAuth
 from flask_babel import Babel
