@@ -7,10 +7,10 @@ def general_tab(course_code):
 	query = """
 		SELECT *
 		FROM product_info
-		WHERE course_code IN ('A313', 'A341')
+		WHERE course_code = %s;
 	"""
 	# Run query
-	results = query_mysql(query, dict_=True)
+	results = query_mysql(query, (course_code,), dict_=True)
 	results_processed = _dicts_to_lists(results)
 	# Write to CSV
 	file = StringIO()
@@ -26,7 +26,7 @@ def _dicts_to_lists(my_list):
 	column_names = list(my_list[0].keys())
 	results_processed = []
 	results_processed.append(column_names)
-	for dict_ in my_list[1:]:
+	for dict_ in my_list:
 		# Passing each key to dict is slow as requires each key
 		# to be hashed. However, this method is safer than using
 		# dict.values as lists produced guaranteed to follow correct

@@ -5,11 +5,6 @@
 	<script src="https://code.highcharts.com/highcharts.js"></script>
 	<!-- Highcharts drilldown -->
 	<script src="https://code.highcharts.com/modules/drilldown.js" async></script>
-	<!-- DataTables
-	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-	<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
-	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
-	 -->
 {% endblock head %}
 
 {% block body %}
@@ -30,7 +25,7 @@
 		<!-- General -->
 		<section id="general" class="tab-content active">
 			{% include 'course-page/general.html' %}
-			{{ download_raw(url_for('downloads.download_general')) }}
+			{{ download_raw(url_for('downloads.download_general', course_code=pass_dict.course_code)) }}
 		</section>
 		
 		<!-- Dashboard -->
