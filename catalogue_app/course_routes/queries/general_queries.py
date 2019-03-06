@@ -35,6 +35,7 @@ class CourseInfo:
 		# Return empty dict as templates use method dict.pop to handle missing vals
 		if not results:
 			self.course_info = {}
+			return self
 		# Format keys for displaying on page
 		results_processed = {self._clean_key(key): val for (key, val) in results[0].items()}
 		self.course_info = results_processed
