@@ -3,7 +3,7 @@ from flask import Blueprint, make_response, request
 from flask_babel import gettext
 from catalogue_app import auth
 from catalogue_app.config import Config
-from catalogue_app.course_routes import utils # For validation
+from catalogue_app.course_routes import utils
 from catalogue_app.download_routes.queries import download_queries
 
 # Instantiate blueprint
@@ -39,11 +39,3 @@ def _validate_course_code(course_code):
 	"""Ensure course code exists prior to proceeding."""
 	course_title = utils.validate_course_code('en', Config.THIS_YEAR, course_code)
 	return True if course_title else False
-
-
-
-
-
-# Ensure validate user input, only create CSV for safe course codes
-	# Simply produce CSV with BILINGUAL error message if junk is passed (test this)
-# Push to Azure
