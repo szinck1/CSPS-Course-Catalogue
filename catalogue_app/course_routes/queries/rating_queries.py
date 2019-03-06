@@ -61,8 +61,8 @@ class Ratings:
 		"""Accepts a Panda's DataFrame with columns ['month', 'average', and 'count'].
 		Returns	a list of dicts ensuring all possible months have values. Months
 		not listed in DataFrame assigned average and count of 0."""
-		months = ['March', 'April', 'May', 'June', 'July', 'August', 'September',
-				  'October', 'November', 'December', 'January', 'February']
+		months = ['April', 'May', 'June', 'July', 'August', 'September',
+				  'October', 'November', 'December', 'January', 'February', 'March']
 		monthly_values = []
 		for month in months:
 			df_month = df.loc[df['month'] == month, :]
