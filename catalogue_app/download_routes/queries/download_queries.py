@@ -3,6 +3,7 @@ from io import StringIO
 from catalogue_app.config import Config
 from catalogue_app.db import query_mysql
 
+
 def general_tab(course_code):
 	"""Query raw data used for the General tab."""
 	query = """
@@ -13,15 +14,13 @@ def general_tab(course_code):
 	# Run query
 	results = query_mysql(query, (course_code,), dict_=True)
 	results_processed = _dicts_to_lists(results)
-	# Write to CSV
-	file = StringIO()
-	csv_writer = csv.writer(file)
-	csv_writer.writerows(results_processed)
-	return file.getvalue()
+	# Create file
+	file = _create_file(results_processed)
+	return file
 
 
 def dashboard_tab(course_code):
-	"""Query raw data used for the Dashboard tab."""
+	"""Query raw data used for the Dashboard and Maps tabs."""
 	THIS_YEAR = Config.THIS_YEAR
 	table_name = 'lsr{0}'.format(THIS_YEAR)
 	# Exclude course_title_en and course_title_fr
@@ -41,11 +40,39 @@ def dashboard_tab(course_code):
 	# Run query
 	results = query_mysql(query, (course_code,), dict_=True)
 	results_processed = _dicts_to_lists(results)
-	# Write to CSV
-	file = StringIO()
-	csv_writer = csv.writer(file)
-	csv_writer.writerows(results_processed)
-	return file.getvalue()
+	# Create file
+	file = _create_file(results_processed)
+	return file
+
+
+def ratings_tab(course_code):
+	"""Query raw data used for the Ratings tab."""
+	query = """
+		SELECT *
+		FROM ratings
+		WHERE course_code = %s;
+	"""
+	# Run query
+	results = query_mysql(query, (course_code,), dict_=True)
+	results_processed = _dicts_to_lists(results)
+	# Create file
+	file = _create_file(results_processed)
+	return file
+
+
+def comments_tab(course_code):
+	"""Query raw data used for the Comments tab."""
+	query = """
+		SELECT *
+		FROM comments
+		WHERE course_code = %s;
+	"""
+	# Run query
+	results = query_mysql(query, (course_code,), dict_=True)
+	results_processed = _dicts_to_lists(results)
+	# Create file
+	file = _create_file(results_processed)
+	return file
 
 
 def _dicts_to_lists(my_list):
@@ -63,3 +90,11 @@ def _dicts_to_lists(my_list):
 		new_list = [dict_[column] for column in column_names]
 		results_processed.append(new_list)
 	return results_processed
+
+
+def _create_file(my_data):
+	"""Create CSV file in memory."""
+	file = StringIO()
+	csv_writer = csv.writer(file)
+	csv_writer.writerows(my_data)
+	return file.getvalue()
