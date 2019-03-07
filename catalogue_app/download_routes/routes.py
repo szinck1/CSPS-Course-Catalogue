@@ -1,5 +1,5 @@
 import datetime
-from flask import Blueprint, make_response, request
+from flask import Blueprint, make_response, redirect, request, url_for
 from flask_babel import gettext
 from catalogue_app import auth
 from catalogue_app.config import Config
@@ -26,6 +26,7 @@ def download_general():
 	return response
 
 
+# Dashboard and Maps tabs built from same table
 @downloads.route('/download-dashboard')
 @auth.login_required
 def download_dashboard():
@@ -36,22 +37,6 @@ def download_dashboard():
 	query_func = download_queries.dashboard_tab
 	# Set filename
 	filename = gettext('Dashboard Tab')
-	# Run query and build file
-	raw_data = _run_query(validate, query_func, course_code)
-	response = _create_response(raw_data, filename)
-	return response
-
-
-@downloads.route('/download-map')
-@auth.login_required
-def download_map():
-	# Get course code from query string and validate
-	course_code = request.args.get('course_code', False)
-	validate, course_code = _validate_course_code(course_code)
-	# Point to query used for this tab
-	query_func = download_queries.map_tab
-	# Set filename
-	filename = gettext('Map Tab')
 	# Run query and build file
 	raw_data = _run_query(validate, query_func, course_code)
 	response = _create_response(raw_data, filename)
