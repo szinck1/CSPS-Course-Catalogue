@@ -5,6 +5,11 @@ def validate_course_code(lang, fiscal_year, course_code):
 	"""Check if course code exists in LSR. Return its title
 	else False.
 	"""
+	# Account for passing vals like '', False
+	if not course_code:
+		return False
+	# Account for passing empty objects like [], {}
+	course_code = str(course_code)
 	field_name = 'course_title_{0}'.format(lang)
 	table_name = 'lsr{0}'.format(fiscal_year)
 	query = "SELECT {0} FROM {1} WHERE course_code = %s LIMIT 1;".format(field_name, table_name)
