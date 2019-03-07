@@ -1,11 +1,6 @@
 ### CURRENT SPRINT ###
-# raw data download button
-# remove dead columns from DB
-	# perform ETL
-	# bug fix: course code 'x010'
-	# add DG name to product_info and to Explore page
-	# rescrape descriptions
-# outline prep & admin (after ETL as won't push to production just yet)
+# rename style1.css
+# outline prep & admin
 
 
 ### BEFORE DGC ###
@@ -21,6 +16,7 @@
 
 
 ### BACKLOG ###
+# update scraper to grab code from title rather than URL
 # copyright
 # explore by director
 	# show flags e.g. regs gone down, copyright expired, no prep and admin

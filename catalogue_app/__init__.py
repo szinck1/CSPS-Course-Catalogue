@@ -1,4 +1,3 @@
-import pickle
 from flask import Flask, render_template, request
 from flask_httpauth import HTTPBasicAuth
 from flask_babel import Babel
@@ -57,9 +56,8 @@ def create_app(config_class=Config):
 	# Register blueprints
 	from catalogue_app.course_routes.routes import course
 	from catalogue_app.main_routes.routes import main
-	from catalogue_app.api_routes.routes import api
+	from catalogue_app.download_routes.routes import downloads
 	app.register_blueprint(course)
 	app.register_blueprint(main)
-	app.register_blueprint(api)
-	
+	app.register_blueprint(downloads)
 	return app

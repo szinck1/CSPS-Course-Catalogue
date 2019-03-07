@@ -12,3 +12,10 @@
 	{% endif %}
 	</dd>
 {% endmacro %}
+
+{% macro download_raw(route) %}
+	<a class="download-raw" href="{{ route }}">
+		{{ _('Download raw data') }}
+		<span class="glyphicon glyphicon-download-alt"></span>
+	</a>
+{% endmacro %}
