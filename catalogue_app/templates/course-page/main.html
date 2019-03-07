@@ -37,7 +37,8 @@
 		<!-- Geodata -->
 		<section id="geodata" class="tab-content hide">
 			{% include 'course-page/geodata.html' %}
-			{{ download_raw(url_for('downloads.download_map', course_code=pass_dict.course_code)) }}
+			<!-- Dashboard and Maps tabs built from same table -->
+			{{ download_raw(url_for('downloads.download_dashboard', course_code=pass_dict.course_code)) }}
 		</section>
 		
 		<!-- Level 1 Ratings -->
