@@ -1,5 +1,53 @@
 <h1>{{ pass_dict.course_title }}</h1>
 
+<<<<<<< HEAD
+<div id="material-tab">
+	<h3>Prep & Admin</h3>
+	<h4>{{ _('Download the latest versions of all documents required to deliver the course.') }}</h4>
+	
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<td class="col-xs-6"><strong>{{ _('Name of File') }}</strong></td>
+				<td class="col-xs-3 text-center"><strong>{{ _('Date Uploaded') }}</strong></td>
+				<td class="col-xs-3 text-center"><strong>{{ _('Upload Latest') }}</strong></td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><a>{{ _('Instructor Manual.pdf') }}</a></td>
+				<td class="text-center">{{ _('January 20, 2019') }}</td>
+				<td class="text-center"><span class="glyphicon glyphicon-upload"></span></td>
+			</tr>
+			<tr>
+				<td><a>{{ _('Participant Manual.pdf') }}</a></td>
+				<td class="text-center">{{ _('March 3, 2018') }}</td>
+				<td class="text-center"><span class="glyphicon glyphicon-upload"></span></td>
+			</tr>
+			<tr>
+				<td><a>{{ _('Room Layout.pdf') }}</a></td>
+				<td class="text-center">{{ _('July 1, 2018') }}</td>
+				<td class="text-center"><span class="glyphicon glyphicon-upload"></span></td>
+			</tr>
+			<tr>
+				<td><a>{{ _('Required Materials.pdf') }}</a></td>
+				<td class="text-center">{{ _('July 4, 2018') }}</td>
+				<td class="text-center"><span class="glyphicon glyphicon-upload"></span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<script async>
+	// Add tooltip contents
+	$('#material-tab a, #material-tab span').tooltip({
+		placement: 'bottom',
+		title: "{{ _('<h5>Note:</h5><p>This page is currently a test. If you like the feature, let us know!</p>') }}",
+		animation: true,
+		html: true
+	});
+</script>
+=======
 <!--
 	One liner explaining purpose
 	Table (with glyphs?) and e.g. 3 docs like inst manual, particip manual, equipment list
@@ -7,3 +55,4 @@
 	Update file button
 	Date uploaded
 -->
+>>>>>>> 886395539b8addcc1b33562a29344384a80d33fb
