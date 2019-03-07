@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-03-05 16:45-0500\n"
+"POT-Creation-Date: 2019-03-07 00:20-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,7 +32,7 @@ msgid "May"
 msgstr ""
 
 #: course_routes/queries/dashboard_learner_queries.py:45
-#: templates/course-page/ratings.html:25
+#: templates/course-page/ratings.html:24
 msgid "June"
 msgstr ""
 
@@ -47,7 +47,7 @@ msgid "August"
 msgstr ""
 
 #: course_routes/queries/dashboard_learner_queries.py:48
-#: templates/course-page/ratings.html:26
+#: templates/course-page/ratings.html:25
 msgid "September"
 msgstr ""
 
@@ -62,7 +62,7 @@ msgid "November"
 msgstr ""
 
 #: course_routes/queries/dashboard_learner_queries.py:51
-#: templates/course-page/ratings.html:27
+#: templates/course-page/ratings.html:26
 msgid "December"
 msgstr ""
 
@@ -77,7 +77,7 @@ msgid "February"
 msgstr ""
 
 #: course_routes/queries/dashboard_learner_queries.py:54
-#: templates/course-page/ratings.html:24
+#: templates/course-page/ratings.html:27
 msgid "March"
 msgstr ""
 
@@ -141,6 +141,30 @@ msgstr ""
 msgid "<awaiting mapping>"
 msgstr ""
 
+#: download_routes/routes.py:22
+msgid "General Tab"
+msgstr ""
+
+#: download_routes/routes.py:39
+msgid "Dashboard Tab"
+msgstr ""
+
+#: download_routes/routes.py:55
+msgid "Ratings Tab"
+msgstr ""
+
+#: download_routes/routes.py:71
+msgid "Comments Tab"
+msgstr ""
+
+#: download_routes/routes.py:92 templates/not-found.html:6
+msgid "Course Not Found"
+msgstr ""
+
+#: download_routes/queries/download_queries.py:87
+msgid "Apologies, this tab contains no data."
+msgstr ""
+
 #: templates/about.html:5
 msgid ""
 "This app is the result of a collaborative effort between all three "
@@ -179,7 +203,7 @@ msgstr ""
 
 #: templates/about.html:18
 msgid ""
-"Weekly data update performed: <span id=\"last-updated\">February 14, "
+"Weekly data update performed: <span id=\"last-updated\">March 07, "
 "2019</span>"
 msgstr ""
 
@@ -225,10 +249,6 @@ msgstr ""
 
 #: templates/layout.html:60
 msgid "GoC Logo"
-msgstr ""
-
-#: templates/not-found.html:6
-msgid "Course Not Found"
 msgstr ""
 
 #: templates/course-page/comments.html:5
@@ -628,24 +648,84 @@ msgid ""
 "'Confirmed'.</p>"
 msgstr ""
 
-#: templates/course-page/main.html:19
+#: templates/course-page/main.html:14
 msgid "General"
 msgstr ""
 
-#: templates/course-page/main.html:20
+#: templates/course-page/main.html:15
 msgid "Dashboard"
 msgstr ""
 
-#: templates/course-page/main.html:21
+#: templates/course-page/main.html:16
 msgid "Maps"
 msgstr ""
 
-#: templates/course-page/main.html:22
+#: templates/course-page/main.html:17
 msgid "Ratings"
 msgstr ""
 
-#: templates/course-page/main.html:23
+#: templates/course-page/main.html:18
 msgid "Comments"
+msgstr ""
+
+#: templates/course-page/main.html:19
+msgid "P&A"
+msgstr ""
+
+#: templates/course-page/material.html:5
+msgid ""
+"Download the latest versions of all documents required to deliver the "
+"course."
+msgstr ""
+
+#: templates/course-page/material.html:10
+msgid "Name of File"
+msgstr ""
+
+#: templates/course-page/material.html:11
+msgid "Date Uploaded"
+msgstr ""
+
+#: templates/course-page/material.html:12
+msgid "Upload Latest"
+msgstr ""
+
+#: templates/course-page/material.html:17
+msgid "Instructor Manual.pdf"
+msgstr ""
+
+#: templates/course-page/material.html:18
+msgid "January 20, 2019"
+msgstr ""
+
+#: templates/course-page/material.html:22
+msgid "Participant Manual.pdf"
+msgstr ""
+
+#: templates/course-page/material.html:23
+msgid "March 3, 2018"
+msgstr ""
+
+#: templates/course-page/material.html:27
+msgid "Room Layout.pdf"
+msgstr ""
+
+#: templates/course-page/material.html:28
+msgid "July 1, 2018"
+msgstr ""
+
+#: templates/course-page/material.html:32
+msgid "Required Materials.pdf"
+msgstr ""
+
+#: templates/course-page/material.html:33
+msgid "July 4, 2018"
+msgstr ""
+
+#: templates/course-page/material.html:44
+msgid ""
+"<h5>Note:</h5><p>This page is currently a test. If you like the feature, "
+"let us know!</p>"
 msgstr ""
 
 #: templates/course-page/ratings.html:28
@@ -683,6 +763,10 @@ msgid ""
 "Note: If you're the owner of an unclaimed course, please contact <a "
 "href=\"mailto:csps.lpb.curriculum.dgpa.efpc@canada.ca\">Curriculum "
 "Management</a>."
+msgstr ""
+
+#: templates/includes/_formhelpers.html:18
+msgid "Download raw data"
 msgstr ""
 
 #: templates/includes/_navbar.html:8 templates/includes/_navbar.html:12
