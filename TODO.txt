@@ -1,6 +1,5 @@
 ### CURRENT SPRINT ###
-# rename style1.css
-# outline prep & admin
+# update FR
 
 
 ### BEFORE DGC ###
