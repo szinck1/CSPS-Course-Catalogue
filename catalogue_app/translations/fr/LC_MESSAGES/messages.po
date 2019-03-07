@@ -1,5 +1,5 @@
 # French translations for CSPS Course Catalogue.
-# Copyright (C) 2019 ORGANIZATION
+# Copyright (C) 2019 CSPS
 # This file is distributed under the same license as the CSPS Course
 # Catalogue project.
 # FIRST AUTHOR sam.louden@canada.ca, 2019.
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  0.2\n"
 "Report-Msgid-Bugs-To: sam.louden@canada.ca\n"
-"POT-Creation-Date: 2019-03-05 16:45-0500\n"
+"POT-Creation-Date: 2019-03-07 00:20-0500\n"
 "PO-Revision-Date: 2019-01-06 13:06-0500\n"
 "Last-Translator: SAM LOUDEN sam.louden@canada.ca\n"
 "Language: fr\n"
@@ -34,7 +34,7 @@ msgid "May"
 msgstr "Mai"
 
 #: course_routes/queries/dashboard_learner_queries.py:45
-#: templates/course-page/ratings.html:25
+#: templates/course-page/ratings.html:24
 msgid "June"
 msgstr "Juin"
 
@@ -49,7 +49,7 @@ msgid "August"
 msgstr "Août"
 
 #: course_routes/queries/dashboard_learner_queries.py:48
-#: templates/course-page/ratings.html:26
+#: templates/course-page/ratings.html:25
 msgid "September"
 msgstr "Septembre"
 
@@ -64,7 +64,7 @@ msgid "November"
 msgstr "Novembre"
 
 #: course_routes/queries/dashboard_learner_queries.py:51
-#: templates/course-page/ratings.html:27
+#: templates/course-page/ratings.html:26
 msgid "December"
 msgstr "Décembre"
 
@@ -79,7 +79,7 @@ msgid "February"
 msgstr "Février"
 
 #: course_routes/queries/dashboard_learner_queries.py:54
-#: templates/course-page/ratings.html:24
+#: templates/course-page/ratings.html:27
 msgid "March"
 msgstr "Mars"
 
@@ -143,6 +143,30 @@ msgstr "Absences"
 msgid "<awaiting mapping>"
 msgstr "<en attente de catégorisation>"
 
+#: download_routes/routes.py:22
+msgid "General Tab"
+msgstr "Onglet général"
+
+#: download_routes/routes.py:39
+msgid "Dashboard Tab"
+msgstr "Onglet du tableau de bord"
+
+#: download_routes/routes.py:55
+msgid "Ratings Tab"
+msgstr "Onglet des évaluations"
+
+#: download_routes/routes.py:71
+msgid "Comments Tab"
+msgstr "Onglet des commentaires"
+
+#: download_routes/routes.py:92 templates/not-found.html:6
+msgid "Course Not Found"
+msgstr "Cours introuvable"
+
+#: download_routes/queries/download_queries.py:87
+msgid "Apologies, this tab contains no data."
+msgstr "Désolé, cet onglet ne contient aucune donnée."
+
 #: templates/about.html:5
 msgid ""
 "This app is the result of a collaborative effort between all three "
@@ -186,11 +210,11 @@ msgstr ""
 
 #: templates/about.html:18
 msgid ""
-"Weekly data update performed: <span id=\"last-updated\">February 14, "
+"Weekly data update performed: <span id=\"last-updated\">March 07, "
 "2019</span>"
 msgstr ""
 "Date de la dernière mise à jour hebdomadaire : <span id=\"last-"
-"updated\">14 février 2019</span>"
+"updated\">07 mars 2019</span>"
 
 #: templates/api.html:6
 msgid "CSPS Course Catalogue API"
@@ -235,10 +259,6 @@ msgstr "Haut de la page"
 #: templates/layout.html:60
 msgid "GoC Logo"
 msgstr "Logo du GC"
-
-#: templates/not-found.html:6
-msgid "Course Not Found"
-msgstr "Cours introuvable"
 
 #: templates/course-page/comments.html:5
 msgid "Overall"
@@ -660,25 +680,89 @@ msgstr ""
 "<h5>Indice :</h5><p>Les emplacements des apprenants ayant une inscription"
 " avec le statut de 'Confirmée' sont placés sur la carte.</p>"
 
-#: templates/course-page/main.html:19
+#: templates/course-page/main.html:14
 msgid "General"
 msgstr "Général"
 
-#: templates/course-page/main.html:20
+#: templates/course-page/main.html:15
 msgid "Dashboard"
 msgstr "Tableau de bord"
 
-#: templates/course-page/main.html:21
+#: templates/course-page/main.html:16
 msgid "Maps"
 msgstr "Cartes"
 
-#: templates/course-page/main.html:22
+#: templates/course-page/main.html:17
 msgid "Ratings"
 msgstr "Évaluations"
 
-#: templates/course-page/main.html:23
+#: templates/course-page/main.html:18
 msgid "Comments"
 msgstr "Commentaires"
+
+#: templates/course-page/main.html:19
+msgid "P&A"
+msgstr "P&A"
+
+#: templates/course-page/material.html:5
+msgid ""
+"Download the latest versions of all documents required to deliver the "
+"course."
+msgstr ""
+"Télécharger les dernières versions de tous les documents requis pour "
+"livrer le cours."
+
+#: templates/course-page/material.html:10
+msgid "Name of File"
+msgstr "Nom du fichier"
+
+#: templates/course-page/material.html:11
+msgid "Date Uploaded"
+msgstr "Date de création"
+
+#: templates/course-page/material.html:12
+msgid "Upload Latest"
+msgstr "Nouvelle version"
+
+#: templates/course-page/material.html:17
+msgid "Instructor Manual.pdf"
+msgstr "Manuel de l'instructeur.pdf"
+
+#: templates/course-page/material.html:18
+msgid "January 20, 2019"
+msgstr "20 janvier 2019"
+
+#: templates/course-page/material.html:22
+msgid "Participant Manual.pdf"
+msgstr "Manuel de l'apprenant.pdf"
+
+#: templates/course-page/material.html:23
+msgid "March 3, 2018"
+msgstr "03 mars 2018"
+
+#: templates/course-page/material.html:27
+msgid "Room Layout.pdf"
+msgstr "Disposition de la salle.pdf"
+
+#: templates/course-page/material.html:28
+msgid "July 1, 2018"
+msgstr "01 juillet 2018"
+
+#: templates/course-page/material.html:32
+msgid "Required Materials.pdf"
+msgstr "Matériaux requis.pdf"
+
+#: templates/course-page/material.html:33
+msgid "July 4, 2018"
+msgstr "04 juillet 2018"
+
+#: templates/course-page/material.html:44
+msgid ""
+"<h5>Note:</h5><p>This page is currently a test. If you like the feature, "
+"let us know!</p>"
+msgstr ""
+"<h5>Notez : </h5><p>Cette page est un test. Si vous aimez la "
+"fonctionnalité, veuillez nous laisser savoir!</p>"
 
 #: templates/course-page/ratings.html:28
 msgid "Average Response (Out of Five)"
@@ -723,6 +807,10 @@ msgstr ""
 "contacter <a "
 "href=\"mailto:csps.lpb.curriculum.dgpa.efpc@canada.ca\">Gestion du "
 "curriculum</a>."
+
+#: templates/includes/_formhelpers.html:18
+msgid "Download raw data"
+msgstr "Télécharger les données brutes"
 
 #: templates/includes/_navbar.html:8 templates/includes/_navbar.html:12
 msgid "GC Logo"

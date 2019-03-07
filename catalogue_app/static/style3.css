@@ -32,7 +32,7 @@ h1 {
 li {
 	min-height: 1.5rem;
 }
-p {
+h4, p {
 	line-height: 1.5rem;
 }
 table {
@@ -249,8 +249,6 @@ tablet and desktop */
 		margin-top: 0;
 	}
 }
-
-
 /* Explicitly declare table row height for vertically
 centering ::before and glyphs */
 #explore-page tr {
@@ -570,3 +568,22 @@ with position: relative, in this case #selection-and-loader */
 	margin: 1.25rem 0;
 }
 /***** End comments *****/
+
+
+
+/***** Material *****/
+#material-tab table {
+	margin-top: 1.5rem;
+	margin-bottom: 1.5rem;
+}
+#material-tab tr {
+	min-height: 4rem;
+}
+#material-tab td {
+	vertical-align: middle;
+}
+#material-tab span {
+	font-size: 1.5rem;
+	color: #066169;
+}
+/***** End material *****/

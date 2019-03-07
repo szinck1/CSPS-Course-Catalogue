@@ -1,5 +1,6 @@
 import csv
 from io import StringIO
+from flask_babel import gettext
 from catalogue_app.config import Config
 from catalogue_app.db import query_mysql
 
@@ -79,7 +80,11 @@ def _dicts_to_lists(my_list):
 	"""Convert list of dictionaries to list of lists, with first
 	nested list containing column names.
 	"""
-	column_names = list(my_list[0].keys())
+	try:
+		column_names = list(my_list[0].keys())
+	# Account for tabs without data e.g. no learners have filled out a survey
+	except IndexError:
+		return [[gettext('Apologies, this tab contains no data.')]]
 	results_processed = []
 	results_processed.append(column_names)
 	for dict_ in my_list:
