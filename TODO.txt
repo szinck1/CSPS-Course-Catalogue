@@ -1,5 +1,5 @@
 ### CURRENT SPRINT ###
-# rename style1.css
+# rename style2.css
 # outline prep & admin
 
 
