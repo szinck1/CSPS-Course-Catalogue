@@ -9,4 +9,4 @@ api = Blueprint('api', __name__)
 @api.route('/api/v1/get-clusters')
 @auth.login_required
 def get_clusters():
-	return comment_clustering_queries.mars()
+	return str(comment_clustering_queries.lda())
