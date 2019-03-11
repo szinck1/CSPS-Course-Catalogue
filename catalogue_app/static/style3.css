@@ -568,10 +568,15 @@ with position: relative, in this case #selection-and-loader */
 	margin: 1.25rem 0;
 }
 /* Stars */
-.glyphicon-star {
+.glyphicon-star,
+.glyphicon-star-empty {
 	color: #ffcc33;
 	font-size: 1rem;
 }
+.glyphicon-star-empty {
+	opacity: 0.3;
+}
+
 /***** End comments *****/
 
 
