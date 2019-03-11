@@ -1,7 +1,4 @@
-<h1>
-	{{ pass_dict.course_title }}
-	<img id="computed-score-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='tooltip.png') }}" alt="{{ _('Tooltip') }}" />
-</h1>
+<h1>{{ pass_dict.course_title }}</h1>
 
 <!-- Subtabs -->
 <ul class="nav nav-tabs nav-justified sub-tabs">
@@ -41,9 +38,10 @@
 				<thead>
 					<tr>
 						<td colspan="2">
-							<h3>
+							<h3 style="margin-left: 1rem;">
 								{% set num_comments = pass_dict[comment_name]|length %}
 								{{ num_comments }} {{ _('Comment') if num_comments == 1 else _('Comments') }}
+								<img id="computed-score-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='tooltip.png') }}" alt="{{ _('Tooltip') }}" />
 							</h3>
 						</td>
 					</tr>
@@ -229,7 +227,7 @@
 			var twoStar = $('#{{ comment_name }} .star-2').length;
 			var oneStar = $('#{{ comment_name }} .star-1').length;
 			// Get largest length and use to scale counts to bar widths
-			var upperBound = Math.max(fiveStar, fourStar, threeStar, twoStar, oneStar) * 1.1;
+			var upperBound = Math.max(fiveStar, fourStar, threeStar, twoStar, oneStar) * 1.4;
 			var fiveStarScaled = Math.round((fiveStar / upperBound) * 100);
 			var fourStarScaled = Math.round((fourStar / upperBound) * 100);
 			var threeStarScaled = Math.round((threeStar / upperBound) * 100);
