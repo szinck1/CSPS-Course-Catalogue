@@ -8,7 +8,7 @@
 		<select id="filter-maps" onchange="filterMaps()">
 			<option value="learner-map">{{ _('Learner Locations') }}</option>
 		</select>
-		<img id="online-map-disabled-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="{{ _('Tooltip') }}" />
+		<img id="online-map-disabled-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='tooltip.png') }}" alt="{{ _('Tooltip') }}" />
 	{% else %}
 		<p>{{ _('Section: ') }}</p>
 		<select id="filter-maps" onchange="filterMaps()">
@@ -21,11 +21,11 @@
 <!-- Map headings -->
 <h4 class="offering-map">
 	{{ _('Locations of open and delivered offerings around the globe.') }}
-	<img id="offering-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="{{ _('Tooltip') }}" />
+	<img id="offering-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='tooltip.png') }}" alt="{{ _('Tooltip') }}" />
 </h4>
 <h4 class="learner-map">
 	{{ _('Locations of learners around the globe.') }}
-	<img id="learner-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="{{ _('Tooltip') }}" />
+	<img id="learner-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='tooltip.png') }}" alt="{{ _('Tooltip') }}" />
 </h4>
 
 <!-- Maps -->

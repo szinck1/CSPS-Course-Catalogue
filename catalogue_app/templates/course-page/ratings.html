@@ -1,6 +1,6 @@
 <h1>
 	{{ pass_dict.course_title }}
-	<img id="ratings-title-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="{{ _('Tooltip') }}" />
+	<img id="ratings-title-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='tooltip.png') }}" alt="{{ _('Tooltip') }}" />
 </h1>
 
 <!-- Loop through pass_dict.all_ratings and dynamically create a chart for every question; check first if ratings exist -->
@@ -11,7 +11,7 @@
 		<h4 class="ratings-chart-title">
 			{{ question[0] }}
 			<!-- Show question's full text as seen in survey in tooltip -->
-			<img id="chart-{{ loop.index }}-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="{{ _('Tooltip') }}" />
+			<img id="chart-{{ loop.index }}-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='tooltip.png') }}" alt="{{ _('Tooltip') }}" />
 		</h4>
 		<div id="chart-{{ loop.index }}" class="col-xs-12"></div>
 	</div>

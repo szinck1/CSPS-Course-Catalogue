@@ -8,7 +8,7 @@
 		<select id="filter-dash" onchange="filterDashboards()">
 			<option value="learner-dash">{{ _('Learner Data') }}</option>
 		</select>
-		<img id="online-dashboard-disabled-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="{{ _('Tooltip') }}" />
+		<img id="online-dashboard-disabled-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='tooltip.png') }}" alt="{{ _('Tooltip') }}" />
 	{% else %}
 		<p>{{ _('Section: ') }}</p>
 		<select id="filter-dash" onchange="filterDashboards()">
