@@ -3,6 +3,13 @@
 # add datatables to depts and classifications
 # unique learners (line on regs per month + totals for both)
 	# check index
+# add sentiment analysis to ETL
+	# add clickable bar chart for stars
+# add clustering (e.g. latent dirichlet) to check top 5 issues mentioned
+	# only enable button if > 50 comments
+	# sort by most recent first
+# finish accounts
+	# can't store possible salts in code?
 # validate methodology and #s
 # search inside course descriptions from home page
 # app service settings check from Steve?
@@ -12,17 +19,11 @@
 
 
 ### BACKLOG ###
-# finish accounts
-	# can't store possible salts in code?
 # update scraper to grab code from title rather than URL
 # copyright
 # explore by director
 	# show flags e.g. regs gone down, copyright expired, no prep and admin, bad sentiment scores
 	# email director the problems for delegation
-# add clustering (e.g. latent dirichlet) to check top 5 issues mentioned
-	# add pagination for huge comment sections
-	# sort by most recent first
-# add sentiment analysis to ETL
 # add offering dates to maps
 # add dept usage
 	# note explaining current vs billing
