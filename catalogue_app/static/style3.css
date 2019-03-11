@@ -537,14 +537,7 @@ with position: relative, in this case #selection-and-loader */
 
 
 /***** Comments *****/
-/* Date of comment */
-.comment-date {
-	float: right;
-}
-/* Filter */
-.bob-comment {
-	margin-bottom: 1.5rem;
-}
+/* Filters */
 .star-filter,
 .year-filter {
 	text-align: right;
@@ -553,6 +546,10 @@ with position: relative, in this case #selection-and-loader */
 .star-filter p,
 .year-filter p {
 	display: inline;
+}
+/* Comment text */
+.bob-comment {
+	margin-bottom: 1.5rem;
 }
 /* Avatar */
 .thumbnail.pull-left {
@@ -564,6 +561,7 @@ with position: relative, in this case #selection-and-loader */
 .thumbnail:hover {
 	border-color: #066169 !important;
 }
+/* Error message for instructor comments */
 #instructor_comments p {
 	margin: 1.25rem 0;
 }
@@ -576,7 +574,28 @@ with position: relative, in this case #selection-and-loader */
 .glyphicon-star-empty {
 	opacity: 0.3;
 }
-
+/* Date of comment */
+.comment-date {
+	float: right;
+}
+/* Barchart showing percentages for 5 stars, 4 stars, etc. */
+.stars-bar-chart {
+	width: 100%;
+	color: #066169;
+}
+.stars-bar-chart tr {
+	line-height: 2rem;
+}
+.bar-fill {
+	display: inline-block;
+	background-color: #ffcc33;
+	width: 100%;
+	/* Slightly smaller than row height */
+	height: 1.5rem;
+	padding: 0.25rem 0;
+	margin-right: 0.5rem;
+	vertical-align: middle;
+}
 /***** End comments *****/
 
 
