@@ -428,7 +428,7 @@ with position: relative, in this case #selection-and-loader */
 	height: 45vh;
 	width: 100%;
 	text-align: center;
-	border: 1px solid #333;
+	border: 1px solid #ddd;
 }
 #glyph-table td {
 	width: 50%;
@@ -556,6 +556,7 @@ with position: relative, in this case #selection-and-loader */
 	width: 7rem;
 	padding: 0;
 	margin-right: 0.5rem;
+	border: 1px solid transparent;
 }
 /* Avatar hover */
 .thumbnail:hover {
