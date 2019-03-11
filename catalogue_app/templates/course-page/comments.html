@@ -74,15 +74,15 @@
 							<h5>
 								{{ _('Overall Satisfaction: ') }}
 								{% if tup[1] == 5 %}
-									<img src="{{ url_for('static', filename='stars/five.png') }}" alt="{{ _('Five Stars') }}" />
+									{% for _ in range(5) %}<span class="glyphicon glyphicon-star"></span>{% endfor %}
 								{% elif tup[1] == 4 %}
-									<img src="{{ url_for('static', filename='stars/four.png') }}" alt="{{ _('Four Stars') }}" />
+									{% for _ in range(4) %}<span class="glyphicon glyphicon-star"></span>{% endfor %}
 								{% elif tup[1] == 3 %}
-									<img src="{{ url_for('static', filename='stars/three.png') }}" alt="{{ _('Three Stars') }}" />
+									{% for _ in range(3) %}<span class="glyphicon glyphicon-star"></span>{% endfor %}
 								{% elif tup[1] == 2 %}
-									<img src="{{ url_for('static', filename='stars/two.png') }}" alt="{{ _('Two Stars') }}" />
+									{% for _ in range(2) %}<span class="glyphicon glyphicon-star"></span>{% endfor %}
 								{% elif tup[1] == 1 %}
-									<img src="{{ url_for('static', filename='stars/one.png') }}" alt="{{ _('One Star') }}" />
+									{% for _ in range(1) %}<span class="glyphicon glyphicon-star"></span>{% endfor %}
 								{% endif %}
 								<span class="comment-date">{{ tup[5] }} {{ tup[4] }}</span>
 							</h5>

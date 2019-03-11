@@ -567,6 +567,11 @@ with position: relative, in this case #selection-and-loader */
 #instructor_comments p {
 	margin: 1.25rem 0;
 }
+/* Stars */
+.glyphicon-star {
+	color: #ffcc33;
+	font-size: 1rem;
+}
 /***** End comments *****/
 
 
