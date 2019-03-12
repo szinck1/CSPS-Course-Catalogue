@@ -15,7 +15,11 @@
 			{{ _('If you encounter any bugs or would like features added, please contact <a href="mailto:sam.louden@canada.ca">Sam Louden</a>.') }}
 		</p>
 		<h4>
-			{{ _('Weekly data update performed: <span id="last-updated">March 07, 2019</span>') }}
+			{% set lang = 'fr' if request.cookies.get('lang', None) == 'fr' else 'en' %}
+			{% set year = '2019' %}
+			{% set month = _('March') %}
+			{% set day = '07' %}
+			{{ _('Weekly data update performed: ') }}<span id="last-updated">{{ day }} {{ month|lower if lang == 'fr' else month }} {{ year }}</span>
 		</h4>
 	</div>
 {% endblock body %}
