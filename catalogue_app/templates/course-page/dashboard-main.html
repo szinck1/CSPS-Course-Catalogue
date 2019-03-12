@@ -11,7 +11,7 @@
 		<img id="online-dashboard-disabled-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='tooltip.png') }}" alt="{{ _('Tooltip') }}" />
 	{% else %}
 		<p>{{ _('Section: ') }}</p>
-		<select id="filter-dash" onchange="filterDashboards()">
+		<select id="filter-dash">
 			<option value="offering-dash">{{ _('Offering Data') }}</option>
 			<option value="learner-dash">{{ _('Learner Data') }}</option>
 		</select>
@@ -45,10 +45,10 @@
 	{% endif %}
 	
 	// Enable dropdown to show / hide
-	function filterDashboards() {
+	$('#filter-dash').on('change', function() {
 		var dropdownSelection = $('#filter-dash').val();
 		$('#offering-dash').hide();
 		$('#learner-dash').hide();
 		$('#' + dropdownSelection).show();
-	}
+	});
 </script>
