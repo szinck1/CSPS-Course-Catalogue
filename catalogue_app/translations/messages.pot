@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-03-11 13:45-0400\n"
+"POT-Creation-Date: 2019-03-11 20:22-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,7 +77,7 @@ msgid "February"
 msgstr ""
 
 #: course_routes/queries/dashboard_learner_queries.py:54
-#: templates/course-page/ratings.html:27
+#: templates/about.html:20 templates/course-page/ratings.html:27
 msgid "March"
 msgstr ""
 
@@ -201,10 +201,8 @@ msgid ""
 " href=\"mailto:sam.louden@canada.ca\">Sam Louden</a>."
 msgstr ""
 
-#: templates/about.html:18
-msgid ""
-"Weekly data update performed: <span id=\"last-updated\">March 07, "
-"2019</span>"
+#: templates/about.html:22
+msgid "Weekly data update performed: "
 msgstr ""
 
 #: templates/api.html:6
@@ -251,7 +249,35 @@ msgstr ""
 msgid "GoC Logo"
 msgstr ""
 
-#: templates/course-page/comments.html:3 templates/course-page/comments.html:20
+#: templates/course-page/comments.html:5
+msgid "Overall"
+msgstr ""
+
+#: templates/course-page/comments.html:7 templates/course-page/comments.html:25
+#: templates/course-page/dashboard-main.html:6
+#: templates/course-page/dashboard-main.html:41
+#: templates/course-page/geodata.html:6 templates/course-page/geodata.html:88
+msgid "Online"
+msgstr ""
+
+#: templates/course-page/comments.html:8
+msgid "Technical"
+msgstr ""
+
+#: templates/course-page/comments.html:10
+msgid "Instructor"
+msgstr ""
+
+#: templates/course-page/comments.html:12
+msgid "Language"
+msgstr ""
+
+#: templates/course-page/comments.html:16
+msgid "Performance"
+msgstr ""
+
+#: templates/course-page/comments.html:17
+#: templates/course-page/comments.html:44
 #: templates/course-page/dashboard-learners.html:5
 #: templates/course-page/dashboard-main.html:11
 #: templates/course-page/dashboard-offerings.html:25
@@ -263,128 +289,113 @@ msgstr ""
 msgid "Tooltip"
 msgstr ""
 
-#: templates/course-page/comments.html:8
-msgid "Overall"
-msgstr ""
-
-#: templates/course-page/comments.html:10
-#: templates/course-page/comments.html:28
-#: templates/course-page/dashboard-main.html:6
-#: templates/course-page/dashboard-main.html:41
-#: templates/course-page/geodata.html:6 templates/course-page/geodata.html:88
-msgid "Online"
-msgstr ""
-
-#: templates/course-page/comments.html:11
-msgid "Technical"
-msgstr ""
-
-#: templates/course-page/comments.html:13
-msgid "Instructor"
-msgstr ""
-
-#: templates/course-page/comments.html:15
-msgid "Language"
-msgstr ""
-
-#: templates/course-page/comments.html:19
-msgid "Performance"
-msgstr ""
-
-#: templates/course-page/comments.html:23
+#: templates/course-page/comments.html:20
 msgid "Categorical"
 msgstr ""
 
-#: templates/course-page/comments.html:41
-msgid "Stars: "
+#: templates/course-page/comments.html:43
+msgid "Comment"
 msgstr ""
 
-#: templates/course-page/comments.html:44
-#: templates/course-page/comments.html:58
-msgid "All"
+#: templates/course-page/comments.html:43 templates/course-page/main.html:18
+msgid "Comments"
 msgstr ""
 
-#: templates/course-page/comments.html:45
-msgid "One"
-msgstr ""
-
-#: templates/course-page/comments.html:46
-msgid "Two"
-msgstr ""
-
-#: templates/course-page/comments.html:47
-msgid "Three"
-msgstr ""
-
-#: templates/course-page/comments.html:48
-msgid "Four"
-msgstr ""
-
-#: templates/course-page/comments.html:49
+#: templates/course-page/comments.html:51
+#: templates/course-page/comments.html:100
 msgid "Five"
 msgstr ""
 
-#: templates/course-page/comments.html:55
-msgid "Fiscal Year: "
+#: templates/course-page/comments.html:60
+#: templates/course-page/comments.html:101
+msgid "Four"
 msgstr ""
 
-#: templates/course-page/comments.html:71
-msgid "Avatar"
+#: templates/course-page/comments.html:68
+#: templates/course-page/comments.html:102
+msgid "Three"
 msgstr ""
 
-#: templates/course-page/comments.html:78
-msgid "Sentiment Score: "
+#: templates/course-page/comments.html:76
+#: templates/course-page/comments.html:103
+msgid "Two"
+msgstr ""
+
+#: templates/course-page/comments.html:84
+#: templates/course-page/comments.html:104
+msgid "One"
+msgstr ""
+
+#: templates/course-page/comments.html:96
+msgid "Stars: "
 msgstr ""
 
 #: templates/course-page/comments.html:99
-#: templates/course-page/comments.html:128
+#: templates/course-page/comments.html:113
+msgid "All"
+msgstr ""
+
+#: templates/course-page/comments.html:110
+msgid "Fiscal Year: "
+msgstr ""
+
+#: templates/course-page/comments.html:126
+msgid "Avatar"
+msgstr ""
+
+#: templates/course-page/comments.html:133
+msgid "Sentiment Score: "
+msgstr ""
+
+#: templates/course-page/comments.html:154
+#: templates/course-page/comments.html:183
 #: templates/course-page/ratings.html:48
 msgid "Apologies, this course has yet to receive any feedback of this type."
 msgstr ""
 
-#: templates/course-page/comments.html:107
+#: templates/course-page/comments.html:162
 msgid ""
 "Comments on instructor performance are currently disabled due to privacy "
 "restrictions."
 msgstr ""
 
-#: templates/course-page/comments.html:136
+#: templates/course-page/comments.html:191
 msgid ""
 "<h5>Tip:</h5><p>Learners explain why they feel the training won't improve"
 " their job performance.</p>"
 msgstr ""
 
-#: templates/course-page/comments.html:142
+#: templates/course-page/comments.html:197
 msgid ""
 "<h5>Tip:</h5><p>Comments are assigned a sentiment score between 1 (most "
 "negative) and 5 (most positive) using machine learning.</p>"
 msgstr ""
 
-#: templates/course-page/comments.html:196
+#: templates/course-page/comments.html:279
 msgid "<strong>Number of Responses:</strong> 0"
 msgstr ""
 
-#: templates/course-page/comments.html:198
+#: templates/course-page/comments.html:281
 msgid "<strong>Number of Responses:</strong> "
 msgstr ""
 
-#: templates/course-page/comments.html:225
+#: templates/course-page/comments.html:308
 msgid "Reason to Participate"
 msgstr ""
 
-#: templates/course-page/comments.html:226
+#: templates/course-page/comments.html:309
 msgid "Did You Experience Technical Issues?"
 msgstr ""
 
-#: templates/course-page/comments.html:227
+#: templates/course-page/comments.html:310
 msgid "The Course Was Available in the Official Language of My Choice"
 msgstr ""
 
-#: templates/course-page/comments.html:228
+#: templates/course-page/comments.html:311
 msgid "Did the Course Make Use of GCcampus Tools?"
 msgstr ""
 
-#: templates/course-page/comments.html:229
+#: templates/course-page/comments.html:312
 msgid "Method of Preparing for the Course"
 msgstr ""
 
@@ -649,10 +660,6 @@ msgstr ""
 
 #: templates/course-page/main.html:17
 msgid "Ratings"
-msgstr ""
-
-#: templates/course-page/main.html:18
-msgid "Comments"
 msgstr ""
 
 #: templates/course-page/main.html:19
