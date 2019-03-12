@@ -541,7 +541,12 @@ with position: relative, in this case #selection-and-loader */
 .star-filter,
 .year-filter {
 	text-align: right;
-	margin: 0.5rem 0;
+}
+.star-filter {
+	margin: 1.25rem 0 0.5rem 0;
+}
+.year-filter {
+	margin: 0.5rem 0 1.25rem 0;
 }
 .star-filter p,
 .year-filter p {
@@ -584,6 +589,9 @@ with position: relative, in this case #selection-and-loader */
 	width: 100%;
 	color: #066169;
 }
+.stars-bar-title {
+	margin: 1.25rem 0 1.25rem 1.25rem;
+}
 .stars-bar-chart tr {
 	line-height: 2rem;
 }
@@ -601,7 +609,7 @@ with position: relative, in this case #selection-and-loader */
 
 
 
-/***** Material *****/
+/***** Prep & admin *****/
 #material-tab table {
 	margin-top: 1.5rem;
 	margin-bottom: 1.5rem;
@@ -616,4 +624,4 @@ with position: relative, in this case #selection-and-loader */
 	font-size: 1.5rem;
 	color: #066169;
 }
-/***** End material *****/
+/***** End prep & admin *****/
