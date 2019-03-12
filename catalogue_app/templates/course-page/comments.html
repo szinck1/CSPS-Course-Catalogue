@@ -38,10 +38,10 @@
 				<thead>
 					<tr>
 						<td colspan="2">
-							<h3 style="margin-left: 1rem;">
+							<h3 class="stars-bar-title">
 								{% set num_comments = pass_dict[comment_name]|length %}
 								{{ num_comments }} {{ _('Comment') if num_comments == 1 else _('Comments') }}
-								<img id="computed-score-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='tooltip.png') }}" alt="{{ _('Tooltip') }}" />
+								<img class="computed-score-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='tooltip.png') }}" alt="{{ _('Tooltip') }}" />
 							</h3>
 						</td>
 					</tr>
@@ -192,7 +192,7 @@
 		animation: true,
 		html: true
 	});
-	$('#computed-score-tooltip').tooltip({
+	$('.computed-score-tooltip').tooltip({
 		placement: 'bottom',
 		title: "{{ _('<h5>Tip:</h5><p>Comments are assigned a sentiment score between 1 (most negative) and 5 (most positive) using machine learning.</p>') }}",
 		animation: true,
