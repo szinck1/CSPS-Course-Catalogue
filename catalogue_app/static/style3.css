@@ -605,6 +605,13 @@ with position: relative, in this case #selection-and-loader */
 	margin-right: 0.5rem;
 	vertical-align: middle;
 }
+/* On very small screens, shrink size of label to ensure
+bar and label on same line */
+@media (max-width: 400px) {
+	.stars-bar-chart a {
+		font-size: 0.7rem;
+	}
+}
 /***** End comments *****/
 
 
