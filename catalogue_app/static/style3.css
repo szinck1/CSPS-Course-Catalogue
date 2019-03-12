@@ -425,25 +425,34 @@ with position: relative, in this case #selection-and-loader */
 /***** General *****/
 /* Glyphicons */
 #glyph-table {
-	height: 45vh;
+	height: 40vh;
 	width: 100%;
 	text-align: center;
 	border: 1px solid #ddd;
+	/* Set font-size for ems to reference */
+	font-size: 1rem;
 }
 #glyph-table td {
 	width: 50%;
 }
-/* Glyphs placed in span tags */
+/* Glyphs, labels, and text */
+/* Use ems so can scale all by changing parent's font-size */
 #glyph-table td span {
-	font-size: 3.6rem;
+	font-size: 3.6em;
 }
 #glyph-table td > p {
-	font-size: 1.2rem;
+	font-size: 1.2em;
 	font-weight: bold;
 }
 #glyph-table .glyph-info {
-	font-size: 1rem;
+	font-size: 1em;
 	color: #066169;
+}
+@media (max-width: 500px) {
+	#glyph-table {
+		height: 50vh;
+		font-size: 0.85rem;
+	}
 }
 /***** End general *****/
 
