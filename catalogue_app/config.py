@@ -1,8 +1,8 @@
 import os
 
 class Config:
-	DEBUG = True
-	LOCAL_DB = True
+	DEBUG = False
+	LOCAL_DB = False
 	LAST_YEAR = '2017_18'
 	THIS_YEAR = '2018_19'
 	BABEL_DEFAULT_LOCALE = 'en'
