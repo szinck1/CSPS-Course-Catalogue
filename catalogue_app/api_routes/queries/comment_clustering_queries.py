@@ -53,6 +53,7 @@ def _get_clusters(model, feature_names, n_top_words):
 # French??
 # Validation / error if passed junk
 # Try NMF
+# Try only clustering with e.g. nouns, nouns and adjectives
 # Wrap it all in Sklearn pipeline
 # Automatically choose k
 # Trying finding a single word to name clusters via wordnet
