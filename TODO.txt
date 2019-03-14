@@ -1,7 +1,4 @@
-# Real quick: stop app service, re-push
-
 ### BEFORE DGC ###
-
 # add clustering (e.g. latent dirichlet) to check top 5 issues mentioned
 	# only enable button if > 50 comments
 	# sort by most recent first
@@ -17,6 +14,7 @@
 
 
 ### BACKLOG ###
+# investigate best way outside Jinja2 of dynamically creating HTML elements and scripts
 # refactor chart creation into single funcs, call only when parent div activated to solve resize problem
 # update scraper to grab code from title rather than URL
 # add offering dates to maps
