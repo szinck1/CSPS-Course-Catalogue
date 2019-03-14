@@ -1,10 +1,11 @@
 
 ### BEFORE DGC ###
-# unique learners (line on regs per month + totals for both)
-	# check index
+
 # add clustering (e.g. latent dirichlet) to check top 5 issues mentioned
 	# only enable button if > 50 comments
 	# sort by most recent first
+# unique learners (line on regs per month + totals for both)
+	# check index
 # finish accounts
 	# can't store possible salts in code?
 # validate methodology and #s
