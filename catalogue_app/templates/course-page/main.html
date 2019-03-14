@@ -64,13 +64,13 @@
 	
 	<script async>
 		// Resize Highcharts (often have wrong width when created while hidden)
-		//function resizeHighcharts(mySection) {
-		//	var currentHighcharts = $(mySection + ' div[data-highcharts-chart]');
+		function resizeHighcharts(mySection) {
+			var currentHighcharts = $(mySection + ' div[data-highcharts-chart]');
 			// Loop through charts and resize
-		//	for (var i = 0; i < currentHighcharts.length; i++) {
-		//		$('#' + currentHighcharts[i].id).highcharts().reflow();
-		//	}
-		//}
+			for (var i = 0; i < currentHighcharts.length; i++) {
+				$('#' + currentHighcharts[i].id).highcharts().reflow();
+			}
+		}
 		
 		// Activate and deactivate tabs
 		$(".main-tabs li").on("click", function() {
@@ -95,6 +95,8 @@
 			var new_section = $(this).attr('href');
 			$(new_section).removeClass('hide');
 			$(new_section).addClass('active');
+			
+			resizeHighcharts(new_section);
 		});
 		$('.sub-tabs > li > a').click(function(event) {
 			event.preventDefault();
@@ -108,6 +110,8 @@
 			var new_section = $(this).attr('href');
 			$(new_section).removeClass('hide');
 			$(new_section).addClass('active');
+			
+			resizeHighcharts(new_section);
 		});
 		
 		// Set font for Highcharts
