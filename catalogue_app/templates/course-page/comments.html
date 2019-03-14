@@ -29,7 +29,7 @@
 {% endif %}
 
 {% for comment_name in comment_names %}
-	<section id="{{ comment_name }}" class="tab-content {{ 'active' if loop.index == 1 else 'hide' }}">
+	<section id="{{ comment_name }}" class="tab-content all-comment-tabs {{ 'active' if loop.index == 1 else 'hide' }}">
 		<!-- Only render the rest of the section if feedback exists -->
 		{% if pass_dict[comment_name] %}
 			
@@ -39,8 +39,8 @@
 					<tr>
 						<td colspan="2">
 							<h3 class="stars-bar-title">
-								{% set num_comments = pass_dict[comment_name]|length %}
-								{{ num_comments }} {{ _('Comment') if num_comments == 1 else _('Comments') }}
+								<!-- Title added dynamically by jQuery in script tag below -->
+								<span></span>
 								<img class="computed-score-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='tooltip.png') }}" alt="{{ _('Tooltip') }}" />
 							</h3>
 						</td>
@@ -53,6 +53,7 @@
 							<a class="bar-stars-five" href="" data-target="5">
 								<!-- Width and text added dynamically by jQuery in script tag below -->
 								<span class="bar-fill" style="width: 0%;"></span>
+								<span class="bar-label"></span>
 							</a>
 						</td>
 					</tr>
@@ -61,6 +62,7 @@
 						<td class="col-xs-10">
 							<a class="bar-stars-four" href="" data-target="4">
 								<span class="bar-fill" style="width: 0%;"></span>
+								<span class="bar-label"></span>
 							</a>
 						</td>
 					</tr>
@@ -69,6 +71,7 @@
 						<td class="col-xs-10">
 							<a class="bar-stars-three" href="" data-target="3">
 								<span class="bar-fill" style="width: 0%;"></span>
+								<span class="bar-label"></span>
 							</a>
 						</td>
 					</tr>
@@ -77,6 +80,7 @@
 						<td class="col-xs-10">
 							<a class="bar-stars-two" href="" data-target="2">
 								<span class="bar-fill" style="width: 0%;"></span>
+								<span class="bar-label"></span>
 							</a>
 						</td>
 					</tr>
@@ -85,6 +89,7 @@
 						<td class="col-xs-10">
 							<a class="bar-stars-one" href="" data-target="1">
 								<span class="bar-fill" style="width: 0%;"></span>
+								<span class="bar-label"></span>
 							</a>
 						</td>
 					</tr>
@@ -94,27 +99,27 @@
 			<!-- Dropdown to filter by star -->
 			<div class="star-filter">
 				<p>{{ _('Stars: ') }}</p>
-				<select id="filter-stars-{{ comment_name }}" onchange="filterComments()">
+				<select onchange="filterComments()">
 					<!-- Dropdown values filled dynamically by jQuery below -->
-					<option id="filter-stars-all-{{ comment_name }}" value="bob-comment">{{ _('All') }}</option>
-					<option id="filter-stars-five-{{ comment_name }}" value="star-5">{{ _('Five') }}</option>
-					<option id="filter-stars-four-{{ comment_name }}" value="star-4">{{ _('Four') }}</option>
-					<option id="filter-stars-three-{{ comment_name }}" value="star-3">{{ _('Three') }}</option>
-					<option id="filter-stars-two-{{ comment_name }}" value="star-2">{{ _('Two') }}</option>
-					<option id="filter-stars-one-{{ comment_name }}" value="star-1">{{ _('One') }}</option>
+					<option value="bob-comment">{{ _('All') }}</option>
+					<option value="star-5">{{ _('Five') }}</option>
+					<option value="star-4">{{ _('Four') }}</option>
+					<option value="star-3">{{ _('Three') }}</option>
+					<option value="star-2">{{ _('Two') }}</option>
+					<option value="star-1">{{ _('One') }}</option>
 				</select>
 			</div>
 			
 			<!-- Dropdown to filter by fiscal year -->
 			<div class="year-filter">
 				<p>{{ _('Fiscal Year: ') }}</p>
-				<select id="filter-fiscal-{{ comment_name }}" onchange="filterComments()">
+				<select onchange="filterComments()">
 					<!-- Dropdown values filled dynamically by jQuery below -->
-					<option id="filter-fiscal-all-{{ comment_name }}" value="bob-comment">{{ _('All') }}</option>
-					<option id="filter-2015-16-{{ comment_name }}" value="FY2015-16">2015-16</option>
-					<option id="filter-2016-17-{{ comment_name }}" value="FY2016-17">2016-17</option>
-					<option id="filter-2017-18-{{ comment_name }}" value="FY2017-18">2017-18</option>
-					<option id="filter-2018-19-{{ comment_name }}" value="FY2018-19">2018-19</option>
+					<option value="bob-comment">{{ _('All') }}</option>
+					<option value="FY2015-16">2015-16</option>
+					<option value="FY2016-17">2016-17</option>
+					<option value="FY2017-18">2017-18</option>
+					<option value="FY2018-19">2018-19</option>
 				</select>
 			</div>
 			
@@ -158,12 +163,12 @@
 
 
 <!-- For now, instructor_comments are disabled for privacy -->
-<section id="instructor_comments" class="tab-content hide">
+<section id="instructor_comments" class="tab-content all-comment-tabs hide">
 	<h4>{{ _('Comments on instructor performance are currently disabled due to privacy restrictions.') }}</h4>
 </section>
 
 <!-- Categorical Questions -->
-<section id="other" class="tab-content hide">
+<section id="other" class="tab-content all-comment-tabs hide">
 	<!-- Display categorical comments if any, else error message -->
 	{% if any ([pass_dict.reason_to_participate, pass_dict.technical_issues,
 				pass_dict.languages_available, pass_dict.tools_used, pass_dict.prepared_by]) %}
@@ -199,74 +204,118 @@
 		html: true
 	});
 	
+	// Dynamically update CSS bar charts to show star percentages
+	function updateBarChart(tabName) {
+		// Get fiscal year dropdown selection
+		var currentCommentTabId= $('.sub-tabs li.active a:first').attr('href');
+		var dropdowns = $(currentCommentTabId + ' select');
+		if (dropdowns.length > 1) {
+			var fiscalYearDropdown = '.' + dropdowns[1].value;
+		} else {
+			var fiscalYearDropdown = '';
+		}
+		
+		// Get counts
+		var fiveStar = $(tabName + ' .star-5' + fiscalYearDropdown).length;
+		var fourStar = $(tabName + ' .star-4' + fiscalYearDropdown).length;
+		var threeStar = $(tabName + ' .star-3' + fiscalYearDropdown).length;
+		var twoStar = $(tabName + ' .star-2' + fiscalYearDropdown).length;
+		var oneStar = $(tabName + ' .star-1' + fiscalYearDropdown).length;
+		// Get largest length and use to scale counts to bar widths
+		var upperBound = Math.max(fiveStar, fourStar, threeStar, twoStar, oneStar) * 1.4;
+		// Account for 0 comments
+		upperBound = (upperBound) ? upperBound : 1
+		var fiveStarScaled = Math.round((fiveStar / upperBound) * 100);
+		var fourStarScaled = Math.round((fourStar / upperBound) * 100);
+		var threeStarScaled = Math.round((threeStar / upperBound) * 100);
+		var twoStarScaled = Math.round((twoStar / upperBound) * 100);
+		var oneStarScaled = Math.round((oneStar / upperBound) * 100);
+		
+		// Use scaled counts to set width of span, thus creating bar chart
+		// Transition between states to look sexy
+		$(tabName + ' .stars-bar-chart .bar-stars-five span').css({
+			'width': String(fiveStarScaled) + '%',
+			'transition': 'width 450ms ease-in-out'
+		});
+		$(tabName + ' .stars-bar-chart .bar-stars-four span').css({
+			'width': String(fourStarScaled) + '%',
+			'transition': 'width 450ms ease-in-out'
+		});
+		$(tabName + ' .stars-bar-chart .bar-stars-three span').css({
+			'width': String(threeStarScaled) + '%',
+			'transition': 'width 450ms ease-in-out'
+		});
+		$(tabName + ' .stars-bar-chart .bar-stars-two span').css({
+			'width': String(twoStarScaled) + '%',
+			'transition': 'width 450ms ease-in-out'
+		});
+		$(tabName + ' .stars-bar-chart .bar-stars-one span').css({
+			'width': String(oneStarScaled) + '%',
+			'transition': 'width 450ms ease-in-out'
+		});
+		
+		// Add labels showing percentages
+		var totalComments = fiveStar + fourStar + threeStar + twoStar + oneStar;
+		// Account for 0 comments
+		totalComments = (totalComments) ? totalComments : 1;
+		// Multiply then divide by ten as JS built-in Math.round doesn't support rounding to 1 decimal
+		var percentFive = Math.round((fiveStar / totalComments) * 100 * 10) / 10;
+		var percentFour = Math.round((fourStar / totalComments) * 100 * 10) / 10;
+		var percentThree = Math.round((threeStar / totalComments) * 100 * 10) / 10;
+		var percentTwo = Math.round((twoStar / totalComments) * 100 * 10) / 10;
+		var percentOne = Math.round((oneStar / totalComments) * 100 * 10) / 10;
+		$(tabName + ' .stars-bar-chart .bar-stars-five span.bar-label').text(String(percentFive) + '%');
+		$(tabName + ' .stars-bar-chart .bar-stars-four span.bar-label').text(String(percentFour) + '%');
+		$(tabName + ' .stars-bar-chart .bar-stars-three span.bar-label').text(String(percentThree) + '%');
+		$(tabName + ' .stars-bar-chart .bar-stars-two span.bar-label').text(String(percentTwo) + '%');
+		$(tabName + ' .stars-bar-chart .bar-stars-one span.bar-label').text(String(percentOne) + '%');
+		
+		// Update h3 showing total number of comments
+		var titleText = (totalComments == 1) ? ' Comment' : ' Comments';
+		$(tabName + ' .stars-bar-chart thead h3 span').text(totalComments + titleText);
+	}
+	
+	// Create listener enabling CSS bar chart to trigger star filters
+	function addListenerBarChart(tabName) {
+		$(tabName + ' .stars-bar-chart a').on('click', function(e) {
+			e.stopImmediatePropagation();
+			e.preventDefault();
+			var clicked = $(this).attr('data-target');
+			$(tabName + ' .star-filter select').val('star-' + clicked).change();
+			return false;
+		});
+	}
+	
+	// Create bar charts across all comment subtabs
+	{% for comment_name in comment_names %}
+		{% if pass_dict[comment_name] %}
+			updateBarChart('#{{ comment_name }}');
+			addListenerBarChart('#{{ comment_name }}');
+		{% endif %}
+	{% endfor %}
+	
 	// Enable star and fiscal year dropdowns to show / hide
 	function filterComments() {
 		// Get current tab
 		var currentCommentTabId= $('.sub-tabs li.active a:first').attr('href');
-		// Get value of star dropdown (always present)
-		var dropdowns = $(currentCommentTabId + ' select');
-		var starDropdown = dropdowns[0].value;
+		
 		// Hide all comments
 		$(currentCommentTabId + ' .bob-comment').hide();
+		
 		// Show comments according to selection in dropdown(s)
+		var dropdowns = $(currentCommentTabId + ' select');
 		if (dropdowns.length == 1) {
+			var starDropdown = dropdowns[0].value;
 			$(currentCommentTabId + ' .bob-comment' + '.' + starDropdown).show();
 		} else {
+			var starDropdown = dropdowns[0].value;
 			var fiscalYearDropdown = dropdowns[1].value;
 			$(currentCommentTabId + ' .bob-comment' + '.' + starDropdown + '.' + fiscalYearDropdown).show();
+			
+			// Update bar chart to match fiscal year selected
+			updateBarChart(currentCommentTabId);
 		}
 	}
-	
-	// Dynamically create CSS barcharts to show star percentages
-	{% for comment_name in comment_names %}
-		{% if pass_dict[comment_name] %}
-			// Get counts
-			var fiveStar = $('#{{ comment_name }} .star-5').length;
-			var fourStar = $('#{{ comment_name }} .star-4').length;
-			var threeStar = $('#{{ comment_name }} .star-3').length;
-			var twoStar = $('#{{ comment_name }} .star-2').length;
-			var oneStar = $('#{{ comment_name }} .star-1').length;
-			// Get largest length and use to scale counts to bar widths
-			var upperBound = Math.max(fiveStar, fourStar, threeStar, twoStar, oneStar) * 1.4;
-			var fiveStarScaled = Math.round((fiveStar / upperBound) * 100);
-			var fourStarScaled = Math.round((fourStar / upperBound) * 100);
-			var threeStarScaled = Math.round((threeStar / upperBound) * 100);
-			var twoStarScaled = Math.round((twoStar / upperBound) * 100);
-			var oneStarScaled = Math.round((oneStar / upperBound) * 100);
-			// Use scaled counts to set width of span, thus creating bar chart
-			$('#{{ comment_name }} .stars-bar-chart .bar-stars-five span').css('width', String(fiveStarScaled) + '%');
-			$('#{{ comment_name }} .stars-bar-chart .bar-stars-four span').css('width', String(fourStarScaled) + '%');
-			$('#{{ comment_name }} .stars-bar-chart .bar-stars-three span').css('width', String(threeStarScaled) + '%');
-			$('#{{ comment_name }} .stars-bar-chart .bar-stars-two span').css('width', String(twoStarScaled) + '%');
-			$('#{{ comment_name }} .stars-bar-chart .bar-stars-one span').css('width', String(oneStarScaled) + '%');
-			// Add percentages
-			var totalComments = fiveStar + fourStar + threeStar + twoStar + oneStar;
-			// Multiply then divide by ten as JS built-in Math.round doesn't support rounding to 1 decimal
-			var percentFive = Math.round((fiveStar / totalComments) * 100 * 10) / 10;
-			var percentFour = Math.round((fourStar / totalComments) * 100 * 10) / 10;
-			var percentThree = Math.round((threeStar / totalComments) * 100 * 10) / 10;
-			var percentTwo = Math.round((twoStar / totalComments) * 100 * 10) / 10;
-			var percentOne = Math.round((oneStar / totalComments) * 100 * 10) / 10;
-			$('#{{ comment_name }} .stars-bar-chart .bar-stars-five').append(String(percentFive) + '%');
-			$('#{{ comment_name }} .stars-bar-chart .bar-stars-four').append(String(percentFour) + '%');
-			$('#{{ comment_name }} .stars-bar-chart .bar-stars-three').append(String(percentThree) + '%');
-			$('#{{ comment_name }} .stars-bar-chart .bar-stars-two').append(String(percentTwo) + '%');
-			$('#{{ comment_name }} .stars-bar-chart .bar-stars-one').append(String(percentOne) + '%');
-		{% endif %}
-	{% endfor %}
-	
-	// Enable CSS barcharts to trigger star filters
-	{% for comment_name in comment_names %}
-		{% if pass_dict[comment_name] %}
-			$('#{{ comment_name }} .stars-bar-chart a').on('click', function(e) {
-				e.stopImmediatePropagation();
-				e.preventDefault();
-				var clicked = $(this).attr('data-target');
-				$('#filter-stars-{{ comment_name }}').val('star-' + clicked).change();
-				return false;
-			});
-		{% endif %}
-	{% endfor %}
 	
 	function createPieChart(id, title, data) {
 		$('#' + String(id)).highcharts({
