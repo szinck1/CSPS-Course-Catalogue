@@ -29,7 +29,7 @@
 {% endif %}
 
 {% for comment_name in comment_names %}
-	<section id="{{ comment_name }}" class="tab-content {{ 'active' if loop.index == 1 else 'hide' }}">
+	<section id="{{ comment_name }}" class="tab-content all-comment-tabs {{ 'active' if loop.index == 1 else 'hide' }}">
 		<!-- Only render the rest of the section if feedback exists -->
 		{% if pass_dict[comment_name] %}
 			
@@ -158,12 +158,12 @@
 
 
 <!-- For now, instructor_comments are disabled for privacy -->
-<section id="instructor_comments" class="tab-content hide">
+<section id="instructor_comments" class="tab-content all-comment-tabs hide">
 	<h4>{{ _('Comments on instructor performance are currently disabled due to privacy restrictions.') }}</h4>
 </section>
 
 <!-- Categorical Questions -->
-<section id="other" class="tab-content hide">
+<section id="other" class="tab-content all-comment-tabs hide">
 	<!-- Display categorical comments if any, else error message -->
 	{% if any ([pass_dict.reason_to_participate, pass_dict.technical_issues,
 				pass_dict.languages_available, pass_dict.tools_used, pass_dict.prepared_by]) %}

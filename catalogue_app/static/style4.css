@@ -621,6 +621,10 @@ bar and label on same line */
 		font-size: 0.7rem;
 	}
 }
+/* Prevent screen jump when switching from full -> empty tabs */
+.all-comment-tabs {
+	min-height: 90vh;
+}
 /***** End comments *****/
 
 
