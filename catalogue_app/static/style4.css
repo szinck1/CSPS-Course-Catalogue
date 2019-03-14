@@ -425,25 +425,34 @@ with position: relative, in this case #selection-and-loader */
 /***** General *****/
 /* Glyphicons */
 #glyph-table {
-	height: 45vh;
+	height: 40vh;
 	width: 100%;
 	text-align: center;
-	border: 1px solid #333;
+	border: 1px solid #ddd;
+	/* Set font-size for ems to reference */
+	font-size: 1rem;
 }
 #glyph-table td {
 	width: 50%;
 }
-/* Glyphs placed in span tags */
+/* Glyphs, labels, and text */
+/* Use ems so can scale all by changing parent's font-size */
 #glyph-table td span {
-	font-size: 3.6rem;
+	font-size: 3.6em;
 }
 #glyph-table td > p {
-	font-size: 1.2rem;
+	font-size: 1.2em;
 	font-weight: bold;
 }
 #glyph-table .glyph-info {
-	font-size: 1rem;
+	font-size: 1em;
 	color: #066169;
+}
+@media (max-width: 500px) {
+	#glyph-table {
+		height: 50vh;
+		font-size: 0.85rem;
+	}
 }
 /***** End general *****/
 
@@ -537,41 +546,86 @@ with position: relative, in this case #selection-and-loader */
 
 
 /***** Comments *****/
-/* Date of comment */
-.comment-date {
-	float: right;
-}
-/* Filter */
-.bob-comment {
-	margin-bottom: 1.5rem;
-}
+/* Filters */
 .star-filter,
 .year-filter {
 	text-align: right;
-	margin: 0.5rem 0;
+}
+.star-filter {
+	margin: 1.25rem 0 0.5rem 0;
+}
+.year-filter {
+	margin: 0.5rem 0 1.25rem 0;
 }
 .star-filter p,
 .year-filter p {
 	display: inline;
+}
+/* Comment text */
+.bob-comment {
+	margin-bottom: 1.5rem;
 }
 /* Avatar */
 .thumbnail.pull-left {
 	width: 7rem;
 	padding: 0;
 	margin-right: 0.5rem;
+	border: 1px solid transparent;
 }
 /* Avatar hover */
 .thumbnail:hover {
 	border-color: #066169 !important;
 }
+/* Error message for instructor comments */
 #instructor_comments p {
 	margin: 1.25rem 0;
+}
+/* Stars */
+.glyphicon-star,
+.glyphicon-star-empty {
+	color: #ffcc33;
+	font-size: 1rem;
+}
+.glyphicon-star-empty {
+	opacity: 0.3;
+}
+/* Date of comment */
+.comment-date {
+	float: right;
+}
+/* Barchart showing percentages for 5 stars, 4 stars, etc. */
+.stars-bar-chart {
+	width: 100%;
+	color: #066169;
+}
+.stars-bar-title {
+	margin: 1.25rem 0 1.25rem 1.25rem;
+}
+.stars-bar-chart tr {
+	line-height: 2rem;
+}
+.bar-fill {
+	display: inline-block;
+	background-color: #ffcc33;
+	width: 100%;
+	/* Slightly smaller than row height */
+	height: 1.5rem;
+	padding: 0.25rem 0;
+	margin-right: 0.5rem;
+	vertical-align: middle;
+}
+/* On very small screens, shrink size of label to ensure
+bar and label on same line */
+@media (max-width: 400px) {
+	.stars-bar-chart a {
+		font-size: 0.7rem;
+	}
 }
 /***** End comments *****/
 
 
 
-/***** Material *****/
+/***** Prep & admin *****/
 #material-tab table {
 	margin-top: 1.5rem;
 	margin-bottom: 1.5rem;
@@ -586,4 +640,4 @@ with position: relative, in this case #selection-and-loader */
 	font-size: 1.5rem;
 	color: #066169;
 }
-/***** End material *****/
+/***** End prep & admin *****/

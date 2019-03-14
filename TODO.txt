@@ -1,40 +1,34 @@
-### CURRENT SPRINT ###
-# update FR
-
 
 ### BEFORE DGC ###
-# add datatables to depts and classifications
 # unique learners (line on regs per month + totals for both)
-	# would need query too
+	# check index
+# add clustering (e.g. latent dirichlet) to check top 5 issues mentioned
+	# only enable button if > 50 comments
+	# sort by most recent first
+# finish accounts
+	# can't store possible salts in code?
 # validate methodology and #s
-# search inside course descriptions from home page
 # app service settings check from Steve?
-# check async + defer sitrep
+# before launch, need to convert to 12 month rolling window
 # launch!
 
 
 
 ### BACKLOG ###
+# refactor chart creation into single funcs, call only when parent div activated to solve resize problem
 # update scraper to grab code from title rather than URL
+# add offering dates to maps
 # copyright
 # explore by director
-	# show flags e.g. regs gone down, copyright expired, no prep and admin
+	# show flags e.g. regs gone down, copyright expired, no prep and admin, bad sentiment scores
 	# email director the problems for delegation
-# add clustering (e.g. latent dirichlet) to check top 5 issues mentioned
-	# add pagination for huge comment sections
-	# sort by most recent first
-# add API
-# add sentiment analysis? ideas:
-	# love for course across different depts, different classifications
-	# add a section to see worst performing / troubled courses
-# add regional accessibility to geodata
 # add dept usage
 	# note explaining current vs billing
 	# download their own csv!
 # link to offerings on gccampus
+# add datatables to depts and classifications
 # focus group w/ users, brainstorm for new KPIs for curriculum review process
 # unit testing
 # let Camille edit directly
-# add guest speakers repository
-# add SQLAlchemy to be RDBMS agnostic
-# decouple front and back, redo front with react
+# decouple frontend and backend
+	# add SQLAlchemy to be RDBMS agnostic

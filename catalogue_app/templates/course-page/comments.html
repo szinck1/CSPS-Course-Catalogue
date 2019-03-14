@@ -14,7 +14,7 @@
 	<li>
 		<a href="#performance_comments">
 			{{ _('Performance') }}
-			<img id="performance-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='stars/tooltip.png') }}" alt="{{ _('Tooltip') }}" />
+			<img id="performance-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='tooltip.png') }}" alt="{{ _('Tooltip') }}" />
 		</a>
 	</li>
 	<li><a href="#other">{{ _('Categorical') }}</a></li>
@@ -33,17 +33,75 @@
 		<!-- Only render the rest of the section if feedback exists -->
 		{% if pass_dict[comment_name] %}
 			
+			<!-- CSS barchart showing percentages for 5 stars, 4 stars, etc. -->
+			<table class="stars-bar-chart">
+				<thead>
+					<tr>
+						<td colspan="2">
+							<h3 class="stars-bar-title">
+								{% set num_comments = pass_dict[comment_name]|length %}
+								{{ num_comments }} {{ _('Comment') if num_comments == 1 else _('Comments') }}
+								<img class="computed-score-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='tooltip.png') }}" alt="{{ _('Tooltip') }}" />
+							</h3>
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="col-xs-2 text-center">{{ _('Five') }}</td>
+						<td class="col-xs-10">
+							<a class="bar-stars-five" href="" data-target="5">
+								<!-- Width and text added dynamically by jQuery in script tag below -->
+								<span class="bar-fill" style="width: 0%;"></span>
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td class="col-xs-2 text-center">{{ _('Four') }}</td>
+						<td class="col-xs-10">
+							<a class="bar-stars-four" href="" data-target="4">
+								<span class="bar-fill" style="width: 0%;"></span>
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td class="col-xs-2 text-center">{{ _('Three') }}</td>
+						<td class="col-xs-10">
+							<a class="bar-stars-three" href="" data-target="3">
+								<span class="bar-fill" style="width: 0%;"></span>
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td class="col-xs-2 text-center">{{ _('Two') }}</td>
+						<td class="col-xs-10">
+							<a class="bar-stars-two" href="" data-target="2">
+								<span class="bar-fill" style="width: 0%;"></span>
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td class="col-xs-2 text-center">{{ _('One') }}</td>
+						<td class="col-xs-10">
+							<a class="bar-stars-one" href="" data-target="1">
+								<span class="bar-fill" style="width: 0%;"></span>
+							</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
 			<!-- Dropdown to filter by star -->
 			<div class="star-filter">
 				<p>{{ _('Stars: ') }}</p>
 				<select id="filter-stars-{{ comment_name }}" onchange="filterComments()">
 					<!-- Dropdown values filled dynamically by jQuery below -->
 					<option id="filter-stars-all-{{ comment_name }}" value="bob-comment">{{ _('All') }}</option>
-					<option id="filter-stars-one-{{ comment_name }}" value="star-1">{{ _('One') }}</option>
-					<option id="filter-stars-two-{{ comment_name }}" value="star-2">{{ _('Two') }}</option>
-					<option id="filter-stars-three-{{ comment_name }}" value="star-3">{{ _('Three') }}</option>
-					<option id="filter-stars-four-{{ comment_name }}" value="star-4">{{ _('Four') }}</option>
 					<option id="filter-stars-five-{{ comment_name }}" value="star-5">{{ _('Five') }}</option>
+					<option id="filter-stars-four-{{ comment_name }}" value="star-4">{{ _('Four') }}</option>
+					<option id="filter-stars-three-{{ comment_name }}" value="star-3">{{ _('Three') }}</option>
+					<option id="filter-stars-two-{{ comment_name }}" value="star-2">{{ _('Two') }}</option>
+					<option id="filter-stars-one-{{ comment_name }}" value="star-1">{{ _('One') }}</option>
 				</select>
 			</div>
 			
@@ -61,28 +119,28 @@
 			</div>
 			
 			{% for tup in pass_dict[comment_name] %}
-				<div class="bob-comment star-{{ tup[1] }} FY{{ tup[4] }}">
+				<div class="col-xs-12 bob-comment star-{{ tup[1] }} FY{{ tup[4] }}">
 					<div class="media">
 						<!-- User avatar -->
 						<a class="thumbnail pull-left hidden-xs">
-							<img src="{{ url_for('static', filename='stars/avatar.png') }}" alt="{{ _('Avatar') }}" />
+							<img src="{{ url_for('static', filename='avatar.png') }}" alt="{{ _('Avatar') }}" />
 						</a>
 						<div class="media-body">
 							<!-- User classification and offering city -->
 							<h4>{{ tup[2] }}, <em>{{ tup[3] }}</em></h4>
 							<!-- Display user overall satisfaction with stars -->
 							<h5>
-								{{ _('Overall Satisfaction: ') }}
+								{{ _('Sentiment Score: ') }}
 								{% if tup[1] == 5 %}
-									<img src="{{ url_for('static', filename='stars/five.png') }}" alt="{{ _('Five Stars') }}" />
+									{% for _ in range(5) %}<span class="glyphicon glyphicon-star"></span>{% endfor %}{% for _ in range(0) %}<span class="glyphicon glyphicon-star-empty"></span>{% endfor %}
 								{% elif tup[1] == 4 %}
-									<img src="{{ url_for('static', filename='stars/four.png') }}" alt="{{ _('Four Stars') }}" />
+									{% for _ in range(4) %}<span class="glyphicon glyphicon-star"></span>{% endfor %}{% for _ in range(1) %}<span class="glyphicon glyphicon-star-empty"></span>{% endfor %}
 								{% elif tup[1] == 3 %}
-									<img src="{{ url_for('static', filename='stars/three.png') }}" alt="{{ _('Three Stars') }}" />
+									{% for _ in range(3) %}<span class="glyphicon glyphicon-star"></span>{% endfor %}{% for _ in range(2) %}<span class="glyphicon glyphicon-star-empty"></span>{% endfor %}
 								{% elif tup[1] == 2 %}
-									<img src="{{ url_for('static', filename='stars/two.png') }}" alt="{{ _('Two Stars') }}" />
+									{% for _ in range(2) %}<span class="glyphicon glyphicon-star"></span>{% endfor %}{% for _ in range(3) %}<span class="glyphicon glyphicon-star-empty"></span>{% endfor %}
 								{% elif tup[1] == 1 %}
-									<img src="{{ url_for('static', filename='stars/one.png') }}" alt="{{ _('One Star') }}" />
+									{% for _ in range(1) %}<span class="glyphicon glyphicon-star"></span>{% endfor %}{% for _ in range(4) %}<span class="glyphicon glyphicon-star-empty"></span>{% endfor %}
 								{% endif %}
 								<span class="comment-date">{{ tup[5] }} {{ tup[4] }}</span>
 							</h5>
@@ -134,29 +192,12 @@
 		animation: true,
 		html: true
 	});
-	
-	// Function currently not in use
-	// Add counts to dropdown values
-	function populateDropdown() {
-		{% for comment_name in comment_names %}
-			// Get counts
-			var oneStar = $('#{{ comment_name }} .star-1').length;
-			var twoStar = $('#{{ comment_name }} .star-2').length;
-			var threeStar = $('#{{ comment_name }} .star-3').length;
-			var fourStar = $('#{{ comment_name }} .star-4').length;
-			var fiveStar = $('#{{ comment_name }} .star-5').length;
-			// Count number of divs instead of sum as very rarely a user submits comments without stars
-			var totalComments = $('#{{ comment_name }} .bob-comment').length;
-			
-			// Update dropdown values
-			$('#filter-stars-all-{{ comment_name }}').text("All - " + totalComments);
-			$('#filter-stars-one-{{ comment_name }}').text('One - ' + oneStar + ' - ' + Math.round((oneStar / totalComments) * 100) + '%');
-			$('#filter-stars-two-{{ comment_name }}').text('Two - ' + twoStar + ' - ' + Math.round((twoStar / totalComments) * 100) + '%');
-			$('#filter-stars-three-{{ comment_name }}').text('Three - ' + threeStar + ' - ' + Math.round((threeStar / totalComments) * 100) + '%');
-			$('#filter-stars-four-{{ comment_name }}').text('Four - ' + fourStar + ' - ' + Math.round((fourStar / totalComments) * 100) + '%');
-			$('#filter-stars-five-{{ comment_name }}').text('Five - ' + fiveStar + ' - ' + Math.round((fiveStar / totalComments) * 100) + '%');
-		{% endfor %}
-	}
+	$('.computed-score-tooltip').tooltip({
+		placement: 'bottom',
+		title: "{{ _('<h5>Tip:</h5><p>Comments are assigned a sentiment score between 1 (most negative) and 5 (most positive) using machine learning.</p>') }}",
+		animation: true,
+		html: true
+	});
 	
 	// Enable star and fiscal year dropdowns to show / hide
 	function filterComments() {
@@ -175,6 +216,57 @@
 			$(currentCommentTabId + ' .bob-comment' + '.' + starDropdown + '.' + fiscalYearDropdown).show();
 		}
 	}
+	
+	// Dynamically create CSS barcharts to show star percentages
+	{% for comment_name in comment_names %}
+		{% if pass_dict[comment_name] %}
+			// Get counts
+			var fiveStar = $('#{{ comment_name }} .star-5').length;
+			var fourStar = $('#{{ comment_name }} .star-4').length;
+			var threeStar = $('#{{ comment_name }} .star-3').length;
+			var twoStar = $('#{{ comment_name }} .star-2').length;
+			var oneStar = $('#{{ comment_name }} .star-1').length;
+			// Get largest length and use to scale counts to bar widths
+			var upperBound = Math.max(fiveStar, fourStar, threeStar, twoStar, oneStar) * 1.4;
+			var fiveStarScaled = Math.round((fiveStar / upperBound) * 100);
+			var fourStarScaled = Math.round((fourStar / upperBound) * 100);
+			var threeStarScaled = Math.round((threeStar / upperBound) * 100);
+			var twoStarScaled = Math.round((twoStar / upperBound) * 100);
+			var oneStarScaled = Math.round((oneStar / upperBound) * 100);
+			// Use scaled counts to set width of span, thus creating bar chart
+			$('#{{ comment_name }} .stars-bar-chart .bar-stars-five span').css('width', String(fiveStarScaled) + '%');
+			$('#{{ comment_name }} .stars-bar-chart .bar-stars-four span').css('width', String(fourStarScaled) + '%');
+			$('#{{ comment_name }} .stars-bar-chart .bar-stars-three span').css('width', String(threeStarScaled) + '%');
+			$('#{{ comment_name }} .stars-bar-chart .bar-stars-two span').css('width', String(twoStarScaled) + '%');
+			$('#{{ comment_name }} .stars-bar-chart .bar-stars-one span').css('width', String(oneStarScaled) + '%');
+			// Add percentages
+			var totalComments = fiveStar + fourStar + threeStar + twoStar + oneStar;
+			// Multiply then divide by ten as JS built-in Math.round doesn't support rounding to 1 decimal
+			var percentFive = Math.round((fiveStar / totalComments) * 100 * 10) / 10;
+			var percentFour = Math.round((fourStar / totalComments) * 100 * 10) / 10;
+			var percentThree = Math.round((threeStar / totalComments) * 100 * 10) / 10;
+			var percentTwo = Math.round((twoStar / totalComments) * 100 * 10) / 10;
+			var percentOne = Math.round((oneStar / totalComments) * 100 * 10) / 10;
+			$('#{{ comment_name }} .stars-bar-chart .bar-stars-five').append(String(percentFive) + '%');
+			$('#{{ comment_name }} .stars-bar-chart .bar-stars-four').append(String(percentFour) + '%');
+			$('#{{ comment_name }} .stars-bar-chart .bar-stars-three').append(String(percentThree) + '%');
+			$('#{{ comment_name }} .stars-bar-chart .bar-stars-two').append(String(percentTwo) + '%');
+			$('#{{ comment_name }} .stars-bar-chart .bar-stars-one').append(String(percentOne) + '%');
+		{% endif %}
+	{% endfor %}
+	
+	// Enable CSS barcharts to trigger star filters
+	{% for comment_name in comment_names %}
+		{% if pass_dict[comment_name] %}
+			$('#{{ comment_name }} .stars-bar-chart a').on('click', function(e) {
+				e.stopImmediatePropagation();
+				e.preventDefault();
+				var clicked = $(this).attr('data-target');
+				$('#filter-stars-{{ comment_name }}').val('star-' + clicked).change();
+				return false;
+			});
+		{% endif %}
+	{% endfor %}
 	
 	function createPieChart(id, title, data) {
 		$('#' + String(id)).highcharts({

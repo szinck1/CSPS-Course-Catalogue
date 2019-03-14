@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-03-07 00:41-0500\n"
+"POT-Creation-Date: 2019-03-11 20:22-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,7 +77,7 @@ msgid "February"
 msgstr ""
 
 #: course_routes/queries/dashboard_learner_queries.py:54
-#: templates/course-page/ratings.html:27
+#: templates/about.html:20 templates/course-page/ratings.html:27
 msgid "March"
 msgstr ""
 
@@ -201,10 +201,8 @@ msgid ""
 " href=\"mailto:sam.louden@canada.ca\">Sam Louden</a>."
 msgstr ""
 
-#: templates/about.html:18
-msgid ""
-"Weekly data update performed: <span id=\"last-updated\">March 07, "
-"2019</span>"
+#: templates/about.html:22
+msgid "Weekly data update performed: "
 msgstr ""
 
 #: templates/api.html:6
@@ -279,6 +277,7 @@ msgid "Performance"
 msgstr ""
 
 #: templates/course-page/comments.html:17
+#: templates/course-page/comments.html:44
 #: templates/course-page/dashboard-learners.html:5
 #: templates/course-page/dashboard-main.html:11
 #: templates/course-page/dashboard-offerings.html:25
@@ -294,110 +293,109 @@ msgstr ""
 msgid "Categorical"
 msgstr ""
 
-#: templates/course-page/comments.html:38
-msgid "Stars: "
-msgstr ""
-
-#: templates/course-page/comments.html:41
-#: templates/course-page/comments.html:55
-msgid "All"
-msgstr ""
-
-#: templates/course-page/comments.html:42
-msgid "One"
-msgstr ""
-
 #: templates/course-page/comments.html:43
-msgid "Two"
+msgid "Comment"
 msgstr ""
 
-#: templates/course-page/comments.html:44
-msgid "Three"
+#: templates/course-page/comments.html:43 templates/course-page/main.html:18
+msgid "Comments"
 msgstr ""
 
-#: templates/course-page/comments.html:45
-msgid "Four"
-msgstr ""
-
-#: templates/course-page/comments.html:46
+#: templates/course-page/comments.html:51
+#: templates/course-page/comments.html:100
 msgid "Five"
 msgstr ""
 
-#: templates/course-page/comments.html:52
-msgid "Fiscal Year: "
+#: templates/course-page/comments.html:60
+#: templates/course-page/comments.html:101
+msgid "Four"
 msgstr ""
 
 #: templates/course-page/comments.html:68
-msgid "Avatar"
+#: templates/course-page/comments.html:102
+msgid "Three"
 msgstr ""
 
-#: templates/course-page/comments.html:75
-msgid "Overall Satisfaction: "
+#: templates/course-page/comments.html:76
+#: templates/course-page/comments.html:103
+msgid "Two"
 msgstr ""
 
-#: templates/course-page/comments.html:77
-msgid "Five Stars"
-msgstr ""
-
-#: templates/course-page/comments.html:79
-msgid "Four Stars"
-msgstr ""
-
-#: templates/course-page/comments.html:81
-msgid "Three Stars"
-msgstr ""
-
-#: templates/course-page/comments.html:83
-msgid "Two Stars"
-msgstr ""
-
-#: templates/course-page/comments.html:85
-msgid "One Star"
+#: templates/course-page/comments.html:84
+#: templates/course-page/comments.html:104
+msgid "One"
 msgstr ""
 
 #: templates/course-page/comments.html:96
-#: templates/course-page/comments.html:125
+msgid "Stars: "
+msgstr ""
+
+#: templates/course-page/comments.html:99
+#: templates/course-page/comments.html:113
+msgid "All"
+msgstr ""
+
+#: templates/course-page/comments.html:110
+msgid "Fiscal Year: "
+msgstr ""
+
+#: templates/course-page/comments.html:126
+msgid "Avatar"
+msgstr ""
+
+#: templates/course-page/comments.html:133
+msgid "Sentiment Score: "
+msgstr ""
+
+#: templates/course-page/comments.html:154
+#: templates/course-page/comments.html:183
 #: templates/course-page/ratings.html:48
 msgid "Apologies, this course has yet to receive any feedback of this type."
 msgstr ""
 
-#: templates/course-page/comments.html:104
+#: templates/course-page/comments.html:162
 msgid ""
 "Comments on instructor performance are currently disabled due to privacy "
 "restrictions."
 msgstr ""
 
-#: templates/course-page/comments.html:133
+#: templates/course-page/comments.html:191
 msgid ""
 "<h5>Tip:</h5><p>Learners explain why they feel the training won't improve"
 " their job performance.</p>"
 msgstr ""
 
-#: templates/course-page/comments.html:187
+#: templates/course-page/comments.html:197
+msgid ""
+"<h5>Tip:</h5><p>Comments are assigned a sentiment score between 1 (most "
+"negative) and 5 (most positive) using machine learning.</p>"
+msgstr ""
+
+#: templates/course-page/comments.html:279
 msgid "<strong>Number of Responses:</strong> 0"
 msgstr ""
 
-#: templates/course-page/comments.html:189
+#: templates/course-page/comments.html:281
 msgid "<strong>Number of Responses:</strong> "
 msgstr ""
 
-#: templates/course-page/comments.html:216
+#: templates/course-page/comments.html:308
 msgid "Reason to Participate"
 msgstr ""
 
-#: templates/course-page/comments.html:217
+#: templates/course-page/comments.html:309
 msgid "Did You Experience Technical Issues?"
 msgstr ""
 
-#: templates/course-page/comments.html:218
+#: templates/course-page/comments.html:310
 msgid "The Course Was Available in the Official Language of My Choice"
 msgstr ""
 
-#: templates/course-page/comments.html:219
+#: templates/course-page/comments.html:311
 msgid "Did the Course Make Use of GCcampus Tools?"
 msgstr ""
 
-#: templates/course-page/comments.html:220
+#: templates/course-page/comments.html:312
 msgid "Method of Preparing for the Course"
 msgstr ""
 
@@ -662,10 +660,6 @@ msgstr ""
 
 #: templates/course-page/main.html:17
 msgid "Ratings"
-msgstr ""
-
-#: templates/course-page/main.html:18
-msgid "Comments"
 msgstr ""
 
 #: templates/course-page/main.html:19
