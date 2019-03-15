@@ -38,6 +38,7 @@ def home():
 @course.route('/course-result')
 @auth.login_required
 def course_result():
+	# Only allow 'en' and 'fr' to be passed to app
 	lang = 'fr' if request.cookies.get('lang', None) == 'fr' else 'en'
 	# Security check: if course_code doesn't exist, render not_found.html
 	course_code = utils.validate_course_code(request, THIS_YEAR)
