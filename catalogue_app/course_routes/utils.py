@@ -1,9 +1,9 @@
 from catalogue_app.db import query_mysql
 
 
-def validate_course_code(request, fiscal_year):
+def validate_course_code(args, fiscal_year):
 	"""Check if course code exists in LSR."""
-	course_code = str(request.args.get('course_code', False)).upper()
+	course_code = str(args.get('course_code', False)).upper()
 	
 	# Check if found in DB; automatically escaped in MySQL via %s
 	table_name = 'lsr{0}'.format(fiscal_year)
