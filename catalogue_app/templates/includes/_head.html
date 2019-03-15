@@ -9,5 +9,5 @@
 <!-- Meta tags for Open Graph -->
 <meta property="og:title" content="CSPS Course Catalogue - Catalogue de cours de l'EFPC" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="{{ url_for('main.splash') }}" />
+<meta property="og:url" content="{{ url_for(request.endpoint) }}" />
 <meta property="og:image" content="{{ url_for('static', filename='FIPs/da_logo_en.png') }}" />
