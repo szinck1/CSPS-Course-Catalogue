@@ -534,6 +534,9 @@ with position: relative, in this case #selection-and-loader */
 
 
 /***** Ratings *****/
+#ratings-tab {
+	min-height: 80vh;
+}
 .ratings-chart {
 	margin-bottom: 1.25rem;
 }
@@ -623,13 +626,16 @@ bar and label on same line */
 }
 /* Prevent screen jump when switching from full -> empty tabs */
 .all-comment-tabs {
-	min-height: 90vh;
+	min-height: 80vh;
 }
 /***** End comments *****/
 
 
 
 /***** Prep & admin *****/
+#material-tab {
+	min-height: 80vh;
+}
 #material-tab table {
 	margin-top: 1.5rem;
 	margin-bottom: 1.5rem;
