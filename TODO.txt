@@ -6,6 +6,7 @@
 	# check index
 # finish accounts
 	# can't store possible salts in code?
+	# get https
 # validate methodology and #s
 # app service settings check from Steve?
 # before launch, need to convert to 12 month rolling window
