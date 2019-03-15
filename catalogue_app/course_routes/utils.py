@@ -1,20 +1,23 @@
 from catalogue_app.db import query_mysql
 
 
-def validate_course_code(lang, fiscal_year, course_code):
-	"""Check if course code exists in LSR. Return its title
-	else False.
-	"""
-	# Account for passing vals like '', False
-	if not course_code:
-		return False
-	# Account for passing empty objects like [], {}
-	course_code = str(course_code)
-	field_name = 'course_title_{0}'.format(lang)
+def validate_course_code(request, fiscal_year):
+	"""Check if course code exists in LSR."""
+	course_code = str(request.args.get('course_code', False))
+	
+	# Check if found in DB; automatically escaped in MySQL via %s
 	table_name = 'lsr{0}'.format(fiscal_year)
-	query = "SELECT {0} FROM {1} WHERE course_code = %s LIMIT 1;".format(field_name, table_name)
-	course_title = query_mysql(query, (course_code,))
-	return as_string(course_title, error_msg=False)
+	query = """
+		SELECT EXISTS (
+			SELECT course_code
+			FROM {0}
+			WHERE course_code = %s
+			LIMIT 1
+		);
+	""".format(table_name)
+	course_check = query_mysql(query, (course_code,))
+	course_check = as_string(course_check)
+	return course_code if course_check else False
 
 
 def as_string(my_val, error_msg=False):

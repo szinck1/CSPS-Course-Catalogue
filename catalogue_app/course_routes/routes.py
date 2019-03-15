@@ -38,17 +38,10 @@ def home():
 @course.route('/course-result')
 @auth.login_required
 def course_result():
-	### VALIDATE USER INPUTS ###
-	# Get arguments from query string; if incomplete, return to selection page
-	if 'course_code' not in request.args:
-		return redirect(url_for('course.home'))
-	# Argument is automatically escaped in Jinja2 and MySQL
-	course_code = request.args['course_code'].upper()
-	# Only allow 'en' and 'fr' to be passed to app
 	lang = 'fr' if request.cookies.get('lang', None) == 'fr' else 'en'
 	# Security check: if course_code doesn't exist, render not_found.html
-	course_title = utils.validate_course_code(lang, THIS_YEAR, course_code)
-	if not course_title:
+	course_code = utils.validate_course_code(request, THIS_YEAR)
+	if not course_code:
 		return render_template('not-found.html')
 	
 	# Instantiate classes
@@ -64,7 +57,7 @@ def course_result():
 	pass_dict = {
 		#Global
 		'course_code': course_code,
-		'course_title': course_title,
+		'course_title': 'Mars',
 		# General
 		'course_info': course_info.course_info,
 		# Dashboard - offerings
