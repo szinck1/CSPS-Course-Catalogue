@@ -29,18 +29,14 @@
 			<div id="banner">
 				<div class="container">
 					<!-- Digital Academy logo -->
-					<div class="col-xs-12 col-sm-3">
-						{% set lang = 'fr' if request.cookies.get('lang', None) == 'fr' else 'en' %}
-						{% if lang == 'fr' %}
-							<img class="img-responsive" src="{{ url_for('static', filename='FIPs/da_logo_fr.png') }}" alt="{{ _('DA Logo') }}" />
-						{% else %}
-							<img class="img-responsive" src="{{ url_for('static', filename='FIPs/da_logo_en.png') }}" alt="{{ _('DA Logo') }}" />
-						{% endif %}
-					</div>
+					{% set lang = 'fr' if request.cookies.get('lang', None) == 'fr' else 'en' %}
+					{% if lang == 'fr' %}
+						<img src="{{ url_for('static', filename='FIPs/da_logo_fr.png') }}" alt="{{ _('DA Logo') }}" />
+					{% else %}
+						<img src="{{ url_for('static', filename='FIPs/da_logo_en.png') }}" alt="{{ _('DA Logo') }}" />
+					{% endif %}
 					<!-- Intro text -->
-					<div class="col-xs-12 col-sm-8">
-						<h1>{{ _('CSPS Course Catalogue') }}</h1>
-					</div>
+					<h1>{{ _('CSPS Course Catalogue') }}</h1>
 				</div>
 			</div>
 		</header>
