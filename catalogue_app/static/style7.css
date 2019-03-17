@@ -145,10 +145,13 @@ footer .img-responsive {
 #banner img {
 	width: 20rem;
 }
-/* Center logo on mobile */
+/* Center and shrink logo on mobile */
 @media (max-width: 767px) {
 	#banner .container {
 		flex-direction: column;
+	}
+	#banner img {
+		width: 15rem;
 	}
 }
 /* Transition links on hover */
