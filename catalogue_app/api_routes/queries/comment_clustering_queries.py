@@ -57,7 +57,7 @@ def _get_clusters(model, feature_names, n_top_words):
 # Wrap it all in Sklearn pipeline
 # Automatically choose k
 # Trying finding a single word to name clusters via wordnet
-
+# Try hyperparams alpha and beta i.e. add in domain knowledge
 
 
 

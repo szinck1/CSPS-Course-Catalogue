@@ -6,6 +6,7 @@
 	# check index
 # finish accounts
 	# can't store possible salts in code?
+	# get https
 # validate methodology and #s
 # app service settings check from Steve?
 # before launch, need to convert to 12 month rolling window
@@ -14,6 +15,9 @@
 
 
 ### BACKLOG ###
+# Sinan's week of technical debt reduction
+# fix deprecated media query style
+# remove excess usage of Jinja2
 # investigate best way outside Jinja2 of dynamically creating HTML elements and scripts
 # refactor chart creation into single funcs, call only when parent div activated to solve resize problem
 # update scraper to grab code from title rather than URL
@@ -29,6 +33,8 @@
 # add datatables to depts and classifications
 # focus group w/ users, brainstorm for new KPIs for curriculum review process
 # unit testing
+	https://digital.canada.ca/2019/03/14/putting-your-trust-in-humans-and-robots/
+	https://www.youtube.com/watch?v=1gvvgsTTyqA
 # let Camille edit directly
 # decouple frontend and backend
 	# add SQLAlchemy to be RDBMS agnostic

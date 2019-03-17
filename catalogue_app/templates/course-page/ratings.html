@@ -3,50 +3,52 @@
 	<img id="ratings-title-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='tooltip.png') }}" alt="{{ _('Tooltip') }}" />
 </h1>
 
-<!-- Loop through pass_dict.all_ratings and dynamically create a chart for every question; check first if ratings exist -->
-{% if pass_dict.all_ratings %}
-{% for question in pass_dict.all_ratings %}
-	<!-- Div to hold chart -->
-	<div class="row ratings-chart">
-		<h4 class="ratings-chart-title">
-			{{ question[0] }}
-			<!-- Show question's full text as seen in survey in tooltip -->
-			<img id="chart-{{ loop.index }}-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='tooltip.png') }}" alt="{{ _('Tooltip') }}" />
-		</h4>
-		<div id="chart-{{ loop.index }}" class="col-xs-12"></div>
-	</div>
-	
-	<script async>
-		// Add chart displaying question's monthly performance
-		$('#chart-{{ loop.index }}').highcharts({
-			chart: {type: 'line'},
-			title: {text: ''},
-			xAxis: {categories: ["{{ _('April') }}", "{{ _('May') }}", "{{ _('June') }}", 
-								 "{{ _('July') }}", "{{ _('August') }}", "{{ _('September') }}",
-								 "{{ _('October') }}", "{{ _('November') }}", "{{ _('December') }}",
-								 "{{ _('January') }}", "{{ _('February') }}", "{{ _('March') }}"]},
-			yAxis: {title: {text: "{{ _('Average Response (Out of Five)') }}"}, min: 0, max: 5},
-			credits: {text: ''},
-			series: [{name: "{{ _('Last 12 Months') }}", color: '#335075', data: {{ question[2] | safe }}}],
-			tooltip: {
-				formatter: function() {return " " +
-					"{{ _('Monthly Average: ') }}" + this.point.y + '<br />' +
-					"{{ _('Number of Responses: ') }}" + this.point.count + '<br />'
+<div id="ratings-tab">
+	<!-- Loop through pass_dict.all_ratings and dynamically create a chart for every question; check first if ratings exist -->
+	{% if pass_dict.all_ratings %}
+	{% for question in pass_dict.all_ratings %}
+		<!-- Div to hold chart -->
+		<div class="row ratings-chart">
+			<h4 class="ratings-chart-title">
+				{{ question[0] }}
+				<!-- Show question's full text as seen in survey in tooltip -->
+				<img id="chart-{{ loop.index }}-tooltip" class="inline-tooltip" src="{{ url_for('static', filename='tooltip.png') }}" alt="{{ _('Tooltip') }}" />
+			</h4>
+			<div id="chart-{{ loop.index }}" class="col-xs-12"></div>
+		</div>
+		
+		<script async>
+			// Add chart displaying question's monthly performance
+			$('#chart-{{ loop.index }}').highcharts({
+				chart: {type: 'line'},
+				title: {text: ''},
+				xAxis: {categories: ["{{ _('April') }}", "{{ _('May') }}", "{{ _('June') }}", 
+									 "{{ _('July') }}", "{{ _('August') }}", "{{ _('September') }}",
+									 "{{ _('October') }}", "{{ _('November') }}", "{{ _('December') }}",
+									 "{{ _('January') }}", "{{ _('February') }}", "{{ _('March') }}"]},
+				yAxis: {title: {text: "{{ _('Average Response (Out of Five)') }}"}, min: 0, max: 5},
+				credits: {text: ''},
+				series: [{name: "{{ _('Last 12 Months') }}", color: '#335075', data: {{ question[2] | safe }}}],
+				tooltip: {
+					formatter: function() {return " " +
+						"{{ _('Monthly Average: ') }}" + this.point.y + '<br />' +
+						"{{ _('Number of Responses: ') }}" + this.point.count + '<br />'
+					}
 				}
-			}
-		});
-		// Add tooltip contents
-		$('#chart-{{ loop.index }}-tooltip').tooltip({
-			placement: 'bottom',
-			title: "<h5>{{ _('Full Question:') }}</h5><p>{{ question[1] }}</p>",
-			animation: true,
-			html: true
-		});
-	</script>
-{% endfor %}
-{% else %}
-	<h4>{{ _('Apologies, this course has yet to receive any feedback of this type.') }}</h4>
-{% endif %}
+			});
+			// Add tooltip contents
+			$('#chart-{{ loop.index }}-tooltip').tooltip({
+				placement: 'bottom',
+				title: "<h5>{{ _('Full Question:') }}</h5><p>{{ question[1] }}</p>",
+				animation: true,
+				html: true
+			});
+		</script>
+	{% endfor %}
+	{% else %}
+		<h4>{{ _('Apologies, this course has yet to receive any feedback of this type.') }}</h4>
+	{% endif %}
+</div>
 
 <script async>
 	// Add tooltip contents

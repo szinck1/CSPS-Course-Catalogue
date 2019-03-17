@@ -99,6 +99,16 @@
 		$('.' + dropdownSelection).show();
 	});
 	
+	// Array to store markers' InfoWindows
+	var infoWindowArray = [];
+	
+	// Close all open InfoWindows
+	function closeInfoWindows() {
+		for (var i = 0; i < infoWindowArray.length; i++) {
+			infoWindowArray[i].close();
+		}
+	}
+	
 	// Function to add marker
 	function addMarker(city_name, count, lat, lng, map) {
 		// Determine marker color based of number of offerings
@@ -131,22 +141,23 @@
 		var infoWindow = new google.maps.InfoWindow({
 			content: contentString
 		});
-		// Show tooltip upon click
+		infoWindowArray.push(infoWindow);
+		
+		// Show InfoWindow upon click
 		marker.addListener('click', function() {
+			closeInfoWindows();
 			infoWindow.open(map, marker);
 		});
 	}
 	
-	function initMap(id, data) {
+	function initMap(id, markers) {
 		// Map options
 		var options = {
 			zoom: 4.2,
 			center: {lat: 57.0, lng: -96.0}
 		};
-		// Init map
+		// Instantiate
 		var map = new google.maps.Map(document.getElementById(id), options);
-		// List of cities to add
-		markers = data;
 		// Loop through list and add
 		for (var i = 0; i < markers.length; i++) {
 			addMarker(markers[i][0], markers[i][1], markers[i][2], markers[i][3], map);

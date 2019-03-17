@@ -121,29 +121,34 @@ footer .img-responsive {
 }
 /* Banner */
 #banner {
-	display: grid;
+	min-height: 16rem;
+	background-color: #232323;
+	/* Center container within banner */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#banner .container {
+	/* Center content within container */
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
 	align-items: center;
 	text-align: center;
-	background-color: #232323;
-	padding-bottom: 2rem;
-	min-height: 16rem;
 }
 #banner h1 {
 	font-size: 3rem;
 	color: #fff;
 	font-weight: 100;
-}
-#banner h4 {
-	color: #fff;
-	font-weight: 100;
+	margin: 1.25rem;
 }
 #banner img {
-	width: 10rem;
+	width: 20rem;
 }
 /* Center logo on mobile */
 @media (max-width: 767px) {
-	#banner .img-responsive {
-		margin: 0 auto;
+	#banner .container {
+		flex-direction: column;
 	}
 }
 /* Transition links on hover */
@@ -534,6 +539,9 @@ with position: relative, in this case #selection-and-loader */
 
 
 /***** Ratings *****/
+#ratings-tab {
+	min-height: 80vh;
+}
 .ratings-chart {
 	margin-bottom: 1.25rem;
 }
@@ -623,13 +631,16 @@ bar and label on same line */
 }
 /* Prevent screen jump when switching from full -> empty tabs */
 .all-comment-tabs {
-	min-height: 90vh;
+	min-height: 80vh;
 }
 /***** End comments *****/
 
 
 
 /***** Prep & admin *****/
+#material-tab {
+	min-height: 80vh;
+}
 #material-tab table {
 	margin-top: 1.5rem;
 	margin-bottom: 1.5rem;
