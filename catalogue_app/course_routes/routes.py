@@ -58,7 +58,7 @@ def course_result():
 	pass_dict = {
 		#Global
 		'course_code': course_code,
-		'course_title': 'Mars',
+		'course_title': learners.course_title,
 		# General
 		'course_info': course_info.course_info,
 		# Dashboard - offerings

@@ -1,5 +1,6 @@
 from flask_babel import gettext
 from catalogue_app.db import query_mysql
+from catalogue_app.course_routes.utils import as_string
 
 
 class Learners:
@@ -11,6 +12,7 @@ class Learners:
 		self.regs_per_month = None
 		self.top_classifs = None
 		self.top_depts = None
+		self.course_title = None
 	
 	
 	def load(self):
@@ -18,6 +20,7 @@ class Learners:
 		self._calc_regs_per_month()
 		self._calc_top_classifs()
 		self._calc_top_depts()
+		self._get_course_tile()
 		# Return self to allow method chaining
 		return self
 	
@@ -88,3 +91,21 @@ class Learners:
 		""".format(field_name, table_name)
 		results = query_mysql(query, (self.course_code,))
 		self.top_depts = results
+	
+	
+	def _get_course_tile(self):
+		"""Get course title. In this module as should come from
+		the lsr_fiscal_year table rather than the product_info
+		table in case the course has registrations but has yet
+		to be catalogued by CM."""
+		field_name =  'course_title_{0}'.format(self.lang)
+		table_name = 'lsr{0}'.format(self.fiscal_year)
+		query = """
+			SELECT {0}
+			FROM {1}
+			WHERE course_code = %s
+			LIMIT 1;
+		""".format(field_name, table_name)
+		results = query_mysql(query, (self.course_code,))
+		results = as_string(results)
+		self.course_title = results
