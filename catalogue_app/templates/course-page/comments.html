@@ -271,8 +271,15 @@
 		$(tabName + ' .stars-bar-chart .bar-stars-one span.bar-label').text(String(percentOne) + '%');
 		
 		// Update h3 showing total number of comments
-		var titleText = (totalComments == 1) ? ' Comment' : ' Comments';
-		$(tabName + ' .stars-bar-chart thead h3 span').text(totalComments + titleText);
+		// Add leading space to distinguish from uppercase 'Commentaires'
+		var titleNoun = (totalComments == 1) ? "{{ _(' Comment ') }}" : "{{ _(' Comments') }}";
+		var titlePrep = "{{ _('in') }}";
+		var fiscalYearSelected = $(dropdowns[1]).find('option:selected').text();
+		if (fiscalYearSelected == "{{ _('All') }}") {
+			$(tabName + ' .stars-bar-chart thead h3 span').text(totalComments + titleNoun + ' ' + "{{ _('in Total') }}");
+		} else {
+			$(tabName + ' .stars-bar-chart thead h3 span').text(totalComments + titleNoun + ' ' + titlePrep + ' ' + fiscalYearSelected);
+		}
 	}
 	
 	// Create listener enabling CSS bar chart to trigger star filters
