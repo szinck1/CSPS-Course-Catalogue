@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  0.9\n"
 "Report-Msgid-Bugs-To: sam.louden@canada.ca\n"
-"POT-Creation-Date: 2019-03-17 01:31-0400\n"
+"POT-Creation-Date: 2019-03-17 02:27-0400\n"
 "PO-Revision-Date: 2019-01-06 13:06-0500\n"
 "Last-Translator: SAM LOUDEN sam.louden@canada.ca\n"
 "Language: fr\n"
@@ -19,109 +19,66 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.6.0\n"
 
-#: api_routes/routes.py:35 download_routes/routes.py:67
-#: templates/not-found.html:6
-msgid "Course Not Found"
-msgstr "Cours introuvable"
-
-#: api_routes/routes.py:49 templates/course-page/comments.html:167
-msgid ""
-"Comments on instructor performance are currently disabled due to privacy "
-"restrictions."
-msgstr ""
-"Les commentaires concernant les instructeurs sont présentement désactivés"
-" à cause des restrictions de confidentialité."
-
-#: api_routes/routes.py:52
-msgid "Comments of this type are not currently collected in our surveys."
-msgstr ""
-"Les commentaires de ce genre ne sont présentement pas recueillis dans nos"
-" sondages."
-
-#: api_routes/routes.py:64
-msgid "comment_text"
-msgstr "texte_du_commentaire"
-
-#: api_routes/routes.py:65
-msgid "stars"
-msgstr "étoiles"
-
-#: api_routes/routes.py:66
-msgid "learner_classification"
-msgstr "classification_de_l_apprenant"
-
-#: api_routes/routes.py:67
-msgid "offering_city"
-msgstr "ville_de_l_offre"
-
-#: api_routes/routes.py:68
-msgid "offering_fiscal_year"
-msgstr "année_fiscale_de_l_offre"
-
-#: api_routes/routes.py:69
-msgid "offering_quarter"
-msgstr "trimestre_de_l_offre"
-
 #: course_routes/queries/comment_queries.py:94
 msgid "No response"
 msgstr "Aucune réponse"
 
-#: course_routes/queries/dashboard_learner_queries.py:43
+#: course_routes/queries/dashboard_learner_queries.py:46
 #: templates/course-page/ratings.html:25
 msgid "April"
 msgstr "Avril"
 
-#: course_routes/queries/dashboard_learner_queries.py:44
+#: course_routes/queries/dashboard_learner_queries.py:47
 #: templates/course-page/ratings.html:25
 msgid "May"
 msgstr "Mai"
 
-#: course_routes/queries/dashboard_learner_queries.py:45
+#: course_routes/queries/dashboard_learner_queries.py:48
 #: templates/course-page/ratings.html:25
 msgid "June"
 msgstr "Juin"
 
-#: course_routes/queries/dashboard_learner_queries.py:46
+#: course_routes/queries/dashboard_learner_queries.py:49
 #: templates/course-page/ratings.html:26
 msgid "July"
 msgstr "Juillet"
 
-#: course_routes/queries/dashboard_learner_queries.py:47
+#: course_routes/queries/dashboard_learner_queries.py:50
 #: templates/course-page/ratings.html:26
 msgid "August"
 msgstr "Août"
 
-#: course_routes/queries/dashboard_learner_queries.py:48
+#: course_routes/queries/dashboard_learner_queries.py:51
 #: templates/course-page/ratings.html:26
 msgid "September"
 msgstr "Septembre"
 
-#: course_routes/queries/dashboard_learner_queries.py:49
+#: course_routes/queries/dashboard_learner_queries.py:52
 #: templates/course-page/ratings.html:27
 msgid "October"
 msgstr "Octobre"
 
-#: course_routes/queries/dashboard_learner_queries.py:50
+#: course_routes/queries/dashboard_learner_queries.py:53
 #: templates/course-page/ratings.html:27
 msgid "November"
 msgstr "Novembre"
 
-#: course_routes/queries/dashboard_learner_queries.py:51
+#: course_routes/queries/dashboard_learner_queries.py:54
 #: templates/course-page/ratings.html:27
 msgid "December"
 msgstr "Décembre"
 
-#: course_routes/queries/dashboard_learner_queries.py:52
+#: course_routes/queries/dashboard_learner_queries.py:55
 #: templates/course-page/ratings.html:28
 msgid "January"
 msgstr "Janvier"
 
-#: course_routes/queries/dashboard_learner_queries.py:53
+#: course_routes/queries/dashboard_learner_queries.py:56
 #: templates/course-page/ratings.html:28
 msgid "February"
 msgstr "Février"
 
-#: course_routes/queries/dashboard_learner_queries.py:54
+#: course_routes/queries/dashboard_learner_queries.py:57
 #: templates/about.html:20 templates/course-page/ratings.html:28
 msgid "March"
 msgstr "Mars"
@@ -201,6 +158,10 @@ msgstr "Onglet des evaluations"
 #: download_routes/routes.py:45
 msgid "Comments Tab"
 msgstr "Onglet des commentaires"
+
+#: download_routes/routes.py:67 templates/not-found.html:6
+msgid "Course Not Found"
+msgstr "Cours introuvable"
 
 #: download_routes/queries/download_queries.py:87
 msgid "Apologies, this tab contains no data."
@@ -366,6 +327,7 @@ msgstr "Étoiles : "
 
 #: templates/course-page/comments.html:104
 #: templates/course-page/comments.html:118
+#: templates/course-page/comments.html:278
 msgid "All"
 msgstr "Toutes"
 
@@ -387,6 +349,14 @@ msgstr "Classement calculé : "
 msgid "Apologies, this course has yet to receive any feedback of this type."
 msgstr "Désolé, ce cours n'a pas encore reçu de rétroactions de ce type."
 
+#: templates/course-page/comments.html:167
+msgid ""
+"Comments on instructor performance are currently disabled due to privacy "
+"restrictions."
+msgstr ""
+"Les commentaires concernant les instructeurs sont présentement désactivés"
+" à cause des restrictions de confidentialité."
+
 #: templates/course-page/comments.html:196
 msgid ""
 "<h5>Tip:</h5><p>Learners explain why they feel the training won't improve"
@@ -403,31 +373,47 @@ msgstr ""
 "<h5>Indice :</h5><p>Les commentaires sont classés entre 1 (très négatif) "
 "et 5 (très positif) par le biais de l'apprentissage automatique.</p>"
 
-#: templates/course-page/comments.html:328
+#: templates/course-page/comments.html:275
+msgid " Comment "
+msgstr " commentaire"
+
+#: templates/course-page/comments.html:275
+msgid " Comments"
+msgstr " commentaires"
+
+#: templates/course-page/comments.html:276
+msgid "in"
+msgstr "en"
+
+#: templates/course-page/comments.html:279
+msgid "in Total"
+msgstr "en total"
+
+#: templates/course-page/comments.html:335
 msgid "<strong>Number of Responses:</strong> 0"
 msgstr "<strong>Numéro de réponses :</strong> 0"
 
-#: templates/course-page/comments.html:330
+#: templates/course-page/comments.html:337
 msgid "<strong>Number of Responses:</strong> "
 msgstr "<strong>Numéro de réponses :</strong>"
 
-#: templates/course-page/comments.html:357
+#: templates/course-page/comments.html:364
 msgid "Reason to Participate"
 msgstr "Raison principale pour prendre part"
 
-#: templates/course-page/comments.html:358
+#: templates/course-page/comments.html:365
 msgid "Did You Experience Technical Issues?"
 msgstr "Avez-vous éprouvé des difficultés techniques?"
 
-#: templates/course-page/comments.html:359
+#: templates/course-page/comments.html:366
 msgid "The Course Was Available in the Official Language of My Choice"
 msgstr "Le cours était offert dans la langue officielle de mon choix."
 
-#: templates/course-page/comments.html:360
+#: templates/course-page/comments.html:367
 msgid "Did the Course Make Use of GCcampus Tools?"
 msgstr "Utilisation d'outils supplémentaires provenant de GCcampus?"
 
-#: templates/course-page/comments.html:361
+#: templates/course-page/comments.html:368
 msgid "Method of Preparing for the Course"
 msgstr "Méthode de préparation au cours"
 
@@ -848,24 +834,4 @@ msgstr "Naviguer"
 #: templates/includes/_navbar.html:36
 msgid "Departments"
 msgstr "Ministères"
-
-#~ msgid "Note: Test Version"
-#~ msgstr "Notez : Ce site est en cours de développement."
-
-#~ msgid "Comment"
-#~ msgstr "Commentaire"
-
-#~ msgid "P&A"
-#~ msgstr "P&A"
-
-#~ msgid ""
-#~ "Error: Comments on instructor performance "
-#~ "are currently disabled due to privacy"
-#~ " restrictions."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Error: Comments of this type are "
-#~ "not currently collected in our surveys."
-#~ msgstr ""
 

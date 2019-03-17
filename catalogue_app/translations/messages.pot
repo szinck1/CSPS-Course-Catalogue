@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-03-17 01:31-0400\n"
+"POT-Creation-Date: 2019-03-17 02:27-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,105 +17,66 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.6.0\n"
 
-#: api_routes/routes.py:35 download_routes/routes.py:67
-#: templates/not-found.html:6
-msgid "Course Not Found"
-msgstr ""
-
-#: api_routes/routes.py:49 templates/course-page/comments.html:167
-msgid ""
-"Comments on instructor performance are currently disabled due to privacy "
-"restrictions."
-msgstr ""
-
-#: api_routes/routes.py:52
-msgid "Comments of this type are not currently collected in our surveys."
-msgstr ""
-
-#: api_routes/routes.py:64
-msgid "comment_text"
-msgstr ""
-
-#: api_routes/routes.py:65
-msgid "stars"
-msgstr ""
-
-#: api_routes/routes.py:66
-msgid "learner_classification"
-msgstr ""
-
-#: api_routes/routes.py:67
-msgid "offering_city"
-msgstr ""
-
-#: api_routes/routes.py:68
-msgid "offering_fiscal_year"
-msgstr ""
-
-#: api_routes/routes.py:69
-msgid "offering_quarter"
-msgstr ""
-
 #: course_routes/queries/comment_queries.py:94
 msgid "No response"
 msgstr ""
 
-#: course_routes/queries/dashboard_learner_queries.py:43
+#: course_routes/queries/dashboard_learner_queries.py:46
 #: templates/course-page/ratings.html:25
 msgid "April"
 msgstr ""
 
-#: course_routes/queries/dashboard_learner_queries.py:44
+#: course_routes/queries/dashboard_learner_queries.py:47
 #: templates/course-page/ratings.html:25
 msgid "May"
 msgstr ""
 
-#: course_routes/queries/dashboard_learner_queries.py:45
+#: course_routes/queries/dashboard_learner_queries.py:48
 #: templates/course-page/ratings.html:25
 msgid "June"
 msgstr ""
 
-#: course_routes/queries/dashboard_learner_queries.py:46
+#: course_routes/queries/dashboard_learner_queries.py:49
 #: templates/course-page/ratings.html:26
 msgid "July"
 msgstr ""
 
-#: course_routes/queries/dashboard_learner_queries.py:47
+#: course_routes/queries/dashboard_learner_queries.py:50
 #: templates/course-page/ratings.html:26
 msgid "August"
 msgstr ""
 
-#: course_routes/queries/dashboard_learner_queries.py:48
+#: course_routes/queries/dashboard_learner_queries.py:51
 #: templates/course-page/ratings.html:26
 msgid "September"
 msgstr ""
 
-#: course_routes/queries/dashboard_learner_queries.py:49
+#: course_routes/queries/dashboard_learner_queries.py:52
 #: templates/course-page/ratings.html:27
 msgid "October"
 msgstr ""
 
-#: course_routes/queries/dashboard_learner_queries.py:50
+#: course_routes/queries/dashboard_learner_queries.py:53
 #: templates/course-page/ratings.html:27
 msgid "November"
 msgstr ""
 
-#: course_routes/queries/dashboard_learner_queries.py:51
+#: course_routes/queries/dashboard_learner_queries.py:54
 #: templates/course-page/ratings.html:27
 msgid "December"
 msgstr ""
 
-#: course_routes/queries/dashboard_learner_queries.py:52
+#: course_routes/queries/dashboard_learner_queries.py:55
 #: templates/course-page/ratings.html:28
 msgid "January"
 msgstr ""
 
-#: course_routes/queries/dashboard_learner_queries.py:53
+#: course_routes/queries/dashboard_learner_queries.py:56
 #: templates/course-page/ratings.html:28
 msgid "February"
 msgstr ""
 
-#: course_routes/queries/dashboard_learner_queries.py:54
+#: course_routes/queries/dashboard_learner_queries.py:57
 #: templates/about.html:20 templates/course-page/ratings.html:28
 msgid "March"
 msgstr ""
@@ -194,6 +155,10 @@ msgstr ""
 
 #: download_routes/routes.py:45
 msgid "Comments Tab"
+msgstr ""
+
+#: download_routes/routes.py:67 templates/not-found.html:6
+msgid "Course Not Found"
 msgstr ""
 
 #: download_routes/queries/download_queries.py:87
@@ -355,6 +320,7 @@ msgstr ""
 
 #: templates/course-page/comments.html:104
 #: templates/course-page/comments.html:118
+#: templates/course-page/comments.html:278
 msgid "All"
 msgstr ""
 
@@ -376,6 +342,12 @@ msgstr ""
 msgid "Apologies, this course has yet to receive any feedback of this type."
 msgstr ""
 
+#: templates/course-page/comments.html:167
+msgid ""
+"Comments on instructor performance are currently disabled due to privacy "
+"restrictions."
+msgstr ""
+
 #: templates/course-page/comments.html:196
 msgid ""
 "<h5>Tip:</h5><p>Learners explain why they feel the training won't improve"
@@ -388,31 +360,47 @@ msgid ""
 "negative) and 5 (most positive) using machine learning.</p>"
 msgstr ""
 
-#: templates/course-page/comments.html:328
+#: templates/course-page/comments.html:275
+msgid " Comment "
+msgstr ""
+
+#: templates/course-page/comments.html:275
+msgid " Comments"
+msgstr ""
+
+#: templates/course-page/comments.html:276
+msgid "in"
+msgstr ""
+
+#: templates/course-page/comments.html:279
+msgid "in Total"
+msgstr ""
+
+#: templates/course-page/comments.html:335
 msgid "<strong>Number of Responses:</strong> 0"
 msgstr ""
 
-#: templates/course-page/comments.html:330
+#: templates/course-page/comments.html:337
 msgid "<strong>Number of Responses:</strong> "
 msgstr ""
 
-#: templates/course-page/comments.html:357
+#: templates/course-page/comments.html:364
 msgid "Reason to Participate"
 msgstr ""
 
-#: templates/course-page/comments.html:358
+#: templates/course-page/comments.html:365
 msgid "Did You Experience Technical Issues?"
 msgstr ""
 
-#: templates/course-page/comments.html:359
+#: templates/course-page/comments.html:366
 msgid "The Course Was Available in the Official Language of My Choice"
 msgstr ""
 
-#: templates/course-page/comments.html:360
+#: templates/course-page/comments.html:367
 msgid "Did the Course Make Use of GCcampus Tools?"
 msgstr ""
 
-#: templates/course-page/comments.html:361
+#: templates/course-page/comments.html:368
 msgid "Method of Preparing for the Course"
 msgstr ""
 
