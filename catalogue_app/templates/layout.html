@@ -21,7 +21,7 @@
 		{% endblock head %}
 		
 		<!-- Custom CSS -->
-		<link rel="stylesheet" href= "{{ url_for('static', filename='style4.css') }}" type="text/css" />
+		<link rel="stylesheet" href= "{{ url_for('static', filename='style5.css') }}" type="text/css" />
 	</head>
 	<body>
 		<header>
@@ -31,9 +31,9 @@
 					<!-- Digital Academy logo -->
 					{% set lang = 'fr' if request.cookies.get('lang', None) == 'fr' else 'en' %}
 					{% if lang == 'fr' %}
-						<img src="{{ url_for('static', filename='FIPs/da_logo_fr.png') }}" alt="{{ _('DA Logo') }}" />
+						<img src="{{ url_for('static', filename='FIPs/da_logo_fr_1.png') }}" alt="{{ _('DA Logo') }}" />
 					{% else %}
-						<img src="{{ url_for('static', filename='FIPs/da_logo_en.png') }}" alt="{{ _('DA Logo') }}" />
+						<img src="{{ url_for('static', filename='FIPs/da_logo_en_1.png') }}" alt="{{ _('DA Logo') }}" />
 					{% endif %}
 					<!-- Intro text -->
 					<h1>{{ _('CSPS Course Catalogue') }}</h1>
