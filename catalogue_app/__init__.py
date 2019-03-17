@@ -50,7 +50,6 @@ def create_app(config_class=Config):
 	@babel.localeselector
 	def get_locale():
 		# Only allow 'en' and 'fr' to be passed to app
-		# Only allow 'en' and 'fr' to be passed to app
 		return 'fr' if request.cookies.get('lang', None) == 'fr' else 'en'
 	
 	# Register blueprints
