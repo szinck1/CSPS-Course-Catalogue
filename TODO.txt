@@ -1,4 +1,7 @@
 ### BEFORE DGC ###
+
+# fix flexbox on IE
+
 # add clustering (e.g. latent dirichlet) to check top 5 issues mentioned
 	# only enable button if > 50 comments
 	# sort by most recent first
