@@ -120,16 +120,20 @@ footer .img-responsive {
 	font-size: 1.5rem;
 }
 /* Banner */
-#banner {
-	min-height: 16rem;
+/* Add an additional, identical parent div to
+ensure displays properly on IE11 */
+#outer-banner {
+	display: flex;
+	justify-content: center;
 	background-color: #232323;
-	/* Center container within banner */
+}
+#banner {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	min-height: 16rem;
 }
 #banner .container {
-	/* Center content within container */
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
