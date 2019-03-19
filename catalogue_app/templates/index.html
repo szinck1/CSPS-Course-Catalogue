@@ -8,18 +8,19 @@
 {% endblock head %}
 
 {% block body %}
-	{% from "includes/_formhelpers.html" import render_field %}
 	
 	<div id="selection-and-loader" class="container">
 		<!-- Selection form -->
 		<div id="selection-form">
 			<h3>{{ _('Choose any course to see all of its data.') }}</h3>
-			<form method="POST">
-				{% for field in form %}
-					<div class="form-group">
-						{{ render_field(field, class="form-control chosen") }}
-					</div>
-				{% endfor %}
+			<form method="GET" action="{{ url_for('course.course_result') }}">
+				<select name="course_code">
+					<option value="A313">A313</option>
+					<option value="D101">D101</option>
+					<option value="G413">G413</option>
+					<option value="G414">G414</option>
+					<option value="G415">G415</option>
+				</select>
 				<p id="button-para">
 					<input type="submit" value="{{ _('Go') }}" class="btn btn-primary" id="go-button" />
 					<input type="submit" value="{{ _('Make My Day') }}" class="btn btn-primary" id="random-button" />

@@ -24,14 +24,9 @@ def context_processor():
 @course.route('/home', methods=['GET', 'POST'])
 @auth.login_required
 def home():
-	# Only allow 'en' and 'fr' to be passed to app
-	lang = 'fr' if request.cookies.get('lang', None) == 'fr' else 'en'
-	form = course_form(lang, THIS_YEAR)
-	form = form(request.form)
-	if request.method == 'POST' and form.validate():
-		course_code = form.course_selection.data.upper()
-		return redirect(url_for('course.course_result', course_code=course_code))
-	return render_template('index.html', form=form)
+	if request.method == 'POST':
+		print(request.data)
+	return render_template('index.html')
 
 
 # Catalogue's entry for a given course: the meat & potatoes of the app
