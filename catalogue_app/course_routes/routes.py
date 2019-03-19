@@ -1,4 +1,4 @@
-from flask import Blueprint, redirect, render_template, request, url_for
+from flask import Blueprint, render_template, request
 from catalogue_app import auth
 from catalogue_app.config import Config
 from catalogue_app.course_routes import utils
@@ -24,9 +24,10 @@ def context_processor():
 @course.route('/home', methods=['GET', 'POST'])
 @auth.login_required
 def home():
-	if request.method == 'POST':
-		print(request.data)
-	return render_template('index.html')
+	# Only allow 'en' and 'fr' to be passed to app
+	lang = 'fr' if request.cookies.get('lang', None) == 'fr' else 'en'
+	form = course_form(lang, THIS_YEAR)()
+	return render_template('index.html', form=form)
 
 
 # Catalogue's entry for a given course: the meat & potatoes of the app
