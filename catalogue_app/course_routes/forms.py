@@ -1,5 +1,5 @@
 import re
-from wtforms import Form, SelectField
+from wtforms import Form, SelectField, validators
 from catalogue_app.db import query_mysql
 
 
@@ -22,7 +22,7 @@ def course_form(lang, fiscal_year):
 	class CourseForm(Form):
 		# Displaying form_name disabled in 'templates/includes/_formhelpers.html', so pass empty string
 		form_name = ''
-		course_selection = SelectField(form_name, choices=choices)
+		course_selection = SelectField(form_name, [validators.DataRequired()], choices=choices)
 	
 	return CourseForm
 
