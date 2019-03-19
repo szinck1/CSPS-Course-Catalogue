@@ -1,7 +1,5 @@
 ### BEFORE DGC ###
-
-# fix flexbox on IE
-
+# check iPad sitrep
 # add clustering (e.g. latent dirichlet) to check top 5 issues mentioned
 	# only enable button if > 50 comments
 	# sort by most recent first
@@ -9,7 +7,6 @@
 	# check index
 # finish accounts
 	# can't store possible salts in code?
-	# get https
 # validate methodology and #s
 # app service settings check from Steve?
 # before launch, need to convert to 12 month rolling window
@@ -21,9 +18,8 @@
 # Sinan's week of technical debt reduction
 # fix deprecated media query style
 # remove excess usage of Jinja2
-# investigate best way outside Jinja2 of dynamically creating HTML elements and scripts
 # refactor chart creation into single funcs, call only when parent div activated to solve resize problem
-# update scraper to grab code from title rather than URL
+# update scraper to grab code from title rather than URL; use new catalogue
 # add offering dates to maps
 # copyright
 # explore by director
